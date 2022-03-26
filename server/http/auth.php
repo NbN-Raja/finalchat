@@ -47,6 +47,7 @@ if(isset($_POST['username']) &&
             $_SESSION['username'] = $user['username'];
             $_SESSION['name'] = $user['name'];
             $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['p_p'] = $user['p_p'];
             
 
             # redirect to 'home.php'

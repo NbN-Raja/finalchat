@@ -17,6 +17,7 @@ if(isset($_POST['comment_submit'])){
     $cmt=$_POST['comment'];
     echo $cmt;
     $name = $_SESSION['name'];
+    $profile_pic = $_POST['profile_pic'];
     echo $name;
 
     $ID_of_photo = $_POST['photo_id_name'];
@@ -28,7 +29,7 @@ if(isset($_POST['comment_submit'])){
 
     
     // data db 
-    $sql = "INSERT INTO comment (name, comment,photo_id) VALUES ('$name', '$cmt','$ID_of_photo')";
+    $sql = "INSERT INTO comment (name, comment,photo_id,profile_pic) VALUES ('$name', '$cmt','$ID_of_photo','$profile_pic')";
     
     // $ins = "INSERT INTO comment(name,comment) VALUES(`$name`,`$cmt`)";
 

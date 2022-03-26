@@ -50,26 +50,7 @@
   <div class="col">
     <div class="collapse multi-collapse" id="multiCollapseExample1">
       <div class="card card-body">
-      <?php
-
-
-$conn =new mysqli( 'localhost', 'root','','chat_app_db');
-$sqll="SELECT count(description) as open FROM `global_notify`";
-$result= mysqli_query($conn,$sqll);
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row= mysqli_fetch_assoc($result)) {
-        
-        echo "".$row['open']. "<br>";
-		echo "";
-		
-		
-    }
-}
-
-
-
-?>
+      
       </div>
     </div>
   </div>
@@ -82,4 +63,24 @@ if (mysqli_num_rows($result) > 0) {
   </div>
 </div>
 <a href="notification.php" class="nav-item nav-link notifications" ><i class="fa fa-bell-o"></i><span class="badge">
-			
+<?php
+
+
+$conn =new mysqli( 'localhost', 'root','','chat_app_db');
+$sqll="SELECT  name,uploaded_on from images where status=1";
+$result= mysqli_query($conn,$sqll);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row= mysqli_fetch_assoc($result)) {
+        
+        echo "Hi User!".$row['name']. "Posted Image " .$row['uploaded_on']."<br>";
+        
+		
+		
+		
+    }
+}
+
+
+
+?>

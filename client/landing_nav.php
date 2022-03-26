@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {
 
 	<form class="navbar-form form-inline mr-4 relative">
 			<div class="input-group search-box">								
-				<input type="search" id="searchText" class="form-control" placeholder="Search by Name">
+				<input type="search" id="searchText" class="form-control" placeholder="Search by Name" autocomplete="off">
 				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
 			</div>
 			<ul id="chatList" class="absolute search-list">
@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])) {
 		</div>
 		<div class="navbar-nav ml-auto mr-5">
 	
-			<a href="notification.php" class="nav-item nav-link notifications"  ><i class="fa fa-bell-o"></i><span class="badge">
+			<a href="client/notification.php" class="nav-item nav-link notifications"  ><i class="fa fa-bell-o"></i><span class="badge">
 			<?php
 
 

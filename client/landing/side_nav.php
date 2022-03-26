@@ -34,7 +34,7 @@
                 </li>
                 <li>
                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png" height="36"
-                    width="36">  <a href="client/home.php"> Message </a> 
+                    width="36">  <a href="client/fina.php"> Message </a> 
                 </li>
                 <li>
                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png" height="36"

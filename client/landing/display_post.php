@@ -44,11 +44,11 @@
            
            if($post_img != ''){
            echo  '  <img class="image" src="client/assets/post/'.$data["file_name"].'"
-             height="50" style="width:35pc"><br>';
+             height="50" style="width:35pc;object-fit:center; "><br>';
            }
             ?>
             
-            <div class=" comment">
+            <div class=" comment" style="position:sticky; top:0">
                 <div class="bg-white">
                     <div class="d-flex flex-row fs-12 justify-content: space-between;">
                         <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="" > Like </a></span></div>
@@ -60,21 +60,24 @@
 
                
                 <form action="client/landing/comment.php" method="POST" class="form" style="
-                overflow: scroll; height: 10pc;overflow-x: hidden;
-    overflow-y: scroll
-            ">
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; ">
                     <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
                    
                         <input type="hidden" name="name" value=<?php echo ($_SESSION["name"]); ?>
                             placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value=<?php echo ($_SESSION["p_p"]); ?>
+                            placeholder="Display Name">
+                            
                         <div>
-                            <img src="client/assets/uploads/<?=$user['p_p']?>" style="width: 36px; height: 36px; border-radius: 50%;">
+                            <img src="client/assets/uploads/<?=$data['p_p']?>" style="width: 36px; height: 36px; border-radius: 50%;">
                         </div>
                         <div >
                             <input id="comment" type="text" name="comment" placeholder="Enter your Comment" >
+                            
                         </div>
                         <!-- id of photo Here Using Php  -->
                         <input id="comment" type="hidden" name="photo_id_name" value="<?php echo "" .$data['id'].""; ?>" placeholder="Enter your Comment" >
+                        
 
                     
                             <input type="submit" name="comment_submit" class="btn">
@@ -109,3 +112,23 @@
     
         </div>
         
+        <style>
+::-webkit-scrollbar {
+  width:4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+            </style>

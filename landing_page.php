@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
 
     if($row["is_blocked"] ==1){
         
-        header('location:blocked.php');
+        header('location:client/blocked.php');
    
     }else{
         
