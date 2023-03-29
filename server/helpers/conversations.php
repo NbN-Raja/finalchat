@@ -26,12 +26,14 @@ function getConversation($user_id, $conn){
             # if conversations user_1 row equal to user_id
             if ($conversation['user_1'] == $user_id) {
             	$sql2  = "SELECT *
-            	          FROM users WHERE user_id=?";
+            	          FROM users WHERE user_id=?
+                        ORDER BY `user_id` DESC";
             	$stmt2 = $conn->prepare($sql2);
             	$stmt2->execute([$conversation['user_2']]);
             }else {
             	$sql2  = "SELECT *
-            	          FROM users WHERE user_id=?";
+            	          FROM users WHERE user_id=?
+                        ORDER BY `user_id` DESC";
             	$stmt2 = $conn->prepare($sql2);
             	$stmt2->execute([$conversation['user_1']]);
             }

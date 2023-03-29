@@ -12,15 +12,18 @@
     <title>Chat App - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="asstes/css/style.css">
     <link rel="icon" href="img/logo.png">
 </head>
 
 <body>
+
+<div class="first" >
+    <p> Welcome To Open Chat </p>
+</div>
     <div class="container" style="display:flex">
-        <div class="image">
-            <img src="assets/img/login.png" >
-            
+        <div class="image">  
+            <img src="assets/img/login.png" > 
         </div>
         <div class="login" >
             <form method="post" action="../server/http/auth.php">
@@ -108,5 +111,19 @@ body {
 
 .register a{
     text-decoration:none;
+}
+
+.image {
+    position: relative;
+}
+
+.first{
+    position: relative;
+    top: 10pc;
+    margin-left: 23pc;
+    font-size: 30px;
+    font-weight: 500;
+    color: blueviolet;
+    font-family: cursive;
 }
 </style>

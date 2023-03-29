@@ -38,9 +38,17 @@ if (isset($_SESSION['username'])) {
 	            $stmt2->execute([$opened, $chat_id]); 
 
 	            ?>
-                  <p class="ltext border 
-					        rounded p-2 mb-1">
-					    <?=$chat['message']?> 
+
+				<span style="text-align:center"> <?=
+                      ($chat['created_at'])
+                       ?>  </span>
+				 
+                  <p class="ltext border  rounded p-2 mb-1" style="    background-image: linear-gradient(to right, #d6cece , #8c8c15);border-radius: 2.25rem!important;">
+					  
+							 <?=
+                      base64_decode($chat['message'])
+                       ?> 
+							
 
 						<?php 
             $echo =$chat['chat_img'];
@@ -49,9 +57,7 @@ if (isset($_SESSION['username'])) {
             }
            ?>
 						
-					    <small class="d-block">
-					    	<?=$chat['created_at']?>
-					    </small>      	
+					    
 				  </p>        
 	            <?php
 	    	}

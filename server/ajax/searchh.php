@@ -24,28 +24,25 @@ if (isset($_SESSION['username'])) {
          foreach ($users as $user) {
          	if ($user['user_id'] == $_SESSION['user_id']) continue;
        ?>
-       <li class="list-group-item list-item">
-		<a href="../../../final.php?user=<?=$user['username']?>"
+       <li class="">
+	   <img src="https://img.icons8.com/color/search">
+		<a href="../../../final.php?user=<?= $user ['username']?>"
 
 		
-		   class="d-flex
-		          justify-content-between
-		          align-items-center p-2">
-			<div class="d-flex
-			            align-items-center">
+		   class="">
+			<div class="">
 
 			    <img src="assets/uploads/<?=$user['p_p']?>"
-			         class="w-10 rounded-circle">
+			         class="">
 
-			    <h3 class="fs-xs m-2">
+			    <h3 class="">
 			    	<?=$user['name']?>
 			    </h3> 
 
-				
-				<!-- <a href="user_profile.php?rowid='.$row['username'].'">View Profile</a> -->
+				<a href="../client/final.php?user=<?=$user['username']?>"> Chatt  </a> 
 			</div>
 		 </a>
-		 <a href="user_profile.php?user=<?=$user['username']?>"> View </a> 
+		 <a href="user_profile.php?user=<?=$user['user_id']?>"> View </a> 
 	   </li>
        <?php } }else { ?>
          <div class="alert alert-info 

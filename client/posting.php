@@ -53,8 +53,8 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
 		
             if($insert){
 
-              header('Location: home.php');
-                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+              header("Location: " . $_SERVER["HTTP_REFERER"]);
+                // $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
                 $statusMsg = "File upload failed, please try again.";
             } 

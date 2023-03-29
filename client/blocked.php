@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container">
-<h1> You Are Blocked By Adminn </h1>
+    <h1> You Are Blocked By Admin </h1>
+
+  <a href="../landing_page.php"> Refresh </a>
     </div>
 </body>
 </html>

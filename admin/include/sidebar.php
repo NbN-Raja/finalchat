@@ -15,7 +15,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -37,7 +37,10 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Users :</h6>
                 <a class="collapse-item" href="userprofile.php">Userprofile</a>
-                <a class="collapse-item" href="cards.html">Comments</a>
+                <a class="collapse-item" href="comment.php">Comments</a>
+                <a class="collapse-item" href="contact.php">contact Us</a>
+                <a class="collapse-item" href="report.php">Reports </a>
+                <a class="collapse-item" href="blockeduser.php">Blocks </a>
             </div>
         </div>
     </li>

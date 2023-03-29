@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://localhost/final/main/landing_page.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Document_files/css">
+<link rel="stylesheet" href="./Document_files/bootstrap.min.css">
+<link rel="stylesheet" href="./Document_files/icon">
+<link rel="stylesheet" href="./Document_files/font-awesome.min.css">
+<link rel="stylesheet" href="./Document_files/font-awesome.min(1).css">
+<link href="./Document_files/bootstrap.min(1).css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet">
+
+</head> 
+<body>
+    
+
+
+    <!-- Java Script Here -->
+    <script src="./Document_files/jquery.min.js.download"></script>
+    <script src="./Document_files/jquery-3.5.1.min.js.download"></script>
+    <script src="./Document_files/popper.min.js.download"></script>
+    <script src="./Document_files/bootstrap.min.js.download"></script>
+    <script src="./Document_files/ajax.js.download"></script>
+    <!-- End Of Javascript Here  -->
+    <script src="./Document_files/jquery.min.js.download"></script><link rel="stylesheet" href="./Document_files/landing_page.css">
+
+
+    <nav class="navbar navbar-expand-sm navbar-light fixed-top ">
+        <a href="http://localhost/final/main/landing_page.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Chat</b></a>
+
+
+        <form class="">
+            <div class="input-group search-box">
+                <input type="search" id="searchText" class="form-control" placeholder="Search by Name" autocomplete="off">
+                <span class="input-group-addon"><i class="material-icons"></i></span>
+            </div>
+            <ul id="chatList" class="absolute search-list">
+                                    
+                                                                            </ul>
+        </form>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start ml-5">
+            <div class="navbar-nav">
+                <a href="http://localhost/final/main/landing_page.php#" class="nav-item nav-link active"> Home</a>
+                
+               
+            </div>
+
+            <div class="navbar-nav ml-auto mr-5">
+            <a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-bell-o"> </i>
+                <span class="badge">
+                        15<br>
+
+
+
+                    </span></a>
+
+
+
+                <a href="http://localhost/final/main/client/final_one.php" class="nav-item nav-link messages"><i class="fa fa-envelope-o"></i><span class="badge">
+                        0<br>msg</span></a>
+                <div class="nav-item dropdown">
+                    <a href="http://localhost/final/main/landing_page.php#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action">
+
+                        <img src="./Document_files/nbn.jpg" class="w-30 rounded-circle" height="36" width="36">
+                        nbn<b class="caret"></b></a>
+                    <div class="dropdown-menu">
+                        <a href="http://localhost/final/main/client/home.php" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+
+                        <a href="http://localhost/final/main/client/settings.php" class="dropdown-item"><i class="fa fa-sliders"></i>
+                            Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="http://localhost/final/main/client/logout.php" class="dropdown-item"><i class="material-icons"></i>
+                            Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        1    </nav>
+
+
+    <script src="./Document_files/jquery.min.js(1).download"></script>
+
+    <script>
+    setTimeout(function() {
+        $('#message').fadeOut('fast');
+    }, 1000);
+
+    var audio = new Audio('http://www.rangde.org/static/bell-ring-01.mp3');
+    audio.play();
+    </script>
+
+    <style>
+    #message {
+        background-color: red;
+        color: white;
+        font-weight: 500px;
+        border-radius: 15px;
+
+
+    }
+
+    .search-list {
+        position: absolute;
+        top: 63px;
+        width: 320px;
+        /* display: flex; */
+        /* display: none; */
+    }
+    </style>
+
+
+
+    <!-- // session_start();
+
+// # check if the user is logged in
+// if (isset($_SESSION['username'])) {
+	
+// 	# database connection file
+// 	include '../db.conn.php';
+
+// 	# get the logged in user's username from SESSION
+// 	$id = $_SESSION['user_id'];
+
+// 	$sql = "UPDATE users
+// 	        SET last_seen = NOW() 
+// 	        WHERE user_id = ?";
+// 	$stmt = $conn->prepare($sql);
+// 	$stmt->execute([$id]);
+
+// }else {
+// 	header("Location: ../../index.php");
+// 	exit;
+// } -->
+
+
+
+
+
+
+  <!-- Trigger the modal with a button -->
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <p> Notifications </p>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          
+        </div>
+        <div class="modal-body">
+          <p>
+            Notifications 
+ 
+                </p><div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/login.png" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-06 12:58:26<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/naruto.jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!JkkjPosted Image 2022-03-11 09:03:23<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/screenshot.png" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-09 16:17:08<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/saved_resource" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-11 09:02:14<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/nbn(1).jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-11 11:16:31<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/naruto.jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-11 11:18:48<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/login.jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-11 11:36:52<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/noblesse.jpeg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-16 18:31:05<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/j.jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-25 13:38:27<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/saved_resource" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-25 13:38:43<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/nbn(1).jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-26 15:40:07<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/chatimg.jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnnPosted Image 2022-03-26 20:45:00<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/logo.png" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!WePosted Image 2022-03-28 00:33:48<br> <hr>        </span></div>
+              <div class="noti" style="display:flex;flex-direction: row-reverse;"> 
+      <img class="rounded-circle mt-5" src="./Document_files/nbn(1).jpg" width="90" height="90" style="border:2px solid white"><span class="font-weight-bold"> <br>
+      Hi User!NbnPosted Image 2022-03-28 17:00:42<br> <hr>        </span></div>
+        
+
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+
+<!-- End Of Navigation Bar -->
+
+<!--  -->
+    <!-- Contain Here  -->
+    <!-- namespace hello; -->
+    <div class="containerr" style="display:flex; justify-content: space-between;">
+        <!-- Side Nav Here Starts  -->
+        <link rel="stylesheet" href="./Document_files/index.css">
+<link rel="stylesheet" href="./Document_files/landing_page(1).css">
+<script src="./Document_files/script.js.download"> </script>
+
+<div class="firstcolumn">
+            <div class=" " style="  margin-left:10px;">
+                <li>
+                     <img src="./Document_files/nbn.jpg" class="w-30 rounded-circle" style="width:36px; height: 36px; left: 19pc;">
+                    <b class="caret">
+                         Nbn
+                        Xettri <br>
+                        
+                 </b>
+                 <p class="bio">
+                     <a href="http://localhost/final/main/client/bioupdate.php?user=nbn&amp;bio=My%20self%20Nabin%20Raj%20Chhetri.%20Nice%20To%20Meet%20You%20Guys" style="color:black">  
+                 
+                 My self Nabin Raj Chhetri. Nice To Meet You Guys                 </a> </p> </li>
+            </div>
+            <div class="profile">
+                <li>
+                 <img src="./Document_files/-XF4FQcre_i.png" width="36" height="36">
+
+                <a href="http://localhost/final/main/client/home.php"> Profile </a> 
+                </li>
+                <li>
+                    <img src="./Document_files/YF1bztyGuX-.png" height="36" width="36">  <a href="http://localhost/final/main/client/final_one.php"> Message </a> 
+                </li>
+                <li>
+                    <img src="./Document_files/YF1bztyGuX-.png" height="36" width="36">  <a href="http://localhost/final/main/groupchatt/index.php"> Group Chat </a> 
+                </li>
+               
+                <li>
+                    
+                    <img src="./Document_files/9-o1e6LN_TX.png" height="36" width="36">    
+                    <a href="http://localhost/final/main/client/settings.php"> Events </a>
+                </li>
+                <li>
+                    
+                    <img src="./Document_files/tInzwsw2pVX.png" style="height: 28px;width: 35px;">    
+                    <a href="http://localhost/final/main/client/settings.php"> Covid-19 </a>
+                </li>
+                
+                <li>
+                    
+                    <img src="./Document_files/kULMG0uFcEQ.png" height="36" width="36">    
+                    <a href="http://localhost/final/main/client/settings.php"> weather </a>
+                </li>
+               
+            
+                
+
+            </div>
+
+
+            <!-- chat lists  -->
+            <div class="messageusers" id="messageContainer">
+               
+  <!-- User Search here  -->
+  <ul id="chatList" style="display:inline-block;">
+            
+                            
+                            
+                            
+                                </ul>
+                
+            </div>
+            
+           
+        </div>
+         
+        <!-- Css Link -->
+        <style>
+.firstcolumn {
+    width: 10%;
+    position: fixed;
+    left: 2pc;
+    top: 5pc;
+    border: 1px solid rgb(238, 232, 232);
+    border-radius: 10px;
+    height: 30pc;
+    width: 20pc;
+    color: black;
+ 
+    
+    /* background-color: #7b90ce;
+    background-image: linear-gradient( 
+86deg
+ ,#5e77c2 10%,#4963ac 100%); */
+}
+
+.firstcolumn li {
+    list-style: none;
+    padding: 10px;
+
+
+}
+
+    /* message container */
+    .messageContainer {
+        transform: translate(10px); 
+        height: 100vh;
+        width: 100%;
+    }
+
+    #cancel-btn{
+        position:relative;
+       
+    }
+
+    li img{
+        
+    }
+    
+    .bio{
+        font-size: 15px;
+   ;
+   text-shadow: 1px 0px 20px #9e6f6f;
+    margin: 10px 9px 10px;
+    text-align: justify;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    }
+
+        </style>
+
+<script src="./Document_files/jquery.min.js.download"></script>
+<script>
+
+
+
+
+
+
+$('.containerr').click(function(){
+   $('#chatList').hide(); //hide modal
+})
+
+
+
+$(document).ready(function() {
+
+    // Search
+    $("#searchText").on("input", function() {
+        var searchText = $(this).val();
+        if (searchText == "") return;
+        $.post('server/ajax/search.php', {
+                key: searchText
+            },
+            function(data, status) {
+                $("#chatList").html(data);
+            });
+    });
+
+    // Search using the button
+    $("#serachBtn").on("click", function() {
+        var searchText = $("#searchText").val();
+        if (searchText == "") return;
+        $.post('server/ajax/search.php', {
+                key: searchText
+            },
+            function(data, status) {
+                $("#chatList").html(data);
+            });
+    });
+
+
+    /** 
+    auto update last seen 
+    for logged in user
+    **/
+    let lastSeenUpdate = function() {
+        $.get("app/ajax/update_last_seen.php");
+    }
+    lastSeenUpdate();
+    /** 
+    auto update last seen 
+    every 10 sec
+    **/
+    setInterval(lastSeenUpdate, 10000);
+
+});
+
+console.log("hello")
+    </script>
+       
+
+        <!-- End Of Side NAV  -->
+
+        <!-- Main Posting Here Second Column -->
+       <div class="secondcolumn" style="top:90px">
+    <br>
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        5h.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/nbn(1).jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="21" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/user-default.png" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> We Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/user-default.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">We We </a> </b><br>                    
+                        22h.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/logo.png" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/user-default.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="20" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> nbnbnbnbn  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> gfg  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/user-default.png" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbnn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/user-default.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbnn Nbnn </a> </b><br>                    
+                        2d.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/chatimg.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/user-default.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="19" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> sdfs  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/user-default.png" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbnn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/user-default.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbnn Nbnn </a> </b><br>                    
+                        2d.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/chatimg.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/user-default.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="19" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> sdfs  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        2d.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/nbn(1).jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="18" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        3d.                    </div>
+                </div>
+                <p> Hgfhg h hhgghfghf hgfn <br> </p>
+            
+            </div> 
+                       
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="17" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Jkkj <br>
+                    <a> wow man  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> thanks  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> nbn  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> vbvbv  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> hjhj  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> uiui  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> qwe  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> rt  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> dsfdsf  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> wer  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> asdsfd  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> fsdfsd  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> hjbhj  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> nnn  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ee  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ty  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> nbn  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> rtrt  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> wqwq  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> das  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> hello  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> q  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> weewrew  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> qwe  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ert  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a>   </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> q  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> xcvxc xc cx xc xc x  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> werew  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> er  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> l  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> nbn  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ty  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> hghg  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/jk.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Jkkj <br>
+                    <a> n  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> Nbn  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        3d.                    </div>
+                </div>
+                <p> Yuyfhgfvjhf <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/j.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="16" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> Wow  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> w  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> er  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> asdqweq  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        12d.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/noblesse.jpeg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="15" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> fgh fgh  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ewew  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> vcv  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        17d.                    </div>
+                </div>
+                <p>  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/login.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="14" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ky  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> sugoiiiiii  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> kai  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> as  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        17d.                    </div>
+                </div>
+                <p> Hello  <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/naruto.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="13" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> wdasd  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> pk <br>
+                    <a> Wow  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> where is sasukr  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> where is sasuke????  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        17d.                    </div>
+                </div>
+                <p> Hgfhgfhgfh <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/nbn(1).jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="12" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> fgdgdgf  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> Ohoooo handsomeee  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        18d.                    </div>
+                </div>
+                <p> Yo <br> </p>
+            
+            </div> 
+                       
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="11" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        19d.                    </div>
+                </div>
+                <p> Jhbjh <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/screenshot.png" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="9" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> gg g  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/jk.png" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Jkkj Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/jk.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Jkkj Don </a> </b><br>                    
+                        18d.                    </div>
+                </div>
+                <p> Hhabshbd ahsj <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/naruto.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/jk.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="8" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Jk <br>
+                    <a> asdas  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> zxc  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> zxc  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ghfgh  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/jk.png" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Jkkj Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/jk.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Jkkj Don </a> </b><br>                    
+                        18d.                    </div>
+                </div>
+                <p> Sdjfnds dsf <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/naruto.jpg" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/jk.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="7" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Jk <br>
+                    <a> dsb dsbf  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> n  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> hello Nice Photo  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+                    
+            
+            <div class="profile_head" style=" background-color: rgb(255 255 255);  border-top-left-radius: 15px;
+             border-top-right-radius: 15px;padding: 10px; width: 560px;margin-top: 120px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+            
+             <!-- <img src="client/assets/uploads/nbn.jpg" width="2" height="2"
+                            style="width:2pc; height:2pc;border-radius:50%">
+             <p> Nbn Upload Post Recently </p> -->
+            
+             
+                <div class="" style="display: flex; ">
+                
+                    <div class="">
+                        <img src="./Document_files/nbn.jpg" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    </div>
+                    <div class="" style="margin-left: 10px; ">
+                        <b> <a href="http://localhost/final/main/client/user_profile.php?user=nbn">Nbn Xettri </a> </b><br>                    
+                        22d.                    </div>
+                </div>
+                <p> We <br> </p>
+            
+            </div> 
+             <img class="image" src="./Document_files/login.png" height="50" style="width:35pc;object-fit:center; "><br>            
+            <div class=" comment" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                <div class="bg-white">
+                    <div class="d-flex flex-row fs-12 justify-content: space-between;">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1"> <a href="http://localhost/final/main/landing_page.php"> Like </a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                    </div>
+                </div>
+                <div class="comment">
+
+               
+                <form action="http://localhost/final/main/client/landing/comment.php" method="POST" class="form" style="
+                overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); ">
+                    <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
+                   
+                        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+                        <input type="hidden" name="profile_pic" value="nbn.jpg" placeholder="Display Name">
+                            
+                        <div>
+                            <img src="./Document_files/nbn.jpg" style="width: 36px; height: 36px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <input id="comment" type="text" name="comment" placeholder="Enter your Comment">
+                            
+                        </div>
+                        <!-- id of photo Here Using Php  -->
+                        <input id="comment" type="hidden" name="photo_id_name" value="6" placeholder="Enter your Comment">
+                        
+
+                    
+                            <input type="submit" name="comment_submit" class="btn">
+                            
+                    </div>
+                     <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> ds  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Jk <br>
+                    <a> dsadsa  </a> <br> 
+
+                </p></div>
+                <br>
+             <br>
+                <div class="showcomment" style="position:relative;">
+                <img src="./Document_files/saved_resource(1)" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                    <p> Nbn <br>
+                    <a> 45  </a> <br> 
+
+                </p></div>
+                <br>
+             
+                <style>
+                  .showcomment{
+                    display: flex;
+    border: 1px solid #f5f2f2;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    width: 20pc;
+    margin-left: 4pc;
+    padding: 6px;
+    
+    
+                    
+                  }
+                  .showcomment p{
+                    font-weight:500;
+
+                    
+                  }
+
+
+                </style>               
+               
+                <!-- comment Here  -->
+
+                
+                <br>
+                </form> 
+                <br> <br>
+                </div>
+               
+                
+                
+                
+            </div>
+            <!-- show -->
+            <!-- Display Comment Here  -->
+           
+
+
+            
+
+
+    
+        </div>
+        
+        <style>
+::-webkit-scrollbar {
+  width:4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.post_notification{
+
+}
+
+.secondcolumn{
+  
+}
+            </style>       
+       
+    
+
+        <!-- End Of Second Column -->
+        
+        <!-- Post Here  -->
+        <div class="posting">
+    <form action="http://localhost/final/main/client/posting.php" method="post" enctype="multipart/form-data" class="post">
+        <div class="" style="display:flex ;     justify-content: space-around;">
+    <p> <b> Image Post  </b> </p>
+        <a class="openButton" onclick="openForm()"><strong>Text Post</strong></a>
+        
+        </div>
+        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+
+        <div class="image_post" style="display: flex; ">
+            <div class="">
+                <img src="./Document_files/nbn.jpg" class="w-30 rounded-circle" style="width:36px; height: 36px; left: 19pc;">
+            </div>
+
+            <div class="">
+
+                <input type="text" name="something" id="emoji" placeholder="Whats on Your Mind  Nbn ?"> <br>
+            </div>
+
+  
+      
+
+
+        </div>
+        <hr>
+        <div class="image-upload" style="display: flex; justify-content: space-around;">
+            <label for="file-input">
+                <img src="./Document_files/no-image-icon-13.png" width="36" alt="Png Transparent No">
+        </label>
+        <input id="file-input" type="file" name="file">
+         <button type="submit" name="submit" class="myButton"> Post </button>
+        </div>
+    </form>
+</div>
+
+
+<!-- popup form -->
+
+
+
+
+    
+    <style>
+     
+        form{
+            background-color: white;
+            
+        }
+      
+      .formPopup {
+        display: none;
+        position: fixed;
+        left: 47%;
+        top: 13%;
+        transform: translate(-50%, 5%);
+        
+        z-index: 2;
+        -webkit-transition: 0.5s;
+        
+      }
+      
+      #cancel{
+        position: relative;
+    top: -11pc;
+    left: 30pc;
+    background-color: white;
+
+      }
+      
+     ..posting{
+      box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+     }
+      
+      
+    
+    </style>
+ 
+    
+      <div class="formPopup" id="popupForm">
+      <form action="http://localhost/final/main/client/posting.php" method="post" enctype="multipart/form-data" class="post">
+        <p> <b> Text Post  </b> </p>
+        
+        
+        <input type="hidden" name="name" value="Nbn" placeholder="Display Name">
+
+        <div class="image_post" style="display: flex; ">
+            <div class="">
+                <img src="./Document_files/nbn.jpg" class="w-30 rounded-circle" style="width:36px; height: 36px; left: 19pc;">
+            </div>
+
+            <div class="">
+
+                <input type="text" name="something" placeholder="Whats on Your Mind  Nbn ?"> <br>
+            </div>
+        </div>
+        <hr>
+        <div class="image-upload" style="display: flex; justify-content: space-around;">
+           
+         <button type="submit" name="submitt" class="myButton"> Post </button>
+        </div>
+    </form>
+          <button type="button" class="btn cancel" id="cancel" onclick="closeForm()">X</button>
+        
+      </div>
+    
+    <script>
+      function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+
+// Emoji Picker Here  here 
+$('#emoji').emojioneArea({
+        pickerPosition: 'top'
+    });
+
+
+
+    </script>
+ <script src="./Document_files/jquery.min.js.download"></script>        
+
+       <!--  Contacts Here  -->
+       
+
+
+
+<div class="thirdcolumn">
+
+    <div class="lastpost">
+            
+        Nbnposted Image 2022-03-06 12:58:26<br>        <img class="" src="./Document_files/login.png" width="168" height="168" style="border:2px solid white"><span class="font-weight-bold"> <br>
+               </span></div>
+
+
+    <ul id="chatList" class="chatList">
+        <p id="contact">Contacts</p>
+                        <li>
+            <a href="http://localhost/final/main/client/final.php?user=pk">
+                <div style="display: flex;">
+                    <img src="./Document_files/user-default.png" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
+                    <p> pk<br> </p>
+                    <p> pk<br> </p>
+                </div>
+            </a>
+        </li>
+                <li>
+            <a href="http://localhost/final/main/client/final.php?user=jk">
+                <div style="display: flex;">
+                    <img src="./Document_files/jk.png" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
+                    <p> Jkkj<br> </p>
+                    <p> Don<br> </p>
+                </div>
+            </a>
+        </li>
+                    </ul>
+
+</div>
+<style>
+
+</style>
+
+
+    </div>
+
+    
+
+
+<style>
+
+  body{
+    background-color:#f0f2f5;
+  }
+html {
+  scroll-behavior: smooth;
+}
+
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .containerr {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .firstcolumn {
+    width: 20%;
+  }
+  .posting form {
+      width:20%;
+  }
+}
+@media only screen and (max-width:392px) {
+  /* For tablets: */
+  .navbar-nav {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+ZmdkZmcgZGZnIGZkZw==<br>fgdfg dfg fdg�
+</body></html>

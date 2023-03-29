@@ -24,31 +24,27 @@ if (isset($_SESSION['username'])) {
          foreach ($users as $user) {
          	if ($user['user_id'] == $_SESSION['user_id']) continue;
        ?>
-       <li class="list-group-item">
-		<a href="client/final.php?user=<?=$user['username']?>"
-		   class="d-flex
-		          justify-content-between
-		          align-items-center p-2">
-			<div class="d-flex
-			            align-items-center">
+       <li class="list">
+	   <img src="https://img.icons8.com/color/search" height="10" width="10">
+		<a href="client/user_profile.php?user=<?=$user['username']?>"
+		   class="">
+			<div class="" style="display:flex;margin-left: 20px;">
 
 			    <img src="client/assets/uploads/<?=$user['p_p']?>"
 			         class="w-10 rounded-circle">
 
-			    <h3 class="fs-xs m-2">
+			    <p style="color:black;     font-family: inherit;"> 
 			    	<?=$user['name']?>
-			    </h3> 
-
-				
-				<!-- <a href="user_profile.php?rowid='.$row['username'].'">View Profile</a> -->
+		 </p>
+	
 			</div>
 		 </a>
-		 <a href="client/user_profile.php?user=<?=$user['username']?>"> View </a> 
+		 <a href="client/final.php?user=<?=$user['username']?>"> chat  </a> 
+		 
 	   </li>
        <?php } }else { ?>
-         <div class="alert alert-info 
-    				 text-center">
-		   <i class="fa fa-user-times d-block fs-big"></i>
+         <div class="">
+		   <i class=""></i>
            The user "<?=htmlspecialchars($_POST['key'])?>"
            is  not found.
 		</div>
@@ -64,8 +60,15 @@ if (isset($_SESSION['username'])) {
 <style>
 
 img{
-	height:40px;
-	width:40px;
+	height:25px;
+	width:25px;
+}
+
+.list{
+	background-color:whitesmoke;
+	display:flex;
+	padding:20px;
+	
 }
 </style>
 

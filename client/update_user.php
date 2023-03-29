@@ -32,6 +32,10 @@ if (isset($_POST['submit'])) {
 
     $q = mysqli_query($conn, $update);
 
+    if($q){
+        header('location:home.php');
+    }
+
 }?>
  <!-- <script>
     alert('Upadated Successfully');

@@ -2,7 +2,8 @@
 
 function getUser($username, $conn){
    $sql = "SELECT * FROM users 
-           WHERE username=?";
+           WHERE username=?
+          ORDER BY `user_id` DESC";
    $stmt = $conn->prepare($sql);
    $stmt->execute([$username]);
 

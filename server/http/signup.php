@@ -58,10 +58,13 @@ if(isset($_POST['username']) &&
    	          WHERE username=?";
       $stmt = $conn->prepare($sql);
       $stmt->execute([$username]);
+      $stmt->execute([$name]);
 
       if($stmt->rowCount() > 0){
-      	$em = "The username ($username) is taken";
+      	$em = "The username ($username) is Already Exists";
+      	$em = "The Name ($name) is Already Exists";
       	header("Location: ../../client/signup.php?error=$em&$data");
+
    	    exit;
       }else {
       	# Profile Picture Uploading

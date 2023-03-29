@@ -11,6 +11,7 @@
     include '../server/helpers/last_chat.php';
     include '../server/helpers/chat.php';
     include '../server/helpers/opened.php';
+   
 
   	# Getting User data data
   	$user = getUser($_SESSION['username'], $conn);
