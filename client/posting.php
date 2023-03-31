@@ -35,7 +35,6 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     $id=($_POST['id']);
     $name= ucfirst($_POST['name']);
-    $comment = ucfirst($_POST['comment']);
     $something =ucfirst ($_POST['something']);
     
    
