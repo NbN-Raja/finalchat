@@ -1,5 +1,12 @@
 <?php
 
+if (!empty($_SESSION['username'])) {
+  //redirect to login page
+  header('Location: ./server/http/auth.php');
+  
+} 
+
+
 require_once 'components/nav.php';
 require_once 'components/date.php';
 session_start();
@@ -101,7 +108,7 @@ if (isset($_SESSION['username'])) {
         background-color: white;
     }
     #notification_bell{
-        font-size: 0.9rem;
+    font-size: 0.9rem;
     font-weight: 600;
     background-color: #fdfdfd;
     margin: 1px;
@@ -128,6 +135,7 @@ if (isset($_SESSION['username'])) {
         display:flex;
         margin-top: 4pc;
         justify-content: space-around;
+
     }
 
     .post_image{
@@ -143,10 +151,17 @@ if (isset($_SESSION['username'])) {
         border-radius: 10px;
     }
     .posts{
-        margin-left: 100px;
+        max-width: 38pc;
+        margin-left: 30px;
     }
-
-    
+     
+    .thirdcolumn{
+        position: sticky;
+        top: 50px;
+    }
+    .profile{
+        width:14pc
+    }
     
     
 
@@ -154,3 +169,4 @@ if (isset($_SESSION['username'])) {
     
     
 </style>
+

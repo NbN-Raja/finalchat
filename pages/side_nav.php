@@ -3,55 +3,22 @@
 <script src="client/landing/js/script.js"> </script>
 
             <div class=" firstcolumn ">
-                <li>
+                
                 <?php $phoo = $_SESSION['p_p']?>
                      <img src="client/assets/uploads/<?=$phoo?>"
                       class="w-30 rounded-circle"
-                    style="width:36px; height: 36px; left: 19pc;">
+                    style="width:64px; height: 64px;"> <br>
                     <b class="caret">
-                         <?php echo htmlspecialchars($_SESSION["name"]); ?></a>
-                        
-                 </b>
-                 <p class="bio">
-                     <a href="client/bioupdate.php?user=<?=$user['username']?>&bio=<?=$user['bio']?>" style="color:black" >  
+                         <?php echo htmlspecialchars($_SESSION["name"]); ?></a> <br>
+                         <?php echo htmlspecialchars($_SESSION["lastname"]); ?></a>   
+                 </b> 
                  
+                 <p class="bio text-center">
+                     <a href="client/bioupdate.php?user=<?=$user['username']?>&bio=<?=$user['bio']?>" style="color:black" >  
+                 Hello Designer 
                 
-                </a> </p> </li>
-           
-                <li>
-                 <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png"
-                    width="36" height="36">
-
-                <a href="client/home.php"> Profile </a> 
-                </li>
-                <li>
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/YF1bztyGuX-.png" height="36"
-                    width="36">  <a href="client/final_one.php"> Message </a> 
-                </li>
-               
-               
-                <li >
-                    
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="36"
-                    width="36">    
-                    <a href="client/settings.php"> Events </a>
-                </li>
-                <li >
-                    
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yR/r/tInzwsw2pVX.png" style="height: 28px;width: 35px;"   >    
-                    <a href="client/settings.php"> Covid-19 </a>
-                </li>
-                
-                <li >
-                    
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/kULMG0uFcEQ.png" height="36"
-                    width="36"  >    
-                    <a href="client/settings.php"> weather </a>
-                </li>
-
-               
-               
-            
+                </a> </p> 
+                <hr>
             </div>
 
             
@@ -61,7 +28,7 @@
             <div class="messageusers" id="messageContainer">
                
   <!-- User Search here  -->
-  <ul id="chatList" style="display:inline-block;">
+  <ul id="chatList" >
             
             <?php if (!empty($conversations)) { ?>
                 
@@ -84,7 +51,12 @@
         <style>
 
 .firstcolumn{
-    position: fixed;
+    position: sticky;
+    top: 50px;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
 }
 a{
     text-decoration: none;
@@ -105,6 +77,10 @@ li a{
 
 }
 
+.caret{
+    font-weight: 600;
+
+}
     /* message container */
     .messageContainer {
         transform: translate(10px); 
@@ -140,7 +116,7 @@ li a{
 
 
 
-$('.containerr').click(function(){
+$('.main').click(function(){
    $('#chatList').hide(); //hide modal
 })
 

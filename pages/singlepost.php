@@ -1,29 +1,27 @@
 <?php
+session_start();
+$name =$_GET['user'];
+
+echo $name;
 
 $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
-$query = $conn->query("SELECT images.id, images.name,images.file_name,images.something,images.uploaded_on,users.user_id,
-		  users.name,users.username, users.lastname, users.p_p FROM images
-		  LEFT JOIN users ON users.name = images.name Order by images.id DESC");
+$query = $conn->query("SELECT * from images where id='$name'");
 while ($data = mysqli_fetch_array($query)) {
     $image_id= $data['id'];
-    $user_id= $data['user_id'];
-    $profile_pic = $data['p_p'];
-    $username = $data['username'];
-    $lastname = $data['lastname'];
+
     $uplaoded_on = $data['uploaded_on'];
     $something = $data['something'];
 
 ?>
-  <div class="display_post p-2">
+     <div class="display_post p-2">
         <div class="display_profile mb-2 bg-white">
             <div class="top_profile" style="display:flex">
-                <img src="<?php echo  'client/assets/uploads/' . $profile_pic; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                <img src="<?php echo  '../client/assets/uploads/' . $profile_pic; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
                 <div class=" ml-2">
-                    <?php echo $username ?>
-                    <?php echo $lastname ?>
+                    <?php echo $_SESSION['username'] ?>
+                    <?php echo $_SESSION['lastname'] ?>
                     <br>
-                    <?php echo last_seen($uplaoded_on) ?>
                 </div>
 
             </div>
@@ -36,7 +34,7 @@ while ($data = mysqli_fetch_array($query)) {
             $post_img = $data['file_name'];
 
             if ($post_img != '') {
-                echo  '  <img class="post_image" src="client/assets/post/' . $data["file_name"] . '" "><br>';
+                echo  '  <img class="post_image" src="../client/assets/post/' . $data["file_name"] . '" "><br>';
             }
             ?>
 
@@ -65,7 +63,7 @@ while ($data = mysqli_fetch_array($query)) {
                   
             <form action="php/insertlike.php" method="post">
                 <input type="hidden" value="<?php echo $data['file_name']; ?>" name="photo_id" />
-                <input type="hidden" value="<?php echo $data['user_id']; ?>" name="user_id" />
+                <input type="hidden" value="<?php echo $_SESSION['user_id']; ?>" name="user_id" />
                 <input type="hidden" name="likes" value="1" />
                 <div class="like p-2 cursor">
                     <button type="submit" name="submit">
@@ -76,7 +74,7 @@ while ($data = mysqli_fetch_array($query)) {
                 </div>
             </form>
             <!-- End of Like Php Here  -->
-            <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">   <a href="pages/singlepost.php?user=<?= $data['id'] ?>  ">  Comment </a></span></div>
+            <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
             <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
         </div>
 
@@ -84,14 +82,14 @@ while ($data = mysqli_fetch_array($query)) {
         <div class="comment">
 
 
-          <form action="client/comment.php" method="POST" class="form" style="overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; ">
+          <form action="../client/comment.php" method="POST" class="form" style="overflow: scroll; height: 10pc;overflow-x: hidden; overflow-y: scroll; ">
             <div style="display: flex;     margin-top: 15px;     justify-content: space-evenly;">
 
               <input type="hidden" name="name" value=<?php echo ($_SESSION["name"]); ?> placeholder="Display Name">
               <input type="hidden" name="profile_pic" value=<?php echo ($_SESSION["p_p"]); ?> placeholder="Display Name">
 
               <div>
-                <img src="client/assets/uploads/<?= $data['p_p'] ?>" style="width: 36px; height: 36px; border-radius: 50%;">
+                <img src="../client/assets/uploads/<?= $_SESSION['p_p'] ?>" style="width: 36px; height: 36px; border-radius: 50%;">
               </div>
               <div>
                 <input id="comment" type="text" name="comment" placeholder="Enter your Comment" style="height: -webkit-fill-available;">
@@ -147,13 +145,13 @@ while ($data = mysqli_fetch_array($query)) {
                 <?php  
                 if(!$row_data['profile_pic']){
                        ?>
-                  <img src="client/assets/uploads/user-default.png" width="15" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                  <img src="../client/assets/uploads/user-default.png" width="15" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
                        <?php 
 
                 }else {  
                   ?>
-                  <img src="<?php echo  'client/assets/uploads/'. $row_data["profile_pic"]; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                  <img src="<?php echo  '../client/assets/uploads/'. $row_data["profile_pic"]; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
                   <p class="p"> <?php echo  "" . $row_data["name"] . ""  ?> <br>
                     <a> <?php echo  "" . $row_data["comment"] . ""  ?> </a> <br>
                     <hr>

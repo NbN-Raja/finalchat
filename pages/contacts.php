@@ -37,7 +37,7 @@
     
 
     <ul id="chatList" class="chatList">
-      <p id="contact">Contacts</p>
+      <p  id="contact">Contacts</p>
       <?php if (!empty($conversations)) { ?>
         <?php
 
@@ -48,6 +48,7 @@
                 <img src="client/assets/uploads/<?= $conversation['p_p'] ?>" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
                 <p> <?= $conversation['name'] ?><br> </p>
                 <p> <?= $conversation['lastname'] ?><br> </p>
+
               </div>
             </a>
           </li>
@@ -84,5 +85,11 @@
 .thirdcolumn{
     
     top: 4pc;
+}
+
+#contact{
+  font-weight: 600;
+  font-size: 20px;
+
 }
 </style>
