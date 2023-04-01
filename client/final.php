@@ -21,11 +21,14 @@ include 'nav.php'
 <?php foreach ($chats as $chat) {
 } ?>
 <!-- <p> <?php echo $chat['chat_id']; ?></p> -->
+
+
 <div class="maincontainer" id="main">
 
     <!-- first Column here  -->
 
     <?php include 'final/firstcolumn.php' ?>
+    
 
 
 
@@ -666,3 +669,35 @@ if (isset($_POST['chatimg'])) {
             right: 1pc;
         }
 </style>
+
+
+<script>
+    document.getElementById('message').addEventListener('paste', function(event) {
+  // Prevent the default paste action
+  event.preventDefault();
+
+  // Get the clipboard data
+  var clipboardData = event.clipboardData || window.clipboardData;
+  var items = clipboardData.items;
+
+  // Loop through the items in the clipboard
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+
+    // Check if the item is an image
+    if (item.type.indexOf('image') !== -1) {
+      // Get the image data as a data URL
+      var blob = item.getAsFile();
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var imageDataUrl = event.target.result;
+
+        // Send the image data to the server
+        sendImage(imageDataUrl);
+      };
+      reader.readAsDataURL(blob);
+    }
+  }
+});
+    
+</script>

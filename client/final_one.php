@@ -6,10 +6,7 @@ include 'include.php';
     <?php include 'nav.php' ?>
 
 
-    <!-- <div class="room">
-        <a href="assets/video call/index.html"> <i class="fa fa-video-camera" aria-hidden="true"></i> </a>
-        <button>  <a href="chat/index.php?<?= $chatWith['name'] ?> "> Group </a> </button>
-    </div> -->
+   
 
 
     <div class="maincontainer" style="display: flex;     margin-top: 8pc;     justify-content: space-evenly;">
@@ -58,41 +55,21 @@ include 'include.php';
                                         <!-- <?= $conversation['opened'] ?><br> -->
                                         <?php
                                         ?>
-
-
-
                                         <div class="message" style="color:black; font-size:15px">
                                             <?php
                                             echo  lastChat($_SESSION['user_id'], $conversation['user_id'], $conn);
                                             ?>
                                         </div>
 
-
-
-
-
-
-
-
-                                        <?php
-
-
-
-
-
-                                        ?>
-
-
-
                                     </h3>
                                 </div>
-                                <?php if (last_seen($conversation['last_seen']) == "Active") { ?>
+                                    <?php if (isset($chatWith) && last_seen($chatWith['last_seen']) == "Active") { ?>
                                     <div title="online">
-                                        <div class="online"></div>
+                                        <div class="online"> yes</div>
                                     </div>
                                 <?php } else { ?>
 
-                                    <div class="offline"></div>
+                                    <div class="offline"> no</div>
                                 <?php  } ?>
                             </a>
                             <!-- End Here -->
@@ -235,3 +212,69 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 
 <?php include 'final/partials/messagerequest.php' ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+	var scrollDown = function(){
+        let chatBox = document.getElementById('chatBox');
+        chatBox.scrollTop = chatBox.scrollHeight;
+	}
+
+	scrollDown();
+
+	$(document).ready(function(){
+      
+      $("#sendBtn").on('click', function(){
+      	message = $("#message").val();
+      	if (message == "") return;
+
+      	$.post("app/ajax/insert.php",
+      		   {
+      		   	message: message,
+      		   	to_id: <?=$chatWith['user_id']?>
+      		   },
+      		   function(data, status){
+                  $("#message").val("");
+                  $("#chatBox").append(data);
+                  scrollDown();
+      		   });
+      });
+
+      /** 
+      auto update last seen 
+      for logged in user
+      **/
+      let lastSeenUpdate = function(){
+      	$.get("app/ajax/update_last_seen.php");
+      }
+      lastSeenUpdate();
+      /** 
+      auto update last seen 
+      every 10 sec
+      **/
+      setInterval(lastSeenUpdate, 10000);
+
+
+
+      // auto refresh / reload
+      let fechData = function(){
+      	$.post("app/ajax/getMessage.php", 
+      		   {
+      		   	id_2: <?=$chatWith['user_id']?>
+      		   },
+      		   function(data, status){
+                  $("#chatBox").append(data);
+                  if (data != "") scrollDown();
+      		    });
+      }
+
+      fechData();
+      /** 
+      auto update last seen 
+      every 0.5 sec
+      **/
+      setInterval(fechData, 500);
+    
+    });
+</script>

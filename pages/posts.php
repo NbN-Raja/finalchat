@@ -9,6 +9,7 @@ while ($data = mysqli_fetch_array($query)) {
     $user_id= $data['user_id'];
     $profile_pic = $data['p_p'];
     $username = $data['username'];
+    $name = $data['name'];
     $lastname = $data['lastname'];
     $uplaoded_on = $data['uploaded_on'];
     $something = $data['something'];
@@ -20,7 +21,7 @@ while ($data = mysqli_fetch_array($query)) {
                 <img src="<?php echo  'client/assets/uploads/' . $profile_pic; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
                 <div class=" ml-2">
-                    <?php echo $username ?>
+                    <?php echo $name ?>
                     <?php echo $lastname ?>
                     <br>
                     <?php echo last_seen($uplaoded_on) ?>
@@ -44,42 +45,60 @@ while ($data = mysqli_fetch_array($query)) {
         </div>
        <hr>
         <!-- Like Comment And Share Button here  -->
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-row" style="    justify-content: space-between;">
             <!-- Start of Like Button Here  -->
             
-            <?php 
-                //  $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
-
-                //   $sql = "SELECT likes FROM likes WHERE Photo_id = $image_id AND user_id = $user_id";
-                //   $result = mysqli_query($conn, $sql);
-                  
-                //   if (mysqli_num_rows($result) > 0) {
-                //   $dataa = mysqli_fetch_assoc($result);
-                //   $likes = $dataa['likes'];
-                //   echo $likes;
-                //   } else {
-                //    echo "0";
-                //   }
-                  
-                  ?>
+           
                   
             <form action="php/insertlike.php" method="post">
-                <input type="hidden" value="<?php echo $data['file_name']; ?>" name="photo_id" />
+                <input type="hidden" value="<?php echo $image_id; ?>" name="Photo_id" />
                 <input type="hidden" value="<?php echo $data['user_id']; ?>" name="user_id" />
                 <input type="hidden" name="likes" value="1" />
                 <div class="like p-2 cursor">
-                    <button type="submit" name="submit">
+                    <button type="submit" name="submit" style="border:none">
                         <i class="fa fa-thumbs-o-up">
                         </i>
-                        <span class="ml-1"> Like </span>
+                        <span class="ml-1">
+                        <?php 
+                 $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+
+                  $sql = "SELECT likes FROM likes WHERE Photo_id = $image_id AND user_id = $user_id";
+                  $result = mysqli_query($conn, $sql);
+                  
+                  if (mysqli_num_rows($result) > 0) {
+                  $dataa = mysqli_fetch_assoc($result);
+                  $likes = $dataa['likes'];
+                  echo $likes;
+                  } else {
+                   echo "0";
+                  }
+                  $userrid= $data['user_id'];
+                  ?> </span>
                     </button>
                 </div>
             </form>
             <!-- End of Like Php Here  -->
-            <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">   <a href="pages/singlepost.php?user=<?= $data['id'] ?>  ">  Comment </a></span></div>
+            <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">
+                 <a href="pages/singlepost.php?user=<?= $data['id'] ?>  ">
+                 <?php 
+                 $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+
+                  $sql = "SELECT COUNT(comment) as comment from comment WHERE Photo_id = $image_id ";
+                  $result = mysqli_query($conn, $sql);
+                  
+                  if (mysqli_num_rows($result) > 0) {
+                  $dataa = mysqli_fetch_assoc($result);
+                  $comment = $dataa['comment'];
+                  echo $comment;
+                  } else {
+                   echo "0";
+                  }
+                  $userrid= $data['user_id'];
+                  ?>
+
+                  Comment </a></span></div>
             <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
         </div>
-
 
         <div class="comment">
 
@@ -105,6 +124,7 @@ while ($data = mysqli_fetch_array($query)) {
               <input type="submit" name="comment_submit" class="btn" style="margin-left:10px">
 
             </div>
+            
 
             <!-- -------------------------------------Fetch Comment Here ----------------- -->
             <?php
@@ -164,9 +184,20 @@ while ($data = mysqli_fetch_array($query)) {
                 <br>
             <?php
               }
+            }else{
+              ?> 
+              <hr>
+                              <div class="showcomment" style="position:relative;">
+
+              <img src="client/assets/uploads/user-default.png" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                  <p class="p" style="color:green"> <?php echo  'Admin';  ?> <br>
+                    <a>  Please Enter Your First Comment  </a> <br>
+                    </div>
+                    
+                    <?php 
             }
             ?>
-
+            
             <style>
               .showcomment {
                 display: flex;
@@ -195,6 +226,16 @@ while ($data = mysqli_fetch_array($query)) {
                 margin-left: 10px;
                 font-weight: 400
               }
+              .comment input[type="text"] {
+    width: 25pc;
+    margin-top: 4pc;
+    height: 28px;
+    margin: 0 auto;
+    border: none;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    margin-top: 6px;
+}
             </style>
 
             <!-- comment Here  -->

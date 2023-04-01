@@ -1,8 +1,70 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
 
-body{
-    background-color: aliceblue;
-}
+
+    body {
+        background-color: aliceblue;
+    }
+
+    .navbar {
+        background-color: white;
+    }
+    #notification_bell{
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #fdfdfd;
+    margin: 1px;
+    padding: 0px;
+    margin-left: -16px;
+    margin-top: 9px;
+    margin-right: 35px;
+    border: 1px solid white;
+    }
+
+     .badged{
+        color: #fff;
+    background: #f44336;
+    font-size: 11px;
+    border-radius: 20px;
+    position: absolute;
+    min-width: 10px;
+    padding: 4px 6px 0;
+    min-height: 18px;
+    top: 5px;
+    }
+
+    .main{
+        display:flex;
+        margin-top: 4pc;
+        justify-content: space-around;
+
+    }
+
+    .post_image{
+        object-fit: cover;
+    width: -webkit-fill-available;
+    height: auto;
+   
+    }
+
+    .display_post{
+        background-color: white;
+        margin-bottom: 1pc;
+        border-radius: 10px;
+    }
+    .posts{
+        max-width: 38pc;
+        margin-left: 30px;
+    }
+     
+    .thirdcolumn{
+        position: sticky;
+        top: 50px;
+    }
+    .profile{
+        width:14pc
+    }
+    
+    
+
+
+    
+    

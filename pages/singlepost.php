@@ -1,8 +1,24 @@
+<link rel="stylesheet" href="../public/home.css">
+
 <?php
 session_start();
 $name =$_GET['user'];
 
 echo $name;
+
+
+?> 
+<?php
+
+if (isset($_GET['success'])) {
+    $success = $_GET['success'];
+    echo $success;
+}
+
+?>
+
+
+<?php 
 
 $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
 $query = $conn->query("SELECT * from images where id='$name'");
@@ -16,7 +32,7 @@ while ($data = mysqli_fetch_array($query)) {
      <div class="display_post p-2">
         <div class="display_profile mb-2 bg-white">
             <div class="top_profile" style="display:flex">
-                <img src="<?php echo  '../client/assets/uploads/' . $profile_pic; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
+                <img src="<?php echo  '../client/assets/uploads/' . $_SESSION['p_p']?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
                 <div class=" ml-2">
                     <?php echo $_SESSION['username'] ?>
@@ -159,11 +175,16 @@ while ($data = mysqli_fetch_array($query)) {
                     <?php  } ?>
 
                 </div>
+
+                <!-- reports posts here  -->
+                <!-- HTML form for reporting a post -->
+
                 <br>
             <?php
               }
             }
             ?>
+           
 
             <style>
               .showcomment {
@@ -210,4 +231,47 @@ while ($data = mysqli_fetch_array($query)) {
 }
 ?>
 
+<form method="post" action="">
+    image id: <input type="text" name="post_id" value="<?php echo $image_id ?>">
+    user id: <input type="text" name="user_id" value="<?php echo  ($_SESSION["user_id"]);?>">
+    <label for="reason">Reason for reporting:</label>
+    <input type="text" name="reason" id="reason" required>
+    <input type="submit" name="submit" value="Report">
+</form>
 
+
+
+
+
+<?php
+
+
+
+// Check if the form has been submitted
+if (isset($_POST['submit'])) {
+    // Get the post ID and reason for reporting from the form
+    $post_id = $_POST['post_id'];
+    $reason = $_POST['reason'];
+    $user_id = $_POST['user_id'];
+
+    // Insert the report into the database
+    $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
+   
+    $sql = "INSERT INTO report_posts (user_id, post_id, reason) VALUES ('$user_id', '$post_id', '$reason')";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        // Set the success message
+        $success = "Post has been reported successfully!";
+        echo "<script>alert('".$success."')</script>";
+
+       
+    } else {
+        // Set an error message
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
+        exit();
+    }
+}
+
+
+?>

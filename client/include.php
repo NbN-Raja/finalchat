@@ -24,6 +24,9 @@
      if (!isset($_GET['user'])) {
         
     }
+    $chats = getChats($_SESSION['user_id'], $user['user_id'], $conn);
+
+  	opened($user['user_id'], $conn, $chats);
 ?>
 
 <?php } ?>

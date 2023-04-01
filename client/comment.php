@@ -36,7 +36,8 @@ if(isset($_POST['comment_submit'])){
     $mysql = mysqli_query($con,$sql);
     // if($mysql){echo "yes";}else{ echo "nope";}
     if ($mysql) {
-        header("Location: " . $_SERVER["HTTP_REFERER"]);
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+
     }
 
   

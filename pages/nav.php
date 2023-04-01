@@ -14,6 +14,28 @@
             </i>
         </div>
         <div class="navbar-nav ml-auto ">
+        
+        <div class="video__icon">
+         <div class="circle--outer"> </div>
+        <div class="circle--inner"></div>
+        <p>     <?php 
+                 $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+
+                  $sql = "SELECT COUNT(*) as count FROM `users` WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
+                  $result = mysqli_query($conn, $sql);
+                  
+                  if (mysqli_num_rows($result) > 0) {
+                  $dataa = mysqli_fetch_assoc($result);
+                  $count = $dataa['count'];
+                  echo $count;
+                  } else {
+                   echo "0";
+                  }
+                  
+                  ?> </p>
+       
+       </div>
+
 
 
             <div class="" style="position:relative; right:33px; display:flex">
@@ -23,7 +45,7 @@
                 </a>
 
 
-                <a href="client/settings.php" class="ml-3">
+                <a href="Blog/home.php" class="ml-3">
                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="36" width="36">
                     <i class="bi bi-bell-fill"></i>
                 </a>
@@ -42,7 +64,7 @@
             <a href="client/final_one.php" class="nav-item nav-link messages">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                     <path d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"></path>
-                </svg> <span class="badged">
+                </svg> <span class="badged" id="message-count">
                     <?php notification_message() ?>
                 </span>
 
@@ -118,3 +140,77 @@
         </div>
     </div>
 </div>
+
+
+
+<style>
+    *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.video__icon {
+    position: absolute;
+    width: 50px;
+    
+    right: 20pc;
+ }
+  .video__icon .circle--outer {
+    border: 1px solid #e50040;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    position: relative;
+    opacity: .8;
+    -webkit-animation: circle 2s ease-in-out infinite;
+            animation: circle 2s ease-in-out infinite; }
+  .video__icon .circle--inner {
+    background: #e50040;
+    left: 15px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    opacity: .8; }
+    .video__icon .circle--inner:after {
+      content: '';
+      display: block;
+      border: 2px solid #e50040;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      top: -4px;
+      left: -4px;
+      position: absolute;
+      opacity: .8;
+      -webkit-animation: circle 2s ease-in-out .2s infinite;
+              animation: circle 2s ease-in-out .2s infinite; }
+  .video__icon p {
+    color: #000;
+    text-align: center; }
+
+@-webkit-keyframes circle {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  
+  to {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    opacity: 0; } }
+
+@keyframes circle {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    }
+  
+  to {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0;
+    } }
+
+</style>
