@@ -17,7 +17,25 @@
         
         <div class="video__icon">
          <div class="circle--outer"> </div>
-        <div class="circle--inner"></div>
+        <div class="circle--inner" id="">
+        <div class="hoverable">
+    <p>online</p>
+    <div class="hover-content">
+        <?php
+        // Fetch users who were last seen online within the last hour
+        $sql = "SELECT name FROM users WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Display the list of users
+        foreach ($users as $user) {
+            echo '<p>' . $user['name'] . '</p>';
+        }
+        ?>
+    </div>
+</div>
+        </div>
         <p>     <?php 
                  $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
 
@@ -60,8 +78,8 @@
                     <?php notification() ?>
                 </span>
                 </i>
-            </a>
-            <a href="client/final_one.php" class="nav-item nav-link messages">
+            </a> 
+            <a href="client/final_one.php"  class="nav-item nav-link messages">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                     <path d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"></path>
                 </svg> <span class="badged" id="message-count">
@@ -90,6 +108,27 @@
         </div>
     </div>
 </nav>
+
+<!-- message Toggle here  -->
+<!-- <div class="modal fade" id="myModalmsg" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="left: 33pc;">
+            <div class="modal-header">
+                <p> Notifications </p>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>
+
+        </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 
 <div class="modal fade" id="myModal" role="dialog">
@@ -212,5 +251,28 @@
     transform: scale(1.5);
     opacity: 0;
     } }
+
+    .hoverable {
+  position: relative;
+  display: inline-block;
+}
+
+.hoverable .hover-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.hoverable:hover .hover-content {
+  display: block;
+}
+
 
 </style>

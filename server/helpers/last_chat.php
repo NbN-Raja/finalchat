@@ -12,6 +12,9 @@ function lastChat($id_1, $id_2, $conn){
 
     if ($stmt->rowCount() > 0) {
     	$chat = $stmt->fetch();
+
+        $color = ($chat['opened'] == 0 && $chat['from_id'] == $chat) ? 'red' : 'black';
+
         return base64_decode(substr( $chat['message'],0,20));
     	return base64_decode($chat['message']);
     	

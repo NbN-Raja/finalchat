@@ -11,7 +11,7 @@
     <div class="container">
     <h1> You Are Blocked By Admin </h1>
 
-  <a href="../home.php"> Refresh </a>
+  <a href="../landing_page.php"> Refresh </a>
     </div>
 </body>
 </html>

@@ -83,9 +83,9 @@ if (empty($_SESSION['username'])) {
 
 
 
-<?php 
+<?php
 $nav = include 'nav.php';
- ?>
+?>
 
 
 
@@ -113,6 +113,7 @@ $nav = include 'nav.php';
 
     </div>
     <div class="coverimage">
+        
         <!-- <?php include 'coverfetch.php' ?> -->
         <?php
         $db = new mysqli('localhost', 'root', '', 'chat_app_db');
@@ -198,8 +199,7 @@ $nav = include 'nav.php';
         <div class="main" style="display: flex; justify-content: space-between;">
             <div class="submain">
                 <p> FirstName </p>
-        <div class="col-md-4"><input type="text" class="form-control" name="name" 
-                value="<?php echo  $usernamee ?>"  disabled  ></div>
+                <div class="col-md-4"><input type="text" class="form-control" name="name" value="<?php echo  $usernamee ?>" disabled></div>
                 <p> LastName </p>
                 <div class="col-md-4"><input type="text" class="form-control" name="lastname" value="<?php echo  $lastname ?>" placeholder="Doe"></div>
             </div>
@@ -244,19 +244,107 @@ $nav = include 'nav.php';
 
 
 
-<div class="containerr" style="display: flex;    justify-content: space-evenly;  ">
+<div class="container d-flex ">
 
-    <div class="personal_information">
-        <h4> Personal Information</h4>
-        <form action="" method="post">
-            <i class="fa fa-university" aria-hidden="true"> <a><strong> Birendra Campus</strong> </a> </i>
+    <div class="personal_information ">
+        <!-- Button to trigger the modal -->
 
 
-        </form>
+        <!-- Modal -->
 
+
+        <!-- fetch Users Details -->
+        <div class=" df card w-50">
+
+            <div class="card-body">
+                <button type="button" class="btn btn-primary w-auto" data-toggle="modal" data-target="#bioModal">
+                    Edit Bio
+                </button>
+                <?php
+                $user_idd = $_SESSION['user_id'];
+                $con = new mysqli("localhost", "root", "", "chat_app_db");
+                $sql = "SELECT * from bios WHERE user_id= $user_idd";
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                     $row = mysqli_fetch_assoc($result) ;
+                        $relation= $row['relationship_status'];
+                        $bio= $row['bio'];
+                        $work= $row['work_history'];
+
+                ?>
+
+                        <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo ''  . $row["location"] .'' ?></p>
+                        <p class="card-text"><i class="fa fa-link" aria-hidden="true"></i> Relationship Status: <?php echo ''  . $row["work_history"] .'' ?></p>
+                        <p class="card-text"><i class="fa fa-tasks" aria-hidden="true"></i> Works</p>
+                        <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z" />
+                            </svg> <?php echo ''  . $row["education"] .'' ?></p>
+                        <p class="card-text"><i class="fas fa-map-marker"></i> <?php echo ''  . $row["work_history"] .'' ?> </p>
+                        <hr>
+                        <p class="card-text"><i class="fas fa-user-cog"></i> Bio:</p>
+                        <p class="card-text" style="width: 20pc;text-align: justify;"><?php echo $bio?></p>
+            </div>
+
+
+
+            <div class="modal fade" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="bioModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bioModalLabel">Edit Bio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="">
+                            <input type="text" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                            <div class="form-group">
+                                <label for="relationship_status">Bio</label>
+                                
+                                <input type="text" name="bio" value="<?php echo $bio ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="relationship_status">Relationship status:</label>
+                                <input type="text" name="relationship_status" value="<?php echo ''  . $row["relationship_status"] .'' ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="work_history">Work history:</label>
+                                <input type="text" name="work_history" value="<?php echo ''  . $row["work_history"] .'' ?>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="education">Education:</label>
+                                <input type="text" name="education" value="<?php echo ''  . $row["education"] .'' ?>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" name="location" value="<?php echo ''  . $row["location"] .'' ?>"  class="form-control">
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" value="update" name="bio_update" class="btn btn-secondary" >
+                                <input type="submit"  name="bio_submit" class="btn btn-primary" value="Save">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php
+
+                    }
+                
+
+
+    ?>
+        </div>
+
+
+        
 
 
     </div>
+
 
     <div class="edit_details">
         <div class="post">
@@ -518,6 +606,7 @@ $nav = include 'nav.php';
 
     .edit_details {
         width: 30pc;
+        margin-left: 33pc;
     }
 
     .comment {
@@ -535,10 +624,18 @@ $nav = include 'nav.php';
     body {
         background: linear-gradient(#636262 10px, #f0f2f5 200px);
     }
+
+    .card-body {
+        position: absolute;
+        width: 27pc;
+        margin-left: 10pc;
+    }
 </style>
 
 
 <!-- Java Script Here -->
+<link rel="stylesheet" href="https://unpkg.com/emoji-mart/css/emoji-mart.css" />
+<script src="https://unpkg.com/emoji-mart/dist/emoji-mart.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -559,3 +656,70 @@ $nav = include 'nav.php';
         $('#show').show();
     })
 </script>
+
+
+<!-- All Php Coode Here  -->
+
+<?php
+
+// Get the form data
+if (isset($_POST['bio_submit'])) {
+    $user_id = $_POST['user_id'];
+    $relationship_status = $_POST['relationship_status'];
+    $bio = $_POST['bio'];
+    $work_history = $_POST['work_history'];
+    $education = $_POST['education'];
+    $location = $_POST['location'];
+
+    // Connect to the database
+    $dsn = 'mysql:host=localhost;dbname=chat_app_db';
+    $username = 'root';
+    $password = '';
+    $options = array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    );
+    $dbh = new PDO($dsn, $username, $password, $options);
+
+    // Insert the bio data into the database
+    $sql = "INSERT INTO bios (user_id, relationship_status, bio, work_history, education, location) VALUES (?, ?,?, ?, ?, ?)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute([$user_id, $relationship_status, $bio, $work_history, $education, $location]);
+
+    // Redirect the user back to their profile page
+
+}
+
+?>
+
+<?php
+// Set up database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "chat_app_db";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Handle form submission
+if (isset($_POST['bio_update'])) {
+  // Sanitize and validate form inputs
+  $user_id = mysqli_real_escape_string($conn, $_POST['user_id']);
+  $bio = mysqli_real_escape_string($conn, $_POST['bio']);
+  $relationship_status = mysqli_real_escape_string($conn, $_POST['relationship_status']);
+  $work_history = mysqli_real_escape_string($conn, $_POST['work_history']);
+  $education = mysqli_real_escape_string($conn, $_POST['education']);
+  $location = mysqli_real_escape_string($conn, $_POST['location']);
+
+  // Update the database
+  $sql = "UPDATE bios SET bio='$bio', relationship_status='$relationship_status', work_history='$work_history', education='$education', location='$location' WHERE user_id='$user_id'";
+  if (mysqli_query($conn, $sql)) {
+    echo "Bio updated successfully";
+  } else {
+    echo "Error updating bio: " . mysqli_error($conn);
+  }
+}

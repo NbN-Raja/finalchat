@@ -85,7 +85,7 @@ try {
          
 
             # redirect to 'home.php'
-            header("Location: ../../landing_page.php?username=$username");
+            header("Location: ../../home.php?username=$username");
             // header("Location: final_one.php");
             # redirect to 'home.php'
             // header("Location: ../../../api/auth.php?param1=value1&param2=value2");

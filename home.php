@@ -1,15 +1,17 @@
 <?php
-
-if (!empty($_SESSION['username'])) {
-  //redirect to login page
-  header('Location: ./server/http/auth.php');
-  
-} 
+session_start();
+if (empty($_SESSION['username'])) {
+    //redirect to login page
+    header('Location: ./server/http/auth.php');
+    die;
+} else {
+}
 
 
 require_once 'components/nav.php';
 require_once 'components/date.php';
-session_start();
+require_once 'components/blocked.php';
+
 
 $username = $_SESSION['username'];
 if (isset($_SESSION['username'])) {

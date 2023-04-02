@@ -21,10 +21,19 @@ while ($data = mysqli_fetch_array($query)) {
                 <img src="<?php echo  'client/assets/uploads/' . $profile_pic; ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
                 <div class=" ml-2">
+                <b class="font-weight-bold"> <a href="client/user_profile.php?user=<?= $data['username'] ?>" style="color:black">
+
                     <?php echo $name ?>
                     <?php echo $lastname ?>
                     <br>
                     <?php echo last_seen($uplaoded_on) ?>
+                   </b> </a>
+                </div>
+                <div class="ml-auto">
+                <a href="pages/singlepost.php?user=<?= $data['id'] ?>  ">
+                <svg fill="currentColor" viewBox="0 0 20 20" width="1em" height="1em" class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 x1qx5ct2 xw4jnvo"><g fill-rule="evenodd" transform="translate(-446 -350)"><path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path></g></svg>
+                  </a>
+
                 </div>
 
             </div>
