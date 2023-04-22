@@ -71,43 +71,29 @@ try {
             $_SESSION['c_p'] = $user['c_p'];
             $_SESSION['lastname'] = $user['lastname'];
             $_SESSION['gender'] = $user['gender'];
+            $_SESSION['interests'] = $user['interests'];
           
             setcookie('username', $user['username'], time() + 3600); // expires in 1 hour
             
-            // $url = "http://localhost:3000/api/getalluserdetail?username=$username";
-            // $options = array(
-            //     CURLOPT_RETURNTRANSFER => true,
-            // );
-            // $curl = curl_init($url);
-            // curl_setopt_array($curl, $options);
-            // $data = curl_exec($curl);
-            // curl_close($curl);
          
 
             # redirect to 'home.php'
             header("Location: ../../home.php?username=$username");
-            // header("Location: final_one.php");
-            # redirect to 'home.php'
-            // header("Location: ../../../api/auth.php?param1=value1&param2=value2");
-            header('Content-Type: application/json');
-            echo json_encode([
-              'success' => true,
-              'data' => $username
-            ]);
+            
 
           }else {
             # error message
             $em = "Incorect Username or password";
 
             # redirect to 'index.php' and passing error message
-            header("Location: ../../client/index.php?error=$em");
+            header("Location: http://localhost/main/client/index.php?error=$em");
           }
         }else {
           # error message
           $em = "Incorect Username or password";
 
           # redirect to 'index.php' and passing error message
-          header("Location: ../../client/index.php?error=$em");
+          header("Location: http://localhost/main/client/index.php?error=$em");
         }
       }
    }
@@ -118,25 +104,3 @@ try {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-<p> Incorrect Username Or Pasword </p>
-<a href="../../client/index.php"> Go back </a>
-
-
-<script>
-function storeSessionValue() {
-  var username = '<?php echo $_SESSION['username']; ?>';
-  localStorage.setItem('username', username);
-}
-</script>
-</body>
-</html>

@@ -19,24 +19,20 @@
 <body>
 
 <div class="first" >
-    <p> Welcome To Open Chat </p>
+    <p> Welcome To Link Up </p>
 </div>
     <div class="container" style="display:flex">
         <div class="image">  
             <img src="assets/img/login.png" > 
         </div>
         <div class="login" >
+        
             <form method="post" action="../server/http/auth.php">
                 <div class="login_header">
                     <img src="assets/img/logo.png" class="w-25">
-                    <h1> Login </h1>
+                    <h1> Link Up </h1>
                 </div>
-                <?php if (isset($_GET['error'])) { ?>
-                <div class="alert alert-warning" role="alert">
-                    <?php echo htmlspecialchars($_GET['error']);?>
-                </div>
-                <?php } ?>
-
+                
                 <?php if (isset($_GET['success'])) { ?>
                 <div class="alert alert-success" role="alert">
                   <p>   <?php echo htmlspecialchars($_GET['success']);?> </p>
@@ -49,7 +45,12 @@
                         </label>
                     <input type="text" class="form-control" name="username" placeholder="Username">
                 </div>
-
+                <?php if (isset($_GET['error'])) { ?>
+                <div class="alert alert-warning" role="alert">
+                    <?php echo htmlspecialchars($_GET['error']);?>
+                </div>
+                <?php } ?>
+                
                 <div>
                     <label class="form-label">
                         </label>
@@ -60,9 +61,15 @@
                     LOGIN</button>
                     <div class="register">
                     <p> New To Account ? <a href="signup.php"> Register </a> </p>
+                    <p>  <a href="signup.php">Forget  Password </a> </p>
                     </div>
             </form>
        
+    </div>
+    </div>
+
+    <div class="Footer">
+        <p> Hello </p>
     </div>
 </body>
 
@@ -88,7 +95,7 @@ body {
 .container{
 	display:flex;
 	position: relative;
-	top:10pc;
+	
 	justify-content: space-around;
 }
 
@@ -100,7 +107,7 @@ body {
 	background-color:white;
     box-shadow: 2px 2px 2px 3px #dfd9d9;
     border-radius:5px;
-    height:28pc;
+    height:32pc;
 }
 .btn{
 	width:21pc;
@@ -119,11 +126,18 @@ body {
 
 .first{
     position: relative;
-    top: 10pc;
+    top: 4pc;
     margin-left: 23pc;
     font-size: 30px;
     font-weight: 500;
     color: blueviolet;
     font-family: cursive;
+}
+.alert{
+    padding: 0px;
+    color: red;
+    background-color: white;
+    border: 1px solid white;
+    margin:0px
 }
 </style>

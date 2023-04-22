@@ -5,13 +5,47 @@
 
 ?>
 
-<?php
 
+<script>
+function validateFormm() {
+  var name = document.forms["contactForm"]["name"].value;
+  var lastname = document.forms["contactForm"]["lastname"].value;
+  var email = document.forms["contactForm"]["email"].value;
+  var username = document.forms["contactForm"]["username"].value;
+  var password = document.forms["contactForm"]["password"].value;
+  var gender = document.forms["contactForm"]["gender"].value;
 
+  if (name == "") {
+    document.getElementById("nameErr").innerHTML = "Name field is required";
+    return false;
+  }
 
+  if (lastname == "") {
+    document.getElementById("lastnameErr").innerHTML = "Last Name field is required";
+    return false;
+  }
 
-?>
+  if (email == "") {
+    document.getElementById("emailErr").innerHTML = "Email field is required";
+    return false;
+  }
 
+  if (username == "") {
+    document.getElementById("usernameErr").innerHTML = "Username field is required";
+    return false;
+  }
+
+  if (password == "") {
+    document.getElementById("passwordErr").innerHTML = "Password field is required";
+    return false;
+  }
+
+  if (gender == "") {
+    document.getElementById("genderErr").innerHTML = "Please select a gender";
+    return false;
+  }
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +54,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-	<title>Bootstrap Simple Registration Form</title>
+	<title> Registration Form</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -35,7 +69,7 @@
 			<h1> Signup Here </h1>
 		</div>
 		<div class="signup-form">
-			<form method="post"  name="contactForm" action="../server/http/signup.php"  onsubmit="return validateForm()"   enctype="multipart/form-data">
+			<form method="post"  name="contactForm" action="../server/http/signup.php"  onsubmit="return validateFormm()"   enctype="multipart/form-data">
 				<h2>Register</h2>
 				<p class="hint-text">Create your account. It's free and only takes a minute.</p>
 				<?php if (isset($_GET['error'])) { ?>
@@ -107,7 +141,7 @@
 
 
 				<div class="form-group">
-					<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a
+					<label class="form-check-label"><input type="checkbox"> I accept the <a
 							href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 				</div>
 				<div class="form-group">
@@ -138,29 +172,6 @@
    	exit;
   }
  ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -28,3 +28,34 @@ function last_seen($date_time){
 		
    }
 }
+
+function last_seen_msg($date_time){
+	$timestamp = strtotime($date_time);	
+	
+	$strTime = array("second", "minute", "hour", "day", "week", "month", "year");
+	$length = array("60","60","24","30","7","12","10");
+ 
+	$currentTime = time();
+	if($currentTime >= $timestamp) {
+		 $diff     = time() - $timestamp;
+		 for($i = 0; $diff >= $length[$i] && $i < count($length)-1; $i++) {
+			 $diff = $diff / $length[$i];
+		 }
+ 
+		 $diff = round($diff);
+		 if ($diff < 59 && $strTime[$i] == "second") {
+			 return 'Active';
+		 } else {
+			 if($i == count($length) - 1) {
+				 return date('h:i a, M j, Y', $timestamp); // if more than 10 years old, return date and time
+			 } else {
+				 $diff .= " " . $strTime[$i];
+				 if ($diff != "1 month") {
+					 $diff .= "s";
+				 }
+				 return date('h:i a', $timestamp) . " " . $diff . " ago";
+			 }
+		 }
+	}
+ }
+ 

@@ -701,3 +701,72 @@ if (isset($_POST['chatimg'])) {
 });
     
 </script>
+
+
+
+
+<!-- Message Searching here  -->
+<!-- base 64 message  -->
+
+<?php
+// Create a database connection
+$conn = mysqli_connect("localhost", "root", "", "chat_app_db");
+
+// Check if the connection was successful
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['search'])) {
+    // Get the search query submitted by the user
+    $search_query = mysqli_real_escape_string($conn, $_POST['search_query']);
+    
+    // Prepare the SQL query
+    $msg= base64_encode($search_query);
+
+// Prepare the SQL query
+$query = "SELECT message FROM chats WHERE message LIKE '%$msg%'";
+
+// Execute the query and fetch the results
+$results = mysqli_query($conn, $query);
+$searchResults = mysqli_fetch_all($results, MYSQLI_ASSOC);
+
+// Encode the message using base64
+foreach ($searchResults as &$result) {
+    $result['message'] = base64_decode($result['message']);
+}
+
+// Return the search results as JSON data
+echo json_encode($searchResults);
+}
+// Close the database connection
+mysqli_close($conn);
+
+?>
+
+<script>
+// Get the search results from PHP and decode them
+var searchResults = <?php echo json_encode($searchResults); ?>;
+for (var i = 0; i < searchResults.length; i++) {
+    searchResults[i].message = atob(searchResults[i].message);
+}
+
+// Find the element that contains the search results
+var searchResultsElement = document.getElementById("chatBox");
+
+// Clear the chatbox before displaying the search results
+searchResultsElement.innerHTML = '';
+
+// Create a new HTML element for each search result and append it to the chatbox
+for (var i = 0; i < searchResults.length; i++) {
+    var resultElement = document.createElement("div");
+    resultElement.innerHTML = searchResults[i].message;
+
+    searchResultsElement.appendChild(resultElement);
+}
+
+// Scroll to the first search result
+if (searchResults.length > 0) {
+    searchResultsElement.firstChild.scrollIntoView();
+}
+</script>

@@ -37,24 +37,34 @@
     
 
     <ul id="chatList" class="chatList">
-      <p  id="contact">Contacts</p>
-      <?php if (!empty($conversations)) { ?>
-        <?php
-
-        foreach ($conversations as $conversation) { ?>
-          <li>
-            <a href="client/final.php?user=<?= $conversation['username'] ?>">
-              <div style="display: flex;">
-                <img src="client/assets/uploads/<?= $conversation['p_p'] ?>" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
-                <p> <?= $conversation['name'] ?><br> </p>
-                <p> <?= $conversation['lastname'] ?><br> </p>
-
-              </div>
-            </a>
-          </li>
+    <p  id="contact">Contacts</p>
+    <?php if (!empty($conversations)) { ?>
+        <?php foreach ($conversations as $conversation) { 
+            // Check if the user is active based on their last_seen timestamp
+            $is_active = (strtotime($conversation['last_seen']) > (time() - 10));
+            // Set the label text and color based on whether the user is active or not
+            $label_text = $is_active ? "Active" : "Inactive";
+            $label_color = $is_active ? "green" : "red";
+        ?>
+            <li>
+                <a href="client/final.php?user=<?= $conversation['username'] ?>">
+                    <div style="display: flex;">
+                        <img src="client/assets/uploads/<?= $conversation['p_p'] ?>" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
+                        <p><?= $conversation['name'] ?><br>
+                            <span style="color:<?= $label_color ?>"><?= $label_text ?></span>
+                        </p>
+                        <p><?= $conversation['lastname'] ?><br></p>
+                    </div>
+                </a>
+            </li>
         <?php } ?>
-      <?php } ?>
-    </ul>
+    <?php } ?>
+</ul>
+
+
+
+   
+
 
   </div>
 

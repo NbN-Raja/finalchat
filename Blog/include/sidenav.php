@@ -26,6 +26,12 @@ require_once 'session.php';
     <li><i class="fa fa-envelope"></i> <?php echo $_SESSION['email'];  ?></li>
     <li><i class="fa fa-envelope"></i> <a href="post.php">Post  Blog</a> </li>
     <li><i class="fa fa-envelope"></i> <a href="home.php">Home  Blog</a> </li>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+
   </ul>
 </div>
 

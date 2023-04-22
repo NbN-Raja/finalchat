@@ -63,14 +63,12 @@ include 'include.php';
 
                                     </h3>
                                 </div>
-                                    <?php if (isset($chatWith) && last_seen($chatWith['last_seen']) == "Active") { ?>
-                                    <div title="online">
-                                        <div class="online"> yes</div>
-                                    </div>
-                                <?php } else { ?>
-
-                                    <div class="offline"> no</div>
-                                <?php  } ?>
+                                <?php 
+                                 // Check if the user is active based on their last_seen timestamp
+            $is_active = (strtotime($conversation['last_seen']) > (time() - 60));
+            // Set the label text and color based on whether the user is active or not
+            $label_text = $is_active ? "Active" : "Inactive";
+            $label_color = $is_active ? "green" : "red"; ?>
                             </a>
                             <!-- End Here -->
                         </li>

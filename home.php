@@ -85,10 +85,10 @@ if (isset($_SESSION['username'])) {
     <div class="profile ">
         <?php include 'pages/side_nav.php' ?>
     </div>
-
+   
     <div class="posts">
         <?php include 'pages/posts.php' ?>
-        Hello
+        
 
     </div>
 

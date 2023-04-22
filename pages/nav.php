@@ -7,7 +7,7 @@
     </form>
     <!-- chat lists  -->
     
-    <a style="margin-left: 27pc;" href="home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Open <span> Feed </span></b></a>
+    <a style="margin-left: 27pc;" href="home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Link  <span> Up </span></b></a>
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start ml-5">
         <div class="navbar-nav">
@@ -57,7 +57,8 @@
 
 
             <div class="" style="position:relative; right:33px; display:flex">
-                <a class="ml-10" href="client/home.php">
+                <a class="ml-10" href="http://localhost/main/client/home.php">
+                    
                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="36" height="36">
 
                 </a>

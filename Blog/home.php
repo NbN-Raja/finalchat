@@ -34,7 +34,8 @@
             // Select all the contents from the community table
             $sql = "SELECT community.contents as contents , community.username,community.title as title, users.name as name , users.lastname as lastname, users.p_p as profile 
                FROM community 
-               LEFT JOIN users ON users.username = community.username";
+               LEFT JOIN users ON users.username = community.username ORDER BY community.id DESC
+";
             $result = mysqli_query($conn, $sql);
 
             // Loop through the results and display each content
@@ -67,6 +68,86 @@
             mysqli_close($conn); ?>
         </div>
 
+        <!-- Search For Blogs here  -->
+        <form id="search-form" action="">
+            <input type="text" name="tags" id="search-input">
+        </form>
+
+        <!-- fetch search here  -->
+        <div id="search-results-dialog" title="Search Results">
+            <div id="search-results"></div>
+        </div>
+
+        <!-- interests  -->
+        <div class=""> Suggestions Here 
+        <?php
+    // Start the session
+
+    // Get the user's interests from the database
+    $mysqli = new mysqli('localhost', 'root', '', 'chat_app_db');
+    $username = $_SESSION['username'];
+    $query = "SELECT interests FROM users WHERE username = '$username'";
+    $result = $mysqli->query($query);
+    $row = $result->fetch_assoc();
+    $interest = $row['interests'];
+
+    // Fetch the relevant data from the community table
+    $query = "SELECT title, username, contents
+              FROM community
+              WHERE tags = '$interest'";
+    $result = $mysqli->query($query);
+
+    // Display the data
+    while ($row = $result->fetch_assoc()) {
+        $title = $row['title'];
+        $username = $row['username'];
+        $contents = $row['contents'];
+
+        echo '<div class="border" style="border-radius:1px solid black"> 
+                  <h2>' . $title . '</h2>
+                  <p> ' . $username . '</p>
+              </div>';
+    }
+
+    // Close the MySQLi connection
+    $mysqli->close();
+?>
+
+
+
+<div class="">
+    whats up
+    <?php echo $interest; ?>
+</div>
+
+
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#search-results-dialog').dialog({
+                    autoOpen: false,
+                    modal: true,
+                    width: 500
+                });
+
+                $('#search-input').on('input', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: 'include/search.php',
+                        data: {
+                            query: query
+                        },
+                        success: function(result) {
+                            $('#search-results').html(result);
+                            $('#search-results-dialog').dialog('open');
+                        }
+                    });
+                });
+            });
+        </script>
+
+
         <!-- Live chat Here  -->
         <div id="chat-container">
             <div id="chat-messages"></div>
@@ -85,35 +166,54 @@
 
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+        // Search Feature Here 
         $(document).ready(function() {
-    // Retrieve existing chat messages
-    setInterval(function() {
-        $.ajax({
-            url: 'include/getmessage.php',
-            type: 'GET',
-            success: function(response) {
-                $('#chat-messages').html(response);
-            }
-        });
-    }, 1000);
+            $('#search-input').on('input', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: 'include/search.php',
+                    data: {
+                        query: query
+                    },
+                    type: 'POST',
 
-    // Send new chat messages
-    $('#chat-form').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'include/postmessage.php',
-            type: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                $('#chat-message').val('');
-            }
+                    success: function(result) {
+                        $('#search-results').html(result);
+                    }
+                });
+            });
         });
-    });
-});
 
-        </script>
+
+        $(document).ready(function() {
+            // Retrieve existing chat messages
+            setInterval(function() {
+                $.ajax({
+                    url: 'include/getmessage.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#chat-messages').html(response);
+                    }
+                });
+            }, 1000);
+
+            // Send new chat messages
+            $('#chat-form').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'include/postmessage.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#chat-message').val('');
+                    }
+                });
+            });
+        });
+    </script>
 
 
 
@@ -152,6 +252,7 @@
     #chat-messages {
         height: 320px;
         padding: 10px;
+        overflow: auto;
     }
 
     #chat-form {
