@@ -7,6 +7,7 @@ if(isset($_POST['submit'])){
     $user_id = $_POST['user_id'];
     $photo_id = $_POST['Photo_id'];
     $likes = $_POST['likes'];
+    $username = $_SESSION['username'];
 
     // Check if the user has already liked the photo
     $sql = "SELECT id FROM likes WHERE user_id = '$user_id' AND Photo_id = '$photo_id'";
@@ -17,7 +18,7 @@ if(isset($_POST['submit'])){
 
     if($count == 0) {
         // If the user hasn't liked the photo yet, insert a new like
-        $sql = "INSERT INTO likes (user_id, Photo_id,likes) VALUES ('$user_id', '$photo_id','$likes')";
+        $sql = "INSERT INTO likes (user_id, Photo_id,likes,username) VALUES ('$user_id', '$photo_id','$likes','$username')";
         mysqli_query($conn, $sql);
     }else if ($count == 1) {
     

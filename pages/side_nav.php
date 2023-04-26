@@ -34,7 +34,7 @@
     </p>
     <hr>
     <div class="info-box">
-        <h3>Total Posts</h3>
+        <h5>Total Posts</h5>
         <p>
             <?php
             // Establishing a database connection
@@ -55,7 +55,7 @@
         </p>
     </div>
     <div class="info-box">
-        <h3>Total Blogs</h3>
+        <h5>Total Blogs</h5>
         <p>
         <?php
             // Establishing a database connection
@@ -73,8 +73,23 @@
             echo  $count;
             ?>
         </p>
+       
     </div>
-    
+    <a href="http://localhost/main/Analytics/index.php"><b>Analytics </b> </a> 
+
+    <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <a>Groups</a>
+      <a href="#"> Groups</a>
+    </div>
+    <div class="col-md-6">
+      <a>Events</a>
+      <a href="#">Events</a>
+    </div>
+  </div>
+</div>
+
 
 </div>
 

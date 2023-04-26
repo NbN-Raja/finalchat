@@ -107,9 +107,15 @@ if (isset($_SESSION['username'])) {
     }
 
     body {
-        background-color: aliceblue;
+        background-color: #f0f2f5;
     }
-
+    a {
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+        background-color: grey;
+    }
     .navbar {
         background-color: white;
     }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 06:09 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.4
+-- Generation Time: Apr 26, 2023 at 02:47 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,14 +31,36 @@ CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `admin_name` varchar(11) NOT NULL,
   `admin_passowrd` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `admin`
+-- Table structure for table `bios`
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_passowrd`) VALUES
-(1, 'admin', 'admin');
+CREATE TABLE `bios` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `relationship_status` varchar(255) DEFAULT NULL,
+  `bio` varchar(100) NOT NULL,
+  `work_history` text DEFAULT NULL,
+  `education` text DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bios`
+--
+
+INSERT INTO `bios` (`id`, `user_id`, `relationship_status`, `bio`, `work_history`, `education`, `location`, `created_at`, `updated_at`) VALUES
+(27, 62, '', 'bcvbcvb', '', '', '', '2023-04-16 11:39:15', '2023-04-16 11:39:15'),
+(28, 59, '', 'bn', '', '', '', '2023-04-16 11:40:00', '2023-04-16 11:40:00'),
+(29, 63, 'King of this site', 'Yo its Admin', 'Coder', 'PHD In BCA', 'Nepal', '2023-04-22 09:52:38', '2023-04-22 10:29:30'),
+(30, 64, 'yo', 'Hello Myself Nabin Chhetri ', '', '', '', '2023-04-25 03:40:25', '2023-04-25 03:40:25'),
+(31, 64, 'yo', 'Hello Myself Nabin Chhetri ', '', '', '', '2023-04-25 03:40:28', '2023-04-25 03:40:28');
 
 -- --------------------------------------------------------
 
@@ -51,783 +73,126 @@ CREATE TABLE `chats` (
   `from_id` int(11) NOT NULL,
   `to_id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `chat_img` varchar(50) NOT NULL,
+  `chat_img` varchar(255) NOT NULL,
   `opened` tinyint(1) NOT NULL DEFAULT 0,
   `is_blocked` varchar(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chats`
 --
 
 INSERT INTO `chats` (`chat_id`, `from_id`, `to_id`, `message`, `chat_img`, `opened`, `is_blocked`, `created_at`) VALUES
-(4, 2, 1, 'nbn', '', 1, '0', '2022-03-05 22:53:43'),
-(5, 1, 2, 'yo', '', 1, '0', '2022-03-05 22:53:53'),
-(6, 2, 1, 'Hello', '', 1, '0', '2022-03-06 20:40:49'),
-(8, 2, 1, '', 'logo.png', 1, '0', '2022-03-07 21:20:43'),
-(9, 1, 2, 'sdjfs dfbdsbfds', '', 1, '0', '2022-03-07 21:22:04'),
-(10, 1, 2, 'sdfsdf sdf', '', 1, '0', '2022-03-07 21:22:17'),
-(11, 1, 2, 'Jk Don ', '', 1, '0', '2022-03-08 22:33:39'),
-(12, 1, 2, 'asd', '', 1, '0', '2022-03-08 22:40:03'),
-(13, 1, 2, 'ghvg hv hvhm', '', 1, '0', '2022-03-09 08:40:58'),
-(14, 1, 2, 'gvghvgh gvgh', '', 1, '0', '2022-03-09 16:16:45'),
-(15, 1, 2, 'gfdgfdg', '', 1, '0', '2022-03-09 20:48:07'),
-(16, 1, 2, 'fdsf', '', 1, '0', '2022-03-10 10:22:24'),
-(17, 1, 2, 'dsgsdfds', '', 1, '0', '2022-03-10 10:22:51'),
-(18, 2, 1, 'vxcvxcvcx', '', 1, '0', '2022-03-10 10:27:44'),
-(19, 1, 2, 'asdasdasd', '', 1, '0', '2022-03-10 10:30:17'),
-(20, 1, 2, 'sfsdfsdf', '', 1, '0', '2022-03-10 10:30:29'),
-(22, 2, 1, 'erryydf', '', 1, '0', '2022-03-10 10:32:53'),
-(23, 2, 1, 'ZGhzZCBmaGRzag==', '', 1, '0', '2022-03-10 10:45:55'),
-(24, 2, 1, 'ZGdkc2cgZHNuZ2Rma2pn', '', 1, '0', '2022-03-10 10:48:58'),
-(26, 2, 1, 'c2Rmc2Rm', '', 1, '0', '2022-03-10 10:53:26'),
-(27, 2, 1, 'Z2RmZ2RmZ2dkZg==', '', 1, '0', '2022-03-10 10:57:47'),
-(28, 2, 1, 'IGRzbmIgZmJkc2YgaGRzYiBmamRzYmhmIGRzaGIgZmhzZGJqZmIgZHNqZmJzZGhiZmRzaGJmIGpkYnNoZmRzZg==', '', 1, '0', '2022-03-10 11:16:30'),
-(29, 2, 1, 'enhjenhjeiBjenhjenggYyB6eGN6eCBjenhjIHp4Y3p4IGN6eGMgenhjIHp4YyBzZGpmaHNkIGpmaGRzamtmaGRza2pmc2tqZGZiZHMga2pmYiBqZHNmc2Rqa2ZoIHNkaGIgZmhqZHNiZiBkc2hiZiBkc2hiZnVzZGdiZmogZHNiZmpiZGpiZ2xkc2JmIGRzamZoYXNmYXNmJ3Nmc2RmdWhzZGZqIGRnc2Zkc2Y=', '', 1, '0', '2022-03-10 11:16:48'),
-(30, 2, 1, 'Z2d2aA==', '', 1, '1', '2022-03-10 12:29:26'),
-(31, 1, 2, 'SGVsbG8gTXkgTmFiaW4gUmFqIENoaGV0cmkuLi4uLi58fC4uLi4uLi4=', '', 1, '1', '2022-03-10 22:01:28'),
-(32, 2, 1, 'c2RuIGZuIHNkZmJkcw==', '', 1, '0', '2022-03-11 00:06:57'),
-(33, 3, 1, 'YXM=', '', 1, '0', '2022-03-11 00:33:53'),
-(34, 3, 1, 'aGggaGhq', '', 1, '0', '2022-03-11 00:34:45'),
-(35, 2, 1, 'ZGFzZCBzYWRhc2RzYQ==', '', 1, '0', '2022-03-11 00:42:51'),
-(36, 2, 1, 'aGIgaGJoag==', '', 1, '0', '2022-03-11 00:43:23'),
-(37, 2, 1, 'MA==', '', 1, '0', '2022-03-11 00:43:57'),
-(38, 2, 1, 'ZHNuIHggY3ZuYnhj', '', 1, '0', '2022-03-11 00:49:55'),
-(39, 2, 1, 'SGVsbG8gV2hhdHMgVXA=', '', 1, '0', '2022-03-11 00:50:17'),
-(40, 2, 1, 'IG5iIGhqYmhqaGpr', '', 1, '0', '2022-03-11 00:51:47'),
-(42, 1, 2, 'Y3p4', '', 1, '0', '2022-03-11 01:06:13'),
-(43, 3, 1, 'ZHNhZGFz', '', 1, '0', '2022-03-11 01:26:46'),
-(44, 3, 1, 'ZGFzZGFzZA==', '', 1, '0', '2022-03-11 01:26:49'),
-(45, 3, 1, 'YWFhYWFhYWFhYQ==', '', 1, '0', '2022-03-11 01:28:11'),
-(46, 3, 1, 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYQ==', '', 1, '0', '2022-03-11 01:28:26'),
-(47, 3, 1, 'ZGFzZGFzZGFz', '', 1, '0', '2022-03-11 11:21:20'),
-(48, 3, 1, 'c2FkYXMgYXNkYXM=', '', 1, '0', '2022-03-11 11:21:30'),
-(49, 3, 1, '', 'naruto.jpg', 1, '0', '2022-03-11 11:21:53'),
-(50, 3, 2, 'ZGZnZGY=', '', 1, '0', '2022-03-11 11:23:42'),
-(51, 1, 2, 'aHJlZWU=', '', 1, '0', '2022-03-11 11:25:20'),
-(53, 1, 3, 'aGpnaGpoag==', '', 0, '0', '2022-03-11 11:26:58'),
-(54, 1, 2, 'amtr', '', 1, '0', '2022-03-11 11:37:31'),
-(55, 2, 3, '8J+YnA==', '', 0, '0', '2022-03-11 17:28:10'),
-(56, 2, 3, 'cmV0ZXJ0', '', 0, '0', '2022-03-11 17:35:59'),
-(57, 2, 3, 'c2Fkc2Fkc2Fk', '', 0, '0', '2022-03-11 17:51:38'),
-(58, 2, 3, 'ZnNk', '', 0, '0', '2022-03-11 18:13:35'),
-(59, 2, 3, 'YXNkc2Fk', '', 0, '0', '2022-03-11 18:17:01'),
-(60, 2, 3, 'MTIzNA==', '', 0, '0', '2022-03-11 20:51:14'),
-(61, 2, 3, 'TmF2ZWVu', '', 0, '0', '2022-03-11 20:51:29'),
-(62, 2, 3, 'eW91IFdoYXRzQXBw', '', 0, '0', '2022-03-11 20:52:06'),
-(64, 2, 3, 'd2hhdCdzIHVwIG1hbg==', '', 0, '0', '2022-03-11 20:53:50'),
-(65, 2, 3, 'c2RmZHNm', '', 0, '0', '2022-03-11 20:54:35'),
-(66, 2, 3, 'Y2FsbCBtZQ==', '', 0, '0', '2022-03-11 20:54:43'),
-(67, 2, 3, 'YnVkZ2V0aW5n', '', 0, '0', '2022-03-11 20:55:20'),
-(68, 2, 3, 'YXF1YXJpdW0=', '', 0, '0', '2022-03-11 20:55:53'),
-(69, 2, 3, 'aXMgaXQgZG9pbmc=', '', 0, '0', '2022-03-11 20:56:29'),
-(70, 2, 3, 'eW8gV2hhdHNBcHA=', '', 0, '0', '2022-03-11 20:56:57'),
-(71, 2, 3, 'd2hhdCdzIHVwIG1hbiBkcmF3aW5n', '', 0, '0', '2022-03-11 21:06:44'),
-(72, 2, 3, 'YWNzY3Mg', '', 0, '0', '2022-03-11 21:14:14'),
-(73, 2, 3, 'dGFwbWFuIGRyYXdpbmcgZmluZSBjYWxsIG1lIGF0IDUgcC5tLg==', '', 0, '0', '2022-03-11 21:15:15'),
-(74, 2, 3, 'U2FiIG1hbg==', '', 0, '0', '2022-03-11 21:16:29'),
-(75, 2, 3, 'dGFwbWFu', '', 0, '0', '2022-03-11 21:17:48'),
-(76, 2, 3, 'aGVsbG8gaGVsbG8=', '', 0, '0', '2022-03-11 21:18:00'),
-(77, 2, 3, 'TGFpbGE=', '', 0, '0', '2022-03-11 21:19:38'),
-(79, 2, 3, 'amhnag==', '', 0, '0', '2022-03-11 22:02:25'),
-(80, 2, 3, '', 'nbn.jpg', 0, '0', '2022-03-11 22:15:31'),
-(81, 2, 3, '', '', 0, '0', '2022-03-11 22:15:41'),
-(82, 2, 3, 'c2hvcCBtYW4=', '', 0, '0', '2022-03-11 22:22:09'),
-(83, 2, 3, 'V2hhdHNBcHAgZG9pbmc=', '', 0, '0', '2022-03-11 22:24:25'),
-(84, 2, 3, '8J+YlA==', '', 0, '0', '2022-03-11 22:27:06'),
-(85, 2, 1, 'b3BbcG8=', '', 1, '0', '2022-03-11 22:30:52'),
-(86, 2, 1, 'bmV3IHNhYg==', '', 1, '0', '2022-03-11 22:31:09'),
-(87, 2, 1, 'MTIz', '', 1, '0', '2022-03-11 22:46:15'),
-(88, 2, 1, 'Z2hq', '', 1, '0', '2022-03-11 22:47:02'),
-(89, 2, 1, 'U2lkaHU=', '', 1, '0', '2022-03-11 22:47:34'),
-(90, 2, 1, 'c29uZw==', '', 1, '0', '2022-03-11 22:48:18'),
-(91, 2, 1, 'c29uZ1doYXRzQXBwIDEyMzQ1Ng==', '', 1, '0', '2022-03-11 22:49:29'),
-(92, 2, 1, 'ZmdkZmcgZmRnZGY=', '', 1, '0', '2022-03-11 22:49:32'),
-(93, 2, 1, 'cm9tYW50aWMgeWFoIGthaXNhIGhhaSB3aGF0J3MgdGhlIHRpbWUgd2hhdCBhcmUgeW91IHcgaCBvIG4gciBlIGUgdyBvIGYgc3RhciBzdGFyIHN0YXI=', '', 1, '0', '2022-03-11 22:50:45'),
-(94, 2, 1, 'MTIzNCBtYWNoaW5lIG5hbWU=', '', 1, '0', '2022-03-11 22:52:08'),
-(95, 2, 1, 'ZiBsIG8gdyBmZWxsb3cgd2hhdCdzIHlvdXIgbmFtZQ==', '', 1, '0', '2022-03-11 22:53:08'),
-(96, 2, 1, 'ZXhv', '', 1, '0', '2022-03-11 22:57:18'),
-(97, 2, 1, '8J+Yiw==', '', 1, '0', '2022-03-11 22:58:24'),
-(98, 2, 1, 'TVAzIG1laW4gdGVzdGluZw==', '', 1, '0', '2022-03-11 23:00:54'),
-(99, 2, 1, '8J+Yiw==', '', 1, '0', '2022-03-11 23:02:26'),
-(100, 2, 1, '8J+YhfCfmIw=', '', 1, '0', '2022-03-11 23:04:14'),
-(101, 2, 1, 'ZGZnIGRmZw==', '', 1, '0', '2022-03-11 23:04:17'),
-(102, 2, 1, 'S3lvbiBLaSBLYWhhbmkgRGlraGFpIE5haGluIEhhaQ==', '', 1, '0', '2022-03-11 23:05:00'),
-(103, 2, 1, 'bWVyYSBuYWFtIE5hdmVlbiBSYWogS3NoZXRyYQ==', '', 1, '0', '2022-03-11 23:05:13'),
-(104, 2, 1, 'bWF4aW11bQ==', '', 1, '0', '2022-03-11 23:07:15'),
-(105, 2, 1, 'aXBvaW9w', '', 1, '0', '2022-03-11 23:07:59'),
-(106, 2, 1, 'YXM=', '', 1, '0', '2022-03-11 23:08:28'),
-(107, 2, 1, 'YXNkYXNk', '', 1, '0', '2022-03-11 23:08:45'),
-(108, 2, 1, 'ZmcgZmQgZ2RmZw==', '', 1, '0', '2022-03-11 23:08:54'),
-(109, 2, 1, 'YWFh', '', 1, '0', '2022-03-11 23:09:03'),
-(110, 2, 1, 'bWlzc2lvbg==', '', 1, '0', '2022-03-11 23:12:14'),
-(111, 2, 1, '8J+Ymg==', '', 1, '0', '2022-03-11 23:15:39'),
-(112, 2, 1, 'MTIzIGUgZSA4OTM1', '', 1, '0', '2022-03-11 23:16:57'),
-(113, 2, 1, 'MTIzNA==', '', 1, '0', '2022-03-11 23:17:41'),
-(114, 2, 1, 'MTIzNCA4OQ==', '', 1, '0', '2022-03-11 23:17:57'),
-(115, 2, 1, '8J+YgQ==', '', 1, '0', '2022-03-11 23:18:49'),
-(116, 2, 1, '8J+YnQ==', '', 1, '0', '2022-03-11 23:19:50'),
-(117, 2, 1, 'QmFuaw==', '', 1, '0', '2022-03-11 23:20:16'),
-(118, 2, 1, 'ZHNmc2Rm', '', 1, '0', '2022-03-11 23:22:45'),
-(119, 2, 1, 'NTY=', '', 1, '0', '2022-03-11 23:23:01'),
-(120, 2, 1, '', 'back.png', 1, '0', '2022-03-11 23:29:40'),
-(121, 2, 1, 'MTIz', '', 1, '0', '2022-03-11 23:31:29'),
-(122, 2, 1, 'ZnNkZg==', '', 1, '0', '2022-03-11 23:32:14'),
-(123, 2, 1, 'MTIzIHNvbmc=', '', 1, '0', '2022-03-11 23:32:46'),
-(124, 2, 1, 'ZnNkZg==', '', 1, '0', '2022-03-11 23:35:49'),
-(125, 2, 1, 'MTIzNA==', '', 1, '0', '2022-03-11 23:36:05'),
-(126, 2, 1, 'YXM=', '', 1, '0', '2022-03-11 23:37:42'),
-(127, 2, 1, 'MTIzNDU=', '', 1, '0', '2022-03-11 23:41:10'),
-(128, 2, 3, '8J+Ymw==', '', 0, '0', '2022-03-11 23:45:16'),
-(129, 2, 3, '8J+kkfCfmIY=', '', 0, '0', '2022-03-11 23:45:23'),
-(130, 2, 3, '8J+kkQ==', '', 0, '0', '2022-03-11 23:45:25'),
-(131, 1, 3, 'ZmdkZmcgZGZnIGZkZw==', '', 0, '0', '2022-03-12 10:57:19'),
-(132, 1, 2, 'bG92ZSBtZSBrbm93IHlvdSBjYXJl', '', 1, '0', '2022-03-12 15:48:59'),
-(133, 1, 2, '', 'userprofile.png', 1, '0', '2022-03-12 15:49:12'),
-(135, 1, 3, '', 'privacy.png', 0, '0', '2022-03-12 19:47:46'),
-(136, 1, 2, 'amIgZHNm', '', 1, '0', '2022-03-12 20:07:45'),
-(137, 1, 3, 'SmJhaGJoYSAg', '', 0, '0', '2022-03-12 20:13:24'),
-(138, 1, 2, 'SGVsbG8gV2hhdHMgVXAg', '', 1, '0', '2022-03-12 20:53:21'),
-(139, 1, 2, 'c2hvcCA5ODYgNTAyIDI5MDQgY2FsbCBtZSBvaw==', '', 1, '0', '2022-03-12 21:06:02'),
-(140, 2, 1, 'WW8gV2hhdHMgVXA=', '', 1, '0', '2022-03-12 21:19:14'),
-(141, 1, 3, 'c2Q=', '', 0, '0', '2022-03-12 21:44:34'),
-(142, 1, 2, 'Uw==', '', 1, '0', '2022-03-12 21:46:02'),
-(143, 1, 2, 'YXNk', '', 1, '0', '2022-03-12 21:47:01'),
-(144, 1, 2, 'T2sg', '', 1, '0', '2022-03-12 21:47:16'),
-(145, 1, 3, 'UQ==', '', 0, '0', '2022-03-12 21:50:38'),
-(146, 1, 3, 'd2U=', '', 0, '0', '2022-03-12 21:52:44'),
-(147, 1, 3, 'SGVsbG8gV2hhdHMgWW8gRG9pbmcgSW0gSGVyZSBEb2luZyBoZXJlIA==', '', 0, '0', '2022-03-12 21:53:02'),
-(149, 1, 3, 'V2hhdHMgVXA=', '', 0, '0', '2022-03-12 22:23:45'),
-(150, 1, 2, 'WW8g', '', 1, '0', '2022-03-12 22:23:54'),
-(151, 1, 2, 'YXM=', '', 1, '0', '2022-03-12 22:24:52'),
-(152, 1, 2, 'dHk=', '', 1, '0', '2022-03-12 22:27:08'),
-(153, 1, 2, 'YXM=', '', 1, '0', '2022-03-12 22:28:15'),
-(154, 1, 2, 'V2hhdHMgVXAg', '', 1, '0', '2022-03-12 22:28:23'),
-(155, 1, 2, 'Tm8gTm8g', '', 1, '0', '2022-03-12 22:28:59'),
-(156, 2, 3, 'UGsgRG9u', '', 0, '0', '2022-03-12 23:04:27'),
-(157, 2, 3, 'aG93IGlzIGl0IGdvaW5n', '', 0, '0', '2022-03-12 23:10:49'),
-(158, 2, 1, 'd2hhdCBpcyBpdCB3aGF0J3MgeW91ciBuYW1lIG15IG5hbWUgaXMgTmF2ZWVuIFJhaiBDaGhldHJp', '', 1, '0', '2022-03-12 23:11:32'),
-(159, 2, 1, 'V2hhdHNBcHA=', '', 1, '0', '2022-03-12 23:11:47'),
-(160, 2, 3, 'YXNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3M=', '', 0, '0', '2022-03-12 23:44:26'),
-(161, 1, 3, 'a2hhYmFyIFdoYXRzQXBw', '', 0, '0', '2022-03-14 15:42:10'),
-(163, 1, 2, 'Z2hoZyB2aGdr', '', 1, '0', '2022-03-14 15:44:34'),
-(164, 1, 2, 'aGNoYyBj', '', 1, '0', '2022-03-16 18:27:46'),
-(166, 1, 3, 'Z2hnZmg=', '', 0, '0', '2022-03-21 21:14:53'),
-(167, 1, 3, 'Y2J2Y2I=', '', 0, '0', '2022-03-21 21:15:00'),
-(168, 1, 3, 'ZGZz', '', 0, '0', '2022-03-22 13:55:37'),
-(169, 2, 1, 'T2U=', '', 1, '0', '2022-03-25 13:33:04'),
-(170, 2, 1, 'YWpiZGpiZGE0', '', 1, '0', '2022-03-25 13:54:08'),
-(171, 1, 3, 'jvhg', '', 0, '0', '2022-03-26 17:13:09'),
-(172, 1, 2, 'SGFwcHkgYmlydGhkZmdoZmdo', '', 1, '0', '2022-03-28 11:34:30'),
-(173, 2, 1, 'VGhhbmtzIG1hbg==', '', 1, '0', '2022-03-28 11:35:28'),
-(174, 1, 2, 'byBiaGF1', '', 1, '0', '2022-03-28 12:21:25'),
-(175, 2, 1, 'SyBobyBiaGFpIA==', '', 1, '0', '2022-03-28 12:22:14'),
-(176, 1, 2, 'V2Vld2V3ZXdld2UgZXdld2V3', '', 1, '0', '2022-03-28 12:34:08'),
-(178, 2, 1, 'dmI=', '', 1, '0', '2022-03-28 20:29:24'),
-(179, 2, 3, 'eXU=', '', 0, '0', '2022-03-28 20:29:38'),
-(180, 1, 2, 'Z2g=', '', 1, '0', '2022-03-28 20:32:24'),
-(181, 1, 2, 'Z2ZoZ2YgZmdoZmc=', '', 1, '0', '2022-03-28 20:32:32'),
-(182, 2, 1, 'b2U=', '', 1, '0', '2022-03-28 20:42:51'),
-(183, 2, 1, 'YmZ2YiB2Y2IgdmNi', '', 1, '0', '2022-03-28 20:45:30'),
-(184, 2, 1, 'cXdlcnR5dQ==', '', 1, '0', '2022-03-28 20:48:29'),
-(185, 2, 1, 'cXdld3Fkc2Zkc2Y=', '', 1, '0', '2022-03-28 20:49:10'),
-(186, 1, 3, '', '', 0, '0', '2022-03-28 20:49:45'),
-(187, 1, 3, '', 'noblesse.jpeg', 0, '0', '2022-03-28 20:49:59'),
-(188, 1, 3, '', 'noblesse.jpeg', 0, '0', '2022-03-28 20:50:04'),
-(189, 2, 1, 'c2RmZHNm', '', 1, '0', '2022-03-28 22:09:12'),
-(190, 2, 1, 'ZnNkZnNkZg==', '', 1, '0', '2022-03-28 22:09:17'),
-(191, 1, 2, 'ZnNkZmRzIHNkZnNkZg==', '', 1, '0', '2022-03-28 22:09:21'),
-(192, 2, 1, 'ZmdkZiBnZmRnZmRn', '', 1, '0', '2022-03-28 22:13:11'),
-(193, 1, 2, 'Z2ZkZyBkZmdmZGc=', '', 1, '0', '2022-03-28 22:13:15'),
-(194, 2, 1, 'ZmdmZGdkZmc=', '', 1, '0', '2022-03-28 22:18:45'),
-(195, 1, 2, 'ZyBkZmcgZGZkZ2RmZw==', '', 1, '0', '2022-03-28 22:18:50'),
-(196, 1, 2, 'eHp4IHp4eng=', '', 1, '0', '2022-03-28 22:19:18'),
-(197, 2, 1, 'bmJuYiBubnZiIG4=', '', 1, '0', '2022-03-28 22:19:23'),
-(198, 1, 2, 'eGN4Y3hjeGM=', '', 1, '0', '2022-03-28 22:20:40'),
-(199, 2, 1, 'Y3hjeGN4Y3hj', '', 1, '0', '2022-03-28 22:20:50'),
-(200, 1, 2, 'YnZ2Y2J2YiBjdmJjYnY=', '', 1, '0', '2022-03-28 22:20:54'),
-(201, 2, 1, 'YmhtbW0=', '', 1, '0', '2022-03-28 22:20:59'),
-(202, 1, 2, 'ZmRzZg==', '', 1, '0', '2022-03-28 22:21:24'),
-(203, 2, 1, 'ZHNkYWRhc2Q=', '', 1, '0', '2022-03-28 22:21:29'),
-(204, 1, 2, 'bmJuYm5ibmJu', '', 1, '0', '2022-03-28 22:21:36'),
-(205, 2, 1, 'aG1tbW1tbW1tbW1tbW1tbW1tbW1tIG0=', '', 1, '0', '2022-03-28 22:21:42'),
-(206, 1, 2, 'b29v', '', 1, '0', '2022-03-28 22:23:05'),
-(207, 2, 1, 'dWk=', '', 1, '0', '2022-03-28 22:23:11'),
-(208, 1, 2, 'YXNkIGFzZA==', '', 1, '0', '2022-03-28 22:23:40'),
-(209, 2, 1, 'c2Q=', '', 1, '0', '2022-03-28 22:23:45'),
-(210, 1, 2, 'eWFhaA==', '', 1, '0', '2022-03-28 22:23:54'),
-(211, 2, 1, 'bm8=', '', 1, '0', '2022-03-28 22:24:00'),
-(212, 1, 2, 'bmJu', '', 1, '0', '2022-03-28 22:24:54'),
-(213, 2, 1, 'd2Vy', '', 1, '0', '2022-03-28 22:24:59'),
-(214, 1, 2, 'b2tra2s=', '', 1, '0', '2022-03-28 22:25:17'),
-(215, 2, 1, 'bm9wZSAgZWVlZWVlZWUgZWVlZWVlZWVlZWVl', '', 1, '0', '2022-03-28 22:25:26'),
-(216, 2, 1, 'bmJu', '', 1, '0', '2022-03-28 22:26:48'),
-(217, 1, 2, 'aG1tbQ==', '', 1, '0', '2022-03-28 22:26:54'),
-(218, 1, 2, 'SyBnYXJkYWkgSG8gcg==', '', 1, '0', '2022-03-28 22:27:01'),
-(219, 2, 1, 'QmFzaXJheHUgdHcgbmk=', '', 1, '0', '2022-03-28 22:27:09'),
-(220, 1, 2, 'b29vbw==', '', 1, '0', '2022-03-28 22:27:54'),
-(221, 2, 1, 'dW1tIG5p', '', 1, '0', '2022-03-28 22:28:01'),
-(222, 1, 2, 'ZWEgdGVzdG8gcG8=', '', 1, '0', '2022-03-28 22:28:12'),
-(223, 1, 2, 'eW8=', '', 1, '0', '2022-03-28 22:28:38'),
-(224, 2, 1, 'aG1tbQ==', '', 1, '0', '2022-03-28 22:28:42'),
-(225, 1, 2, 'eW8=', '', 1, '0', '2022-03-28 22:30:53'),
-(226, 2, 1, 'aG1t', '', 1, '0', '2022-03-28 22:30:58'),
-(227, 1, 2, 'YW5pIGsgeGE=', '', 1, '0', '2022-03-28 22:31:33'),
-(228, 2, 1, 'YmFzaXJhY3UgaGF1IA==', '', 1, '0', '2022-03-28 22:31:41'),
-(229, 1, 2, 'ZWE=', '', 1, '0', '2022-03-28 22:31:58'),
-(230, 1, 2, 'SyBnYXJkYWkgSG9pY2hpbnhh', '', 1, '0', '2022-03-28 22:32:08'),
-(231, 1, 2, 'd2VhZWE=', '', 1, '0', '2022-03-28 22:32:14'),
-(232, 2, 1, 'b28=', '', 1, '0', '2022-03-28 22:32:19'),
-(233, 2, 1, 'b28=', '', 1, '0', '2022-03-28 22:32:22'),
-(234, 2, 1, 'dWk=', '', 1, '0', '2022-03-28 22:32:26'),
-(235, 1, 2, 'Zmc=', '', 1, '0', '2022-03-28 22:32:47'),
-(236, 2, 1, 'eW8=', '', 1, '0', '2022-03-28 22:32:53'),
-(237, 2, 1, 'SGVsbG8gV2hhdHMgdXAg', '', 1, '0', '2022-03-28 22:33:09'),
-(238, 1, 2, 'WWFhIEltIGRvaW5nIGdvb2QgQW5kIFdoYXQgQWJvdXQgdQ==', '', 1, '0', '2022-03-28 22:33:36'),
-(239, 2, 1, 'aW0gYWxzbyBnb2Q=', '', 1, '0', '2022-03-28 22:33:51'),
-(240, 2, 1, 'b2sgbm93IHdoYXQg', '', 1, '0', '2022-03-28 22:35:40'),
-(241, 1, 2, 'd2hhdA==', '', 1, '0', '2022-03-28 22:35:56'),
-(242, 1, 2, 'dnhjdnhjdg==', '', 1, '0', '2022-03-28 22:37:00'),
-(243, 1, 2, 'dnh2eGN2IHhjdmN4dnhjdnhjdnhjdnhjdnhjdnhjIHhjdnhjdiB4Y3Z4Y3Z4Y3YgeGN2eGN2', '', 1, '0', '2022-03-28 22:37:11'),
-(244, 2, 1, 'dHloICBmZmdiaGZn', '', 1, '0', '2022-03-28 22:38:53'),
-(245, 1, 2, 'eW9vb29v', '', 1, '0', '2022-03-28 22:39:00'),
-(246, 1, 2, 'bm9ubw==', '', 1, '0', '2022-03-28 22:39:25'),
-(247, 2, 1, 'd2hhdCA=', '', 1, '0', '2022-03-28 22:39:32'),
-(248, 1, 2, 'ZmNzZGYgc2Rmc2Q=', '', 1, '0', '2022-03-28 22:56:13'),
-(249, 2, 1, 'bm8gbm8=', '', 1, '0', '2022-03-28 22:56:22'),
-(250, 2, 1, 'Z2ZoZmdo', '', 1, '0', '2022-03-28 22:59:16'),
-(251, 1, 2, 'aGZnaCBmZ2hmZ2g=', '', 1, '0', '2022-03-28 22:59:23'),
-(252, 1, 2, '8J+Yiw==', '', 1, '0', '2022-03-28 23:03:15'),
-(253, 1, 2, 'c2RmZHNm', '', 1, '0', '2022-03-28 23:03:19'),
-(254, 1, 2, 'amhnamhnamdoamhnIGhnaiA=', '', 1, '0', '2022-03-28 23:03:56'),
-(255, 1, 2, 'amhnamhnamdoamhnIGhnaiA=', '', 1, '0', '2022-03-28 23:03:56'),
-(256, 2, 1, 'Z2ZoZ2ZoZmcgZ2ZoIGdmaA==', '', 1, '0', '2022-03-28 23:29:53'),
-(257, 1, 2, 'b2wgZGlvZQ==', '', 1, '0', '2022-03-28 23:30:08'),
-(258, 1, 2, 'aG1tbW0gayB4YXE=', '', 1, '0', '2022-03-29 15:24:28'),
-(259, 1, 2, 'dGhpayB4YWFhYWFhYWFhYWFhYWE=', '', 1, '0', '2022-03-29 15:24:40'),
-(260, 2, 1, 'b2sgb2sgZ29vZA==', '', 1, '0', '2022-03-29 15:41:27'),
-(261, 2, 1, 'c2Fkc2Fkc2Rhc2Fk', '', 1, '0', '2022-03-29 15:41:55'),
-(262, 1, 2, 'bmJuYm5ibmJuYm4=', '', 1, '0', '2022-03-29 15:43:41'),
-(263, 1, 2, 'bmJuYm5ibmJuYm4=', '', 1, '0', '2022-03-29 15:43:47'),
-(264, 2, 1, 'eW9vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29v', '', 1, '0', '2022-03-29 15:43:53'),
-(265, 2, 1, 'SyB4YSBraGFiYXIgbmFiaW4=', '', 1, '0', '2022-03-29 15:44:02'),
-(266, 1, 2, 'VGhpayB4YSB5ciB0bSxybyBrIHhh', '', 1, '0', '2022-03-29 15:44:12'),
-(267, 2, 1, 'SyBnYXJkYWkgSG8gVHcgU2FuaWJhciBrbyBkaW4gayBnYXJuZSBobw==', '', 1, '0', '2022-03-29 15:46:06'),
-(268, 1, 2, 'bmJu', '', 1, '0', '2022-03-29 15:48:26'),
-(269, 2, 1, 'eW8=', '', 1, '0', '2022-03-29 15:48:32'),
-(270, 1, 2, 'Z2hnZmhmZ2ggZmdoZmdoIGZnaA==', '', 1, '0', '2022-03-29 15:49:15'),
-(271, 2, 1, 'aGdmaGdmaCBmZ2hmZyBoZmdoIGZnaGZnaGZnaCBmZ2ggZmhmZ2ggZmdoIGZnaGZnaA==', '', 1, '0', '2022-03-29 15:49:24'),
-(272, 1, 2, 'eW9vb29vb28=', '', 1, '0', '2022-03-29 15:49:33'),
-(273, 2, 1, 'bmJuYm5ibmJuIGJuYm5iIG5ibmJu', '', 1, '0', '2022-03-29 15:52:44'),
-(274, 1, 2, 'dWl1aXVpIHVpdWl1IHVpdWl1IHVpdWl1aXUgaXVpdQ==', '', 1, '0', '2022-03-29 15:52:52'),
-(275, 2, 1, 'bm5ubmJuYm5ibmJuYm5ibmJuYm5ibmJu', '', 1, '0', '2022-03-29 15:52:59'),
-(276, 1, 2, 'bmJu', '', 1, '0', '2022-03-29 15:53:28'),
-(277, 2, 1, 'Ym5j', '', 1, '0', '2022-03-29 15:53:40'),
-(278, 1, 2, 'bm5ubm5ubm5ubm5ubm5ubm4=', '', 1, '0', '2022-03-29 15:57:57'),
-(279, 2, 1, 'cHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBw', '', 1, '0', '2022-03-29 15:58:03'),
-(280, 1, 2, 'UVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUQ==', '', 1, '0', '2022-03-29 15:58:10'),
-(281, 2, 1, 'UlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlI=', '', 1, '0', '2022-03-29 15:58:17'),
-(282, 1, 2, 'TlZCTlYgQk5WQk5CViBOQlZOIEJWTlZCTg==', '', 1, '0', '2022-03-29 16:00:55'),
-(283, 2, 1, 'VFQgVFlIIEZIRkdIRkdIIEZHSEdGSA==', '', 1, '0', '2022-03-29 16:01:00'),
-(284, 1, 2, 'Qk5NQk5NQk5NIEJOTU5CTQ==', '', 1, '0', '2022-03-29 16:01:54'),
-(285, 2, 1, 'TUJNTkJNIEJOTUJOTU5CTSA=', '', 1, '0', '2022-03-29 16:01:59'),
-(286, 2, 1, 'TkJOQk5CTkJOQk5CTkJOQk5CTkJOQk4=', '', 1, '0', '2022-03-29 16:02:07'),
-(287, 1, 2, 'Qk5CTkJOQk5CTkJOIE5CTkJOQk4gQk5CTkIgQk5CTkJO', '', 1, '0', '2022-03-29 16:02:15'),
-(288, 2, 1, 'Tk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTg==', '', 1, '0', '2022-03-29 16:02:35'),
-(289, 1, 2, 'Tk5OTk5OTk5OTk5OTk5OTk1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1N', '', 1, '0', '2022-03-29 16:02:40'),
-(290, 1, 2, 'TU1NTU1NTU1NTU1NTU1NTU1NTU1N', '', 1, '0', '2022-03-29 16:02:42'),
-(291, 2, 1, 'TU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NQlZNTiBWVkJOIFZCTiBWQk5WQk4gVkJOVkJOVk5WQk4=', '', 1, '0', '2022-03-29 16:02:50'),
-(292, 1, 2, 'WVVZVVlVWVVZVVRZVVlUVVRZVTc2ODY3ODY3OA==', '', 1, '0', '2022-03-29 16:03:01'),
-(293, 2, 1, 'ODY3ODY3IDY3OCA2Njc4IDY3ODY3IDg2NzggNjc4Njc4IDY3OCA2NzggNjc4Njc4NjcgNjc4Njg3Ng==', '', 1, '0', '2022-03-29 16:03:13'),
-(294, 1, 2, 'TlZCTiBOVkIgTkJWTiBCVk5C', '', 1, '0', '2022-03-29 16:05:14'),
-(295, 2, 1, 'TkJWTlZCIEJWTiBWQk4gVkJOIFZWQk4=', '', 1, '0', '2022-03-29 16:05:18'),
-(296, 1, 2, 'MTIzNDU2NzgvOQ==', '', 1, '0', '2022-03-29 16:05:27'),
-(297, 2, 1, 'OTg2NTAyMjkwNA==', '', 1, '0', '2022-03-29 16:05:37'),
-(298, 2, 1, 'NjU3NjU3NjUgNjU3IDU2NyA1Njc2NQ==', '', 1, '0', '2022-03-29 16:06:55'),
-(299, 1, 2, 'NzU2NyA1IDU2NyA1Njc2NTcgNTYgNzU2NzU2IDc1Njcg', '', 1, '0', '2022-03-29 16:07:03'),
-(300, 1, 2, 'NDM1NDM1NDM1IDUzNCA1', '', 1, '0', '2022-03-29 16:13:42'),
-(301, 2, 1, 'NDM1IDM0NTM0NSAzNDU0MzU0MzUgMzQ1', '', 1, '0', '2022-03-29 16:13:48'),
-(302, 1, 2, 'SyB4YSBkb3N0IEtoYWJhciB0bXJvIGsgZ2FydGRhaSB4YXUgciBhYWprYWwgIGthdGFpIGRla2hpZGFpbmF1IHRtZSBraW5hIGhv', '', 1, '0', '2022-03-29 16:14:11'),
-(303, 2, 1, 'S2FhIGh1bmUgZG9zdCB5cg==', '', 1, '0', '2022-03-29 16:14:21'),
-(304, 1, 2, 'VGFpdCBoYXdhIGt1cmEgbmFnYXJhIG5hIHBoZXJvdGVzYWkgY2hhdGRpbmUgayA=', '', 1, '0', '2022-03-29 16:14:37'),
-(305, 1, 2, 'Z2ZoIGZnaGZnIGhmZ2jwn6SR', '', 1, '0', '2022-03-29 16:16:19'),
-(306, 1, 2, 'aGdnZmggZmdoIGZnaPCfpKrwn5iM', '', 1, '0', '2022-03-29 16:18:04'),
-(307, 1, 3, 'eW8=', '', 0, '0', '2022-03-29 16:28:36'),
-(308, 1, 2, 'SGFoYWhhIFlvdSBTbyBGdW5ueSBLIG1hIGNoYWtrYSBwYXJ4dSBrYWlsZSBrYWkgdHcg8J+kqQ==', '', 1, '0', '2022-03-29 16:29:05'),
-(309, 2, 1, 'QXd3d3cgVGhhbmsgWW91IFNvIG11Y2gg8J+YjPCfmIzwn5iM', '', 1, '0', '2022-03-29 16:29:21'),
-(310, 1, 2, 'YnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2diBidnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnYgIGJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmIgYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYg==', '', 1, '0', '2022-03-29 16:29:46'),
-(311, 2, 1, 'Ym5ibiBuIGp0aiBydHlqIHl0anQgeWp5dGo=', '', 1, '0', '2022-03-29 16:31:27'),
-(312, 1, 2, 'RW1ld2FpIEJhbnRhaSA=', '', 1, '0', '2022-03-29 16:31:38'),
-(313, 1, 2, 'VGhpcyBpcyBteSBkZXN0aW55IGkgd2lsbCBuZXZlciBzYXkgbmV2ZXI=', '', 1, '0', '2022-03-29 16:32:06'),
-(314, 2, 1, 'QnJpbmcgaXQgdXAgdXA=', '', 1, '0', '2022-03-29 16:32:20'),
-(315, 1, 2, 'YnZjYiBjYiBjdmJjdmI=', '', 1, '0', '2022-03-29 16:33:02'),
-(316, 2, 1, 'YmJiYmJiYmI=', '', 1, '0', '2022-03-29 16:33:06'),
-(317, 1, 2, 'aGpoamggaGpoaiBoamhqIGpoag==', '', 1, '0', '2022-03-29 16:33:13'),
-(318, 2, 1, 'ampqaGpoIGpoamhqaGpoamhq', '', 1, '0', '2022-03-29 16:33:18'),
-(319, 1, 2, 'aGdmaGYgZ2hnZmggZ2ZoZ2Zo', '', 1, '0', '2022-03-29 16:33:58'),
-(320, 2, 1, 'IGhmZ2hnZmggZmdoZiBnaCBmZ2ggZmdoIGZnaA==', '', 1, '0', '2022-03-29 16:34:05'),
-(321, 1, 2, 'YnZjYmN2IGJjdmJjdmIgY3ZiIGNiY3Zi', '', 1, '0', '2022-03-29 16:37:34'),
-(322, 2, 1, 'YmN2YiBjdmIgY2IgY3Zi', '', 1, '0', '2022-03-29 16:37:37'),
-(323, 2, 1, 'YmN2YiBjdmIgY3ZiYyB2YmN2Yg==', '', 1, '0', '2022-03-29 16:37:40'),
-(324, 1, 2, 'YnZjYiBjaHloZmIgYmN2YiBjYiBibmdiY2JjdiBjYmMgdmJ5YnZj', '', 1, '0', '2022-03-29 16:37:47'),
-(325, 1, 2, 'bnZibnZibmJ2biB2Ym5idm4=', '', 1, '0', '2022-03-29 16:38:09'),
-(326, 2, 1, 'bnZibiB2Ym52Ym52Ym52Ym4gdm52Ym4=', '', 1, '0', '2022-03-29 16:38:13'),
-(327, 2, 1, 'bnZibnZibiB5YnZuIHR5amZubmJqdGpmIG4gZmdoZmdoZmdo', '', 1, '0', '2022-03-29 16:38:19'),
-(328, 1, 2, 'ZmdoIGZnaCBydGJmZ2hmZ2ggZmdodHlmZ2ggZmdoZmdoIA==', '', 1, '0', '2022-03-29 16:38:24'),
-(329, 2, 1, 'ZmdoIHJ0aGZnaCBmZ2h0Z2ZoZiBnaGZnaCBmZ2ggZmdoIGJqZ3RoamdqbmdoaiBnaGpnaGo=', '', 1, '0', '2022-03-29 16:38:32'),
-(330, 1, 2, 'Z2hqIGdoanl0amZnaGogZmdoZmRoZmcgaHR5aGZnaCBmZ2hmZyBoZmdodHJzaGZnaCBnaGdmaCBnZmgg', '', 1, '0', '2022-03-29 16:38:39'),
-(331, 1, 2, 'Z2hqIGdoanl0amZnaGogZmdoZmRoZmcgaHR5aGZnaCBmZ2hmZyBoZmdodHJzaGZnaCBnaGdmaCBnZmgg', '', 1, '0', '2022-03-29 16:38:39'),
-(332, 1, 2, 'Z2hmIGhmc2Znc2Rmc2RmZHNm', '', 1, '0', '2022-03-29 16:38:42'),
-(333, 1, 2, 'MzIxMzExMzIwMTI=', '', 1, '0', '2022-03-29 16:38:47'),
-(334, 1, 2, 'MzEyMzUzNTQzMDQ1Mzc1ODM0NTAzNDUzMDU=', '', 1, '0', '2022-03-29 16:38:50'),
-(335, 2, 1, 'NDUzNDUzMDU4NjM4NzYwMzQ1MzYwNDU2NTQ2MzIwMTUyMTAgMiAwMTU2IDk1MSA1NCA5ODYgICAg', '', 1, '0', '2022-03-29 16:39:00'),
-(336, 1, 2, 'TXkgbmFtZSBpcyBuYWJpbiByYWogY2hoZXRyaSA=', '', 1, '0', '2022-03-29 16:39:10'),
-(337, 1, 2, 'SSBhbSBmcm9tIGJha3VsYWhhciBpIHdvcmxrIGluIGIgaXJlbmRyYSBtdWx0b3BsZSBjYW1wdXMgYWpiYXNmZyBzc2Ygc2RmIGZkZ3NkO2dmaHNkIGZzIGRzZGdkc2dmIHNkaHZkcyBzZGZnc2QgamZiZHNqZ2h2OyBkc2Znc2QgZHNnZiBkc2cgZ2ZmaCA=', '', 1, '0', '2022-03-29 16:39:29'),
-(338, 2, 1, 'T2sgVGhzdGFzIGdvZCBuYWRuIGFmbiBsa3NkZmRnc2RmZHNmIHNmc2Rmc2RmZ2dkc24gc2RmZ3NkOGZzZGpmYiBzZGpmYiBzZGl1Zmhwc2Rmc2RuZiBic2RoZiB1c2Rmc2RmICdzZG5mZHNmcHNkZiBiZmQgYmZk', '', 1, '0', '2022-03-29 16:39:44'),
-(339, 1, 2, 'VGFkYWkgaGEgaGFpIG8gaG8gaSBkb250IHdlYW5uYSBrbm93IHNlbmQgdSBob21lIGxvdmUgdSBzb28=', '', 1, '0', '2022-03-29 16:40:36'),
-(340, 2, 1, 'ZGFzZCBhc2Rhc2Rhc2Rhc2Rhc2RhcyBkYXNkIGFzZCBhc2QgYXNk', '', 1, '0', '2022-03-29 16:40:49'),
-(341, 1, 2, 'YnZjYiBjdmJjdmIgY2J2Y2I=', '', 1, '0', '2022-03-29 16:43:01'),
-(342, 2, 1, 'TyB5YWFoIFdoYXRzIHVwIG5pZ2dzIA==', '', 1, '0', '2022-03-29 16:43:13'),
-(343, 1, 2, 'SW0gZ29vZCBhYm91dCB1', '', 1, '0', '2022-03-29 16:43:22'),
-(344, 1, 2, 'dnhjdiB4Y3YgZmR2ZyBndGRmZyAgICAgICAgICAgICAgICAgICB5dHkgICAgICAgICAgICAgICA=', '', 1, '0', '2022-03-29 16:49:20'),
-(345, 2, 1, 'ZmdmZyAgY2JjdmIgY3YgcnRnIGZnYiBiY3ZiIGJjdmIgY3Zidg==', '', 1, '0', '2022-03-29 16:49:27'),
-(346, 1, 2, 'bmJuYm4gbmJuYm4=', '', 1, '0', '2022-03-29 16:56:02'),
-(347, 2, 1, 'bmJuYm4gbmJuYm4gYm5ibmJuIGJuYm5ibmJu', '', 1, '0', '2022-03-29 16:56:09'),
-(348, 1, 2, 'eW95eXl5eXl5eXl5eW9vb29vb295eXl5eW9vb28=', '', 1, '0', '2022-03-29 16:56:17'),
-(349, 2, 1, 'YmN2YmN2YmN2YmN2YmN2YmN2YnZjYg==', '', 1, '0', '2022-03-29 16:57:26'),
-(350, 2, 1, 'YnZiIHZidmJ2IGJi', '', 1, '0', '2022-03-29 16:57:44'),
-(351, 1, 2, 'bmJ2bnYgeWh0biB2biBmaGZoYmYgZmdoYmZn', '', 1, '0', '2022-03-29 16:57:51'),
-(352, 1, 2, 'eXV1dXV1dXV1dXV1dXUg', '', 1, '0', '2022-03-29 16:58:44'),
-(353, 1, 2, 'Z2hqZ2hqIGdoamdoaiBnaGo=', '', 1, '0', '2022-03-29 16:58:48'),
-(354, 1, 2, 'amdoaiBnamdoIGogZ2o=', '', 1, '0', '2022-03-29 16:58:49'),
-(355, 2, 1, 'amdoaiBnamdoamdoaiBnag==', '', 1, '0', '2022-03-29 16:58:55'),
-(356, 1, 2, 'bmJubm5ubm5u', '', 1, '0', '2022-03-29 17:11:41'),
-(357, 1, 2, 'Ym5ibmJuYm5ibmJuYm5ibg==', '', 1, '0', '2022-03-29 17:11:47'),
-(358, 1, 2, 'bmJuYm4gbmJuIG5idm52Ym52Ym4gaGdmbnZudmJuIHZnbmduanZibiB2Ym5qaG52bnYgdmJuIG5oam5naG52YiB2bg==', '', 1, '0', '2022-03-29 17:11:55'),
-(359, 2, 1, 'b29vb29v', '', 1, '0', '2022-03-29 17:12:09'),
-(360, 1, 2, 'bmJu', '', 1, '0', '2022-03-29 17:12:36'),
-(361, 2, 1, 'bmJu', '', 1, '0', '2022-03-29 17:12:40'),
-(362, 1, 2, 'Ym5j', '', 1, '0', '2022-03-29 17:12:45'),
-(363, 2, 1, 'V2hhdHMgVXAgV2hhdHMgWW8gRG9pbmc=', '', 1, '0', '2022-03-29 17:12:56'),
-(364, 1, 2, 'SW0gZ29vZA==', '', 1, '0', '2022-03-29 17:13:07'),
-(365, 2, 1, 'YnZiY3YgYnZjYmIg', '', 1, '0', '2022-03-29 17:13:21'),
-(366, 1, 2, 'bmJuYm5ibiBuYm5ibg==', '', 1, '0', '2022-03-29 17:13:27'),
-(367, 1, 3, 'cGs=', '', 0, '0', '2022-03-29 17:13:32'),
-(368, 1, 2, 'T2xlIE9sZSBNeSBCb3kg', '', 1, '0', '2022-03-29 17:13:44'),
-(369, 2, 1, 'd0hBVCB5TyBkT0lORw==', '', 1, '0', '2022-03-29 17:13:59'),
-(370, 2, 1, 'aGdmaGdmIGZnaGZnaCBmZ2ggZmdo', '', 1, '0', '2022-03-29 17:17:01'),
-(371, 2, 1, 'aGZnIGhmZ2ggZmdo', '', 1, '0', '2022-03-29 17:17:04'),
-(372, 1, 2, 'aGZnaCBmZ2hmIGdoZmcgaGZnaCBmZ2g=', '', 1, '0', '2022-03-29 17:17:08'),
-(373, 1, 2, 'bmJuYm5uYm4gbiBibmJu', '', 1, '0', '2022-03-29 17:17:14'),
-(374, 2, 1, 'bm5ubm5ubm4=', '', 1, '0', '2022-03-29 17:17:18'),
-(375, 2, 1, 'b29vb29vb28=', '', 1, '0', '2022-03-29 17:17:23'),
-(376, 1, 2, 'cHBwcHBwcHA=', '', 1, '0', '2022-03-29 17:17:29'),
-(377, 2, 1, 'WWFhYWgg', '', 1, '0', '2022-03-29 17:17:35'),
-(378, 2, 1, 'bmJ2biBudmJuYnZuIGJ2bg==', '', 1, '0', '2022-03-29 20:30:14'),
-(379, 1, 2, 'YnZuYnZuIHZibmJ2IG5idm4=', '', 1, '0', '2022-03-29 20:30:18'),
-(380, 2, 1, 'Y2JmZ2ggZmdiIGJ2YyBiY2Ig', '', 1, '0', '2022-03-29 20:30:25'),
-(381, 1, 2, 'SyBnYXJkYWkgaG8gcg==', '', 1, '0', '2022-03-29 20:30:37'),
-(382, 2, 1, 'YmFzaXJrbw==', '', 1, '0', '2022-03-29 20:30:43'),
-(383, 1, 2, 'bmJuYm5ibmJu', '', 1, '0', '2022-03-29 20:32:34'),
-(384, 1, 2, 'bnZibnZiIG5idm52IGJudmJudmJuIGJ2biBidm4=', '', 1, '0', '2022-03-29 20:32:44'),
-(385, 2, 1, 'bnZibnZibiB2Ym52YiBudmJu', '', 1, '0', '2022-03-29 20:32:49'),
-(386, 1, 2, 'dnhjdnhjIHhjdnhjdiB4Y3ZjeHY=', '', 1, '0', '2022-03-29 20:33:10'),
-(387, 2, 1, 'eW8=', '', 1, '0', '2022-03-29 20:33:14'),
-(388, 1, 2, 'dmN4diB2eGMgY3Z4', '', 1, '0', '2022-03-29 20:35:33'),
-(389, 1, 2, 'aGdmZmcgaGZnaGYgZ2hmZw==', '', 1, '0', '2022-03-29 20:42:15'),
-(390, 1, 3, 'Z2RmZ2ZkZw==', '', 0, '0', '2022-03-29 20:49:54'),
-(391, 1, 2, 'ZHNmc2Rmc2QgZnNkZnNkZnNkZnM=', '', 1, '0', '2022-03-29 20:52:14'),
-(392, 2, 1, 'ZnNkZiBzZGZzZCBmc2RmIA==', '', 1, '0', '2022-03-29 20:52:31'),
-(393, 1, 3, 'aGZnaCBmZ2ggZmdoZ2Y=', '', 0, '0', '2022-03-29 20:53:59'),
-(394, 1, 2, 'aGZnaCBmaGZnIGhnZmg=', '', 1, '0', '2022-03-29 20:54:08'),
-(395, 1, 2, 'dWl1aXVpdWl1aXVpdWl1aXVp', '', 1, '0', '2022-03-29 20:54:28'),
-(396, 1, 2, 'eW8geW8geW8=', '', 1, '0', '2022-03-29 20:55:19'),
-(397, 2, 1, 'aGZnaGZnIGZnaGYgZ2g=', '', 1, '0', '2022-03-29 20:55:29'),
-(398, 1, 2, 'eXV5dXl1eXV5dSB5dXl1eXUgeXV5dXkgdXl1IHl1eSB1eXV5dSB5dQ==', '', 1, '0', '2022-03-29 20:55:50'),
-(399, 1, 2, 'ZHNmc2Rmc2Rm', '', 1, '0', '2022-03-29 20:56:48'),
-(400, 1, 2, 'eW95b3lveW95b3lv', '', 1, '0', '2022-03-29 20:58:44'),
-(401, 1, 2, 'SyBjYSBraGFiYXIgc2F0aGkg', '', 1, '0', '2022-03-29 20:59:13'),
-(402, 1, 2, 'dnhjdiBnZGZnIGRmZ2ZkZw==', '', 1, '0', '2022-03-29 21:00:00'),
-(403, 1, 2, 'MTIzNDE1NjA2NTA1Ng==', '', 1, '0', '2022-03-29 21:00:13'),
-(404, 2, 1, 'aGZnaCBmaGZnIGhmZ2g=', '', 1, '0', '2022-03-29 21:05:17'),
-(405, 2, 1, 'aGZnaCBmZ2ggZmdoIGZnaA==', '', 1, '0', '2022-03-29 21:05:20'),
-(406, 1, 2, 'dGVydGdkZmdmZCBnZmRnIGZk', '', 1, '0', '2022-03-29 23:39:24'),
-(407, 1, 2, 'YmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYg==', '', 1, '0', '2022-03-29 23:39:29'),
-(408, 1, 3, 'dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dA==', '', 0, '0', '2022-03-29 23:39:34'),
-(409, 1, 2, 'Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2ZnZ2dnZ2dnZ2dnZ2c=', '', 1, '0', '2022-03-29 23:39:41'),
-(410, 1, 3, 'Z2ZkZ2RmZ2ZkZw==', '', 0, '0', '2022-03-29 23:39:44'),
-(411, 1, 3, 'Z2RmZyBkZmcgZmRn', '', 0, '0', '2022-03-29 23:39:47'),
-(412, 1, 5, 'aGdmaCBmZ2ggZ2ZoZmdo4pi5', '', 1, '0', '2022-03-29 23:40:38'),
-(413, 1, 11, 'Z2hoIGdoIGdoZ2hn', '', 1, '0', '2022-03-30 08:33:07'),
-(414, 1, 2, 'Y2ZzZGN4IHhjdiBjeHY=', '', 1, '0', '2022-03-30 08:33:54'),
-(415, 1, 2, 'dmN4diB2Y3h2IGN4dg==', '', 1, '0', '2022-03-30 08:33:56'),
-(416, 1, 2, 'dmN4IHhjdmN4dg==', '', 1, '0', '2022-03-30 08:33:59'),
-(417, 1, 2, 'eXR5dHl0eSB0eXR5IHR5', '', 1, '0', '2022-03-30 08:34:04'),
-(418, 1, 11, 'aGdmaCBmZ2hmZyBo', '', 1, '0', '2022-03-30 09:29:21'),
-(419, 1, 11, 'IA==', '', 1, '0', '2022-03-30 09:29:23'),
-(420, 1, 3, 'aGZnaCBmZ2ggZmdo', '', 0, '0', '2022-03-30 09:29:27'),
-(421, 2, 1, 'dmN4Y3ggdmN4diB4Y3Y=', '', 1, '0', '2022-03-30 09:30:19'),
-(422, 2, 1, 'dnhjdiBjeHYgY3h2', '', 1, '0', '2022-03-30 09:30:22'),
-(423, 1, 3, 'Z2ZoIGZnaCBnZmggZmdo', '', 0, '0', '2022-03-30 09:30:44'),
-(424, 1, 3, 'Z2ZoIGZnaCBnZmggZmdo', '', 0, '0', '2022-03-30 09:30:44'),
-(425, 1, 11, 'aGZnIGhmZyBoZmdoIGdo', '', 1, '0', '2022-03-30 09:30:50'),
-(426, 1, 2, 'bm90biB2biBidm4gYm4=', '', 1, '0', '2022-03-30 09:31:36'),
-(427, 1, 2, 'bmJ2biBuYmI=', '', 1, '0', '2022-03-30 09:49:11'),
-(428, 1, 2, 'bnZibiBidm52Ym4g', '', 1, '0', '2022-03-30 09:49:15'),
-(429, 1, 2, 'Z2hqIGdoaiBnaGogZ2hq', '', 1, '0', '2022-03-30 09:53:06'),
-(430, 1, 2, 'eXV5dXl1eXV5IHl1eXV5dSB5dXl1eSB1eXV5dSB5dXl1dXl1IHl1', '', 1, '0', '2022-03-30 09:53:13'),
-(431, 1, 5, 'amhramhrIGpoayBq', '', 1, '0', '2022-03-30 09:59:00'),
-(432, 1, 3, 'amdoaiBnaGogZ2hq', '', 0, '0', '2022-03-30 09:59:55'),
-(433, 1, 3, 'amdoaiBnaGogZ2hq', '', 0, '0', '2022-03-30 09:59:57'),
-(434, 1, 3, 'amdoamdoIGpnaGogeXRqaGdqIGdoamdoamdoamhn', '', 0, '0', '2022-03-30 10:00:02'),
-(435, 1, 5, 'eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eQ==', '', 1, '0', '2022-03-30 10:00:09'),
-(436, 1, 5, 'eXl5eXl5eXl5eXl5eQ==', '', 1, '0', '2022-03-30 10:00:12'),
-(437, 1, 3, 'b29vb29vb29vb29vb29vb29vb29v', '', 0, '0', '2022-03-30 10:04:07'),
-(438, 1, 11, '', 'nbn.jpg', 1, '0', '2022-03-30 10:05:28'),
-(439, 1, 11, '', 'nbn.jpg', 1, '0', '2022-03-30 10:05:32'),
-(440, 1, 5, 'bmJuYiBibmJuIGJuIGJuYg==', '', 1, '0', '2022-03-30 10:09:05'),
-(441, 1, 5, 'bmJuIG5ibiBuYm4=', '', 1, '0', '2022-03-30 10:09:08'),
-(442, 1, 11, 'aGZnaCBnZmZoZ2YgZmdoYiBmZ2hi', '', 1, '0', '2022-03-30 10:31:34'),
-(443, 1, 11, 'aGdmaCBmZ2hmZ2hmZw==', '', 1, '0', '2022-03-30 10:31:37'),
-(445, 13, 1, 'Z2YgaGdmaCBmZ2ggZ2ZoIGdmaA==', '', 1, '0', '2022-03-30 12:23:17'),
-(446, 1, 11, 'MTIzNCBoZWxsbw==', '', 1, '0', '2022-03-30 21:32:04'),
-(447, 1, 13, 'YmN2YmN2YiBjdmIgY3ZidmNidmM=', '', 1, '0', '2022-03-30 21:35:24'),
-(448, 13, 1, 'Z2ZkZ2ZkZyBmZGcgZmRnZmRn', '', 1, '0', '2022-03-30 21:45:27'),
-(449, 13, 1, 'Z3ZkZiBnZmRnIGZnZmQgZw==', '', 1, '0', '2022-03-30 21:45:34'),
-(450, 13, 1, 'ZGZzZGYgc2Rm', '', 1, '0', '2022-03-30 23:02:54'),
-(451, 1, 13, 'ZmRzZiBzZGYgc2RmIHNk', '', 1, '0', '2022-03-30 23:02:58'),
-(452, 1, 5, 'Z2ZoZmcgaGZnaCBnZmg=', '', 1, '0', '2022-03-30 23:06:21'),
-(453, 1, 13, 'c2QgZ2ZkcyBnZGZnIGRmZw==', '', 1, '0', '2022-03-30 23:07:03'),
-(454, 13, 1, 'IGdoaiBnaGogZ2hq', '', 1, '0', '2022-03-30 23:07:11'),
-(455, 1, 13, 'amdoIGpnaGogZ2hqIGdoag==', '', 1, '0', '2022-03-30 23:07:14'),
-(456, 13, 1, 'amdoaiBnaGogbmJuIG5ibiBuYm4gbmJu', '', 1, '0', '2022-03-30 23:07:21'),
-(458, 1, 2, 'YmN2IGJjdmJjdmI=', '', 1, '0', '2022-03-30 23:08:18'),
-(461, 1, 2, 'Z2ZkIGdmZGcgZmRn', '', 1, '0', '2022-03-30 23:16:47'),
-(464, 1, 2, 'Z2RmIGdkZmc=', '', 1, '0', '2022-03-30 23:18:39'),
-(466, 2, 1, 'ZmRzZiBzZGZzZGY=', '', 1, '0', '2022-03-30 23:19:30'),
-(467, 1, 2, 'ZmRzIGZzZGYgc2Rm', '', 1, '0', '2022-03-30 23:19:34'),
-(468, 2, 1, 'ZnMgZGZkcyBmZHMgZnNkZg==', '', 1, '0', '2022-03-30 23:19:41'),
-(469, 1, 2, 'ZiBkc2Ygc2RmZHNm', '', 1, '0', '2022-03-30 23:19:44'),
-(470, 2, 1, 'ZGYgZGdmIGdmIGhnZmg=', '', 1, '0', '2022-03-30 23:19:55'),
-(471, 1, 2, 'ZmdoIGZnaCBmZ2hnZg==', '', 1, '0', '2022-03-30 23:19:59'),
-(472, 1, 2, 'ZHNhIGFzZA==', '', 1, '0', '2022-03-30 23:20:48'),
-(473, 2, 1, 'ZHNhIGRzZCBkcyBkc2Zm', '', 1, '0', '2022-03-30 23:20:53'),
-(474, 1, 2, 'ZnNkIGZzZGYgc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:20:57'),
-(475, 2, 1, 'ZmRzIGZzZGYgc2Rm', '', 1, '0', '2022-03-30 23:21:00'),
-(476, 1, 2, 'ZiBzZGYgc2Rmc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:21:04'),
-(477, 1, 2, 'ZnNkIHNkZiBzZGY=', '', 1, '0', '2022-03-30 23:21:17'),
-(478, 2, 1, 'ZmRzIGZkcyBmc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:21:24'),
-(479, 1, 2, 'ZmRzIGYgc2RmIHNkZiBzZGY=', '', 1, '0', '2022-03-30 23:21:28'),
-(480, 2, 1, 'ZmQgc2ZzZCBmc2Q=', '', 1, '0', '2022-03-30 23:21:31'),
-(481, 1, 2, 'ZyBkZmcgZGZn', '', 1, '0', '2022-03-30 23:21:38'),
-(482, 1, 2, 'ZiBnZmRnIGZkZ2Zk', '', 1, '0', '2022-03-30 23:21:48'),
-(483, 1, 2, 'ZGYgdnhjdnhjdmN4', '', 1, '0', '2022-03-30 23:23:34'),
-(484, 2, 1, 'Z2ZkZyBkZmdkZmdnIGZkZ2ZkIGc=', '', 1, '0', '2022-03-30 23:23:51'),
-(485, 1, 2, 'Z2ZkZyBmIGRn', '', 1, '0', '2022-03-30 23:23:55'),
-(486, 1, 2, 'aGdmaCBmZ2hnZmhn', '', 1, '0', '2022-03-30 23:25:17'),
-(487, 2, 1, 'IGdmaCBmZ2ggZmdoIGZnaGZnaCBmZ2hmZ2g=', '', 1, '0', '2022-03-30 23:25:24'),
-(488, 1, 2, 'aGdmIGhmZ2ggZmdoIGZnaGZnaCBmZ2g=', '', 1, '0', '2022-03-30 23:25:28'),
-(489, 1, 2, 'aGZnaCBmZ2hmZyBoZmdoZ2Zo', '', 1, '0', '2022-03-30 23:25:31'),
-(490, 1, 2, 'aGYgZ2hmZ2ggZmdoIGZnaGdmaA==', '', 1, '0', '2022-03-30 23:25:35'),
-(491, 1, 2, 'ZmRzIGZkc2Ygc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:26:42'),
-(492, 2, 1, 'ZnNkIGZzZCBmc2RmIGRzZg==', '', 1, '0', '2022-03-30 23:26:46'),
-(493, 1, 2, 'ZmRzZiBzZGYgc2RmIHNkZmRzZg==', '', 1, '0', '2022-03-30 23:26:49'),
-(494, 1, 2, 'Y3p4YyB6eGN6eGN6eGM=', '', 1, '0', '2022-03-30 23:27:16'),
-(495, 2, 1, 'Y3p4Y3p4Y3g=', '', 1, '0', '2022-03-30 23:27:20'),
-(496, 2, 1, 'Y3h6Y3p4YyB6eGN6eGN4', '', 1, '0', '2022-03-30 23:27:22'),
-(497, 2, 1, 'ZmdmZGcgZmRnIGZkZw==', '', 1, '0', '2022-03-30 23:31:30'),
-(498, 1, 2, 'YmNiY3ZiIGN2YiBjdmJjdmI=', '', 1, '0', '2022-03-30 23:32:14'),
-(499, 1, 2, 'YmN2YmN2IGJjYnY=', '', 1, '0', '2022-03-30 23:32:17'),
-(500, 1, 2, 'ZmQgZmRzZiBkc2YgZHNm', '', 1, '0', '2022-03-30 23:33:00'),
-(501, 1, 2, 'ZmRzIGZzZGYgZHNm', '', 1, '0', '2022-03-30 23:33:02'),
-(502, 2, 1, 'ZiBzZGYgc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:33:09'),
-(503, 1, 2, 'ZmdkZmdkZiBnZmRnIA==', '', 1, '0', '2022-03-30 23:34:21'),
-(504, 1, 2, 'ZmdkZmdkZiBnZmRnIA==', '', 1, '0', '2022-03-30 23:34:21'),
-(505, 2, 1, 'Z2ZkIGdmZGcg', '', 1, '0', '2022-03-30 23:34:24'),
-(506, 1, 2, 'Z2ZkIGdmZGcgZmRnIA==', '', 1, '0', '2022-03-30 23:34:28'),
-(507, 2, 1, 'Z2RmIGdkZiBnZmRn', '', 1, '0', '2022-03-30 23:34:31'),
-(508, 2, 1, 'bmJubmJuYm5ibmJu', '', 1, '0', '2022-03-30 23:34:34'),
-(509, 1, 2, 'bmJuYm5ibmJu', '', 1, '0', '2022-03-30 23:34:39'),
-(510, 1, 2, 'YmN2YmN2IGJjdmJjdmI=', '', 1, '0', '2022-03-30 23:35:02'),
-(511, 2, 1, 'YmN2YiBjdmIgY3ZiY3Zi', '', 1, '0', '2022-03-30 23:35:06'),
-(512, 1, 2, 'dnhjdiB4Y3Z4YyB2eGN2eGN2', '', 1, '0', '2022-03-30 23:35:12'),
-(513, 2, 1, 'eXl5eXl5eXl5eXl5eXk=', '', 1, '0', '2022-03-30 23:35:16'),
-(514, 2, 1, 'Ym5uYm5ibmJuYm4=', '', 1, '0', '2022-03-30 23:35:46'),
-(515, 1, 2, 'Ym5j', '', 1, '0', '2022-03-30 23:35:54'),
-(516, 1, 2, 'bmJubm5u', '', 1, '0', '2022-03-30 23:37:29'),
-(517, 2, 1, 'eW95b3lveW95b3lveW8=', '', 1, '0', '2022-03-30 23:37:36'),
-(518, 1, 2, 'eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5', '', 1, '0', '2022-03-30 23:37:57'),
-(519, 2, 1, 'bm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm4=', '', 1, '0', '2022-03-30 23:38:02'),
-(520, 1, 2, 'bm5ubm5ubm5ubm5ubm5oaGhoaGhoaGhoaGhoaGhoaGhoaGh5eXl5eXl5eXl5eXl5eQ==', '', 1, '0', '2022-03-30 23:38:08'),
-(521, 2, 1, 'eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5', '', 1, '0', '2022-03-30 23:38:14'),
-(522, 1, 2, 'bmJuYm5ibmJu', '', 1, '0', '2022-03-30 23:39:14'),
-(523, 2, 1, 'bmJuYm5ibg==', '', 1, '0', '2022-03-30 23:39:18'),
-(524, 1, 13, ' hgfh fghgf', '', 1, '0', '2022-03-30 23:39:44'),
-(525, 1, 13, 'hgfh fgh fgh fgh', '', 1, '0', '2022-03-30 23:39:47'),
-(526, 1, 13, 'hgfh fgh fghfg hfgh fgh', '', 1, '0', '2022-03-30 23:39:50'),
-(527, 1, 13, 'h fghfghfghfgh', '', 1, '0', '2022-03-30 23:39:53'),
-(528, 1, 2, 'dfg fg dfg fdg', '', 1, '0', '2022-03-30 23:40:03'),
-(529, 1, 2, 'yyyyyyyyyyyyyyyyyyy', '', 1, '0', '2022-03-30 23:40:15'),
-(530, 1, 2, 'hj hjhgj hgj ghjghj', '', 1, '0', '2022-03-30 23:40:22'),
-(531, 2, 1, 'bcbvc bvcb cvbvcb', '', 1, '0', '2022-03-30 23:40:46'),
-(532, 1, 2, 'bcv bcvb cvb cvbc', '', 1, '0', '2022-03-30 23:40:50'),
-(533, 2, 1, 'bcvb cvb cvb', '', 1, '0', '2022-03-30 23:40:54'),
-(534, 1, 2, 'ttttttttttttttttttttttttttttttttttttttt😖', '', 1, '0', '2022-03-30 23:41:01'),
-(535, 2, 1, 'tttttttttttttttt', '', 1, '0', '2022-03-30 23:41:07'),
-(536, 1, 2, 'Whats Yo Doing man Im doing Godd what about you ☹', '', 1, '0', '2022-03-30 23:41:35'),
-(537, 2, 1, 'Im DOing fine what about you guys ', '', 1, '0', '2022-03-30 23:41:50'),
-(538, 1, 2, 'Im Good too', '', 1, '0', '2022-03-30 23:42:01'),
-(539, 2, 1, 'Thats Nice man ', '', 1, '0', '2022-03-30 23:42:11'),
-(540, 1, 2, 'Thanks', '', 1, '0', '2022-03-30 23:42:16'),
-(541, 2, 3, 'fgfdggfdg fdg', '', 0, '0', '2022-03-30 23:42:38'),
-(542, 2, 3, 'gfdg dfg dfgfdg', '', 0, '0', '2022-03-30 23:42:41'),
-(543, 2, 3, 'gdf gfdg', '', 0, '0', '2022-03-30 23:42:42'),
-(544, 2, 1, 'whats Up Biatch ', '', 1, '0', '2022-03-30 23:42:53'),
-(545, 1, 2, 'Im Good What about You ', '', 1, '0', '2022-03-30 23:43:03'),
-(546, 1, 11, 'nvbnvbn vbn', '', 1, '0', '2022-03-30 23:44:17'),
-(547, 1, 11, 'nvbn vbnv', '', 1, '0', '2022-03-30 23:44:19'),
-(548, 1, 11, 'nbvnv bnvbn', '', 1, '0', '2022-03-30 23:44:20'),
-(549, 1, 2, 'hgfh fghgfh', '', 1, '0', '2022-03-30 23:44:44'),
-(550, 1, 2, 'hfgh fgh fgh', '', 1, '0', '2022-03-30 23:44:46'),
-(551, 1, 2, 'hfg hfghfgh', '', 1, '0', '2022-03-30 23:44:47'),
-(552, 1, 2, 'Whats Yo Doing \n', '', 1, '0', '2022-03-30 23:45:15'),
-(553, 1, 2, 'ZmRzZiBzZGYgc2Rmc2Rm', '', 1, '0', '2022-03-30 23:46:41'),
-(554, 1, 2, 'ZnNkZiBzZGZzZGY=', '', 1, '0', '2022-03-30 23:46:44'),
-(555, 2, 1, 'fds fsdf dsf', '', 1, '0', '2022-03-30 23:46:47'),
-(556, 1, 2, 'ZmRzIGZzZCBmc2RmIHNkZg==', '', 1, '0', '2022-03-30 23:46:51'),
-(557, 2, 1, 'f dsf sdf', '', 1, '0', '2022-03-30 23:46:54'),
-(558, 1, 2, 'd2hhdHMgdXAgbWFuIA==', '', 1, '0', '2022-03-30 23:47:01'),
-(559, 2, 1, 'im good what about you ', '', 1, '0', '2022-03-30 23:47:13'),
-(560, 1, 2, 'ZGZnIGRmZ2ZkZw==', '', 1, '0', '2022-03-30 23:47:18'),
-(561, 1, 2, 'ZmRnIGZkZyBkZmc=', '', 1, '0', '2022-03-30 23:48:29'),
-(562, 2, 1, 'gfd gdf gfd', '', 1, '0', '2022-03-30 23:48:32'),
-(563, 1, 2, 'Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2c=', '', 1, '0', '2022-03-30 23:48:36'),
-(564, 2, 1, 'gggfgfgfgfg', '', 1, '0', '2022-03-30 23:48:40'),
-(565, 1, 2, 'ZmRnIGRmZyBmZGdmZA==', '', 1, '0', '2022-03-30 23:48:46'),
-(566, 1, 2, 'Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZw==', '', 1, '0', '2022-03-30 23:49:25'),
-(567, 2, 1, 'gggggggggggggggggggggggg', '', 1, '0', '2022-03-30 23:49:28'),
-(568, 2, 1, 'Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2c=', '', 1, '0', '2022-03-30 23:49:34'),
-(569, 1, 2, 'aGhoaGhoaGhoaGhoaGhoaGhoaGhoaGg=', '', 1, '0', '2022-03-30 23:49:38'),
-(570, 2, 1, 'aWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWk=', '', 1, '0', '2022-03-30 23:49:43'),
-(571, 1, 2, 'a2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2s=', '', 1, '0', '2022-03-30 23:49:47'),
-(572, 2, 1, 'SGVsbG8gV2hhdHMgWW8gRE9pbmcgSU0gRklORQ==', '', 1, '0', '2022-03-30 23:50:03'),
-(573, 1, 2, 'bUUgVE9PIEZJTkUgSEVSRSA=', '', 1, '0', '2022-03-30 23:50:16'),
-(574, 1, 2, 'RkRHRkQgR0ZER0ZERw==', '', 1, '0', '2022-03-30 23:50:33'),
-(575, 2, 1, 'R0ZEIEdGREc=', '', 1, '0', '2022-03-30 23:50:36'),
-(576, 2, 1, 'R0RGR0RGIEdERkc=', '', 1, '0', '2022-03-30 23:50:39'),
-(577, 1, 2, 'R0RGIEdERkcgREZH', '', 1, '0', '2022-03-30 23:50:43'),
-(578, 2, 1, 'R0ZERyBERkcgREZHREZHRkRH', '', 1, '0', '2022-03-30 23:50:47'),
-(579, 1, 2, 'R0RGIEdERkdERkc=', '', 1, '0', '2022-03-30 23:50:50'),
-(580, 1, 2, '', 'login.jpg', 1, '0', '2022-03-30 23:50:59'),
-(581, 1, 2, '', 'login.jpg', 1, '0', '2022-03-30 23:51:03'),
-(582, 1, 2, '', 'login.jpg', 1, '0', '2022-03-30 23:51:38'),
-(583, 1, 2, 'RkRTRiBTREZEU0ZTREY=', '', 1, '0', '2022-03-30 23:51:47'),
-(584, 2, 1, 'WU8gV0hBVFMgVVAgbWFuIGltIGRvaW5nIGZpbmUgd2hhdCBhYm91dCB5b3U=', '', 1, '0', '2022-03-30 23:52:04'),
-(585, 1, 2, 'ZnNkZnNkZiBzZGZkc2Y=', '', 1, '0', '2022-03-30 23:52:43'),
-(586, 2, 1, 'ZnNkZiBzZGZzZA==', '', 1, '0', '2022-03-30 23:52:47'),
-(587, 1, 2, 'dHR0dHR0dHR0dHR0dHR0dHR0dHQ=', '', 1, '0', '2022-03-30 23:52:52'),
-(588, 2, 1, 'dHl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXk=', '', 1, '0', '2022-03-30 23:52:56'),
-(589, 1, 2, 'ZmRzZiBkc2YgZHNmZHNmIA==', '', 1, '0', '2022-03-30 23:53:54'),
-(590, 2, 1, 'ZmRzZiBkc2Ygc2RmZHNm', '', 1, '0', '2022-03-30 23:53:58'),
-(591, 2, 1, 'ZmRzIGZzZGYgc2Rm', '', 1, '0', '2022-03-30 23:54:03'),
-(592, 1, 2, 'ZmRzIGZzZGYgZHM=', '', 1, '0', '2022-03-30 23:54:06'),
-(593, 1, 2, 'Z2ZkZiBnZGYgZ2Zk', '', 1, '0', '2022-03-30 23:56:10'),
-(594, 2, 1, 'Z2ZkIGdmZGc=', '', 1, '0', '2022-03-30 23:56:13'),
-(595, 1, 2, 'Z2dn', '', 1, '0', '2022-03-30 23:56:16'),
-(596, 2, 1, 'aGhoaA==', '', 1, '0', '2022-03-30 23:56:19'),
-(597, 1, 2, 'aWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlp', '', 1, '0', '2022-03-30 23:56:23'),
-(598, 2, 1, 'ampqampqampqampqampqag==', '', 1, '0', '2022-03-30 23:56:28'),
-(599, 1, 2, 'a2tra2tra2tra2tra2tra2tra2s=', '', 1, '0', '2022-03-30 23:56:32'),
-(600, 1, 2, 'dHR0dHR0dHR0dHR0dHR0dHR0dHR0', '', 1, '0', '2022-03-30 23:57:31'),
-(601, 2, 1, 'cXFxcXFxcXFxcXFxcXFxcXFxcQ==', '', 1, '0', '2022-03-30 23:57:35'),
-(602, 1, 2, 'cnJycnJycnJycnJycnJycnJycg==', '', 1, '0', '2022-03-30 23:57:39'),
-(603, 1, 2, 'ZmRzZnNkIHNkZnNkZiBkc2Y=', '', 1, '0', '2022-03-30 23:59:38'),
-(604, 2, 1, 'ZmRzIGZkc2ZzZGY=', '', 1, '0', '2022-03-30 23:59:42'),
-(605, 2, 1, '', 'login.jpg', 1, '0', '2022-03-30 23:59:44'),
-(606, 1, 2, 'bmJuYm5ibmJu', '', 1, '0', '2022-03-31 00:00:06'),
-(607, 2, 1, 'eW95b3lveW95', '', 1, '0', '2022-03-31 00:00:10'),
-(608, 2, 1, '', 'login.jpg', 1, '0', '2022-03-31 00:00:12'),
-(609, 1, 2, 'Z2RmZyBkZmdkZmdkZmc=', '', 1, '0', '2022-03-31 00:00:24'),
-(610, 1, 2, 'Z2ZkZyBkZmdmZGc=', '', 1, '0', '2022-03-31 00:00:26'),
-(611, 2, 1, 'Z2QgZmdkZmcgZGZn', '', 1, '0', '2022-03-31 00:00:29'),
-(612, 2, 1, 'Z2RmIGdmZGcgZGZn', '', 1, '0', '2022-03-31 00:00:34'),
-(613, 2, 1, 'Z2RmZyBkZmc=', '', 1, '0', '2022-03-31 00:00:39'),
-(614, 1, 2, 'IGdkZmcgZGZn', '', 1, '0', '2022-03-31 00:00:42'),
-(615, 1, 2, 'ZHNhZCBhc2Rhc2Q=', '', 1, '0', '2022-03-31 00:01:21'),
-(616, 2, 1, 'ZCBhc2Rhc2Rhc2Q=', '', 1, '0', '2022-03-31 00:01:25'),
-(618, 1, 2, 'ZmRzZiBzZGZzZGY=', '', 1, '0', '2022-03-31 00:01:55'),
-(619, 2, 1, 'ZmRzIGZzZGZzZGY=', '', 1, '0', '2022-03-31 00:01:58'),
-(620, 1, 2, 'SGVsbG8gSmtrIFdoYXRzIHVwIE1hbiA=', '', 1, '0', '2022-03-31 00:02:12'),
-(621, 2, 1, 'SW0gR29vZCBXaGF0IEFib3V0IFlvdSBtYW4g', '', 1, '0', '2022-03-31 00:02:22'),
-(623, 1, 2, '8J+YjfCfmI3wn5iN8J+YjQ==', '', 1, '0', '2022-03-31 00:02:59'),
-(624, 2, 3, 'Y3ZiY3ZiIGN2Yg==', '', 0, '0', '2022-03-31 00:03:09'),
-(625, 2, 3, 'YmN2IGJjdmI=', '', 0, '0', '2022-03-31 00:03:12'),
-(626, 1, 2, 'YmN2IGJjdmJjdmI=', '', 1, '0', '2022-03-31 00:03:15'),
-(627, 1, 13, 'd2hhdHMgdXAgbWFuIHdhaHJzIHlvIGRvaW5nIA==', '', 1, '0', '2022-03-31 00:11:04'),
-(628, 13, 1, 'SW0gZ29vZCB3aGF0IGFib3V0IG1hbiB3aGF0cyB5byBkb2luZyA=', '', 1, '0', '2022-03-31 00:11:34'),
-(629, 1, 13, 'WWFhaCBtZSB0b28gZmluZQ==', '', 1, '0', '2022-03-31 00:11:46'),
-(630, 13, 1, 'VGhhdHMgZ29vZCBhbmQg', '', 1, '0', '2022-03-31 00:11:56'),
-(631, 13, 1, 'ZHNmIHNkZiBzZGZzIGRmIGRzZmRz', '', 1, '0', '2022-03-31 00:15:57'),
-(632, 1, 13, 'b29rb2tva28=', '', 1, '0', '2022-03-31 00:16:06'),
-(633, 13, 1, 'aG1tbW0=', '', 1, '0', '2022-03-31 00:16:13'),
-(634, 13, 1, 'Z2l2ZSBtZSByZWFzaW9u', '', 1, '0', '2022-03-31 00:16:54'),
-(637, 13, 1, 'cHBwcHBwcHBwcHBwcHBwcHBw', '', 1, '0', '2022-03-31 00:17:48'),
-(638, 13, 1, 'R2l2ZSBNZSByZWFzb24gVG8g', '', 1, '0', '2022-03-31 00:23:07'),
-(639, 1, 13, 'Q2xhc3MgaXMgbmV3IGRpdmlkZSA=', '', 1, '0', '2022-03-31 00:23:20'),
-(640, 13, 1, 'WW8=', '', 1, '0', '2022-03-31 00:25:10'),
-(641, 1, 13, 'WXA=', '', 1, '0', '2022-03-31 00:25:16'),
-(642, 13, 1, 'V2hhdHMgVXAg', '', 1, '0', '2022-03-31 00:25:24'),
-(643, 13, 1, 'bmJuYm5ibmJuYg==', '', 1, '0', '2022-03-31 00:32:28'),
-(644, 1, 13, 'WW8gWW8gWW8gWW8gWW8=', '', 1, '0', '2022-03-31 00:32:40'),
-(645, 13, 1, 'YnZidmJ2YnZidmI=', '', 1, '0', '2022-03-31 00:33:15'),
-(646, 1, 13, 'Tk5PTk9PTk9OT25vbm8=', '', 1, '0', '2022-03-31 00:33:24'),
-(647, 13, 1, 'T08geWVzcw==', '', 1, '0', '2022-03-31 00:33:34'),
-(648, 13, 1, 'ZGZnIGRmZ2QgZiBnZGZnZGY=', '', 1, '0', '2022-03-31 00:35:03'),
-(649, 13, 1, 'b29vb29vb29vb29vb29vb29vb29vb29vIHBwcHBwcHBwcHBw', '', 1, '0', '2022-03-31 00:35:32'),
-(650, 1, 13, 'TXkgTmFtZSBpcyB3aGF0IE15IG5hbWUgaXMgd2hv', '', 1, '0', '2022-03-31 00:35:47'),
-(651, 1, 13, 'V2hvIGkgRG9udCBLbm93IEJ1dCBZb3UgYXJlIHZlcnkgTXVjaCBzZWxmaXNlIE9IIEkgc2VlIHlvdSA=', '', 1, '0', '2022-03-31 00:37:29'),
-(652, 13, 1, 'SGFoc2FkIGFzaGRqIGFzZGpqampqampqampqampqampqampqampqampqampqampqampqampqamplZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVl', '', 1, '0', '2022-03-31 00:37:44'),
-(653, 1, 13, 'SGFoYWhhIHRoYXRzIEZ1bm55IEJpdGNoIA==', '', 1, '0', '2022-03-31 00:37:57'),
-(654, 1, 13, 'c2Rhc2QgYXNkYXM=', '', 1, '0', '2022-03-31 00:39:50'),
-(655, 13, 1, 'c2FkaSB3YWxpIGR1bGhhbiBobW1t', '', 1, '0', '2022-03-31 00:40:01'),
-(656, 13, 1, 'ZmRzZiBzZGZkc2Y=', '', 1, '0', '2022-03-31 00:41:15'),
-(657, 1, 13, 'ZmcgZGZnIGRmZ2RmZw==', '', 1, '0', '2022-03-31 00:41:22'),
-(658, 13, 1, 'ZGZnIGRzZGZnIGRmZw==', '', 1, '0', '2022-03-31 00:41:38'),
-(659, 1, 13, 'Y2NjY2NjY2NjY2NjY2NjY2NjY2Nj', '', 1, '0', '2022-03-31 00:42:12'),
-(660, 13, 1, 'YXNjc2F6enp6enp6enp6enp6enp6enp6', '', 1, '0', '2022-03-31 00:42:22'),
-(661, 13, 1, 'YXNkYXNkYXNk', '', 1, '0', '2022-03-31 00:43:59'),
-(662, 1, 13, 'ZGFzZCBhc2Qgc2Fk', '', 1, '0', '2022-03-31 00:44:05'),
-(663, 13, 1, 'ZGRkZGRkZGRkZGRkZA==', '', 1, '0', '2022-03-31 00:45:05'),
-(665, 1, 13, 'ZGRkZGRkZGRkZGRkZGRkZGZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmY=', '', 1, '0', '2022-03-31 00:48:01'),
-(667, 1, 13, 'YmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJi', '', 1, '0', '2022-03-31 00:49:10'),
-(668, 1, 13, 'SGVsbG8gTXkgTmFtZSBpcyBOYWJpbiBSYWogQ2hoZXRyaQ==', '', 1, '0', '2022-03-31 09:49:28'),
-(669, 1, 11, 'aGhoaGhoaGhoaGhoaGggaCBoZ2poZ2hqIG4gbg==', '', 1, '0', '2022-03-31 09:49:54'),
-(670, 1, 13, 'SyBnYXJkYWkgaG8gU2F0aGkgSG1p', '', 1, '0', '2022-03-31 11:44:30'),
-(671, 1, 13, 'bmJu', '', 1, '0', '2022-03-31 11:47:17'),
-(672, 1, 13, '8J+YgQ==', '', 1, '0', '2022-03-31 11:53:10'),
-(673, 1, 13, '8J+kkfCfmJ3wn5iJ', '', 1, '0', '2022-03-31 11:53:14'),
-(674, 1, 13, 'V2hhdHNBcHA=', '', 1, '0', '2022-03-31 11:55:19'),
-(675, 1, 13, '8J+YnQ==', '', 1, '0', '2022-03-31 11:55:28'),
-(676, 1, 13, 'bmJuYm4=', '', 1, '0', '2022-03-31 11:56:56'),
-(678, 1, 11, '', 'image (1).png', 1, '0', '2022-03-31 11:57:18'),
-(679, 1, 11, '', 'image (1).png', 1, '0', '2022-03-31 11:57:21'),
-(680, 1, 11, 'ZmdmZGdmZCBnZGZn', '', 1, '0', '2022-03-31 11:57:26'),
-(681, 1, 11, 'Z2RmZyBkZmc=', '', 1, '0', '2022-03-31 11:57:32'),
-(682, 1, 11, '', 'image (1).png', 1, '0', '2022-03-31 11:57:35'),
-(685, 1, 11, '', 'image.png', 1, '0', '2022-03-31 11:59:24'),
-(686, 1, 11, '', 'image.png', 1, '0', '2022-03-31 11:59:28'),
-(687, 1, 11, '', 'image.png', 1, '0', '2022-03-31 11:59:34'),
-(688, 0, 0, '', '277172192_3176179882626514_2075830829225264198_n.j', 0, '0', '2022-03-31 12:03:18'),
-(689, 0, 0, '', 'download-removebg-preview.png', 0, '0', '2022-03-31 12:03:44'),
-(690, 0, 0, '', 'image.png', 0, '0', '2022-03-31 12:04:04'),
-(691, 0, 0, '', 'image.png', 0, '0', '2022-03-31 12:04:55'),
-(692, 0, 0, '', 'login-removebg-preview.png', 0, '0', '2022-03-31 12:05:06'),
-(693, 0, 0, '', 'login-removebg-preview.png', 0, '0', '2022-03-31 12:05:12'),
-(694, 1, 11, '', 'login-removebg-preview.png', 1, '0', '2022-03-31 12:05:30'),
-(695, 1, 11, '', 'image.png', 1, '0', '2022-03-31 12:05:38'),
-(696, 1, 11, 'bmJuYm5iIG5ibiBibmJuYm5ibmJu', '', 1, '0', '2022-03-31 12:05:45'),
-(697, 1, 11, '', 'image.png', 1, '0', '2022-03-31 12:05:47'),
-(698, 1, 11, 'dHR0dHR0dHR0dHR0eXR0dHR0dHR0dHR0dHR0dHR0dHR0dA==', '', 1, '0', '2022-03-31 12:05:52'),
-(699, 1, 11, '', 'image.png', 1, '0', '2022-03-31 12:05:54'),
-(700, 1, 11, 'dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dA==', '', 1, '0', '2022-03-31 12:05:59'),
-(701, 11, 1, 'cXFxcXFxcXFxcXFxcXFxcXFx', '', 1, '0', '2022-03-31 12:06:20'),
-(702, 1, 11, 'cnJycnJycnJycnJycnJycnJycnJycnJycg==', '', 1, '0', '2022-03-31 12:06:24'),
-(703, 11, 1, 'c3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3M=', '', 1, '0', '2022-03-31 12:06:27'),
-(704, 1, 11, 'dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0', '', 1, '0', '2022-03-31 12:06:32'),
-(705, 1, 11, 'eW8g', '', 1, '0', '2022-03-31 12:06:50'),
-(706, 11, 1, 'd2hhdHMgdXAgbWFuIHdoYXRzIHlvIGRvbmc=', '', 1, '0', '2022-03-31 12:08:06'),
-(707, 1, 11, 'SW0gZmluIA==', '', 1, '0', '2022-03-31 12:08:12'),
-(708, 11, 1, 'eW8geW8=', '', 1, '0', '2022-03-31 12:10:05'),
-(709, 1, 11, 'd2hhdCB1cCBtYW4g', '', 1, '0', '2022-03-31 12:10:16'),
-(710, 11, 1, 'SW0gR29vZCB3aGF0IGFib3V0IHU=', '', 1, '0', '2022-03-31 12:10:26'),
-(712, 11, 1, 'aGdmIGhnZmggZ2Y=', '', 1, '0', '2022-03-31 12:11:41'),
-(713, 1, 11, 'aGdmIGhmZyBoZmdoZmdoIGdmaA==', '', 1, '0', '2022-03-31 12:11:52'),
-(714, 11, 1, 'aCBmZ2hmZ2ggZ2Zo', '', 1, '0', '2022-03-31 12:11:55'),
-(715, 1, 11, 'aGZnIGhmZ2ggZmdoZ2Zo', '', 1, '0', '2022-03-31 12:11:58'),
-(716, 11, 1, 'aCBmZ2hmZyBoZmdoZmc=', '', 1, '0', '2022-03-31 12:12:01'),
-(717, 1, 11, 'IGdmaCBmZ2hmZyBmZ2g=', '', 1, '0', '2022-03-31 12:12:05'),
-(718, 1, 11, 'Z2RmZyBkZmcgZGZn', '', 1, '0', '2022-03-31 12:15:18'),
-(719, 11, 1, 'Z2QgZmcgZGZnZGZn', '', 1, '0', '2022-03-31 12:15:22'),
-(720, 1, 11, 'ZGZkZiBnIGZkZw==', '', 1, '0', '2022-03-31 12:16:11'),
-(721, 11, 1, 'ZyBkZmdmZGcgZGZnZmRn', '', 1, '0', '2022-03-31 12:16:14'),
-(722, 1, 11, 'ZmcgZmRnIGZkZw==', '', 1, '0', '2022-03-31 12:17:36'),
-(723, 11, 1, 'Z2RmIGdkZiBnZGZnIGRmZ2RmZyBkZmc=', '', 1, '0', '2022-03-31 12:17:42'),
-(724, 1, 11, 'ZmcgZmRnIGZk', '', 1, '0', '2022-03-31 12:18:30'),
-(725, 11, 1, 'ZyBkZmcgZGZnZGZnIA==', '', 1, '0', '2022-03-31 12:18:33'),
-(726, 1, 11, 'ZmRnZGdmZGc=', '', 1, '0', '2022-03-31 12:19:03');
-INSERT INTO `chats` (`chat_id`, `from_id`, `to_id`, `message`, `chat_img`, `opened`, `is_blocked`, `created_at`) VALUES
-(727, 11, 1, 'Z2ZkZyBkZmdmIGRn', '', 1, '0', '2022-03-31 12:19:06'),
-(728, 1, 11, 'Z2ZkIGdkZmc=', '', 1, '0', '2022-03-31 12:19:09'),
-(729, 1, 11, 'ZmRnZGYgZ2RmZw==', '', 1, '0', '2022-03-31 12:19:20'),
-(730, 11, 1, 'ZyBkZmcgZGZnIGRmZw==', '', 1, '0', '2022-03-31 12:19:23'),
-(731, 1, 11, 'Z2RmIGdkZmcgZGZn', '', 1, '0', '2022-03-31 12:19:26'),
-(732, 11, 1, 'ZyBkZmcgZGZnZGZn', '', 1, '0', '2022-03-31 12:19:29'),
-(733, 1, 11, 'ZGZnIGRmZyBkZmc=', '', 1, '0', '2022-03-31 12:20:20'),
-(734, 11, 1, 'Z2RmIGcgZGZnZGYgZ2RmZw==', '', 1, '0', '2022-03-31 12:20:27'),
-(735, 1, 11, 'ZyBkZmcgZGZnZGZn', '', 1, '0', '2022-03-31 12:20:30'),
-(736, 11, 1, 'ZyBmZCBnZGZn', '', 1, '0', '2022-03-31 12:20:37'),
-(737, 1, 11, 'ZyBkZmcgZGZnIGRmZ2RmZyBkZiBnZGZn', '', 1, '0', '2022-03-31 12:20:42'),
-(738, 11, 1, 'ZCBmZyBkZmdmZA==', '', 1, '0', '2022-03-31 12:20:56'),
-(739, 1, 11, 'ZyBkZmcgZGZnZGY=', '', 1, '0', '2022-03-31 12:20:58'),
-(740, 11, 1, 'bmJuIHdoYXRzIHVwIG1hbiA=', '', 1, '0', '2022-03-31 12:21:39'),
-(741, 1, 11, 'SW0gR29vZCA=', '', 1, '0', '2022-03-31 12:21:46'),
-(742, 1, 11, 'ZGZnIGRnIGZkZw==', '', 1, '0', '2022-03-31 12:22:27'),
-(743, 11, 1, 'ZyBkZmcgZGZnZGY=', '', 1, '0', '2022-03-31 12:22:30'),
-(744, 11, 1, 'aGdmIGhmZyBoZmdo', '', 1, '0', '2022-03-31 12:22:38'),
-(745, 1, 11, 'IGhmZ2ggZmdoIGZnaA==', '', 1, '0', '2022-03-31 12:22:41'),
-(746, 11, 1, 'ZmcgZGZnIGRmZw==', '', 1, '0', '2022-03-31 12:22:53'),
-(747, 1, 11, 'ZyBkZmcgZGZn', '', 1, '0', '2022-03-31 12:22:55'),
-(748, 1, 11, 'ZmRnIGRmZw==', '', 1, '0', '2022-03-31 12:23:23'),
-(749, 11, 1, 'ZyBkZmcgZGZnZGY=', '', 1, '0', '2022-03-31 12:23:25'),
-(751, 11, 1, 'Z2RmIGdkZiBnZGZn', '', 1, '0', '2022-03-31 12:23:42'),
-(752, 1, 2, 'bmJ2bnZibiB2Ym52Ym4=', '', 1, '0', '2022-03-31 12:33:38'),
-(753, 1, 2, 'bnZiIG52Ym52Ym4=', '', 1, '0', '2022-03-31 12:33:44'),
-(754, 1, 2, 'aGZnIGhmZ2g=', '', 1, '0', '2022-03-31 12:34:02'),
-(755, 1, 2, 'ZmRnIGRmZyBmZGc=', '', 1, '0', '2022-03-31 12:34:22'),
-(756, 1, 2, 'ZyBmZGcgZGZn', '', 1, '0', '2022-03-31 12:34:50'),
-(757, 1, 2, 'ZyBkZmdkZmcg', '', 1, '0', '2022-03-31 12:34:52'),
-(758, 1, 2, 'ZmRzIGZzZGYg', '', 1, '0', '2022-03-31 12:35:42'),
-(759, 1, 2, 'aGdmIGhnZmg=', '', 1, '0', '2022-03-31 12:38:36'),
-(760, 1, 2, 'Z2RmZ2RmZw==', '', 1, '0', '2022-04-01 23:36:49'),
-(763, 1, 2, 'SGVsbG8gV2hhdHMgVXA=', '', 1, '0', '2022-04-02 19:21:40'),
-(764, 2, 1, 'SW0gRmluZSBXaGF0IGFib3V0IG1hbiA=', '', 1, '0', '2022-04-02 19:23:08'),
-(765, 2, 1, 'VGhhdHMgR29vZCBXaGF0cyB1IGRvaW5n', '', 1, '0', '2022-04-02 19:23:23'),
-(766, 1, 5, 'aGZnaCBmZ2g=', '', 1, '0', '2022-04-02 19:27:04'),
-(770, 5, 1, 'Z2RmZyBkZmcgZmQ=', '', 1, '0', '2022-04-02 19:27:34'),
-(771, 1, 13, 'eGJ2Y3ggY3h2', '', 1, '0', '2022-04-02 21:56:51'),
-(772, 1, 13, 'dnhjdiB4Y3ZjeA==', '', 1, '0', '2022-04-02 21:56:52'),
-(778, 1, 5, 'SGVsbG8gV2hhdHMgVXA=', '', 0, '0', '2022-04-03 09:31:31'),
-(779, 1, 13, 'amRmZyBqYmRma2pnZGZqZ2RmbGpoZ2JqaGcgZGY=', '', 1, '0', '2022-04-03 12:23:49'),
-(780, 1, 13, 'SGVsbGxvIFRoYXRzIHVw', '', 1, '0', '2022-04-03 13:07:03'),
-(781, 13, 1, 'SW0gR29vZCBXaGF0IGFib3V0IFlvcHU=', '', 1, '0', '2022-04-03 13:07:34'),
-(782, 13, 1, '', 'dfd level 2 post .drawio.png', 1, '0', '2022-04-03 13:07:44'),
-(783, 13, 1, '', 'dfd level 2 post .drawio.png', 1, '0', '2022-04-03 13:07:49'),
-(784, 1, 13, 'WWVz', '', 1, '0', '2022-04-03 13:08:05'),
-(785, 13, 1, 'V2hhdHMgeW8gRG9pbmcgTWFu', '', 1, '0', '2022-04-03 13:08:22'),
-(786, 1, 13, 'dmJu', '', 0, '0', '2022-04-18 18:58:53'),
-(787, 1, 13, 'bnZibnZibg==', '', 0, '0', '2022-04-18 18:58:56'),
-(788, 1, 11, 'bm5ubm5ubm5ubm5u', '', 0, '0', '2022-04-18 18:59:00'),
-(790, 1, 11, '', 'n.jpg', 0, '0', '2022-05-05 19:50:49'),
-(791, 1, 11, '', 'n.jpg', 0, '0', '2022-05-05 19:50:52'),
-(792, 1, 11, 'aWhqa2poaw==', '', 0, '0', '2022-05-05 19:50:56'),
-(793, 1, 11, 'a2hqa2hqaw==', '', 0, '0', '2022-05-05 19:50:59'),
-(795, 1, 13, '', '6.jpeg', 0, '0', '2022-05-09 14:51:10'),
-(796, 46, 1, 'bnZi', '', 0, '0', '2022-08-08 12:51:25'),
-(797, 50, 39, 'YWE=', '', 0, '0', '2022-08-26 06:05:37'),
-(798, 49, 39, 'YXM=', '', 0, '0', '2022-08-26 06:05:54'),
-(800, 54, 53, 'SGV5IFdoYXRzIFVwIG1hbg==', '', 1, '0', '2023-03-07 18:51:55'),
-(802, 53, 54, '', 'tt.webp', 1, '0', '2023-03-07 18:52:26'),
-(804, 53, 55, 'dg==', '', 0, '0', '2023-03-10 22:56:02'),
-(805, 53, 55, '8J+YgQ==', '', 0, '0', '2023-03-10 22:59:58'),
-(806, 53, 55, 'YWE=', '', 0, '0', '2023-03-10 23:34:09'),
-(807, 53, 55, 'YWFh', '', 0, '0', '2023-03-10 23:34:10'),
-(808, 53, 55, 'YWFhYQ==', '', 0, '0', '2023-03-10 23:34:12'),
-(809, 53, 55, 'YQ==', '', 0, '0', '2023-03-10 23:34:15'),
-(810, 53, 55, 'ZWVlZQ==', '', 0, '0', '2023-03-10 23:34:26'),
-(811, 53, 55, 'ZWVl', '', 0, '0', '2023-03-10 23:34:28'),
-(812, 53, 55, 'd3d3d3c=', '', 0, '0', '2023-03-10 23:34:29'),
-(813, 53, 55, 'd3d3dw==', '', 0, '0', '2023-03-10 23:34:31');
+(1, 57, 56, 'SGVsbG8g', '', 0, '0', '2023-03-28 18:37:32'),
+(2, 59, 57, 'ZA==', '', 1, '0', '2023-03-28 18:40:02'),
+(3, 59, 57, 'ZA==', '', 1, '0', '2023-03-28 18:40:32'),
+(4, 59, 57, 'bm4=', '', 1, '0', '2023-03-28 18:41:34'),
+(5, 59, 57, 'ZmdmZw==', '', 1, '0', '2023-03-28 18:41:43'),
+(6, 57, 59, 'dnhjdmN4IA==', '', 1, '0', '2023-03-28 18:42:16'),
+(7, 57, 56, 'dnhjdiA=', '', 0, '0', '2023-03-28 18:42:20'),
+(8, 59, 57, 'dnhjdiB4Y3Z4YyA=', '', 1, '0', '2023-03-28 18:42:25'),
+(9, 57, 59, 'dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2', '', 1, '0', '2023-03-28 18:42:33'),
+(10, 59, 57, 'dmZmZmZmZmZmZmZmZmZmZg==', '', 1, '0', '2023-03-28 18:42:38'),
+(11, 59, 57, 'aGVsbG8gbXkgbmFtZSBpcyBOYXZlZW4=', '', 1, '0', '2023-03-28 18:42:48'),
+(12, 59, 57, '', 'Virat-Kohli-Biography.jpg', 1, '0', '2023-03-28 18:42:58'),
+(13, 57, 59, 'ZmdmaCA=', '', 1, '0', '2023-03-28 20:24:26'),
+(14, 57, 59, 'ZnNkZiBzZGY=', '', 1, '0', '2023-03-28 21:11:06'),
+(15, 57, 56, 'ZHNmZHMgZg==', '', 0, '0', '2023-03-28 21:11:20'),
+(16, 57, 59, 'SGVsbG8=', '', 1, '0', '2023-03-29 13:44:46'),
+(17, 57, 59, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-30 00:01:44'),
+(18, 57, 59, 'aGVsbG8gaGVsbG8=', '', 1, '0', '2023-03-30 00:02:07'),
+(19, 57, 59, '8J+Yhg==', '', 1, '0', '2023-03-30 00:02:12'),
+(20, 57, 59, '', '', 1, '0', '2023-03-30 00:21:31'),
+(21, 57, 59, '', '', 1, '0', '2023-03-30 00:22:51'),
+(22, 0, 0, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 0, '0', '2023-03-30 00:23:00'),
+(23, 57, 59, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-30 00:23:52'),
+(24, 57, 59, 'SGVsbGxvIFdoYXRzIFlvIERvaW5n', '', 1, '0', '2023-03-30 00:34:25'),
+(25, 57, 59, 'dXV1dXV1dXU=', '', 1, '0', '2023-03-30 00:35:16'),
+(27, 57, 59, 'aGVsbG8gbXkgbmFtZSBpcyBOYXZlZW4=', '', 1, '0', '2023-03-30 00:41:33'),
+(28, 57, 59, 'aGVsbG8=', '', 1, '0', '2023-03-30 16:30:20'),
+(29, 58, 59, 'SGVsbG8gTmFiaW4gc2lyIA==', '', 1, '0', '2023-03-31 22:51:16'),
+(30, 58, 59, 'SG93IEFyZSBZb3U=', '', 1, '0', '2023-03-31 22:51:40'),
+(31, 58, 57, 'SGVsbG8gVGVzdGFkbWlu', '', 1, '0', '2023-03-31 22:52:23'),
+(32, 57, 58, 'SGVsbG8=', '', 1, '0', '2023-03-31 22:52:58'),
+(33, 58, 57, 'bm8gV2hhdHNBcHA=', '', 1, '0', '2023-03-31 22:53:08'),
+(34, 58, 57, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-31 22:53:21'),
+(35, 57, 58, 'TmljZSBQaWN0dXJl', '', 1, '0', '2023-03-31 22:53:30'),
+(36, 58, 57, 'VGhhbmsgWW91', '', 1, '0', '2023-03-31 22:53:39'),
+(37, 58, 57, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-31 22:53:43'),
+(38, 58, 57, 'YQ==', '', 1, '0', '2023-03-31 22:57:53'),
+(39, 61, 57, 'aGVsbG8gc2ly', '', 1, '0', '2023-04-01 21:59:19'),
+(40, 61, 57, 'YWE=', '', 1, '0', '2023-04-01 22:01:26'),
+(41, 61, 57, 'SGVsbG8gTWFuIFdoYXRzIHVw', '', 1, '0', '2023-04-01 22:01:41'),
+(42, 61, 57, 'aGho', '', 1, '0', '2023-04-01 22:06:38'),
+(43, 61, 57, 'aGc=', '', 1, '0', '2023-04-01 22:06:50'),
+(44, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:08:01'),
+(45, 61, 57, 'YWFh', '', 1, '0', '2023-04-01 22:08:06'),
+(46, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:08:21'),
+(47, 61, 57, 'YXdh', '', 1, '0', '2023-04-01 22:08:26'),
+(48, 61, 57, 'YXNk', '', 1, '0', '2023-04-01 22:09:35'),
+(49, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:09:54'),
+(50, 61, 57, 'ZGY=', '', 1, '0', '2023-04-01 22:12:49'),
+(51, 61, 57, 'eW91', '', 1, '0', '2023-04-01 22:12:58'),
+(65, 63, 64, 'aGVsbw==', '', 1, '0', '2023-04-16 18:51:51'),
+(66, 63, 64, 'aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS8=', '', 1, '0', '2023-04-22 22:19:44'),
+(68, 63, 64, '8J+kkWFzYXM=', '', 1, '0', '2023-04-22 23:00:16'),
+(69, 63, 64, 'YXNhcw==', '', 1, '0', '2023-04-22 23:00:19'),
+(70, 63, 64, 'YXNkc2Rhc2Rhc2RzYWQ=', '', 1, '0', '2023-04-22 23:00:22'),
+(71, 63, 64, 'YXNkYXNkIGFzZGEgc2RhcyBkYXNkYXM=', '', 1, '0', '2023-04-22 23:00:26'),
+(72, 63, 64, 'YXNkYXMgZGFzIGRhc2RhZGFzZGFzZA==', '', 1, '0', '2023-04-22 23:00:29'),
+(73, 63, 64, 'YXNkYXNkYXNkYXNkYXNkYXNkYWRhc2Rhc2Rhc2QgZHMgZGFz', '', 1, '0', '2023-04-22 23:00:34'),
+(74, 63, 64, 'YXNkIGFzZCBhc2Rhc2Qg', '', 1, '0', '2023-04-22 23:00:38'),
+(75, 63, 64, 'YXNkIGFzZGEgc2Rhc2QgYXNk', '', 1, '0', '2023-04-22 23:00:41'),
+(76, 63, 64, 'YXNkIGFzZCBhZHMgcw==', '', 1, '0', '2023-04-22 23:00:44'),
+(77, 64, 63, 'PHVsIGlkPSJjaGF0TGlzdCIgY2xhc3M9ImNoYXRMaXN0Ij4gICAgPHAgIGlkPSJjb250YWN0Ij5Db250YWN0czwvcD4gICAgPD9waHAgaWYgKCFlbXB0eSgkY29udmVyc2F0aW9ucykpIHsgPz4gICAgICAgIDw/cGhwIGZvcmVhY2ggKCRjb252ZXJzYXRpb25zIGFzICRjb252ZXJzYXRpb24pIHsgICAgICAgICAgICAgLy8gQ2hlY2sgaWYgdGhlIHVzZXIgaXMgYWN0aXZlIGJhc2VkIG9uIHRoZWlyIGxhc3Rfc2VlbiB0aW1lc3RhbXAgICAgICAgICAgICAkaXNfYWN0aXZlID0gKHN0cnRvdGltZSgkY29udmVyc2F0aW9uWydsYXN0X3NlZW4nXSkgPiAodGltZSgpIC0gNjApKTsgICAgICAgICAgICAvLyBTZXQgdGhlIGxhYmVsIHRleHQgYW5kIGNvbG9yIGJhc2VkIG9uIHdoZXRoZXIgdGhlIHVzZXIgaXMgYWN0aXZlIG9yIG5vdCAgICAgICAgICAgICRsYWJlbF90ZXh0ID0gJGlzX2FjdGl2ZSA/ICJBY3RpdmUiIDogIkluYWN0aXZlIjsgICAgICAgICAgICAkbGFiZWxfY29sb3IgPSAkaXNfYWN0aXZlID8gImdyZWVuIiA6ICJyZWQiOyAgICAgICAgPz4gICAgICAgICAgICA8bGk+ICAgICAgICAgICAgICAgIDxhIGhyZWY9ImNsaWVudC9maW5hbC5waHA/dXNlcj08Pz0gJGNvbnZlcnNhdGlvblsndXNlcm5hbWUnXSA/PiI+ICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPSJkaXNwbGF5OiBmbGV4OyI+ICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9ImNsaWVudC9hc3NldHMvdXBsb2Fkcy88Pz0gJGNvbnZlcnNhdGlvblsncF9wJ10gPz4iIGNsYXNzPSJ3LTEwIHJvdW5kZWQtY2lyY2xlIiBzdHlsZT0id2lkdGg6IDM2cHg7IGhlaWdodDogMzZweDsiPiAgICAgICAgICAgICAgICAgICAgICAgIDxwPjw/PSAkY29udmVyc2F0aW9uWyduYW1lJ10gPz48YnI+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIHN0eWxlPSJjb2xvcjo8Pz0gJGxhYmVsX2NvbG9yID8+Ij48Pz0gJGxhYmVsX3RleHQgPz48L3NwYW4+ICAgICAgICAgICAgICAgICAgICAgICAgPC9wPiAgICAgICAgICAgICAgICAgICAgICAgIDxwPjw/PSAkY29udmVyc2F0aW9uWydsYXN0bmFtZSddID8+PGJyPjwvcD4gICAgICAgICAgICAgICAgICAgIDwvZGl2PiAgICAgICAgICAgICAgICA8L2E+ICAgICAgICAgICAgPC9saT4gICAgICAgIDw/cGhwIH0gPz4gICAgPD9waHAgfSA/PjwvdWw+', '', 1, '0', '2023-04-22 23:19:00'),
+(78, 63, 64, 'aGg=', '', 1, '0', '2023-04-22 23:19:25'),
+(79, 64, 63, 'aGg=', '', 1, '0', '2023-04-22 23:24:18'),
+(80, 63, 64, 'dXU=', '', 1, '0', '2023-04-22 23:24:26'),
+(81, 63, 64, '', '', 1, '0', '2023-04-23 00:02:04'),
+(82, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 00:02:20'),
+(83, 63, 64, '', '', 1, '0', '2023-04-23 00:03:30'),
+(84, 63, 64, '', '', 1, '0', '2023-04-23 00:06:01'),
+(85, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 00:12:51'),
+(86, 63, 64, '', '', 1, '0', '2023-04-23 09:15:03'),
+(87, 63, 64, '', '', 1, '0', '2023-04-23 09:16:43'),
+(88, 63, 64, 'PHNjcmlwdD4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21lc3NhZ2UnKS5hZGRFdmVudExpc3RlbmVyKCdwYXN0ZScsIGZ1bmN0aW9uKGV2ZW50KSB7ICAvLyBQcmV2ZW50IHRoZSBkZWZhdWx0IHBhc3RlIGFjdGlvbiAgZXZlbnQucHJldmVudERlZmF1bHQoKTsgIC8vIEdldCB0aGUgY2xpcGJvYXJkIGRhdGEgIHZhciBjbGlwYm9hcmREYXRhID0gZXZlbnQuY2xpcGJvYXJkRGF0YSB8fCB3aW5kb3cuY2xpcGJvYXJkRGF0YTsgIHZhciBpdGVtcyA9IGNsaXBib2FyZERhdGEuaXRlbXM7ICAvLyBMb29wIHRocm91Z2ggdGhlIGl0ZW1zIGluIHRoZSBjbGlwYm9hcmQgIGZvciAodmFyIGkgPSAwOyBpIDwgaXRlbXMubGVuZ3RoOyBpKyspIHsgICAgdmFyIGl0ZW0gPSBpdGVtc1tpXTsgICAgLy8gQ2hlY2sgaWYgdGhlIGl0ZW0gaXMgYW4gaW1hZ2UgICAgaWYgKGl0ZW0udHlwZS5pbmRleE9mKCdpbWFnZScpICE9PSAtMSkgeyAgICAgIC8vIEdldCB0aGUgaW1hZ2UgZGF0YSBhcyBhIGRhdGEgVVJMICAgICAgdmFyIGJsb2IgPSBpdGVtLmdldEFzRmlsZSgpOyAgICAgIHZhciByZWFkZXIgPSBuZXcgRmlsZVJlYWRlcigpOyAgICAgIHJlYWRlci5vbmxvYWQgPSBmdW5jdGlvbihldmVudCkgeyAgICAgICAgdmFyIGltYWdlRGF0YVVybCA9IGV2ZW50LnRhcmdldC5yZXN1bHQ7ICAgICAgICAvLyBTZW5kIHRoZSBpbWFnZSBkYXRhIHRvIHRoZSBzZXJ2ZXIgICAgICAgIHNlbmRJbWFnZShpbWFnZURhdGFVcmwpOyAgICAgIH07ICAgICAgcmVhZGVyLnJlYWRBc0RhdGFVUkwoYmxvYik7ICAgIH0gIH19KTsgICAgPC9zY3JpcHQ+', '', 1, '0', '2023-04-23 09:18:33'),
+(89, 63, 64, 'aGVsbw==', '', 1, '0', '2023-04-23 09:18:37'),
+(90, 63, 64, 'Y2dmZw==', '', 1, '0', '2023-04-23 09:19:53'),
+(91, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 09:22:08'),
+(92, 63, 64, 'aGVsbG9oZWxsbyBteSBuYW1lIGlzIE5hdmVlbg==', '', 1, '0', '2023-04-23 09:22:24'),
+(93, 63, 64, 'aGVsbG8gd2hhdCdzIHVw', '', 1, '0', '2023-04-23 09:24:01'),
+(94, 63, 64, 'c2RzZGogIGRrc2RramRzZHMgIA==', '', 1, '0', '2023-04-23 09:39:41'),
+(95, 63, 64, 'c2RmZHM=', '', 1, '0', '2023-04-23 10:05:22'),
+(96, 63, 64, 'c2RmZHM=', '', 1, '0', '2023-04-23 10:05:22'),
+(97, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
+(98, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
+(99, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
+(100, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
+(101, 63, 64, 'c3Nz', '', 1, '0', '2023-04-23 10:07:14'),
+(102, 63, 64, '8J+Ym/CfmJ0=', '', 1, '0', '2023-04-23 10:07:19'),
+(103, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 10:09:25'),
+(104, 63, 64, '', '', 1, '0', '2023-04-23 10:12:04'),
+(105, 63, 64, '', '', 1, '0', '2023-04-23 10:12:09'),
+(106, 63, 64, '', '', 1, '0', '2023-04-23 10:13:24'),
+(107, 63, 64, '', '', 1, '0', '2023-04-23 10:14:00'),
+(108, 63, 64, '', '', 1, '0', '2023-04-23 10:14:49'),
+(109, 63, 64, '', 'nbn.jpg', 1, '0', '2023-04-23 10:15:01'),
+(110, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:15:20'),
+(111, 63, 64, '', 'or (1).pptx', 1, '0', '2023-04-23 10:15:41'),
+(112, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:15:55'),
+(113, 63, 64, 'd2U=', '', 1, '0', '2023-04-23 10:16:00'),
+(114, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:16:04'),
+(115, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 10:16:35'),
+(116, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 10:16:41'),
+(119, 63, 64, 'aGVsbG8gd2hhdCdzIHVw', '', 1, '0', '2023-04-23 10:30:57'),
+(120, 63, 64, 'WU8=', '', 1, '0', '2023-04-23 10:31:05'),
+(121, 63, 64, '8J+YhvCfmIbwn5iG8J+Yhw==', '', 1, '0', '2023-04-23 10:31:15'),
+(122, 63, 64, 'YWFh', '', 1, '0', '2023-04-23 10:44:15'),
+(123, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 22:16:57'),
+(124, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 22:17:00'),
+(125, 63, 64, 'bmJu', '', 1, '0', '2023-04-23 22:17:09'),
+(126, 63, 64, 'b28=', '', 1, '0', '2023-04-24 23:07:42');
 
 -- --------------------------------------------------------
 
@@ -839,28 +204,14 @@ CREATE TABLE `chat_room` (
   `id` int(20) NOT NULL,
   `name` varchar(30) NOT NULL,
   `room_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_room`
 --
 
 INSERT INTO `chat_room` (`id`, `name`, `room_name`) VALUES
-(1, 'Nbn', 'Hello Group Chat Here My '),
-(2, 'Nbn', 'bfhsdb fjds'),
-(3, 'Jkk', 'fghgg'),
-(4, 'Nbn', 'cgcvb bcv'),
-(5, 'Jkkj', 'jk'),
-(6, 'Jkkj', 'Hello Nabin'),
-(7, 'Nbn', 'Nabin ko group'),
-(8, 'Nbn', 'Nabin group chats'),
-(9, 'Nbn', 'Nabin New Group Chat'),
-(10, 'Swagat ', 'Swagat Group Chat '),
-(11, 'Nabin', '1'),
-(12, 'Roopesh ', '1'),
-(13, 'Roopesh ', 'My group chat roopesh'),
-(14, 'Roopesh ', 'My group chat roopesh'),
-(15, 'Draw', 'new gp');
+(16, 'Testadmin', 'Hello ');
 
 -- --------------------------------------------------------
 
@@ -873,110 +224,49 @@ CREATE TABLE `comment` (
   `name` varchar(50) NOT NULL,
   `comment` varchar(200) NOT NULL,
   `photo_id` int(10) NOT NULL,
-  `profile_pic` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `profile_pic` varchar(100) NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`id`, `name`, `comment`, `photo_id`, `profile_pic`) VALUES
-(1, 'Nbn', 'h', 1, ''),
-(2, 'Nbn', 'gdfg', 1, ''),
-(3, 'Nbn', 'fgh', 1, ''),
-(4, 'Nbn', 'g', 1, ''),
-(5, 'Nbn', 'hfgh', 2, ''),
-(6, 'Nbn', 'ds', 6, ''),
-(7, 'Jk', 'dsadsa', 6, ''),
-(8, 'Jk', 'dsb dsbf', 7, ''),
-(9, 'Jk', 'asdas', 8, ''),
-(10, 'Nbn', 'zxc', 8, ''),
-(11, 'Nbn', 'zxc', 8, ''),
-(12, 'Nbn', 'gg g', 9, ''),
-(13, 'Jkk', 'fbcx', 10, ''),
-(14, 'Nbn', 'dfgdfgdf', 10, ''),
-(15, 'Jkk', 'hvh', 10, ''),
-(16, 'Nbn', 'n', 7, ''),
-(17, 'Nbn', 'jk', 0, ''),
-(18, 'Nbn', 'fgdgdgf', 12, ''),
-(19, 'Nbn', 'wdasd', 13, ''),
-(20, 'pk', 'Wow', 13, ''),
-(21, 'Nbn', 'ghfgh', 8, ''),
-(22, 'Nbn', 'where is sasukr', 13, ''),
-(23, 'Nbn', 'where is sasuke????', 13, ''),
-(24, 'Nbn', 'ohooo handsome', 0, ''),
-(25, 'Nbn', 'Ohoooo handsomeee', 12, ''),
-(26, 'Nbn', 'ky', 14, ''),
-(27, 'Nbn', 'sugoiiiiii', 14, ''),
-(28, 'Nbn', 'fgh fgh', 15, ''),
-(29, 'Jkkj', 'wow man', 17, ''),
-(30, 'Nbn', 'thanks', 17, ''),
-(31, 'Nbn', 'nbn', 17, ''),
-(32, 'Nbn', 'vbvbv', 17, ''),
-(33, 'Nbn', 'hjhj', 17, ''),
-(34, 'Nbn', 'uiui', 17, ''),
-(35, 'Nbn', 'qwe', 17, ''),
-(36, 'Nbn', 'rt', 17, ''),
-(37, 'Nbn', 'dsfdsf', 17, ''),
-(38, 'Nbn', 'wer', 17, ''),
-(39, 'Nbn', 'asdsfd', 17, ''),
-(40, 'Nbn', 'fsdfsd', 17, ''),
-(41, 'Nbn', 'hjbhj', 17, ''),
-(42, 'Nbn', 'nnn', 17, ''),
-(43, 'Nbn', 'ee', 17, ''),
-(44, 'Nbn', 'Wow', 16, 'nbn.jpg'),
-(45, 'Nbn', 'w', 16, ''),
-(46, 'Nbn', 'er', 16, ''),
-(47, 'Nbn', 'asdqweq', 16, ''),
-(48, 'Nbn', 'ewew', 15, ''),
-(49, 'Nbn', 'vcv', 15, ''),
-(50, 'Nbn', 'ty', 17, ''),
-(51, 'Nbn', 'nbn', 17, ''),
-(52, 'Nbn', 'rtrt', 17, ''),
-(53, 'Nbn', 'wqwq', 17, ''),
-(55, 'Nbn', 'das', 17, ''),
-(56, 'Nbn', 'kai', 14, ''),
-(57, 'Nbn', 'as', 14, ''),
-(58, 'Nbn', 'hello', 17, ''),
-(59, 'Nbn', 'q', 17, 'nbn.jpg'),
-(60, 'Nbn', 'weewrew', 17, 'nbn.jpg'),
-(62, 'Nbn', 'qwe', 17, ''),
-(63, 'Nbn', 'ert', 17, ''),
-(64, 'Nbn', '45', 6, ''),
-(65, 'Nbn', 'rgdfg', 0, 'nbn.jpg'),
-(66, 'Nbn', '', 17, ''),
-(67, 'Nbn', 'q', 17, ''),
-(68, 'Nbn', 'xcvxc xc cx xc xc x', 17, ''),
-(69, 'Nbn', 'werew', 17, ''),
-(70, 'Nbn', 'er', 17, 'nbn.jpg'),
-(71, 'Nbn', 'l', 17, ''),
-(72, 'Nbn', 'nbn', 17, ''),
-(73, 'Nbn', 'ty', 17, 'nbn.jpg'),
-(74, 'Nbn', 'hghg', 17, 'nbn.jpg'),
-(75, 'Jkkj', 'n', 17, 'jk.png'),
-(76, 'Nbn', 'Nbn', 17, 'nbn.jpg'),
-(77, 'Nbn', 'hello Nice Photo', 7, 'nbn.jpg'),
-(78, '<br', 'gdf', 0, ''),
-(79, 'Nbn', 'sdfs', 19, 'nbn.jpg'),
-(80, 'Nbn', 'nbnbnbnbn', 20, 'nbn.jpg'),
-(81, 'Nbn', 'gfg', 20, 'nbn.jpg'),
-(82, 'Nbn', 'fghbfg hfgh gfh gfh', 22, 'nbn.jpg'),
-(83, 'Nbn', 'fghbfg hfgh gfh gfh', 22, 'nbn.jpg'),
-(84, 'Nbn', 'gggg', 22, 'nbn.jpg'),
-(85, 'ee', 'wow Nice picture', 21, 'user-default.png'),
-(86, 'Nbn', 'Yo Whats U', 21, 'nbn.jpg'),
-(87, 'Nbn', 'nbnbnbn', 23, 'nbn.jpg'),
-(88, 'Jkkj', 'gdfgfdg', 23, 'jk.png'),
-(89, 'Jkkj', 'wow', 26, 'jk.png'),
-(90, 'Nbn', '', 26, 'nbn.jpg'),
-(91, 'Nbn', 'Wow Man ', 29, 'nbn.jpg'),
-(92, 'Swagat ', 'Thanks Man Best wish ', 29, 'user-default.png'),
-(93, 'U', 'hjghj', 30, 'user-default.png'),
-(94, 'Nabin', 'aaa', 32, 'user-default.png'),
-(95, 'Nabin', 'sad', 0, ''),
-(96, 'Nabin', 'Nabin ', 33, 'user-default.png'),
-(97, 'Roopesh ', 'hghg', 35, 'user-default.png'),
-(98, 'Draw', 'j', 37, 'user-default.png');
+INSERT INTO `comment` (`id`, `name`, `comment`, `photo_id`, `profile_pic`, `time`) VALUES
+(131, 'Admin', 'sdfdsfdsf', 78, 'nbn.jpg', '2023-04-23 21:40:26'),
+(132, 'Admin', 'sdfdsfdsf', 77, 'nbn.jpg', '2023-04-23 21:40:26'),
+(133, 'Admin', 'fsdfdsf', 76, 'nbn.jpg', '2023-04-23 21:40:26'),
+(134, 'Admin', 'wewewewe', 78, 'nbn.jpg', '2023-04-23 21:40:26'),
+(135, 'Nabin ', 'yuy', 78, 'user-default.png', '2023-04-23 21:40:26'),
+(136, 'Nabin ', 'yuy', 77, 'user-default.png', '2023-04-23 21:40:26'),
+(137, 'Nabin ', 'yuy', 77, 'user-default.png', '2023-04-23 21:40:26'),
+(138, 'Nabin ', 'Hello', 79, 'user-default.png', '2023-04-23 21:40:26'),
+(139, 'Admin', 'This is awesome!', 80, 'nbn.jpg', '2023-04-24 23:15:00'),
+(140, 'Admin', 'Wow, great post!', 80, 'nbn.jpg', '2023-04-24 23:20:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `community`
+--
+
+CREATE TABLE `community` (
+  `id` int(10) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `contents` varchar(500) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `p_p` varchar(100) NOT NULL,
+  `tags` varchar(250) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `community`
+--
+
+INSERT INTO `community` (`id`, `title`, `contents`, `username`, `p_p`, `tags`, `timestamp`) VALUES
+(43, 'My First text Post As User ', '<p><span class=\"token block\" style=\"border: 0px solid rgb(229, 231, 235); display: block; color: rgb(248, 250, 252); font-family: &quot;Fira Code VF&quot;, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace; font-variant-ligatures: none; white-space: pre; background-color: rgb(30, 41, 59);\"><span class=\"token doctype punctuation\" style=\"border: 0px solid rgb(229, 231, 235); --tw-text-opacity:1; color: rgb(100 116 139/var(--tw-te', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:12:16'),
+(44, 'Second Posts', '<p>&lt;!doctype html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &lt;meta charset=\"UTF-8\"&gt;</p><p>&nbsp; &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</p><p>&nbsp; &lt;script src=\"https://cdn.tailwindcss.com\"&gt;&lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &lt;h1 class=\"text-3xl font-bold underline\"&gt;</p><p>&nbsp; &nbsp; Hello world!</p><p>&nbsp; &lt;/h1&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:13:11');
 
 -- --------------------------------------------------------
 
@@ -989,16 +279,7 @@ CREATE TABLE `contact` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `message` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`id`, `name`, `email`, `message`) VALUES
-(1, 'fdsf', 'nbn@gmail.com', 'fsdfsdfdsffsdf'),
-(2, 'fdsf', 'nbn@gmail.com', 'fsdfsdfdsffsdf'),
-(3, 'fdsf', 'nbn@gmail.com', 'fsdfsdfdsffsdf');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1012,49 +293,19 @@ CREATE TABLE `conversations` (
   `user_2` int(11) NOT NULL,
   `is_blocked` int(11) NOT NULL DEFAULT 0,
   `msg_request` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `conversations`
 --
 
 INSERT INTO `conversations` (`conversation_id`, `user_1`, `user_2`, `is_blocked`, `msg_request`) VALUES
-(1, 1, 2, 1, 1),
-(2, 3, 1, 1, 0),
-(3, 3, 2, 0, 0),
-(4, 1, 5, 0, 0),
-(5, 1, 11, 0, 0),
-(6, 13, 1, 0, 0),
-(7, 46, 1, 0, 0),
-(8, 50, 39, 0, 0),
-(9, 49, 39, 0, 0),
-(10, 53, 54, 0, 0),
-(11, 55, 53, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `global_notify`
---
-
-CREATE TABLE `global_notify` (
-  `id` int(10) NOT NULL,
-  `topic` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `report_details` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `global_notify`
---
-
-INSERT INTO `global_notify` (`id`, `topic`, `description`, `date`, `report_details`) VALUES
-(2, 'asd', 'asd', '2022-03-08 17:19:34', ''),
-(3, 'hfdhdf', 'dfgdfg dfgdfg', '2022-03-10 04:40:30', ''),
-(4, 'nbvb bjh', 'nbvj hvhjvjh', '2022-03-10 05:12:29', ''),
-(5, 'dfgd fgdfg', 'dfgdfgdf', '2022-03-11 05:38:08', ''),
-(6, 'gjh gfhjfg', 'hgf hfgh fg', '2022-03-22 15:43:17', '');
+(12, 57, 56, 0, 0),
+(13, 59, 57, 0, 0),
+(14, 58, 59, 0, 0),
+(15, 58, 57, 0, 0),
+(16, 61, 57, 0, 0),
+(17, 63, 64, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1070,7 +321,7 @@ CREATE TABLE `groupchat` (
   `room_name` varchar(20) NOT NULL,
   `p_p` varchar(255) NOT NULL,
   `time` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `groupchat`
@@ -1169,53 +420,85 @@ INSERT INTO `groupchat` (`id`, `name`, `chats`, `chat_room`, `room_name`, `p_p`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `group_photo` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `description`, `admin_id`, `photo`, `group_photo`, `created_at`) VALUES
+(64, 'we', 'we', 63, NULL, 'default.png', '2023-04-26 05:16:15'),
+(65, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:23:48'),
+(66, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:23:58'),
+(67, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:24:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_posts`
+--
+
+CREATE TABLE `group_posts` (
+  `id` int(10) NOT NULL,
+  `admin_id` int(20) NOT NULL,
+  `name` varchar(155) NOT NULL,
+  `topic` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `group_posts` varchar(255) NOT NULL,
+  `report_details` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `group_posts`
+--
+
+INSERT INTO `group_posts` (`id`, `admin_id`, `name`, `topic`, `description`, `date`, `group_posts`, `report_details`) VALUES
+(24, 63, 'we', 'sdfds', 'sdfsdf', '2023-04-26 05:20:53', 'nabin.jpg', ''),
+(27, 63, 'ty', 'fgfd', 'gdfg', '2023-04-26 05:32:39', 'nepal.jpg', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `something` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `something` varchar(500) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
   `uploaded_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `likes` int(11) NOT NULL,
-  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
+  `status` enum('1','0') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `images`
 --
 
-INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `uploaded_on`, `likes`, `status`) VALUES
-(6, 'Nbn', 'We', '', 'login.png', '2022-03-06 12:58:26', 0, '1'),
-(7, 'Jkkj', 'Sdjfnds dsf', '', 'naruto.jpg', '2022-03-11 09:03:23', 0, '1'),
-(8, 'Jkkj', 'Hhabshbd ahsj', '', 'naruto.jpg', '2022-03-11 09:03:30', 0, '0'),
-(9, 'Nbn', 'Jhbjh', '', 'screenshot.png', '2022-03-09 16:17:08', 0, '1'),
-(11, 'Nbn', 'Yo', '', '', '2022-03-11 09:02:14', 0, '1'),
-(12, 'Nbn', 'Hgfhgfhgfh', '', 'nbn.jpg', '2022-03-11 11:16:31', 0, '1'),
-(13, 'Nbn', 'Hello ', '', 'naruto.jpg', '2022-03-11 11:18:48', 0, '1'),
-(14, 'Nbn', '', '', 'login.jpg', '2022-03-11 11:36:52', 0, '1'),
-(15, 'Nbn', '', '', 'noblesse.jpeg', '2022-03-16 18:31:05', 0, '1'),
-(16, 'Nbn', 'Yuyfhgfvjhf', '', 'j.jpg', '2022-03-25 13:38:27', 0, '1'),
-(17, 'Nbn', 'Hgfhg h hhgghfghf hgfn', '', '', '2022-03-25 13:38:43', 0, '1'),
-(18, 'Nbn', '', '', 'nbn.jpg', '2022-03-26 15:40:07', 0, '1'),
-(19, 'Nbnn', '', '', 'chatimg.jpg', '2022-03-26 20:45:00', 0, '1'),
-(20, 'We', '', '', 'logo.png', '2022-03-28 00:33:48', 0, '1'),
-(21, 'Nbn', '', '', 'nbn.jpg', '2022-03-28 17:00:42', 0, '1'),
-(23, 'Nbn', 'Hello My name is nabin raj chhetri', '', 'thor.jpeg', '2022-04-03 13:58:33', 0, '1'),
-(26, 'Jkkj', 'Gfhfh fgh fgh', '', '', '2022-05-05 19:48:04', 0, '1'),
-(27, 'Nbn', 'Gdfgfdg', '', '', '2022-05-05 20:07:42', 0, '1'),
-(28, 'Nbn', 'Dsfsdf', '', 'n.jpg', '2022-05-05 20:08:20', 0, '1'),
-(29, 'Swagat', 'Hello from Swagat Poudel ', '', 'swa.jpg', '2022-05-07 11:11:24', 0, '1'),
-(30, 'U', 'Nm', '', 'image (7).png', '2022-08-08 12:50:51', 0, '1'),
-(31, 'Nabin', 'Hello from pwnbot', '', 'five.jpeg', '2022-08-26 06:02:20', 0, '1'),
-(33, 'Nabin', 'Hello', '', 'c.jpg', '2022-09-19 13:46:19', 0, '1'),
-(34, 'Nabin', 'NNNNNN', '', '', '2022-09-19 13:48:48', 0, '1'),
-(36, 'Roopesh', 'Jjk', '', '6.jpeg', '2022-10-14 12:37:55', 0, '1'),
-(37, 'Draw', 'Demo', '', 'a.jpg', '2023-03-07 18:44:03', 0, '1'),
-(38, 'Draw', 'J', '', '', '2023-03-10 22:57:21', 0, '1'),
-(39, 'Draw', 'Hello ', '', 'a.jpg', '2023-03-10 23:00:45', 0, '1');
+INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `uploaded_on`, `status`) VALUES
+(76, 'Admin', 'Nbn', '', 'nbn.jpg', '2023-04-16 18:49:33', '1'),
+(77, 'Nabin', 'Rt', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-16 18:50:35', '1'),
+(78, 'Admin', 'Sdfds', '', 'nbn.jpg', '2023-04-22 16:12:09', '1'),
+(79, 'Admin', 'A B C D E F G H', '', 'nabin.jpg', '2023-04-24 18:52:22', '1'),
+(80, 'Admin', 'Hello ', '', 'thumb.png', '2023-04-24 18:52:17', '1'),
+(81, 'Nabin', 'Adasd', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-25 09:07:46', '1'),
+(82, 'Admin', 'Asasd', '', 'nabin.jpg', '2023-04-26 14:50:30', '1'),
+(90, 'Admin', 'Nbn', '', '', '2023-04-26 17:35:21', '1'),
+(91, 'Admin', 'Hh', '', 'THIS IS 4K ANIME (Zenitsu) - YouTube - Google Chrome 2022-01-31 23-24-20.mp4', '2023-04-26 17:38:09', '1'),
+(93, 'Admin', 'Nbn', '', 'ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4', '2023-04-26 17:44:52', '1');
 
 -- --------------------------------------------------------
 
@@ -1225,9 +508,105 @@ INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `upload
 
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
-  `bio` int(11) NOT NULL,
-  `education` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `user_id` int(10) NOT NULL,
+  `Photo_id` int(11) NOT NULL,
+  `likes` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `user_id`, `Photo_id`, `likes`, `username`) VALUES
+(53, 57, 68, 16, ''),
+(54, 57, 67, 4, ''),
+(55, 57, 66, 1, ''),
+(56, 57, 65, 1, ''),
+(57, 56, 70, 1, ''),
+(58, 64, 77, 1, ''),
+(59, 63, 76, 3, ''),
+(60, 63, 78, 6, ''),
+(61, 63, 80, 4, 'admin'),
+(62, 63, 79, 2, 'admin'),
+(63, 0, 84, 1, 'admin'),
+(64, 63, 93, 2, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `live_chat`
+--
+
+CREATE TABLE `live_chat` (
+  `id` int(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `message` varchar(50) NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `live_chat`
+--
+
+INSERT INTO `live_chat` (`id`, `username`, `message`, `timestamp`) VALUES
+(1, 'nbn', 'dfdsfds', '0000-00-00 00:00:00.000000'),
+(2, 'test', 'Nabin', '2023-03-30 11:17:52.904308'),
+(3, 'test', 'hllo', '2023-03-30 11:17:59.939386'),
+(4, 'test', 'Nice Job', '2023-03-30 11:18:37.972756'),
+(5, 'test', 'Ok', '2023-03-30 11:18:46.493766'),
+(6, 'test', 'No', '2023-03-30 11:18:51.845423'),
+(7, 'test', 'YES', '2023-03-30 11:19:59.389210'),
+(8, 'test', 'Hah', '2023-03-30 11:20:39.647355'),
+(9, 'test', 'UU', '2023-03-30 11:21:45.261734'),
+(10, 'test', 'New', '2023-03-30 11:21:47.552839'),
+(11, 'test', 'jj', '2023-03-30 15:24:44.481541'),
+(12, 'test', 'uu', '2023-03-30 15:24:50.584485'),
+(13, 'test', 'Hello', '2023-03-30 15:25:01.498428'),
+(14, 'test', 'hdshsd', '2023-03-31 16:56:49.270955'),
+(15, 'test', 'Hello Nabin', '2023-03-31 16:57:40.975502'),
+(16, 'nbnn', 'Hello Test', '2023-03-31 16:59:32.254869'),
+(17, 'test', 'gh', '2023-04-01 16:11:17.897534'),
+(18, 'test', 'sadasd', '2023-04-03 12:51:06.340757'),
+(19, 'test', 'asdasd', '2023-04-03 12:51:08.197479'),
+(20, 'test', 'gfh', '2023-04-03 12:52:59.109937'),
+(21, 'test', 'sdfdsf', '2023-04-03 16:22:35.743530'),
+(22, 'test', 'Hello', '2023-04-12 10:18:53.899412');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report_posts`
+--
+
+CREATE TABLE `report_posts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `reason` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `report_posts`
+--
+
+INSERT INTO `report_posts` (`id`, `user_id`, `post_id`, `reason`) VALUES
+(1, 0, 57, 'rt'),
+(2, 0, 57, 'rttrt'),
+(3, 57, 68, 'sdf'),
+(4, 57, 68, 'dfgfdg'),
+(5, 57, 68, 'sdfsdf sdf'),
+(6, 57, 68, 'fsdf df'),
+(7, 57, 68, 'fsdf df'),
+(8, 57, 68, 'gdfgfdg'),
+(9, 57, 68, 'fsdf fsd'),
+(10, 57, 68, 'dsfsdf'),
+(11, 57, 68, 'dasd asd'),
+(12, 57, 68, 'dasd asd'),
+(13, 57, 68, 'fake news'),
+(14, 57, 68, 'fake news'),
+(15, 57, 68, 'dd'),
+(16, 63, 78, 'Harrsaments');
 
 -- --------------------------------------------------------
 
@@ -1242,52 +621,25 @@ CREATE TABLE `users` (
   `lastname` varchar(200) NOT NULL,
   `gender` varchar(20) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `phone` int(11) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `p_p` varchar(255) DEFAULT 'user-default.png',
-  `c_p` varchar(30) NOT NULL,
+  `c_p` varchar(255) NOT NULL,
   `last_seen` datetime NOT NULL DEFAULT current_timestamp(),
   `is_blocked` int(11) NOT NULL DEFAULT 0,
   `report` int(10) NOT NULL,
   `verification_code` varchar(255) NOT NULL,
   `verified` int(50) NOT NULL DEFAULT 0,
-  `bio` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `interests` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `username`, `lastname`, `gender`, `email`, `password`, `p_p`, `c_p`, `last_seen`, `is_blocked`, `report`, `verification_code`, `verified`, `bio`) VALUES
-(1, 'nbn', 'nbn', 'Uzumaki', 'male', 'Nabinxettri15@gmail.com       ', '$2y$10$c7RLRGiXA2RAF5icfCzCFuq9AgJqRBmLkLiw7bvJfp7a.xfxj22xi', '8.jpeg', 'Naruto-Six-Paths.jpg', '2022-05-09 14:51:18', 0, 0, '0', 1, 'My self Nabin Raj Chhetri. Nice To Meet You Guys '),
-(2, 'Jkkj', 'jk', 'Don', 'Male', 'Jk@gmail.com  ', '$2y$10$FU2CwRSHun1sFLqbGEue8OQFpvn9h8kLHdIpNYx3VImIuIeVH2x2y', 'jk.png', 'noblesse.jpeg', '2022-05-05 19:46:10', 0, 0, '0', 0, 'g'),
-(3, 'pk', 'pk', 'pk', 'pk', 'pk', '$2y$10$Uw0FslpBzQTIr57hwZXxbOzOP3EJc.xsf4LA8bEDUgt.TBGP3BKti', 'user-default.png', 'noblesse.jpeg', '2022-03-11 11:23:47', 0, 0, '0', 0, ''),
-(5, 'Nbnn', 'nbnn', 'Nbnn', 'Male', 'Admin@admin', '$2y$10$ONwz1SBsqwx3HKcqBUm2RuuevXBVMrOM1nwD4ipQtkg.C3WWrhOVO', 'user-default.png', 'user-default.png', '2022-04-02 20:58:02', 0, 0, '1', 0, ''),
-(6, 'Rog', 'rog', 'Raj', 'Male', 'Admin@admin', '$2y$10$xztvpPdL2lk3bNmsKbp2OehonfjYXgnmqYvX1oxXMY1.VRLhtemL.', 'user-default.png', 'cover.jpeg', '2022-03-17 16:13:03', 0, 0, '1', 0, ''),
-(7, 'Nbnn', 'nbnnn', 'Nbnn', 'Male', 'Xetinbn66@gmail.com', '$2y$10$gwDO.486QE9pARZWo.mJae3mWcza1Qkl1fRk.SVs9410MHCGsHrAi', 'user-default.png', 'noblesse.jpeg', '2022-03-17 16:18:22', 0, 0, '70b0249c1eb967a8f172f4e888b5cfd4', 0, ''),
-(11, 'Aa', 'aa', 'Aa', 'Male', 'xetn66@gmail.com', '$2y$10$rwK8JqGE5dvIEgh6LuqjAeBG0e9aEFtXGM6Hnfpq0W34wSlm7.LrC', 'user-default.png', '', '2022-03-31 12:38:55', 0, 0, 'f6d1e99465f5d8892950699aee4682cd', 0, ''),
-(12, 'Bb', 'bb', 'Bb', 'Male', 'naettri15@gmail.com', '$2y$10$8komY8jScikVcZ.pbTdYOOI6kVjk.dUYyd33zDl3fYfjkrTC/6ktK', 'user-default.png', '', '2022-03-17 16:49:24', 0, 0, 'fa06c5d9b00666cdc8ffbc824df0f2b1', 0, ''),
-(13, 'ee', 'ee', 'ee', 'Male', 'nabinx15@gmail.com     ', '$2y$10$G8Kq42FZwxlQAKB7qAIDXOJk1SMTd8Q7P7Z/F8T5zKXDEyKS0CCXS', 'user-default.png', 'sq.jpg', '2022-04-03 14:28:12', 0, 0, '28d49fc089151925d63c99a0319c772d', 0, ''),
-(14, 'Bb', 'bbb', 'Bb', 'Male', 'nabinx@gmail.com', '$2y$10$haiFZ70ut64ZijNDTLVFkeeR1VgtQz2Q0eiBZo8CV9q3IuleEbpPa', 'user-default.png', '', '2022-03-17 17:04:52', 0, 0, '4032270060d31f084ac2fe71b6da2842', 0, ''),
-(15, 'Tt', 'tt', 'Tt', 'Male', '.com', '$2y$10$x10bXf./66pAq9jqzPicNOoojxyes4vaiF2q.lUwpxFw7X29ucAdi', 'user-default.png', '', '2022-03-17 17:07:08', 0, 0, '70b8b06fe06b9b6d10290bc7f05c83ff', 0, ''),
-(16, 'Qq', 'qq', 'Qq', 'Male', 'nabinxettri15@gmail.com', '$2y$10$Dx8icrRIt/xyY2YCR88TfufOTvuIMnf66uES0bm06xyWv3YozyTpm', 'user-default.png', '', '2022-03-17 17:10:39', 0, 0, '20bfe703cab82e87b4bee1ff2a294a33', 0, ''),
-(17, 'Tyty', 'tyy', 'Tyty', 'Male', 'nabinxettri15@gmail.com', '$2y$10$QVjm50Eigezx4kPNOitvf.T6hGE5n0H4RceJNMUZT2IT1GUZRXaRu', 'user-default.png', '', '2022-03-17 18:06:58', 0, 0, '46d7560ab385afe151550b8ec7607410', 0, ''),
-(18, 'Nnm', 'jj', 'Nmnm', 'Male', 'xetrinbn66@gmail.com', '$2y$10$7GHXSGZE5mSXfM6XhgdaMOweHadwTSDhzlwlex5v/dvTFywu/g21e', 'user-default.png', '', '2022-03-17 18:19:38', 0, 0, '105aea0b00c84c7f9008584e56c7a78e', 0, ''),
-(35, 'We', 'we', 'We', 'Male', 'We@gmail.com', '$2y$10$rAjxkhdbbj9Zvg8meIV62O1n75LslxNZIlCYE4pCZYrJHvHjQL.OC', 'user-default.png', 'nbn.jpg', '2022-03-27 23:05:50', 0, 0, '', 0, ''),
-(37, 'Nbn', 'nbnbnbnbn', 'Nbnbnbn', 'Male', 'Nabinxettri15@gmail.com', '$2y$10$gHer5kMhBajuGYqKd12Q.eH5oILGAPoZMwO9rICgeG8CGE5XZ86Qq', 'user-default.png', '', '2022-03-31 12:58:05', 0, 0, '', 0, ''),
-(38, 'Nabin', 'nabin123', 'Raj Chhetri ', 'Male', 'Nabin@gmail.com', '$2y$10$NiWdfZ81bL3N3CNA25n/EOxB2HHC/kRoJ9LJRTV9ArD4NytNMM70u', 'user-default.png', '', '2022-04-03 13:05:59', 0, 0, '', 0, ''),
-(39, 'Swagat ', 'swagat', 'Paudel', 'Male', 'Swagatpaudel77@gmail.com', '$2y$10$afLySr/fLX5qKM9Y4Zm2C.veYqX.YvfeCdi1pMZbOGwcWleP9SOs.', 'swaa.jpg', 'swa.jpg', '2022-05-07 11:05:18', 0, 5, '', 0, ''),
-(44, 'Nabin raj ', 'nbnw', 'Chhetrii', 'Male', 'Nabinn@gmail.com', '$2y$10$E2myuBzdMJysKTj6C7FbPuJ0358jXKTjFTn/2dRCRKBK6cc2GhIue', '5.jpeg', '6.jpeg', '2022-05-09 14:46:32', 0, 0, '', 0, ''),
-(45, 'NABIN', 'nbnn', 'Uzumaki', 'Male', 'Nabin@gmail.com', '$2y$10$uVYs/OKWLBguQmIYSD2WF./gUMAa/YhgHD4KJKRqkoy5qVDfNuGJO', 'user-default.png', '', '2022-08-08 12:49:16', 0, 0, '', 0, ''),
-(46, 'U', 'uu', 'U', 'Male', 'Nbn2@gmail.com', '$2y$10$xRAdV5Wxzr9DWarCYsKHTOJlAfFOz8ULq4uqzJKgfPdEMOyvQQsrW', 'user-default.png', '', '2022-08-08 12:51:30', 0, 0, '', 0, ''),
-(47, 'Nabin', 'nbn', 'Nbn', 'Male', 'Nabinxettri15@gmail.com', '$2y$10$ixf4HWATpt2klw36r4vJpuY5DwaZOWIrXkBfkshvG8ybAZhDiGqam', 'user-default.png', '', '2022-08-12 09:34:31', 0, 0, '', 0, ''),
-(48, 'Sagar', 'axix', 'Regmi', 'Male', 'Sagar@gmail.com', '$2y$10$DCpl3H7ZnCW0dycmMrKXxum5RKQnAoa1v6u6.mCVuj9Id0n8wgrqa', 'user-default.png', '', '2022-08-12 10:41:06', 0, 0, '', 0, ''),
-(49, 'Nabin', 'test', 'Raj Chhetri', 'Male', 'Nabin@gmail.com', '$2y$10$JK26lopFOwmIvoRPSF/CQuJFRe9Velq9qC/ULudYIfXlJWcXHpBb2', '5.jpeg', '8.jpeg', '2022-08-26 06:07:10', 0, 0, '', 0, ''),
-(50, 'Swa', 'swa', 'Poudel', 'Male', 'Swagat@gmail.com', '$2y$10$S.g8GL9FwEEKmx1RnOqlpe0SsbjSsoggwZtUxSMAK2nyAaf/kX18i', 'user-default.png', '', '2022-08-26 06:06:09', 0, 0, '', 0, ''),
-(51, 'Nabin', 'nabin98', 'Raj Chhetri ', 'Male', 'Nbn@gmail.com', '$2y$10$N9vduEudE.atnl6pAASO8e9UMAaHD4XMQSVUC7WU5Wly1.3Cd6Ep2', '8.jpeg', '6.jpeg', '2022-09-19 13:45:39', 0, 0, '', 0, ''),
-(52, 'Roopesh ', 'roopesh', 'Parajuli', 'Male', 'Roopesh@gmail.com', '$2y$10$78ZxSTGS9/0ZmAC3id4G7eUSpQU37IdUkrwwGCjLL5I3Su5qrNrLO', 'one.jpeg', 'three.png', '2022-10-14 11:52:41', 0, 0, '', 0, ''),
-(53, 'Draw', 'draw', 'Draw', 'Male', 'Draw@gmail.com', '$2y$10$utcqe2Hddlfbn2asDJ1WwubBAEpmSp.AoVfQkb/dVqzT.Oj32jTN2', 'a.jpg', 'a.jpg', '2023-03-10 23:34:49', 0, 1, '', 0, ''),
-(54, 'Mod', 'mod', 'Mod', 'Male', 'Mod@gmail.com', '$2y$10$mZ9MxjMQ.tMUXQhar7noLOJlBq3gQTV0eWScxRnzlyzSLAwxbdmv.', 'user-default.png', '', '2023-03-07 18:54:17', 0, 0, '', 0, ''),
-(55, 'Testadmin', 'admin', 'Test', 'Male', 'Admin@gmail.com', '$2y$10$xccx2/hCQRO.IGH/WcYvru/ozorKTlvT.nmH7H6ah00J1SAQkaaf6', 'user-default.png', '', '2023-03-09 10:22:11', 0, 0, '', 0, '');
+INSERT INTO `users` (`user_id`, `name`, `username`, `lastname`, `gender`, `email`, `phone`, `password`, `p_p`, `c_p`, `last_seen`, `is_blocked`, `report`, `verification_code`, `verified`, `interests`) VALUES
+(63, 'Admin', 'admin', 'Admin', 'Male', '', 0, '$2y$10$HVXLWqKhReOuDEdRJ5i2iusm05n9kr8Q8h3QGyDx5zLACy5XZ0X9y', 'nbn.jpg', 'nbn.jpg', '2023-04-26 18:24:45', 0, 0, '', 0, ''),
+(64, 'Nabin ', 'nbn', 'Raj Chhetri', 'Male', 'Nbn@gmail.com', 0, '$2y$10$Rtx/wh8U8jUy40KjRGLSuu7PYxPgfsYch1KTMcZoxMNXtRw4dCFTe', 'user-default.png', '', '2023-04-22 23:31:26', 0, 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1299,19 +651,23 @@ CREATE TABLE `videos` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `videos`
---
-
-INSERT INTO `videos` (`id`, `name`, `location`) VALUES
-(4, 'ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4', 'client/assets/videos/ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4'),
-(5, 'THIS IS 4K ANIME (Zenitsu) - YouTube - Google Chrome 2022-01-31 23-24-20.mp4', 'client/assets/videos/THIS IS 4K ANIME (Zenitsu) - YouTube - Google Chrome 2022-01-31 23-24-20.mp4');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `bios`
+--
+ALTER TABLE `bios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chats`
@@ -1332,6 +688,12 @@ ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `community`
+--
+ALTER TABLE `community`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
@@ -1344,21 +706,45 @@ ALTER TABLE `conversations`
   ADD PRIMARY KEY (`conversation_id`);
 
 --
--- Indexes for table `global_notify`
---
-ALTER TABLE `global_notify`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `groupchat`
 --
 ALTER TABLE `groupchat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `group_posts`
+--
+ALTER TABLE `group_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `live_chat`
+--
+ALTER TABLE `live_chat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `report_posts`
+--
+ALTER TABLE `report_posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1378,22 +764,34 @@ ALTER TABLE `videos`
 --
 
 --
+-- AUTO_INCREMENT for table `bios`
+--
+ALTER TABLE `bios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=814;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `chat_room`
 --
 ALTER TABLE `chat_room`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+
+--
+-- AUTO_INCREMENT for table `community`
+--
+ALTER TABLE `community`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -1405,13 +803,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
-  MODIFY `conversation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `global_notify`
---
-ALTER TABLE `global_notify`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `conversation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `groupchat`
@@ -1420,16 +812,46 @@ ALTER TABLE `groupchat`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `group_posts`
+--
+ALTER TABLE `group_posts`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `live_chat`
+--
+ALTER TABLE `live_chat`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `report_posts`
+--
+ALTER TABLE `report_posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `videos`

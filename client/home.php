@@ -334,11 +334,24 @@ $nav = include 'nav.php';
                 <hr>
             </div>
             <?php
-            $post_img = $data['file_name'];
-
-            if ($post_img != '') {
-                echo  '  <img class="image" src="assets/post/' . $data["file_name"] . '"
-             height="50" style="width:30pc; height:30pc;    transform: scale(1);"><br>';
+            $file_name = $data['file_name'];
+            if ($file_name != '') {
+              $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+              if (in_array($file_ext, array('jpg', 'jpeg', 'png', 'gif'))) {
+                  // Display image file
+                  echo '<img class="post_image" src="http://localhost/main/client/assets/post/' . $file_name . '" style="    width: -webkit-fill-available;"><br>';
+              } else if ($file_ext == 'mp4') {
+                  // Display video file
+                  
+                  if ($file_name != '') {
+                      echo '<video class="post_video" controls style="    width: -webkit-fill-available;">
+                                <source src="http://localhost/main/client/assets/post/' . $file_name . '" type="video/mp4" >
+                            </video><br>';
+                  }
+              } else {
+                  // Unsupported file format
+                  echo 'Unsupported file format: ' . $file_ext;
+              }
             }
             ?>
             <div class="comment">

@@ -52,18 +52,20 @@ include 'nav.php'
 
 
         <!-- message Box here  -->
-        <div class="" id="message_box" style="display:flex;">
+        <div class="" id="message_box" style="display:flex; width:50pc">
 <button id="start-btn" class="btn  " >
-             <img src="assets/img/icon/mic.png" width="30" height="30" style="        background-color: #f4ffff;
+             <img src="assets/img/icon/mic.png" width="30" height="30" style="        
     border-radius: 0px; " > 
                 </button>
-            <button id="close-btn" class="btn  "> X </button>
-            <button id="chat_img" class="btn  " style="background-color:#d3d4d4;">
-            <img src="assets/img/icon/image.png" width="30" height="30" style="       background-color: #f4ffff;
-    border-radius: 0px;" > 
-        </button>
+               
+                <div class="" id="close-btn">
+                <input type="text" id="instructions" class="textbox" >
+                <button id="close-btn" class="btn  "> X </button>
+
+                </div>
             
-            <input type="text" id="message" class="textbox "  id="instructions" >
+            
+            <input type="text" id="message" class="textbox" accept="image" >
            
         
             <button class="btn " id="sendBtn"  ><i class="fa fa-send-o" style="color: red ; font-size: 20px;"></i></button>
@@ -75,7 +77,7 @@ include 'nav.php'
 
     <!-- profilke user detailes here  -->
     <?php include 'final/profile_detail.php' ?>
-
+   
 
 
    
@@ -92,53 +94,6 @@ include 'nav.php'
 
 
 
-<form action="" method="post" enctype="multipart/form-data" class="image_upload">
-    <input type="hidden" value=" <?php echo  $chat['from_id']   ?>" name="from_id">
-    <input type="hidden" value="   <?php echo  $chat['to_id']    ?>" name="to_id">
-
-    <botton class="btn btn-danger " id="close_img"> X</button> <br>
-        <label for="img_upload">
-            <img src="assets\img\messageimg.png" style="    max-width: 40px;">
-        </label>
-        <input type="file" name="chat_img" id="img_upload"> <br>
-        <input type="submit" name="chatimg" class="img_submit"><br>
-
-</form>
-<?php
-
-if (isset($_POST['chatimg'])) {
-    $from_id = $chat['from_id'];
-    $to_id = $chat['to_id'];
-    $filename = $_FILES["chat_img"]["name"];
-    $tempname = $_FILES["chat_img"]["tmp_name"];
-    $folder = "assets/chatimg/" . $filename;
-
-    $db = mysqli_connect("localhost", "root", "", "chat_app_db");
-
-    // Get all the submitted data from the form
-    // $sql = "INSERT INTO chats (chat_img) VALUES ('$filename')";
-    $sql = " INSERT INTO  chats (from_id, to_id, chat_img) 
-        VALUES ('$from_id','$to_id' ,'$filename' )";
-    // $sql ="UPDATE `chats` SET `chat_img` = 'chat_img' WHERE `chats`.`chat_id` = $chat_id";
-
-    if ($sql) {
-        echo "success";
-    } else {
-        echo "img upload failed";
-    }
-    // Execute query
-    mysqli_query($db, $sql);
-
-    // Now let's move the uploaded image into the folder: image
-    if (move_uploaded_file($tempname, $folder)) {
-        $msg = "Image uploaded successfully";
-    } else {
-        $msg = "Failed to upload image";
-    }
-}
-
-
-?>
 
 
 
@@ -203,6 +158,9 @@ if (isset($_POST['chatimg'])) {
     $(document).ready(function() {
 
         $("#sendBtn").on('click', function() {
+
+          
+            
             message = $("#message").val();
             if (message == "") return;
 
@@ -215,6 +173,7 @@ if (isset($_POST['chatimg'])) {
                     $("#chatBox").append(data);
                     scrollDown();
                 });
+            
         });
 
         /** 
@@ -395,9 +354,8 @@ if (isset($_POST['chatimg'])) {
 
 <style>
     #start-btn {
-        background-color: #d3d4d4;
         border-radius: 40px;
-        width: 38px;
+        width: 45px;
         height: 2px;
         padding-left: 3px;
         padding-bottom: 27px;
@@ -604,9 +562,8 @@ if (isset($_POST['chatimg'])) {
     #sendBtn {
         position: absolute;
 
-        left: 52.3pc;
+        left: 50.3pc;
 
-        background-color: whitesmoke;
 
 
 
@@ -705,68 +662,5 @@ if (isset($_POST['chatimg'])) {
 
 
 
-<!-- Message Searching here  -->
-<!-- base 64 message  -->
 
-<?php
-// Create a database connection
-$conn = mysqli_connect("localhost", "root", "", "chat_app_db");
 
-// Check if the connection was successful
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-if (isset($_POST['search'])) {
-    // Get the search query submitted by the user
-    $search_query = mysqli_real_escape_string($conn, $_POST['search_query']);
-    
-    // Prepare the SQL query
-    $msg= base64_encode($search_query);
-
-// Prepare the SQL query
-$query = "SELECT message FROM chats WHERE message LIKE '%$msg%'";
-
-// Execute the query and fetch the results
-$results = mysqli_query($conn, $query);
-$searchResults = mysqli_fetch_all($results, MYSQLI_ASSOC);
-
-// Encode the message using base64
-foreach ($searchResults as &$result) {
-    $result['message'] = base64_decode($result['message']);
-}
-
-// Return the search results as JSON data
-echo json_encode($searchResults);
-}
-// Close the database connection
-mysqli_close($conn);
-
-?>
-
-<script>
-// Get the search results from PHP and decode them
-var searchResults = <?php echo json_encode($searchResults); ?>;
-for (var i = 0; i < searchResults.length; i++) {
-    searchResults[i].message = atob(searchResults[i].message);
-}
-
-// Find the element that contains the search results
-var searchResultsElement = document.getElementById("chatBox");
-
-// Clear the chatbox before displaying the search results
-searchResultsElement.innerHTML = '';
-
-// Create a new HTML element for each search result and append it to the chatbox
-for (var i = 0; i < searchResults.length; i++) {
-    var resultElement = document.createElement("div");
-    resultElement.innerHTML = searchResults[i].message;
-
-    searchResultsElement.appendChild(resultElement);
-}
-
-// Scroll to the first search result
-if (searchResults.length > 0) {
-    searchResultsElement.firstChild.scrollIntoView();
-}
-</script>

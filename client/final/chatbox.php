@@ -1,11 +1,11 @@
-<div class="">
+<!-- <div class="">
     <form action="final.php" method="GET">
     <input type="search" name="search_query">
     <input type="hidden" name="user" value="<?php echo $_GET['user']; ?>">
 
     <input type="submit" name="search">
     </form>
-  </div>
+  </div> -->
 <div class="shadow p-4 rounded d-flex flex-column chat-box" id="chatBox">
 
 <!-- search in converstion -->

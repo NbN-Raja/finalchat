@@ -6,59 +6,59 @@
         </div>
     </form>
     <!-- chat lists  -->
-    
-    <a style="margin-left: 27pc;" href="home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Link  <span> Up </span></b></a>
+
+    <a style="margin-left: 27pc;" href="home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Link <span> Up </span></b></a>
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start ml-5">
         <div class="navbar-nav">
             </i>
         </div>
         <div class="navbar-nav ml-auto ">
-        
-        <div class="video__icon">
-         <div class="circle--outer"> </div>
-        <div class="circle--inner" id="">
-        <div class="hoverable">
-    <p>online</p>
-    <div class="hover-content">
-        <?php
-        // Fetch users who were last seen online within the last hour
-        $sql = "SELECT name FROM users WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Display the list of users
-        foreach ($users as $user) {
-            echo '<p>' . $user['name'] . '</p>';
-        }
-        ?>
-    </div>
-</div>
-        </div>
-        <p>     <?php 
-                 $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+            <div class="video__icon">
+                <div class="circle--outer"> </div>
+                <div class="circle--inner" id="">
+                    <div class="hoverable">
+                        <p>online</p>
+                        <div class="hover-content">
+                            <?php
+                            // Fetch users who were last seen online within the last hour
+                            $sql = "SELECT name FROM users WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                  $sql = "SELECT COUNT(*) as count FROM `users` WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
-                  $result = mysqli_query($conn, $sql);
-                  
-                  if (mysqli_num_rows($result) > 0) {
-                  $dataa = mysqli_fetch_assoc($result);
-                  $count = $dataa['count'];
-                  echo $count;
-                  } else {
-                   echo "0";
-                  }
-                  
-                  ?> </p>
-       
-       </div>
+                            // Display the list of users
+                            foreach ($users as $user) {
+                                echo '<p>' . $user['name'] . '</p>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <p> <?php
+                    $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+
+                    $sql = "SELECT COUNT(*) as count FROM `users` WHERE last_seen BETWEEN DATE_SUB(NOW(), INTERVAL 1 HOUR) AND DATE_ADD(NOW(), INTERVAL 1 HOUR)";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        $dataa = mysqli_fetch_assoc($result);
+                        $count = $dataa['count'];
+                        echo $count;
+                    } else {
+                        echo "0";
+                    }
+
+                    ?> </p>
+
+            </div>
 
 
 
             <div class="" style="position:relative; right:33px; display:flex">
                 <a class="ml-10" href="http://localhost/main/client/home.php">
-                    
+
                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="36" height="36">
 
                 </a>
@@ -75,12 +75,14 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="true">
                     <path d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z"></path>
                 </svg>
+
                 <span class="badged">
                     <?php notification() ?>
                 </span>
+
                 </i>
-            </a> 
-            <a href="client/final_one.php"  class="nav-item nav-link messages">
+            </a>
+            <a href="client/final_one.php" class="nav-item nav-link messages">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                     <path d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"></path>
                 </svg> <span class="badged" id="message-count">
@@ -157,11 +159,33 @@
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                 <div class="noti" style="display:flex; padding:5px">
-                    <img class="rounded-circle " src="client/assets/post/<?= $row['file_name'] ?>" width="50" height="50" style="border:2px solid white">
+                    <?php
+                            $file_name = $row['file_name'];
+                            if ($file_name != '') {
+                                $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                                if (in_array($file_ext, array('jpg', 'jpeg', 'png', 'gif'))) {
+                                    // Display image file
+                                    echo '<img class="post_image" style="width:36px; height:50px; border-radius:50px" src="client/assets/post/' . $file_name . '" ><br>';
+                                } else if ($file_ext == 'mp4') {
+                                    // Display video file
+
+                                    if ($file_name != '') {
+                                        echo '<video class="post_video" controls style=" width:50px;    border-radius: 20px;">
+                    <source src="client/assets/post/' . $file_name . '" type="video/mp4" >
+                </video><br>';
+                                    }
+                                } else {
+                                    // Unsupported file format
+                                    echo 'Unsupported file format: ' . $file_ext;
+                                }
+                            }
+                    ?>
+
+                
 
                     <div class="" style="margin-left:10px">
                         <?php
-                            echo "" . $row['name'] . "&nbsp;&nbsp; Posted A Image   On <br> " . $row['uploaded_on'] . "<br> <hr>";
+                            echo "" . $row['name'] . "&nbsp;&nbsp; Posted    On <br> " . last_seen($row['uploaded_on']) . "<br> <hr>";
                         ?>
                     </div>
 
@@ -184,96 +208,109 @@
 
 
 <style>
-    *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.video__icon {
-    position: absolute;
-    width: 50px;
-    
-    right: 20pc;
- }
-  .video__icon .circle--outer {
-    border: 1px solid #e50040;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: 0 auto 5px;
-    position: relative;
-    opacity: .8;
-    -webkit-animation: circle 2s ease-in-out infinite;
-            animation: circle 2s ease-in-out infinite; }
-  .video__icon .circle--inner {
-    background: #e50040;
-    left: 15px;
-    top: 10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    position: absolute;
-    opacity: .8; }
-    .video__icon .circle--inner:after {
-      content: '';
-      display: block;
-      border: 2px solid #e50040;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      top: -4px;
-      left: -4px;
-      position: absolute;
-      opacity: .8;
-      -webkit-animation: circle 2s ease-in-out .2s infinite;
-              animation: circle 2s ease-in-out .2s infinite; }
-  .video__icon p {
-    color: #000;
-    text-align: center; }
-
-@-webkit-keyframes circle {
-  from {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-  
-  to {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-    opacity: 0; } }
-
-@keyframes circle {
-  from {
-    -webkit-transform: scale(1);
-    transform: scale(1);
+    *:before,
+    *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
-  
-  to {
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
-    opacity: 0;
-    } }
+
+    .video__icon {
+        position: absolute;
+        width: 50px;
+
+        right: 20pc;
+    }
+
+    .video__icon .circle--outer {
+        border: 1px solid #e50040;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 0 auto 5px;
+        position: relative;
+        opacity: .8;
+        -webkit-animation: circle 2s ease-in-out infinite;
+        animation: circle 2s ease-in-out infinite;
+    }
+
+    .video__icon .circle--inner {
+        background: #e50040;
+        left: 15px;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+        opacity: .8;
+    }
+
+    .video__icon .circle--inner:after {
+        content: '';
+        display: block;
+        border: 2px solid #e50040;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        top: -4px;
+        left: -4px;
+        position: absolute;
+        opacity: .8;
+        -webkit-animation: circle 2s ease-in-out .2s infinite;
+        animation: circle 2s ease-in-out .2s infinite;
+    }
+
+    .video__icon p {
+        color: #000;
+        text-align: center;
+    }
+
+    @-webkit-keyframes circle {
+        from {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        to {
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    @keyframes circle {
+        from {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        to {
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
 
     .hoverable {
-  position: relative;
-  display: inline-block;
-}
+        position: relative;
+        display: inline-block;
+    }
 
-.hoverable .hover-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  top: 100%;
-  left: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
+    .hoverable .hover-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
 
-.hoverable:hover .hover-content {
-  display: block;
-}
-
-
+    .hoverable:hover .hover-content {
+        display: block;
+    }
+   
 </style>
