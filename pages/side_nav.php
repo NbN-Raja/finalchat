@@ -80,12 +80,20 @@
     <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <a>Groups</a>
-      <a href="#"> Groups</a>
+      
+      <a href="http://localhost/main/group/group.php"> Groups</a>
     </div>
     <div class="col-md-6">
-      <a>Events</a>
-      <a href="#">Events</a>
+ 
+      <a href="#">GroupChat</a>
+    </div>
+    <div class="col-md-6">
+   
+      <a href="http://localhost/main/video call">Conference</a>
+    </div>
+    <div class="col-md-6">
+   
+      <a href="http://localhost/main/video call">Events</a>
     </div>
   </div>
 </div>
@@ -200,6 +208,11 @@
         font-size: 24px;
         font-weight: bold;
         margin: 0;
+    }
+
+    .container a{
+        color:black;
+        font-weight: 500
     }
 </style>
 

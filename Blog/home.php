@@ -65,21 +65,17 @@
             }
 
             // Close the database connection
-            mysqli_close($conn); ?>
+?>
         </div>
 
         <!-- Search For Blogs here  -->
-        <form id="search-form" action="">
-            <input type="text" name="tags" id="search-input">
-        </form>
+       
 
-        <!-- fetch search here  -->
-        <div id="search-results-dialog" title="Search Results">
-            <div id="search-results"></div>
-        </div>
+       
 
         <!-- interests  -->
-        <div class=""> Suggestions Here 
+        <div class=""> 
+             <h1>    Suggestions Here </h1>
         <?php
     // Start the session
 
@@ -92,7 +88,7 @@
     $interest = $row['interests'];
 
     // Fetch the relevant data from the community table
-    $query = "SELECT title, username, contents
+    $query = "SELECT title, username, contents,timestamp
               FROM community
               WHERE tags = '$interest'";
     $result = $mysqli->query($query);
@@ -102,11 +98,23 @@
         $title = $row['title'];
         $username = $row['username'];
         $contents = $row['contents'];
+        $timestamp = $row['timestamp'];
 
-        echo '<div class="border" style="border-radius:1px solid black"> 
-                  <h2>' . $title . '</h2>
-                  <p> ' . $username . '</p>
-              </div>';
+       
+      echo '
+      <div class="border" style="border-radius: 8px; border: 1px solid #ddd; padding: 10px;">
+  <h2 style="font-size: 24px; margin-bottom: 10px;">Suggested Post</h2>
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    
+    <div>
+      <p style="margin: 0; font-size: 18px; font-weight: bold;">Post Title</p>
+      <p style="margin: 0; font-size: 14px; color: #666;">Posted by <a href="#" style="color: #333; text-decoration: none;">' . $username . '</a> on'  . $timestamp . '</p>
+    </div>
+  </div>
+  <p style="font-size: 16px; color: #333; line-height: 1.5;">' . substr($contents, 0, 20) . '</p>
+  <a href="#" style="display: block; background-color: #333; color: #fff; padding: 10px 20px; text-align: center; border-radius: 8px; text-decoration: none; margin-top: 10px;">Read More</a>
+</div>';
+
     }
 
     // Close the MySQLi connection
@@ -115,11 +123,14 @@
 
 
 
-<div class="">
-    whats up
-    <?php echo $interest; ?>
-</div>
 
+<div>
+    <input type="search" id="search-input">
+</div>
+ <!-- fetch search here  -->
+ <div id="search-results-dialog" title="Search Results">
+            <div id="search-results"></div>
+            
 
         </div>
 
@@ -234,10 +245,38 @@
 
     .blogs {
         display: flex;
-        background-color: aliceblue;
-        padding: 2px;
-        margin-bottom: 10px;
-    }
+    background-color: aliceblue;
+    padding: 2px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+}
+
+.blogs {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #eee;
+  }
+  .profile {
+    margin-right: 20px;
+  }
+  .profile img {
+    width: 60px;
+    height: 60px;
+  }
+  .contents h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+  .contents p {
+    margin: 0;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+  }
 
     #chat-container {
         position: fixed;
@@ -250,18 +289,50 @@
     }
 
     #chat-messages {
-        height: 320px;
-        padding: 10px;
-        overflow: auto;
-    }
+  height: 320px;
+  padding: 10px;
+  overflow: auto;
+  background-color: #f6f6f6;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
 
-    #chat-form {
-        display: flex;
-        padding: 10px;
-    }
+#chat-messages p {
+  margin: 5px 0;
+  font-size: 14px;
+}
 
-    #chat-message {
-        flex: 1;
-        margin-right: 10px;
-    }
+#chat-form {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#chat-form input[type=text] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#chat-form button[type=submit] {
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#chat-form button[type=submit]:hover {
+  background-color: #3e8e41;
+}
+
+    
 </style>

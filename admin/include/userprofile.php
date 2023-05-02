@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
                                                 height="55px" />
                                         </div>
                                         <div>
-                                            <h5><?php echo $name ?>- <span class="text-muted">@<?php echo $name ?></span></h5>
+                                            <a href="http://localhost/main/client/home.php?name=<?php echo $name ?>"><?php echo $name ?>- <span class="text-muted">@<?php echo $lastname ?></span></a>
                                             <h6 class="text-muted"><?php echo $email ?></h6>
                                         </div>
                                     </div>

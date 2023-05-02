@@ -89,7 +89,7 @@ if ($file_name != '') {
 
       <form action="php/insertlike.php" method="post">
         <input type="hidden" value="<?php echo $image_id; ?>" name="Photo_id" />
-        <input type="hidden" value="<?php echo $data['user_id']; ?>" name="user_id" />
+        <input type="hidden" value="<?php echo $_SESSION['user_id']; ?>" name="user_id" />
         <input type="hidden" name="likes" value="1" />
         <div class="like p-2 cursor">
           <button type="submit" name="submit" style="border:none">
@@ -112,8 +112,28 @@ if ($file_name != '') {
               $userrid = $data['user_id'];
               ?> </span>
           </button>
+          Like
         </div>
       </form>
+
+      <script>
+$(document).ready(function() {
+    $('#like-form').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "php/insertlike.php",
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#like-count').html(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
       <!-- End of Like Php Here  -->
       <div class="like p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">
           <a href="pages/singlepost.php?user=<?= $data['id'] ?>  ">
@@ -134,7 +154,8 @@ if ($file_name != '') {
             ?>
 
             Comment </a></span></div>
-      <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+            <div class="like p-2 cursor" id="share-button"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+            
     </div>
 
     <div class="comment">

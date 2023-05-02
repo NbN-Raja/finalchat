@@ -40,6 +40,7 @@
                 <a class="collapse-item" href="comment.php">Comments</a>
                 <a class="collapse-item" href="contact.php">contact Us</a>
                 <a class="collapse-item" href="report.php">Reports </a>
+                <a class="collapse-item" href="report_posts.php">Report_posts </a>
                 <a class="collapse-item" href="blockeduser.php">Blocks </a>
             </div>
         </div>

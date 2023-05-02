@@ -48,7 +48,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
 		
             if($insert){
 
-              header("Location: " . $_SERVER["HTTP_REFERER"]);
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
                 // $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
                 $statusMsg = "File upload failed, please try again.";
@@ -65,6 +65,9 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     $insert = $db->query("INSERT into images (name, something, uploaded_on) VALUES ('$name', '$something', NOW())");
     if(!$insert){
         $statusMsg = "Failed to insert record into database.";
+    }else{
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+
     }
     
 }

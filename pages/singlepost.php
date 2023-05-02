@@ -147,15 +147,18 @@ while ($data = mysqli_fetch_array($query)) {
       <br> <br>
     </div>
     <div class="report">
-      <h1>Report Post</h1>
-      <form method="post" action="">
-         <input type="hidden" name="post_id" value="<?php echo $image_id ?>">
-         <input type="hidden" name="user_id" value="<?php echo ($_SESSION["user_id"]); ?>">
-        <label for="reason">Reason for reporting:</label> <br>
-        <input type="text" name="reason" id="reason" required> <br>
-        <input type="submit" name="submit" value="Report">
-      </form>
+  <h1 class="mb-3">Report Post</h1>
+  <form method="post" action="">
+    <input type="hidden" name="post_id" value="<?php echo $image_id ?>">
+    <input type="hidden" name="user_id" value="<?php echo ($_SESSION["user_id"]); ?>">
+    <div class="form-group">
+      <label for="reason">Reason for reporting:</label>
+      <input type="text" class="form-control" name="reason" id="reason" required>
     </div>
+    <button type="submit" class="btn btn-primary">Report</button>
+  </form>
+</div>
+
 
 
 

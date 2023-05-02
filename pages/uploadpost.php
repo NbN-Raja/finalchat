@@ -4,6 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Button trigger modal -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" />
 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createPostModal" id="createbtn">
     Create Post
 </button>
@@ -34,7 +35,8 @@
                     </div>
                     <div class="form-group">
                         <label for="caption">Caption</label>
-                        <input type="text" name="something" id="emoji" class="form-control" id="caption" placeholder="Whats on Your Mind  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required></input>
+                        <textarea type="text" cols="10" rows="5" name="something" id="emoji" class="form-control" placeholder="Whats on Your Mind  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required> </textarea>
+
                     </div>
                     <input type="hidden" name="name" value=<?php echo htmlspecialchars($_SESSION["name"]); ?> placeholder="Display Name">
                     <div class="preview_img">
@@ -134,8 +136,30 @@
     }
 </style>
 
+<!-- Include the CSS file for the emoji picker -->
+
+<!-- Include the JavaScript files for jQuery and the emoji picker -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-picker@2.2.4/dist/emoji-picker.js"></script>
+
+<!-- Initialize the emoji picker on the input field -->
+<script>
+  
+  $(document).ready(function() {
+    $('#emoji').emojioneArea({
+      pickerPosition: 'bottom'
+    });
+  });
+ 
+</script>
+
 
 <script>
+
+
+
+
     let file = null;
     let fileUrl = null;
     let fileInput = document.getElementById('fileUpload');
@@ -167,3 +191,6 @@
         }
     });
 </script>
+
+
+

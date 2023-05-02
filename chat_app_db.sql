@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 02:47 PM
+-- Generation Time: May 02, 2023 at 05:55 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -60,7 +60,11 @@ INSERT INTO `bios` (`id`, `user_id`, `relationship_status`, `bio`, `work_history
 (28, 59, '', 'bn', '', '', '', '2023-04-16 11:40:00', '2023-04-16 11:40:00'),
 (29, 63, 'King of this site', 'Yo its Admin', 'Coder', 'PHD In BCA', 'Nepal', '2023-04-22 09:52:38', '2023-04-22 10:29:30'),
 (30, 64, 'yo', 'Hello Myself Nabin Chhetri ', '', '', '', '2023-04-25 03:40:25', '2023-04-25 03:40:25'),
-(31, 64, 'yo', 'Hello Myself Nabin Chhetri ', '', '', '', '2023-04-25 03:40:28', '2023-04-25 03:40:28');
+(31, 64, 'yo', 'Hello Myself Nabin Chhetri ', '', '', '', '2023-04-25 03:40:28', '2023-04-25 03:40:28'),
+(32, 66, 'Single ', 'Its Yo Boy! nabin ', 'Not Working Studying ', 'BCA In Birendra Multiple Campus ', 'Ra Na Pa-1 Bakulahar,Chitwan ', '2023-04-28 11:07:46', '2023-04-28 11:07:46'),
+(33, 66, 'Single ', 'Its Yo Boy! nabin ', 'Not Working Studying ', 'BCA In Birendra Multiple Campus ', 'Ra Na Pa-1 Bakulahar,Chitwan ', '2023-04-28 11:07:50', '2023-04-28 11:07:50'),
+(34, 67, 'Single', 'I am New Here Welcome Me', 'Working on Gas Station', 'Php in Mechanics', 'Kathmandu', '2023-05-02 12:07:07', '2023-05-02 12:07:07'),
+(35, 67, 'Single', 'I am New Here Welcome Me', 'Working on Gas Station', 'Php in Mechanics', 'Kathmandu', '2023-05-02 12:07:10', '2023-05-02 12:07:10');
 
 -- --------------------------------------------------------
 
@@ -84,115 +88,7 @@ CREATE TABLE `chats` (
 --
 
 INSERT INTO `chats` (`chat_id`, `from_id`, `to_id`, `message`, `chat_img`, `opened`, `is_blocked`, `created_at`) VALUES
-(1, 57, 56, 'SGVsbG8g', '', 0, '0', '2023-03-28 18:37:32'),
-(2, 59, 57, 'ZA==', '', 1, '0', '2023-03-28 18:40:02'),
-(3, 59, 57, 'ZA==', '', 1, '0', '2023-03-28 18:40:32'),
-(4, 59, 57, 'bm4=', '', 1, '0', '2023-03-28 18:41:34'),
-(5, 59, 57, 'ZmdmZw==', '', 1, '0', '2023-03-28 18:41:43'),
-(6, 57, 59, 'dnhjdmN4IA==', '', 1, '0', '2023-03-28 18:42:16'),
-(7, 57, 56, 'dnhjdiA=', '', 0, '0', '2023-03-28 18:42:20'),
-(8, 59, 57, 'dnhjdiB4Y3Z4YyA=', '', 1, '0', '2023-03-28 18:42:25'),
-(9, 57, 59, 'dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2', '', 1, '0', '2023-03-28 18:42:33'),
-(10, 59, 57, 'dmZmZmZmZmZmZmZmZmZmZg==', '', 1, '0', '2023-03-28 18:42:38'),
-(11, 59, 57, 'aGVsbG8gbXkgbmFtZSBpcyBOYXZlZW4=', '', 1, '0', '2023-03-28 18:42:48'),
-(12, 59, 57, '', 'Virat-Kohli-Biography.jpg', 1, '0', '2023-03-28 18:42:58'),
-(13, 57, 59, 'ZmdmaCA=', '', 1, '0', '2023-03-28 20:24:26'),
-(14, 57, 59, 'ZnNkZiBzZGY=', '', 1, '0', '2023-03-28 21:11:06'),
-(15, 57, 56, 'ZHNmZHMgZg==', '', 0, '0', '2023-03-28 21:11:20'),
-(16, 57, 59, 'SGVsbG8=', '', 1, '0', '2023-03-29 13:44:46'),
-(17, 57, 59, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-30 00:01:44'),
-(18, 57, 59, 'aGVsbG8gaGVsbG8=', '', 1, '0', '2023-03-30 00:02:07'),
-(19, 57, 59, '8J+Yhg==', '', 1, '0', '2023-03-30 00:02:12'),
-(20, 57, 59, '', '', 1, '0', '2023-03-30 00:21:31'),
-(21, 57, 59, '', '', 1, '0', '2023-03-30 00:22:51'),
-(22, 0, 0, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 0, '0', '2023-03-30 00:23:00'),
-(23, 57, 59, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-30 00:23:52'),
-(24, 57, 59, 'SGVsbGxvIFdoYXRzIFlvIERvaW5n', '', 1, '0', '2023-03-30 00:34:25'),
-(25, 57, 59, 'dXV1dXV1dXU=', '', 1, '0', '2023-03-30 00:35:16'),
-(27, 57, 59, 'aGVsbG8gbXkgbmFtZSBpcyBOYXZlZW4=', '', 1, '0', '2023-03-30 00:41:33'),
-(28, 57, 59, 'aGVsbG8=', '', 1, '0', '2023-03-30 16:30:20'),
-(29, 58, 59, 'SGVsbG8gTmFiaW4gc2lyIA==', '', 1, '0', '2023-03-31 22:51:16'),
-(30, 58, 59, 'SG93IEFyZSBZb3U=', '', 1, '0', '2023-03-31 22:51:40'),
-(31, 58, 57, 'SGVsbG8gVGVzdGFkbWlu', '', 1, '0', '2023-03-31 22:52:23'),
-(32, 57, 58, 'SGVsbG8=', '', 1, '0', '2023-03-31 22:52:58'),
-(33, 58, 57, 'bm8gV2hhdHNBcHA=', '', 1, '0', '2023-03-31 22:53:08'),
-(34, 58, 57, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-31 22:53:21'),
-(35, 57, 58, 'TmljZSBQaWN0dXJl', '', 1, '0', '2023-03-31 22:53:30'),
-(36, 58, 57, 'VGhhbmsgWW91', '', 1, '0', '2023-03-31 22:53:39'),
-(37, 58, 57, '', '333130844_1405111696960317_5466576439609075447_n.jpg', 1, '0', '2023-03-31 22:53:43'),
-(38, 58, 57, 'YQ==', '', 1, '0', '2023-03-31 22:57:53'),
-(39, 61, 57, 'aGVsbG8gc2ly', '', 1, '0', '2023-04-01 21:59:19'),
-(40, 61, 57, 'YWE=', '', 1, '0', '2023-04-01 22:01:26'),
-(41, 61, 57, 'SGVsbG8gTWFuIFdoYXRzIHVw', '', 1, '0', '2023-04-01 22:01:41'),
-(42, 61, 57, 'aGho', '', 1, '0', '2023-04-01 22:06:38'),
-(43, 61, 57, 'aGc=', '', 1, '0', '2023-04-01 22:06:50'),
-(44, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:08:01'),
-(45, 61, 57, 'YWFh', '', 1, '0', '2023-04-01 22:08:06'),
-(46, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:08:21'),
-(47, 61, 57, 'YXdh', '', 1, '0', '2023-04-01 22:08:26'),
-(48, 61, 57, 'YXNk', '', 1, '0', '2023-04-01 22:09:35'),
-(49, 61, 57, 'YXM=', '', 1, '0', '2023-04-01 22:09:54'),
-(50, 61, 57, 'ZGY=', '', 1, '0', '2023-04-01 22:12:49'),
-(51, 61, 57, 'eW91', '', 1, '0', '2023-04-01 22:12:58'),
-(65, 63, 64, 'aGVsbw==', '', 1, '0', '2023-04-16 18:51:51'),
-(66, 63, 64, 'aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS8=', '', 1, '0', '2023-04-22 22:19:44'),
-(68, 63, 64, '8J+kkWFzYXM=', '', 1, '0', '2023-04-22 23:00:16'),
-(69, 63, 64, 'YXNhcw==', '', 1, '0', '2023-04-22 23:00:19'),
-(70, 63, 64, 'YXNkc2Rhc2Rhc2RzYWQ=', '', 1, '0', '2023-04-22 23:00:22'),
-(71, 63, 64, 'YXNkYXNkIGFzZGEgc2RhcyBkYXNkYXM=', '', 1, '0', '2023-04-22 23:00:26'),
-(72, 63, 64, 'YXNkYXMgZGFzIGRhc2RhZGFzZGFzZA==', '', 1, '0', '2023-04-22 23:00:29'),
-(73, 63, 64, 'YXNkYXNkYXNkYXNkYXNkYXNkYWRhc2Rhc2Rhc2QgZHMgZGFz', '', 1, '0', '2023-04-22 23:00:34'),
-(74, 63, 64, 'YXNkIGFzZCBhc2Rhc2Qg', '', 1, '0', '2023-04-22 23:00:38'),
-(75, 63, 64, 'YXNkIGFzZGEgc2Rhc2QgYXNk', '', 1, '0', '2023-04-22 23:00:41'),
-(76, 63, 64, 'YXNkIGFzZCBhZHMgcw==', '', 1, '0', '2023-04-22 23:00:44'),
-(77, 64, 63, 'PHVsIGlkPSJjaGF0TGlzdCIgY2xhc3M9ImNoYXRMaXN0Ij4gICAgPHAgIGlkPSJjb250YWN0Ij5Db250YWN0czwvcD4gICAgPD9waHAgaWYgKCFlbXB0eSgkY29udmVyc2F0aW9ucykpIHsgPz4gICAgICAgIDw/cGhwIGZvcmVhY2ggKCRjb252ZXJzYXRpb25zIGFzICRjb252ZXJzYXRpb24pIHsgICAgICAgICAgICAgLy8gQ2hlY2sgaWYgdGhlIHVzZXIgaXMgYWN0aXZlIGJhc2VkIG9uIHRoZWlyIGxhc3Rfc2VlbiB0aW1lc3RhbXAgICAgICAgICAgICAkaXNfYWN0aXZlID0gKHN0cnRvdGltZSgkY29udmVyc2F0aW9uWydsYXN0X3NlZW4nXSkgPiAodGltZSgpIC0gNjApKTsgICAgICAgICAgICAvLyBTZXQgdGhlIGxhYmVsIHRleHQgYW5kIGNvbG9yIGJhc2VkIG9uIHdoZXRoZXIgdGhlIHVzZXIgaXMgYWN0aXZlIG9yIG5vdCAgICAgICAgICAgICRsYWJlbF90ZXh0ID0gJGlzX2FjdGl2ZSA/ICJBY3RpdmUiIDogIkluYWN0aXZlIjsgICAgICAgICAgICAkbGFiZWxfY29sb3IgPSAkaXNfYWN0aXZlID8gImdyZWVuIiA6ICJyZWQiOyAgICAgICAgPz4gICAgICAgICAgICA8bGk+ICAgICAgICAgICAgICAgIDxhIGhyZWY9ImNsaWVudC9maW5hbC5waHA/dXNlcj08Pz0gJGNvbnZlcnNhdGlvblsndXNlcm5hbWUnXSA/PiI+ICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPSJkaXNwbGF5OiBmbGV4OyI+ICAgICAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9ImNsaWVudC9hc3NldHMvdXBsb2Fkcy88Pz0gJGNvbnZlcnNhdGlvblsncF9wJ10gPz4iIGNsYXNzPSJ3LTEwIHJvdW5kZWQtY2lyY2xlIiBzdHlsZT0id2lkdGg6IDM2cHg7IGhlaWdodDogMzZweDsiPiAgICAgICAgICAgICAgICAgICAgICAgIDxwPjw/PSAkY29udmVyc2F0aW9uWyduYW1lJ10gPz48YnI+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIHN0eWxlPSJjb2xvcjo8Pz0gJGxhYmVsX2NvbG9yID8+Ij48Pz0gJGxhYmVsX3RleHQgPz48L3NwYW4+ICAgICAgICAgICAgICAgICAgICAgICAgPC9wPiAgICAgICAgICAgICAgICAgICAgICAgIDxwPjw/PSAkY29udmVyc2F0aW9uWydsYXN0bmFtZSddID8+PGJyPjwvcD4gICAgICAgICAgICAgICAgICAgIDwvZGl2PiAgICAgICAgICAgICAgICA8L2E+ICAgICAgICAgICAgPC9saT4gICAgICAgIDw/cGhwIH0gPz4gICAgPD9waHAgfSA/PjwvdWw+', '', 1, '0', '2023-04-22 23:19:00'),
-(78, 63, 64, 'aGg=', '', 1, '0', '2023-04-22 23:19:25'),
-(79, 64, 63, 'aGg=', '', 1, '0', '2023-04-22 23:24:18'),
-(80, 63, 64, 'dXU=', '', 1, '0', '2023-04-22 23:24:26'),
-(81, 63, 64, '', '', 1, '0', '2023-04-23 00:02:04'),
-(82, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 00:02:20'),
-(83, 63, 64, '', '', 1, '0', '2023-04-23 00:03:30'),
-(84, 63, 64, '', '', 1, '0', '2023-04-23 00:06:01'),
-(85, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 00:12:51'),
-(86, 63, 64, '', '', 1, '0', '2023-04-23 09:15:03'),
-(87, 63, 64, '', '', 1, '0', '2023-04-23 09:16:43'),
-(88, 63, 64, 'PHNjcmlwdD4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21lc3NhZ2UnKS5hZGRFdmVudExpc3RlbmVyKCdwYXN0ZScsIGZ1bmN0aW9uKGV2ZW50KSB7ICAvLyBQcmV2ZW50IHRoZSBkZWZhdWx0IHBhc3RlIGFjdGlvbiAgZXZlbnQucHJldmVudERlZmF1bHQoKTsgIC8vIEdldCB0aGUgY2xpcGJvYXJkIGRhdGEgIHZhciBjbGlwYm9hcmREYXRhID0gZXZlbnQuY2xpcGJvYXJkRGF0YSB8fCB3aW5kb3cuY2xpcGJvYXJkRGF0YTsgIHZhciBpdGVtcyA9IGNsaXBib2FyZERhdGEuaXRlbXM7ICAvLyBMb29wIHRocm91Z2ggdGhlIGl0ZW1zIGluIHRoZSBjbGlwYm9hcmQgIGZvciAodmFyIGkgPSAwOyBpIDwgaXRlbXMubGVuZ3RoOyBpKyspIHsgICAgdmFyIGl0ZW0gPSBpdGVtc1tpXTsgICAgLy8gQ2hlY2sgaWYgdGhlIGl0ZW0gaXMgYW4gaW1hZ2UgICAgaWYgKGl0ZW0udHlwZS5pbmRleE9mKCdpbWFnZScpICE9PSAtMSkgeyAgICAgIC8vIEdldCB0aGUgaW1hZ2UgZGF0YSBhcyBhIGRhdGEgVVJMICAgICAgdmFyIGJsb2IgPSBpdGVtLmdldEFzRmlsZSgpOyAgICAgIHZhciByZWFkZXIgPSBuZXcgRmlsZVJlYWRlcigpOyAgICAgIHJlYWRlci5vbmxvYWQgPSBmdW5jdGlvbihldmVudCkgeyAgICAgICAgdmFyIGltYWdlRGF0YVVybCA9IGV2ZW50LnRhcmdldC5yZXN1bHQ7ICAgICAgICAvLyBTZW5kIHRoZSBpbWFnZSBkYXRhIHRvIHRoZSBzZXJ2ZXIgICAgICAgIHNlbmRJbWFnZShpbWFnZURhdGFVcmwpOyAgICAgIH07ICAgICAgcmVhZGVyLnJlYWRBc0RhdGFVUkwoYmxvYik7ICAgIH0gIH19KTsgICAgPC9zY3JpcHQ+', '', 1, '0', '2023-04-23 09:18:33'),
-(89, 63, 64, 'aGVsbw==', '', 1, '0', '2023-04-23 09:18:37'),
-(90, 63, 64, 'Y2dmZw==', '', 1, '0', '2023-04-23 09:19:53'),
-(91, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 09:22:08'),
-(92, 63, 64, 'aGVsbG9oZWxsbyBteSBuYW1lIGlzIE5hdmVlbg==', '', 1, '0', '2023-04-23 09:22:24'),
-(93, 63, 64, 'aGVsbG8gd2hhdCdzIHVw', '', 1, '0', '2023-04-23 09:24:01'),
-(94, 63, 64, 'c2RzZGogIGRrc2RramRzZHMgIA==', '', 1, '0', '2023-04-23 09:39:41'),
-(95, 63, 64, 'c2RmZHM=', '', 1, '0', '2023-04-23 10:05:22'),
-(96, 63, 64, 'c2RmZHM=', '', 1, '0', '2023-04-23 10:05:22'),
-(97, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
-(98, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
-(99, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
-(100, 63, 64, 'c3Nzc3Nzcw==', '', 1, '0', '2023-04-23 10:05:31'),
-(101, 63, 64, 'c3Nz', '', 1, '0', '2023-04-23 10:07:14'),
-(102, 63, 64, '8J+Ym/CfmJ0=', '', 1, '0', '2023-04-23 10:07:19'),
-(103, 63, 64, 'aGVsbG8=', '', 1, '0', '2023-04-23 10:09:25'),
-(104, 63, 64, '', '', 1, '0', '2023-04-23 10:12:04'),
-(105, 63, 64, '', '', 1, '0', '2023-04-23 10:12:09'),
-(106, 63, 64, '', '', 1, '0', '2023-04-23 10:13:24'),
-(107, 63, 64, '', '', 1, '0', '2023-04-23 10:14:00'),
-(108, 63, 64, '', '', 1, '0', '2023-04-23 10:14:49'),
-(109, 63, 64, '', 'nbn.jpg', 1, '0', '2023-04-23 10:15:01'),
-(110, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:15:20'),
-(111, 63, 64, '', 'or (1).pptx', 1, '0', '2023-04-23 10:15:41'),
-(112, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:15:55'),
-(113, 63, 64, 'd2U=', '', 1, '0', '2023-04-23 10:16:00'),
-(114, 63, 64, '', 'Capture.JPG', 1, '0', '2023-04-23 10:16:04'),
-(115, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 10:16:35'),
-(116, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 10:16:41'),
-(119, 63, 64, 'aGVsbG8gd2hhdCdzIHVw', '', 1, '0', '2023-04-23 10:30:57'),
-(120, 63, 64, 'WU8=', '', 1, '0', '2023-04-23 10:31:05'),
-(121, 63, 64, '8J+YhvCfmIbwn5iG8J+Yhw==', '', 1, '0', '2023-04-23 10:31:15'),
-(122, 63, 64, 'YWFh', '', 1, '0', '2023-04-23 10:44:15'),
-(123, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 22:16:57'),
-(124, 63, 64, '', 'nepal.jpg', 1, '0', '2023-04-23 22:17:00'),
-(125, 63, 64, 'bmJu', '', 1, '0', '2023-04-23 22:17:09'),
-(126, 63, 64, 'b28=', '', 1, '0', '2023-04-24 23:07:42');
+(127, 63, 66, 'SGVsbG8=', '', 1, '0', '2023-04-28 16:48:58');
 
 -- --------------------------------------------------------
 
@@ -211,7 +107,10 @@ CREATE TABLE `chat_room` (
 --
 
 INSERT INTO `chat_room` (`id`, `name`, `room_name`) VALUES
-(16, 'Testadmin', 'Hello ');
+(16, 'Testadmin', 'Hello '),
+(17, 'Admin', 'nbn'),
+(18, 'Nabin', 'nbn'),
+(19, 'Nabin', 'nbn');
 
 -- --------------------------------------------------------
 
@@ -242,7 +141,15 @@ INSERT INTO `comment` (`id`, `name`, `comment`, `photo_id`, `profile_pic`, `time
 (137, 'Nabin ', 'yuy', 77, 'user-default.png', '2023-04-23 21:40:26'),
 (138, 'Nabin ', 'Hello', 79, 'user-default.png', '2023-04-23 21:40:26'),
 (139, 'Admin', 'This is awesome!', 80, 'nbn.jpg', '2023-04-24 23:15:00'),
-(140, 'Admin', 'Wow, great post!', 80, 'nbn.jpg', '2023-04-24 23:20:38');
+(140, 'Admin', 'Wow, great post!', 80, 'nbn.jpg', '2023-04-24 23:20:38'),
+(141, 'Nabin Raj', 'Wow, great post!', 101, 'user-default.png', '2023-04-28 16:31:14'),
+(142, 'Nabin', 'gh', 99, 'nabin.jpg', '2023-04-30 22:01:04'),
+(143, 'admin', 'Awesome content!', 102, 'nbn.jpg', '2023-05-01 21:07:24'),
+(144, 'Nabin', 'Wow, great post!', 108, 'nabin.jpg', '2023-05-02 19:39:59'),
+(145, 'Nabin', 'Awesome content!', 108, 'nabin.jpg', '2023-05-02 19:40:03'),
+(146, 'Nabin', 'Love it!', 108, 'nabin.jpg', '2023-05-02 19:40:07'),
+(147, 'admin', '', 109, 'nbn.jpg', '2023-05-02 20:55:59'),
+(148, 'admin', '', 78, 'nbn.jpg', '2023-05-02 21:24:03');
 
 -- --------------------------------------------------------
 
@@ -265,8 +172,8 @@ CREATE TABLE `community` (
 --
 
 INSERT INTO `community` (`id`, `title`, `contents`, `username`, `p_p`, `tags`, `timestamp`) VALUES
-(43, 'My First text Post As User ', '<p><span class=\"token block\" style=\"border: 0px solid rgb(229, 231, 235); display: block; color: rgb(248, 250, 252); font-family: &quot;Fira Code VF&quot;, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace; font-variant-ligatures: none; white-space: pre; background-color: rgb(30, 41, 59);\"><span class=\"token doctype punctuation\" style=\"border: 0px solid rgb(229, 231, 235); --tw-text-opacity:1; color: rgb(100 116 139/var(--tw-te', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:12:16'),
-(44, 'Second Posts', '<p>&lt;!doctype html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &lt;meta charset=\"UTF-8\"&gt;</p><p>&nbsp; &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</p><p>&nbsp; &lt;script src=\"https://cdn.tailwindcss.com\"&gt;&lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &lt;h1 class=\"text-3xl font-bold underline\"&gt;</p><p>&nbsp; &nbsp; Hello world!</p><p>&nbsp; &lt;/h1&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:13:11');
+(44, 'Second Posts', '<p>&lt;!doctype html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &lt;meta charset=\"UTF-8\"&gt;</p><p>&nbsp; &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</p><p>&nbsp; &lt;script src=\"https://cdn.tailwindcss.com\"&gt;&lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &lt;h1 class=\"text-3xl font-bold underline\"&gt;</p><p>&nbsp; &nbsp; Hello world!</p><p>&nbsp; &lt;/h1&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:13:11'),
+(45, 'Node Js Is Best ', '<p>yes</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-30 09:12:14');
 
 -- --------------------------------------------------------
 
@@ -300,12 +207,7 @@ CREATE TABLE `conversations` (
 --
 
 INSERT INTO `conversations` (`conversation_id`, `user_1`, `user_2`, `is_blocked`, `msg_request`) VALUES
-(12, 57, 56, 0, 0),
-(13, 59, 57, 0, 0),
-(14, 58, 59, 0, 0),
-(15, 58, 57, 0, 0),
-(16, 61, 57, 0, 0),
-(17, 63, 64, 0, 0);
+(18, 63, 66, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -316,7 +218,7 @@ INSERT INTO `conversations` (`conversation_id`, `user_1`, `user_2`, `is_blocked`
 CREATE TABLE `groupchat` (
   `id` int(20) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `chats` varchar(20) NOT NULL,
+  `chats` varchar(200) NOT NULL,
   `chat_room` int(20) NOT NULL,
   `room_name` varchar(20) NOT NULL,
   `p_p` varchar(255) NOT NULL,
@@ -415,7 +317,123 @@ INSERT INTO `groupchat` (`id`, `name`, `chats`, `chat_room`, `room_name`, `p_p`,
 (85, 'Roopesh ', 'hello', 13, ' My group chat roope', 'one.jpeg', '2022-10-14 12:40:59'),
 (86, 'Roopesh ', 'hello', 13, ' My group chat roope', 'one.jpeg', '2022-10-14 12:41:02'),
 (87, 'Draw', 'hello', 15, ' new gp', 'user-default.png', '2023-03-07 18:44:49'),
-(88, 'Draw', 'hello', 15, ' new gp', 'user-default.png', '2023-03-07 18:44:52');
+(88, 'Draw', 'hello', 15, ' new gp', 'user-default.png', '2023-03-07 18:44:52'),
+(89, 'Admin', 'Hello  ', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:26:57'),
+(90, 'Nabin', 'hello', 17, ' nbn', 'nabin.jpg', '2023-04-28 22:27:14'),
+(91, '', ' Nabin Joined Chat!!', 17, '', 'nabin.jpg', '2023-04-28 22:27:43'),
+(92, 'Nabin', 'I am Nabin', 17, '', 'nabin.jpg', '2023-04-28 22:27:49'),
+(93, 'Admin', 'I am Admin', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:27:57'),
+(94, 'Nabin', '', 17, '', 'nabin.jpg', '2023-04-28 22:29:07'),
+(95, 'Nabin', '', 17, '', 'nabin.jpg', '2023-04-28 22:29:09'),
+(96, 'Admin', '', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:29:11'),
+(97, 'Admin', '', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:29:14'),
+(98, 'Admin', '', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:29:16'),
+(99, 'Admin', 'hgj', 17, ' nbn', 'nbn.jpg', '2023-04-28 22:29:20'),
+(100, 'Nabin', 'gh', 17, '', 'nabin.jpg', '2023-04-28 22:29:23'),
+(101, '', ' Admin Joined Chat!!', 17, '', 'nbn.jpg', '2023-04-28 22:32:37'),
+(102, 'Admin', 'hello ', 17, '', 'nbn.jpg', '2023-04-28 22:32:47'),
+(103, 'Admin', 'hyy', 17, '', 'nbn.jpg', '2023-04-28 22:32:52'),
+(104, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:57:15'),
+(105, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:57:19'),
+(106, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:57:24'),
+(107, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:57:49'),
+(108, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:58:51'),
+(109, 'Admin', 'helo', 17, ' bhg', 'nbn.jpg', '2023-04-28 22:59:43'),
+(110, 'Nabin', 'Hello ', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:00:35'),
+(111, 'Admin', 'dfsdf', 17, '', 'nbn.jpg', '2023-04-28 23:02:51'),
+(112, 'Nabin', 'Hello ', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:03:49'),
+(113, 'Nabin', 'as', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:03:53'),
+(114, 'Admin', 'we', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:14:11'),
+(115, 'Admin', 'we', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:14:21'),
+(116, 'Admin', 'er', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:14:31'),
+(117, 'Admin', 'er', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:14:48'),
+(118, 'Admin', 'er', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:14:57'),
+(119, 'Admin', 'ty', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:15:13'),
+(120, 'Admin', 'ty', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:15:17'),
+(121, 'Admin', 'ty', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:16:50'),
+(122, 'Admin', 'u', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:16:55'),
+(123, 'Admin', 'op', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:17:04'),
+(124, 'Admin', 'op', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:17:09'),
+(125, 'Admin', 'op', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:18:40'),
+(126, 'Admin', 'op', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:18:53'),
+(127, 'Admin', 'op', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:18:56'),
+(128, 'Admin', 'hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:19:01'),
+(129, 'Nabin', 'helo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:19:09'),
+(130, 'Admin', 'hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:25:03'),
+(131, 'Admin', 'hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:25:24'),
+(132, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:25:29'),
+(133, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:25:33'),
+(134, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:27:56'),
+(135, 'Nabin', 'helo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:28:14'),
+(136, 'Nabin', 'hello', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:28:24'),
+(137, 'Admin', 'hello', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:28:36'),
+(138, 'Admin', 'hello', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:28:44'),
+(139, 'Admin', 'yes', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:28:49'),
+(140, 'Nabin', 'hello', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:28:57'),
+(141, 'Nabin', 'Ok Done', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:29:06'),
+(142, 'Admin', 'What to Do Next Plea', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:29:23'),
+(143, 'Admin', 'What to Do Next Please Tell Me?', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:29:55'),
+(144, 'Nabin', 'Why I have to tell you ', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:30:29'),
+(145, 'Admin', 'What to Do Next Please Tell Me?', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:34:38'),
+(146, 'Admin', 'What to Do Next Please Tell Me?', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:35:03'),
+(147, 'Admin', 'No Sorry', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:35:12'),
+(148, 'Nabin', 'Why I have to tell you ', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:35:19'),
+(149, 'Nabin', 'Its Finew', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:35:24'),
+(150, 'Admin', 'Thanks ', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:35:35'),
+(151, 'Admin', 'Thanks ', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:35:49'),
+(152, 'Admin', 'Hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:35:52'),
+(153, 'Nabin', 'Its Finew', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:35:58'),
+(154, 'Nabin', 'Its Finew', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:36:09'),
+(155, 'Admin', 'Hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:36:14'),
+(156, 'Nabin', 'Its Finew', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:36:51'),
+(157, 'Admin', 'Hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:36:55'),
+(158, 'Admin', 'Hy', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:38:14'),
+(159, 'Admin', 'asd', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:39:30'),
+(160, 'Admin', 'asd', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:40:59'),
+(161, 'Admin', 'asd', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:41:28'),
+(162, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:41:32'),
+(163, 'Nabin', 'Its Finew', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:41:36'),
+(164, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:41:40'),
+(165, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:41:45'),
+(166, 'Admin', 'Whats up', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:41:56'),
+(167, 'Admin', 'ok', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:43:48'),
+(168, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:47:04'),
+(169, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:53:47'),
+(170, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:53:49'),
+(171, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:53:56'),
+(172, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:54:11'),
+(173, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:54:44'),
+(174, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:55:05'),
+(175, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:55:51'),
+(176, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:58:39'),
+(177, 'Admin', 'e', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:58:50'),
+(178, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:58:56'),
+(179, 'Nabin', 'f', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:00'),
+(180, 'Admin', 'h', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:59:06'),
+(181, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:11'),
+(182, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:15'),
+(183, 'Admin', 'erty', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:59:23'),
+(184, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:27'),
+(185, 'Admin', 'erty', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:07:09'),
+(186, 'Admin', 's', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:07:13'),
+(187, 'Admin', 't', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:07:41'),
+(188, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-29 00:07:49'),
+(189, 'Nabin', 'u', 17, ' nbn', 'nabin.jpg', '2023-04-29 00:07:53'),
+(190, 'Admin', 't', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:13:23'),
+(191, 'Admin', 'i', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:13:29'),
+(192, 'Nabin', 'u', 17, ' nbn', 'nabin.jpg', '2023-04-29 00:13:36'),
+(193, 'Nabin', 'Why I have to tell you ', 17, ' nbn', 'nabin.jpg', '2023-04-29 00:13:43'),
+(194, 'Nabin', 'ol', 18, ' nbn', 'nabin.jpg', '2023-04-29 00:13:54'),
+(195, 'Nabin', 'omk', 17, ' nabin', 'nabin.jpg', '2023-04-29 00:14:27'),
+(196, 'Admin', 'uu', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:14:35'),
+(197, 'Nabin', 'u', 17, ' nabin', 'nabin.jpg', '2023-04-29 00:14:41'),
+(198, 'Nabin', 'u', 17, ' nabin', 'nabin.jpg', '2023-04-29 00:14:43'),
+(199, 'Admin', 'uu', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:14:50'),
+(200, 'Admin', 'uu', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:15:49'),
+(201, 'Admin', 'ty', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:15:55'),
+(202, 'Admin', 'Hello', 17, ' nbn', 'nbn.jpg', '2023-04-30 14:44:11'),
+(203, 'Admin', '', 17, ' nbn', 'nbn.jpg', '2023-04-30 14:44:15'),
+(204, 'Nabin', 'yo', 18, ' nbn', 'nabin.jpg', '2023-04-30 20:42:49');
 
 -- --------------------------------------------------------
 
@@ -441,7 +459,8 @@ INSERT INTO `groups` (`id`, `name`, `description`, `admin_id`, `photo`, `group_p
 (64, 'we', 'we', 63, NULL, 'default.png', '2023-04-26 05:16:15'),
 (65, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:23:48'),
 (66, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:23:58'),
-(67, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:24:06');
+(67, 'ty', 'ty', 63, NULL, 'default.png', '2023-04-26 05:24:06'),
+(68, 'New Group', 'Here', 63, NULL, 'default.png', '2023-04-26 15:14:11');
 
 -- --------------------------------------------------------
 
@@ -453,6 +472,7 @@ CREATE TABLE `group_posts` (
   `id` int(10) NOT NULL,
   `admin_id` int(20) NOT NULL,
   `name` varchar(155) NOT NULL,
+  `uname` varchar(255) NOT NULL,
   `topic` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -464,9 +484,14 @@ CREATE TABLE `group_posts` (
 -- Dumping data for table `group_posts`
 --
 
-INSERT INTO `group_posts` (`id`, `admin_id`, `name`, `topic`, `description`, `date`, `group_posts`, `report_details`) VALUES
-(24, 63, 'we', 'sdfds', 'sdfsdf', '2023-04-26 05:20:53', 'nabin.jpg', ''),
-(27, 63, 'ty', 'fgfd', 'gdfg', '2023-04-26 05:32:39', 'nepal.jpg', '');
+INSERT INTO `group_posts` (`id`, `admin_id`, `name`, `uname`, `topic`, `description`, `date`, `group_posts`, `report_details`) VALUES
+(24, 63, 'we', 'Nabin', 'sdfds', 'sdfsdf', '2023-04-26 05:20:53', 'nabin.jpg', ''),
+(27, 63, 'ty', 'Nabin', 'fgfd', 'gdfg', '2023-04-26 05:32:39', 'nepal.jpg', ''),
+(28, 63, 'New Group', 'Nabin', 'Nabin', 'yo', '2023-04-26 15:14:29', 'couple-love-sunset-proposal-marriage-preview.jpg', ''),
+(29, 63, 'we', '', 'vgxcv', 'xcvxcv', '2023-04-30 13:24:57', 'nbn.jpg', ''),
+(30, 63, 'we', '', 'sdfdsf', 'fsfsdf', '2023-04-30 13:27:09', 'nbn.jpg', ''),
+(31, 63, 'we', 'Admin', 'sdf', 'sdf', '2023-04-30 13:27:29', 'nbn.jpg', ''),
+(32, 63, 'we', 'Admin', 'fsdf', 'sdf', '2023-04-30 13:28:27', 'nbn.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -477,7 +502,7 @@ INSERT INTO `group_posts` (`id`, `admin_id`, `name`, `topic`, `description`, `da
 CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `something` varchar(500) NOT NULL,
+  `something` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_nopad_ci NOT NULL,
   `comment` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `uploaded_on` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -490,15 +515,24 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `uploaded_on`, `status`) VALUES
 (76, 'Admin', 'Nbn', '', 'nbn.jpg', '2023-04-16 18:49:33', '1'),
-(77, 'Nabin', 'Rt', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-16 18:50:35', '1'),
 (78, 'Admin', 'Sdfds', '', 'nbn.jpg', '2023-04-22 16:12:09', '1'),
 (79, 'Admin', 'A B C D E F G H', '', 'nabin.jpg', '2023-04-24 18:52:22', '1'),
 (80, 'Admin', 'Hello ', '', 'thumb.png', '2023-04-24 18:52:17', '1'),
-(81, 'Nabin', 'Adasd', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-25 09:07:46', '1'),
-(82, 'Admin', 'Asasd', '', 'nabin.jpg', '2023-04-26 14:50:30', '1'),
 (90, 'Admin', 'Nbn', '', '', '2023-04-26 17:35:21', '1'),
 (91, 'Admin', 'Hh', '', 'THIS IS 4K ANIME (Zenitsu) - YouTube - Google Chrome 2022-01-31 23-24-20.mp4', '2023-04-26 17:38:09', '1'),
-(93, 'Admin', 'Nbn', '', 'ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4', '2023-04-26 17:44:52', '1');
+(93, 'Admin', 'Nbn', '', 'ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4', '2023-04-26 17:44:52', '1'),
+(95, 'Admin', 'Nbn', '', '', '2023-04-26 20:52:23', '1'),
+(96, 'Admin', 'Zenstu Live', '', 'ZENITSU EDIT _ HERE - YouTube - Google Chrome 2022-01-31 23-32-20.mp4', '2023-04-26 20:52:45', '1'),
+(97, 'Admin', 'Image ', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-26 20:52:58', '1'),
+(98, 'Admin', 'Asdasd dsad', '', '', '2023-04-26 20:56:37', '1'),
+(99, 'Admin', 'As', '', 'couple-love-sunset-proposal-marriage-preview.jpg', '2023-04-26 20:56:50', '1'),
+(102, 'Nabin', 'Hello', '', 'nabin.jpg', '2023-04-28 16:53:27', '1'),
+(103, 'Testadmin', 'Hello EveryOne', '', 'chart.png', '2023-05-02 17:52:42', '1'),
+(105, 'Nabin', '#Hello People ', '', '', '2023-05-02 18:06:46', '1'),
+(106, 'Admin', ' vbvcbcv', '', '', '2023-05-02 18:28:34', '1'),
+(107, 'Admin', '?ghf ', '', '', '2023-05-02 18:30:42', '1'),
+(108, 'Admin', 'Bcvbv🤪', '', '', '2023-05-02 18:33:14', '1'),
+(110, 'Testadmin', 'Sad Life 😆', '', 'cover.jpg', '2023-05-02 21:40:37', '1');
 
 -- --------------------------------------------------------
 
@@ -508,6 +542,7 @@ INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `upload
 
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
+  `from_user` int(255) NOT NULL,
   `user_id` int(10) NOT NULL,
   `Photo_id` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
@@ -518,19 +553,33 @@ CREATE TABLE `likes` (
 -- Dumping data for table `likes`
 --
 
-INSERT INTO `likes` (`id`, `user_id`, `Photo_id`, `likes`, `username`) VALUES
-(53, 57, 68, 16, ''),
-(54, 57, 67, 4, ''),
-(55, 57, 66, 1, ''),
-(56, 57, 65, 1, ''),
-(57, 56, 70, 1, ''),
-(58, 64, 77, 1, ''),
-(59, 63, 76, 3, ''),
-(60, 63, 78, 6, ''),
-(61, 63, 80, 4, 'admin'),
-(62, 63, 79, 2, 'admin'),
-(63, 0, 84, 1, 'admin'),
-(64, 63, 93, 2, 'admin');
+INSERT INTO `likes` (`id`, `from_user`, `user_id`, `Photo_id`, `likes`, `username`) VALUES
+(53, 67, 57, 68, 16, ''),
+(54, 0, 57, 67, 4, ''),
+(55, 0, 57, 66, 1, ''),
+(56, 0, 57, 65, 1, ''),
+(57, 0, 56, 70, 1, ''),
+(58, 0, 64, 77, 1, ''),
+(59, 0, 63, 76, 3, ''),
+(60, 0, 63, 78, 6, ''),
+(61, 0, 63, 80, 4, 'admin'),
+(62, 0, 63, 79, 2, 'admin'),
+(64, 0, 63, 93, 2, 'admin'),
+(65, 0, 63, 99, 2, 'admin'),
+(66, 0, 63, 98, 2, 'admin'),
+(67, 0, 0, 102, 1, 'nabin'),
+(68, 0, 66, 102, 6, 'admin'),
+(69, 0, 63, 108, 3, 'testadmin'),
+(70, 0, 63, 107, 1, 'testadmin'),
+(71, 0, 66, 105, 1, 'testadmin'),
+(72, 0, 67, 103, 1, 'testadmin'),
+(73, 0, 63, 106, 1, 'testadmin'),
+(74, 0, 63, 91, 1, 'testadmin'),
+(75, 0, 63, 96, 1, 'admin'),
+(76, 0, 67, 104, 1, 'testadmin'),
+(77, 0, 63, 97, 1, 'testadmin'),
+(78, 0, 67, 109, 5, 'admin'),
+(79, 0, 66, 109, 3, 'nabin');
 
 -- --------------------------------------------------------
 
@@ -571,7 +620,12 @@ INSERT INTO `live_chat` (`id`, `username`, `message`, `timestamp`) VALUES
 (19, 'test', 'asdasd', '2023-04-03 12:51:08.197479'),
 (20, 'test', 'gfh', '2023-04-03 12:52:59.109937'),
 (21, 'test', 'sdfdsf', '2023-04-03 16:22:35.743530'),
-(22, 'test', 'Hello', '2023-04-12 10:18:53.899412');
+(22, 'test', 'Hello', '2023-04-12 10:18:53.899412'),
+(23, 'admin', 'Hy', '2023-04-28 17:46:00.303697'),
+(24, 'admin', 'How are you', '2023-04-28 17:46:05.666923'),
+(25, 'nabin', 'Im fine about You', '2023-04-28 17:46:20.716937'),
+(26, 'admin', 'Im also fine', '2023-04-28 17:52:13.271468'),
+(27, 'admin', 'Hello', '2023-04-30 08:59:42.111743');
 
 -- --------------------------------------------------------
 
@@ -606,7 +660,9 @@ INSERT INTO `report_posts` (`id`, `user_id`, `post_id`, `reason`) VALUES
 (13, 57, 68, 'fake news'),
 (14, 57, 68, 'fake news'),
 (15, 57, 68, 'dd'),
-(16, 63, 78, 'Harrsaments');
+(16, 63, 78, 'Harrsaments'),
+(17, 66, 109, 'vulgar '),
+(18, 66, 104, 'Too Much Beautiful');
 
 -- --------------------------------------------------------
 
@@ -638,8 +694,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `lastname`, `gender`, `email`, `phone`, `password`, `p_p`, `c_p`, `last_seen`, `is_blocked`, `report`, `verification_code`, `verified`, `interests`) VALUES
-(63, 'Admin', 'admin', 'Admin', 'Male', '', 0, '$2y$10$HVXLWqKhReOuDEdRJ5i2iusm05n9kr8Q8h3QGyDx5zLACy5XZ0X9y', 'nbn.jpg', 'nbn.jpg', '2023-04-26 18:24:45', 0, 0, '', 0, ''),
-(64, 'Nabin ', 'nbn', 'Raj Chhetri', 'Male', 'Nbn@gmail.com', 0, '$2y$10$Rtx/wh8U8jUy40KjRGLSuu7PYxPgfsYch1KTMcZoxMNXtRw4dCFTe', 'user-default.png', '', '2023-04-22 23:31:26', 0, 0, '', 0, '');
+(63, 'admin', 'admin', 'Admin', '', 'admin@gmail.com         ', 2147483647, '$2y$10$HVXLWqKhReOuDEdRJ5i2iusm05n9kr8Q8h3QGyDx5zLACy5XZ0X9y', 'nbn.jpg', 'nbn.jpg', '2023-05-02 20:55:50', 0, 0, '', 0, 'coding'),
+(66, 'Nabin', 'nabin', 'Chhetri', 'Male', 'Nbn@gmail.com  ', 0, '$2y$10$XfguqoT2skjhdtSQQoMYf.1.BXoxGhIeLJi.W5g65Dtgmnx0rQcuy', 'nabin.jpg', 'thumb.png', '2023-05-02 18:15:54', 0, 0, '', 0, ''),
+(67, 'testadmin', 'testadmin', 'Testadmin', '', 'Testadmin@gmail.com ', 0, '$2y$10$PosMAZNiBsH/ZrQxl6aUaO05R/DQ7IVlGmBTZSc0dl6hrkJ9FT2W6', 'yo.jpg', 'cover.jpg', '2023-05-02 17:23:23', 0, 0, '', 0, 'life');
 
 -- --------------------------------------------------------
 
@@ -767,31 +824,31 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `bios`
 --
 ALTER TABLE `bios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `chat_room`
 --
 ALTER TABLE `chat_room`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `community`
 --
 ALTER TABLE `community`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -803,55 +860,55 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
-  MODIFY `conversation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `conversation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `groupchat`
 --
 ALTER TABLE `groupchat`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `group_posts`
 --
 ALTER TABLE `group_posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `live_chat`
 --
 ALTER TABLE `live_chat`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `report_posts`
 --
 ALTER TABLE `report_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `videos`

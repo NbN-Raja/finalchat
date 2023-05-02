@@ -42,7 +42,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT user_id,username,name,username,lastname, password,email,gender, p_p ,last_seen,is_blocked FROM users WHERE user_id= '$user_id'";
+$sql = "SELECT user_id,username,name,username,lastname,interests,phone, password,email,gender, p_p ,last_seen,is_blocked FROM users WHERE user_id= '$user_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -52,8 +52,10 @@ if ($result->num_rows > 0) {
         $name = "" . $row["name"];
         $usernamee = "" . $row["username"];
         $lastname = "" . $row["lastname"];
+        $interests = "" . $row["interests"];
         $gender = "" . $row["gender"];
         $email = "" . $row["email"];
+        $phone = "" . $row["phone"];
         $is_blocked = "" . $row["is_blocked"];
 
         if ($row["is_blocked"] == 1) {
@@ -172,17 +174,36 @@ $nav = include 'nav.php';
         <input type="hidden" name="user_id" value="<?php echo  $user_id ?>">
         <div class="main" style="display: flex; justify-content: space-between;">
             <div class="submain">
-                <p> FirstName </p>
-                <div class="col-md-4"><input type="text" class="form-control" name="name" value="<?php echo  $usernamee ?>" disabled></div>
-                <p> LastName </p>
-                <div class="col-md-4"><input type="text" class="form-control" name="lastname" value="<?php echo  $lastname ?>" placeholder="Doe"></div>
+                <p> First Name </p>
+                <div class="col-md-4"><input type="text" class="form-control" name="name" value="<?php echo  $usernamee ?>"></div>
+                <p> Last Name </p>
+                <div class="col-md-4"><input type="text" class="form-control" name="lastname" value="<?php echo  $lastname ?>" placeholder=""></div>
+                <p>Interests</p>
+                <div class="col-md-4">
+                    <select class="form-control" name="interests">
+                        <option value="">
+                            <?php if ($interests) {
+                             echo $interests;
+                             }else{
+                             echo "Select interest";
+                             }
+                             ?>
+                        </option>
+                        <option value="life">Life</option>
+                        <option value="coding">Coding</option>
+                        <option value="music">Music</option>
+                        <option value="video">Video</option>
+                        <option value="politics">Politics</option>
+                    </select>
+                </div>
+
             </div>
             <div class="lastmain">
                 <p> Email </p>
                 <div class="col-md-4"><input type="text" class="form-control" name="email" placeholder="Email" value="<?php echo $email ?> "></div>
-                <p> Gender </p>
-                <div class="col-md-4"><input type="text" class="form-control" name="gender" value="<?php echo $gender ?>" placeholder="Phone number"></div>
-                <div class="" style="margin-top: 10px;">
+                <p> Phone </p>
+                <div class="col-md-4"><input type="text" class="form-control" name="phone" value="<?php echo $phone ?>" placeholder="Phone number"></div>
+                <div class="" style="margin-top: 20px;">
                 </div>
             </div>
         </div>
@@ -210,7 +231,7 @@ $nav = include 'nav.php';
 
         <!-- Modal -->
         <!-- fetch Users Details -->
-        
+
         <div class=" df card w-50">
             <div class="card-body">
                 <?php
@@ -218,8 +239,8 @@ $nav = include 'nav.php';
                 $con = mysqli_connect("localhost", "root", "", "chat_app_db");
                 $sql = "SELECT * FROM bios WHERE user_id = $user_id";
                 $result = mysqli_query($con, $sql);
-                if(mysqli_num_rows($result) > 0){
-                   echo '<button type="button" class="btn btn-primary w-auto" data-toggle="modal" data-target="#bioModall">
+                if (mysqli_num_rows($result) > 0) {
+                    echo '<button type="button" class="btn btn-primary w-auto" data-toggle="modal" data-target="#bioModall">
                    Edit Bio
                </button>';
                 } else {
@@ -229,7 +250,7 @@ $nav = include 'nav.php';
                </button>';
                 }
                 ?>
-                
+
                 <?php
                 $user_idd = $_SESSION['user_id'];
                 $con = new mysqli("localhost", "root", "", "chat_app_db");
@@ -252,13 +273,13 @@ $nav = include 'nav.php';
                     <hr>
                     <p class="card-text"><i class="fas fa-user-cog"></i> Bio:</p>
                     <p class="card-text" style="width: 20pc;text-align: justify;"><?php echo $bio ?></p>
-                  
+
             </div>
-            
-           
-            <?php
-                }else{
-                     echo "Set Up Your Personal Information Here";
+
+
+        <?php
+                } else {
+                    echo "Set Up Your Personal Information Here";
                 }
         ?>
         </div>
@@ -292,7 +313,7 @@ $nav = include 'nav.php';
             </form>
         </div> <br>
 
-        
+
         <?php
         // Include the database configuration file
         // Database configuration
@@ -336,22 +357,22 @@ $nav = include 'nav.php';
             <?php
             $file_name = $data['file_name'];
             if ($file_name != '') {
-              $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-              if (in_array($file_ext, array('jpg', 'jpeg', 'png', 'gif'))) {
-                  // Display image file
-                  echo '<img class="post_image" src="http://localhost/main/client/assets/post/' . $file_name . '" style="    width: -webkit-fill-available;"><br>';
-              } else if ($file_ext == 'mp4') {
-                  // Display video file
-                  
-                  if ($file_name != '') {
-                      echo '<video class="post_video" controls style="    width: -webkit-fill-available;">
+                $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                if (in_array($file_ext, array('jpg', 'jpeg', 'png', 'gif'))) {
+                    // Display image file
+                    echo '<img class="post_image" src="http://localhost/main/client/assets/post/' . $file_name . '" style="    width: -webkit-fill-available;"><br>';
+                } else if ($file_ext == 'mp4') {
+                    // Display video file
+
+                    if ($file_name != '') {
+                        echo '<video class="post_video" controls style="    width: -webkit-fill-available;">
                                 <source src="http://localhost/main/client/assets/post/' . $file_name . '" type="video/mp4" >
                             </video><br>';
-                  }
-              } else {
-                  // Unsupported file format
-                  echo 'Unsupported file format: ' . $file_ext;
-              }
+                    }
+                } else {
+                    // Unsupported file format
+                    echo 'Unsupported file format: ' . $file_ext;
+                }
             }
             ?>
             <div class="comment">
@@ -393,8 +414,6 @@ $nav = include 'nav.php';
 
 
 <style>
-   
-
     body a {
         text-decoration: none;
     }
@@ -536,7 +555,7 @@ $nav = include 'nav.php';
     background: linear-gradient(#9b9b9b 10px,#f0f2f5 80px );
 } */
 
-   
+
 
     .card-body {
         position: absolute;
@@ -640,88 +659,88 @@ if (isset($_POST['bio_update'])) {
 
 <!-- modal open here Update  -->
 <div class="modal fade" id="bioModall" tabindex="-1" role="dialog" aria-labelledby="bioModalLabell" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="bioModalLabel">Edit Bio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="">
-                                <input type="text" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-                                <div class="form-group">
-                                    <label for="relationship_status">Bio</label>
-
-                                    <input type="text" name="bio" value="<?php echo $bio ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="relationship_status">Relationship status:</label>
-                                    <input type="text" name="relationship_status" value="<?php echo ''  . $row["relationship_status"] . '' ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="work_history">Work history:</label>
-                                    <input type="text" name="work_history" value="<?php echo ''  . $row["work_history"] . '' ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="education">Education:</label>
-                                    <input type="text" name="education" value="<?php echo ''  . $row["education"] . '' ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="location">Location:</label>
-                                    <input type="text" name="location" value="<?php echo ''  . $row["location"] . '' ?>" class="form-control">
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" value="update" name="bio_update" class="btn btn-secondary">
-                                    <input type="submit" name="bio_submit" class="btn btn-primary" value="Save">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bioModalLabel">Edit Bio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <input type="text" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                    <div class="form-group">
+                        <label for="relationship_status">Bio</label>
 
-            <!-- popup add model here  -->
+                        <input type="text" name="bio" value="<?php echo $bio ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="relationship_status">Relationship status:</label>
+                        <input type="text" name="relationship_status" value="<?php echo ''  . $row["relationship_status"] . '' ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_history">Work history:</label>
+                        <input type="text" name="work_history" value="<?php echo ''  . $row["work_history"] . '' ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="education">Education:</label>
+                        <input type="text" name="education" value="<?php echo ''  . $row["education"] . '' ?>" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" name="location" value="<?php echo ''  . $row["location"] . '' ?>" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="update" name="bio_update" class="btn btn-secondary">
+                        <input type="submit" name="bio_submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- popup add model here  -->
 <div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="bioModalLabell" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="bioModalLabel">Edit Bio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="">
-                                <input type="text" name="user_id" value="<?php echo $user_id ?>">
-                                <div class="form-group">
-                                    <label for="relationship_status">Bio</label>
-
-                                    <input type="text" name="bio" value="" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="relationship_status">Relationship status:</label>
-                                    <input type="text" name="relationship_status" value="" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="work_history">Work history:</label>
-                                    <input type="text" name="work_history" value="" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="education">Education:</label>
-                                    <input type="text" name="education" value="" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="location">Location:</label>
-                                    <input type="text" name="location" value="" class="form-control">
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" value="update" name="bio_update" class="btn btn-secondary">
-                                    <input type="submit" name="bio_submit" class="btn btn-primary" value="Save">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bioModalLabel">Edit Bio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form method="POST" action="">
+                    <input type="text" name="user_id" value="<?php echo $user_id ?>">
+                    <div class="form-group">
+                        <label for="relationship_status">Bio</label>
+
+                        <input type="text" name="bio" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="relationship_status">Relationship status:</label>
+                        <input type="text" name="relationship_status" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_history">Work history:</label>
+                        <input type="text" name="work_history" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="education">Education:</label>
+                        <input type="text" name="education" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" name="location" value="" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="update" name="bio_update" class="btn btn-secondary">
+                        <input type="submit" name="bio_submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

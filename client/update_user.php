@@ -20,15 +20,12 @@ if (isset($_POST['submit'])) {
     $lastname = $_POST['lastname'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
-
-
-    
-
-
+    $phone = $_POST['phone'];
+    $interests = $_POST['interests'];
 
     $update = "UPDATE users SET user_id = '$idd',name = '$name',
      gender = '$gender', lastname = '$lastname',
-     email = '$email' WHERE users.user_id = '$idd'";
+     email = '$email',phone ='$phone',interests='$interests' WHERE users.user_id = '$idd'";
 
     $q = mysqli_query($conn, $update);
 

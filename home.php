@@ -29,9 +29,6 @@ if (isset($_SESSION['username'])) {
 ?>
 <?php } ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +42,6 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -61,11 +57,7 @@ if (isset($_SESSION['username'])) {
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     </head>
-
-
-
     </html>
     <!-- Java Script Here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,11 +74,13 @@ if (isset($_SESSION['username'])) {
 
 
 <div class="main">
+    
     <div class="profile ">
         <?php include 'pages/side_nav.php' ?>
     </div>
    
     <div class="posts">
+
         <?php include 'pages/posts.php' ?>
         
 
@@ -97,7 +91,6 @@ if (isset($_SESSION['username'])) {
 
     </div>
 
-    
 </div>
 
 <style>
@@ -109,12 +102,14 @@ if (isset($_SESSION['username'])) {
     body {
         background-color: #f0f2f5;
     }
+    /* body a,b,p,h1{
+        color: green;
+    } */
     a {
         text-decoration: none;
     }
     a:hover{
         text-decoration: none;
-        background-color: grey;
     }
     .navbar {
         background-color: white;
