@@ -332,7 +332,7 @@ $nav = include 'nav.php';
 
         $query = $db->query("SELECT images.id, images.name,images.file_name,images.something,
         images.uploaded_on,users.user_id, users.name, users.lastname, users.p_p FROM images
-         INNER JOIN users ON users.name = '$name' AND images.name ='$name' Order by images.id DESC");
+         INNER JOIN users ON users.name = '$name' AND images.name ='$name' where status =1 Order by images.id DESC");
         while ($data = mysqli_fetch_array($query)) {
         ?>
 

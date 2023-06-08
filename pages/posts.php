@@ -8,7 +8,7 @@
 $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
 $query = $conn->query("SELECT images.id, images.name,images.file_name,images.something,images.uploaded_on,users.user_id,
 		  users.name,users.username, users.lastname, users.p_p FROM images
-		  LEFT JOIN users ON users.name = images.name Order by images.id DESC");
+		  LEFT JOIN users ON users.name = images.name  WHERE status = 1 Order by images.id DESC");
 while ($data = mysqli_fetch_array($query)) {
   $image_id = $data['id'];
   $user_id = $data['user_id'];

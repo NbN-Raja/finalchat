@@ -12,7 +12,6 @@ var screenSharing = false
 function createRoom() {
     console.log("Creating Room")
     let room = document.getElementById("room-input").value;
-    let nme = document.getElementById("room-name").value;
     if (room == " " || room == "") {
         alert("Please enter room number")
         return;
@@ -29,7 +28,7 @@ function createRoom() {
         }, (err) => {
             console.log(err)
         })
-        notify("Waiting for peer to join.,nme",nme)
+        notify("Waiting for peer to join.")
     })
     peer.on('call', (call) => {
         call.answer(local_stream);
@@ -143,8 +142,3 @@ function stopScreenSharing() {
 
 
 
-function mute() {
-    const audioTrack = localStream.getAudioTracks()[0];
-    audioTrack.enabled = !audioTrack.enabled;
-  }
-  

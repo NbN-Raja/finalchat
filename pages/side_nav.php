@@ -87,13 +87,10 @@
  
       <a href="#">GroupChat</a>
     </div>
+    
     <div class="col-md-6">
    
-      <a href="http://localhost/main/video call">Conference</a>
-    </div>
-    <div class="col-md-6">
-   
-      <a href="http://localhost/main/video call">Events</a>
+      <a href="http://localhost/main/video call">Video Conference</a>
     </div>
   </div>
 </div>
@@ -132,7 +129,7 @@
     .firstcolumn {
         position: sticky;
         top: 50px;
-        background-color: white;
+        /* background-color: white; */
         text-align: center;
         padding: 10px;
         border-radius: 10px;
