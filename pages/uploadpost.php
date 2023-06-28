@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label for="caption">Caption</label>
-                        <textarea type="text" cols="10" rows="5" name="something" id="emoji" class="form-control" placeholder="Whats on Your Mind  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required> </textarea>
+                        <input type="text" cols="10" rows="5"  name="something" id="emoji" class="form-control" placeholder="Whats on Your Mind  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required> </input>
 
                     </div>
                     <input type="hidden" name="name" value=<?php echo htmlspecialchars($_SESSION["name"]); ?> placeholder="Display Name">
@@ -198,3 +198,16 @@
 
 
 
+<script>
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  var textarea = document.getElementById('emoji');
+  var content = textarea.value.trim(); // Remove leading and trailing whitespace
+
+  if (content.length === 0) {
+    alert('Please enter some content before posting.');
+    event.preventDefault(); // Prevent form submission
+  }
+});
+
+
+</script>
