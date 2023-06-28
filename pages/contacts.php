@@ -35,17 +35,22 @@
       ?>
     </div> -->
     <ul id="chatList" class="chatList">
-      <h3 >Contacts</h3>
+      <h4>Contacts</h4>
       <?php if (!empty($conversations)) { ?>
        
           <li>
             <a href="client/final.php?user=<?= $conversation['username'] ?>">
               <div style="display: flex;">
                 <img src="client/assets/uploads/<?= $conversation['p_p'] ?>" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
-                <p><?= $conversation['name'] ?><br>
-                  <!-- <span style="color:<?= $label_color ?>"><?= $label_text ?></span> -->
-                </p>
-                <p><?= $conversation['lastname'] ?><br></p>
+                <p class="ml-2">
+  <?php 
+    $name = strtoupper($conversation['name']); // Capitalize each word
+    $lastname = strtoupper($conversation['lastname']); // Capitalize each word
+    
+    echo "<strong>{$name}</strong> {$lastname}<br>"; // Bold the name and display the lastname
+  ?>
+</p>
+
               </div>
             </a>
           </li>
@@ -124,8 +129,124 @@ if ($result->num_rows > 0) {
 
   </div>
  <hr>
+  
+
+ <!-- Suggestions HERE  -->
+
+ <div class="suggestions">
+  <h4> Suggestion Posts </h4>
+
+ <?php
+// Your database connection code here
+
+// Your database connection code here
+$userid=$_SESSION['user_id'];
+
+$query = "SELECT users.user_id, users.interests, community.tags, community.title, community.id as cid,community.p_p
+          FROM users
+          LEFT JOIN community ON users.interests = community.tags
+          WHERE users.user_id ='$userid'
+          ORDER BY CASE WHEN community.tags IS NOT NULL THEN 0 ELSE 1 END, RAND()";
+
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+  echo '<ul id="search-results">';
+  while ($row = mysqli_fetch_assoc($result)) {
+      echo '<li>';
+      echo '<a href="Blog/singlepost.php?cid=' . $row['cid'] . '">';
+      echo '<div class="result-title">' . substr($row['title'], 0, 20) . '..</div>';
+      echo '<div class="result-tags">' . $row['tags'] . '</div>';
+      echo '</a>';
+      echo '</li>';
+  }
+  echo '</ul>';
+} else {
+  echo 'Error executing the query.';
+}
+
+
+// Close the database connection
+
+
+?>
+
+ </div>
+ <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            opacity: 0;
+            animation: fade-in 2s forwards;
+            transition: opacity 2s;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container {
+            margin-top: 20px;
+            opacity: 0;
+            animation: form-slide-up 2s forwards;
+            transition: opacity 2s;
+        }
+
+        @keyframes form-slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#search-results li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#search-results li:last-child {
+  border-bottom: none;
+}
+
+.result-title {
+  font-weight: bold;
+}
+
+.result-tags {
+  color: #888;
+}
+
+    </style>
+
+
+
+
+
  <div class="displaygroup">
-        <h3><a href="http://localhost/main/group/group.php">  Your Groups </a> </h3>
+        <h4><a href="http://localhost/main/group/group.php">  Your Groups </a> </h4>
         <?php
         // Connect to the database
         
@@ -184,6 +305,7 @@ if ($result->num_rows > 0) {
   }
 
   .image img {
+    background-color: white;
 
     border-radius: 32px;
 
@@ -211,7 +333,7 @@ if ($result->num_rows > 0) {
 
   .groups li{
     border-radius: 5px;
-    /* box-shadow: 1px 1px 1px 1px #e4deea; */
+    box-shadow: 1px 1px 1px 1px #e4deea;
     padding: 15px;
     font-size: larger;
     font-family: inherit;
@@ -238,8 +360,7 @@ if ($result->num_rows > 0) {
 
 .displaygroup a {
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  color: #66666a;
   margin-bottom: 10px;
 }
 
@@ -247,4 +368,7 @@ if ($result->num_rows > 0) {
   color: #2E8B57;
 }
 
+h4{
+  color: #66666a;
+}
 </style>

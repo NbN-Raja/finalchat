@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+<hr>
 <?php include 'uploadpost.php' ?>
 
 
@@ -20,7 +20,7 @@ while ($data = mysqli_fetch_array($query)) {
   $something = $data['something'];
 
 ?>
-
+ <hr>
   <div class="display_post p-2">
     <div class="display_profile mb-2 bg-white">
 
@@ -347,6 +347,19 @@ $(document).ready(function() {
 
           }
 
+
+          .form::-webkit-scrollbar {
+    width: 5px; /* Adjust the width of the scrollbar */
+  }
+
+  .form::-webkit-scrollbar-thumb {
+    background-color: #888; /* Adjust the color of the scrollbar thumb */
+    border-radius: 4px; /* Adjust the border radius of the scrollbar thumb */
+  }
+
+  .form::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Adjust the color of the scrollbar track */
+  }
           
         </style>
 

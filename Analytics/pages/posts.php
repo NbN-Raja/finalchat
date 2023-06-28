@@ -41,30 +41,48 @@ $usernamee= $_SESSION['username']
 
             <div class="showpost">
 
-              <?php
-                  $sql = "SELECT * FROM images WHERE name='$usernamee'";
-                  $result = $con->query($sql);
-                  
-                  // Check if there is a result
-                  if ($result->num_rows > 0) {
-                      // Loop through each row in the result
-                      while ($row = $result->fetch_assoc()) {
-                          // Display the username, caption, and image in a styled format
-                          echo "<div class='display'>";
-                          echo "<h5>" . $row['name'] . "</h5>";
-                          echo "<p>" . $row['something'] . "</p>";
-                          echo "<img src='http://localhost/main/client/assets/post/" . $row['file_name'] . "' alt='" . $row['something'] . "' style='width:60px; height:60px; border-radius:5px'>";
-                          echo "</div>";
+            <?php
+$sql = "SELECT * FROM images WHERE name='$usernamee'";
+$result = $con->query($sql);
 
-                          
-                      }
-                  } else {
-                      echo "No results found.";
-                  }
-                  
-                  
-                  
-                  ?>
+// Check if there is a result
+if ($result->num_rows > 0) {
+  // Start the grid container
+  echo "<div class='grid-container'>";
+
+  // Loop through each row in the result
+  while ($row = $result->fetch_assoc()) {
+    // Display each item in a grid cell
+    echo "<div class='display'>";
+    echo "<h5>" . $row['name'] . "</h5>";
+    $something = $row['something'];
+            $cutSomething = substr($something, 0, 10);
+            echo "<p>" . $cutSomething . "</p>";
+    $post_file = $row['file_name'];
+    if ($post_file != '') {
+      $file_extension = pathinfo($post_file, PATHINFO_EXTENSION);
+      if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp'])) {
+        echo '<img class="post_image" width="90" height="90" src="http://localhost/main/client/assets/post/' . $post_file . '"><br>';
+      } elseif (in_array($file_extension, ['mp4', 'webm', 'ogg'])) {
+        echo '<video class="post_video" controls width="90" height="90">
+    <source src="http://localhost/main/client/assets/post/' . $post_file . '" type="video/' . $file_extension . '">
+  </video><br>';
+      } else {
+        echo '<p>' . $post_file . '</p><br>';
+      }
+    } else {
+      echo '<p style="    height: 83px;">  </p><br>';
+    }
+
+    echo "</div>";
+  }
+
+  // End the grid container
+  echo "</div>";
+} else {
+  echo "No results found.";
+}
+?>
             
             </div>
           </div>
@@ -106,7 +124,11 @@ $usernamee= $_SESSION['username']
                           echo "<div class='display'>";
                           echo "<h5>" . $row['title'] . "</h5>";
                           echo "<p>" . $row['tags'] . "</p>";
+
+
                           echo "<img src='http://localhost/main/client/assets/uploads/" . $row['p_p'] . "' alt='" . "' style='width:60px; height:60px; border-radius:5px'>";
+                        
+                        
                           echo "</div>";
                       }
                   } else {
@@ -128,10 +150,7 @@ $usernamee= $_SESSION['username']
 
 <style>
 
-  .Linkup{
-
-    box-shadow: 1px 1px 1px 1px whitesmoke;
-  }
+ 
   #posts {
     justify-content: space-around;
   }
@@ -142,5 +161,20 @@ $usernamee= $_SESSION['username']
       box-shadow: 1px 1px 1px 1px white;
       padding: 2px;
 
+  }
+</style>
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    grid-gap: 20px; /* Adjust the gap between grid cells as needed */
+  }
+
+  .display {
+    border: 1px solid grey;
+    background-color: azure;
+    padding: 12px;
+    border-radius: 5px;
   }
 </style>

@@ -154,7 +154,7 @@ if ($result->num_rows > 0) {
 ?>
       
 
-<div class="room">
+<!-- <div class="room">
 <form action="" method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">search Chat Room</label>
@@ -164,7 +164,7 @@ if ($result->num_rows > 0) {
   <button type="submit" name="submit" class="btn btn-primary" >search</button>
   
 </form>
-</div>
+</div> -->
 
 
 

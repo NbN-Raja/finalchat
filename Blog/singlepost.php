@@ -1,6 +1,18 @@
+<?php
+// Retrieve the value of $cid from the URL
+$cid = $_GET['cid'];
+
+// Perform the desired selection using $cid
+// Example: Fetch data from a database based on $cid
+// ...
+
+// Display the selected content
+// Example: Echo the selected content
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +23,8 @@
 
 <body>
 
-    <h1> </h1>
+    <h1> Start Writing Your Blogs </h1>
 
-    
 
     <div class="container">
         <div class="sidenav">
@@ -21,120 +32,62 @@
         </div>
 
         <div class="contents">
-            <nav>
-  <ul>
-    <li><a href="../home.php">Home</a></li>
-    <li><a href="about.php">About</a></li>
-    <li><a href="notifications.php">Notifications</a></li>
-    <li><a href="messages.php">Messages</a></li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">Profile &#9662;</a>
-      <div class="dropdown-content">
-        <a href="profile.php">Profile</a>
-        <a href="settings.php">Settings</a>
-        <a href="logout.php">Logout</a>
-      </div>
-    </li>
-  </ul>
-</nav>
 
-<style>
-    nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #f1f1f1;
-}
-
-nav li {
-  display: inline-block;
-}
-
-nav li a {
-  display: block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #333;
-}
-
-nav li a:hover {
-  background-color: #ddd;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-</style>
-
-            <?php $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
-
-            //    $select =  'SELECT community.contents as contents , community.username, users.name as name , users.lastname as lastname, users.p_p as profile 
-            //    FROM community 
-            //    LEFT JOIN users ON users.username = community.username';
-            // $contents =  $row['contents']; '<br>';
-            // $name= $row['name'];
-            // $lastname= $row['lastname'];
-            // $profile= $row['profile'];
-
-            // Select all the contents from the community table
-            $sql = "SELECT community.id as cid, community.contents as contents , community.username,community.title as title, users.name as name , users.lastname as lastname, users.p_p as profile 
-               FROM community 
-               LEFT JOIN users ON users.username = community.username ORDER BY community.id DESC
-";
-            $result = mysqli_query($conn, $sql);
-
-            // Loop through the results and display each content
-            while ($row = mysqli_fetch_assoc($result)) {
-                $contents =  $row['contents'];
-                '<br>';
-                $name = $row['name'];
-                $cid = $row['cid'];
-                $title = $row['title'];
-                $lastname = $row['lastname'];
-                $profile = $row['profile'];
-
-
-            ?>
-               <a href="singlepost.php?cid=<?php echo $cid; ?>">
-  <div class="blogs"> 
-                    <div class="profile">
-                        <img src="../client/assets/uploads/<?= $profile ?>" class="w-30 rounded-circle">
-                        <h5> <?php echo $name ?> </h5>
-                        <h5> <?php echo $lastname ?> </h5>
-                    </div>
-                    <div class="contents">
-                        <h1> <?php echo $title ?> </h1>
-                        <p><?php echo $contents ?></p>
-                        <?php
-                        if (isset($imagePath)) {
-                            echo '<img src="' . $imagePath . '" alt="Uploaded Image">';
-                        }
-                        ?>
-                    </div>
-                   
-                </div>
-                </a>
             <?php
+            $query = "SELECT community.id AS cid,community.tags as tags,community.timestamp as timestamp, community.contents AS contents, community.username, community.title AS title, users.name AS name, users.lastname AS lastname, users.p_p AS profile
+            FROM community
+            LEFT JOIN users ON users.username = community.username
+            WHERE  id = $cid
+            ORDER BY community.id DESC ";
+            $dbConnection = mysqli_connect("localhost", "root", "", "chat_app_db");
+            $result = mysqli_query($dbConnection, $query);
+
+
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Access the selected columns of each row
+                    $name = $row['name'];
+                    $cid = $row['cid'];
+                    $title = $row['title'];
+                    $lastname = $row['lastname'];
+                    $profile = $row['profile'];
+                    $timestamp = $row['timestamp'];
+                    $tags = $row['tags'];
+                    $contents = $row['contents'];
+
+                    // Process the selected data as needed
+                    // ...
+            ?>
+                    <div class="blogs">
+                        <div class="profile">
+                            <img src="../client/assets/uploads/<?= $profile ?>" class="w-30 rounded-circle">
+                            <h5> <?php echo $name ?> </h5>
+                            <h5> <?php echo $lastname ?> </h5>
+                            <h5> <?php echo $timestamp ?> </h5>
+                        </div>
+                        <div class="contents">
+                            <h1> <?php echo $title ?> </h1>
+                            <p><?php echo $contents ?></p>
+                            <p><?php echo $tags ?></p>
+                            <?php
+                            if (isset($imagePath)) {
+                                echo '<img src="' . $imagePath . '" alt="Uploaded Image">';
+                            }
+                            ?>
+                        </div>
+
+                    </div>
+
+
+            <?php
+                }
+            } else {
+                // Handle query execution error
+                // ...
             }
 
-            // Close the database connection
             ?>
+
         </div>
 
         <!-- Search For Blogs here  -->
@@ -180,7 +133,6 @@ nav li a:hover {
       <p style="margin: 0; font-size: 14px; color: #666;">Posted by <a href="#" style="color: #333; text-decoration: none;">' . $username . '</a> on'  . $timestamp . '</p>
     </div>
   </div>
-  <p style="font-size: 16px; color: #333; line-height: 1.5;">' . substr($contents, 0, 20) . '</p>
   <a href="#" style="display: block; background-color: #333; color: #fff; padding: 10px 20px; text-align: center; border-radius: 8px; text-decoration: none; margin-top: 10px;">Read More</a>
 </div>';
             }
@@ -236,13 +188,6 @@ nav li a:hover {
                     <button type="submit">Send</button>
                 </form>
             </div>
-
-
-
-
-
-
-
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

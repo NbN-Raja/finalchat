@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-sm  fixed-top ">
     <!-- <img src="client/assets/img/icon/logo.png"> -->
     <form class="relative" style="left:50px">
@@ -14,10 +16,51 @@
             </i>
         </div>
         <div class="navbar-nav ml-auto ">
+           
+        <div class="block" style="position: relative;right: 10pc; top: 9px;">
+        <!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Hover Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hover-effect:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <?php
+    $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
+    $useridd= $_SESSION['user_id'];
 
+    $sql = "SELECT * FROM `notifications` where user_id= $useridd";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $dataa = mysqli_fetch_assoc($result);
+        $count = "<a href='http://localhost/main/pages/blockposts.php'> Your Post Got reported  </a>";
+        echo '<div class="hover-effect">' . $count . '</div>';
+    } else {
+        echo "";
+    }
+    ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+       
+        </div>
             <div class="video__icon">
                 <div class="circle--outer"> </div>
                 <div class="circle--inner" id="">
+
+
+             
+
+            
                     <div class="hoverable">
                         <p>online</p>
                         <div class="hover-content">
@@ -92,22 +135,7 @@
                 </svg>
 
                 <span class="badged">
-                    <?php {
-
-                        $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
-                        $sqll = "SELECT COUNT(status) as status from `images` ";
-                        $result = mysqli_query($conn, $sqll);
-
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-
-                                echo "" . $row['status'] . "<br>";
-                                echo "";
-                            }
-                        }
-                    }
-
-                    ?>
+                    <?php  ?>
                 </span>
 
                 </i>
@@ -116,24 +144,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                     <path d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"></path>
                 </svg> <span class="badged" id="message-count">
-                    <?php $from_id = $_SESSION['user_id'];
-                    $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
-                    $sql = "SELECT count(opened) as open, MAX(message) as messages FROM `chats` WHERE to_id = $from_id and opened = 0";
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-
-                            echo "" . $row['open'] . "<br>";
-
-                            $message =  "" . $row['messages'] . "<br>";
-                            //    echo base64_decode($message); 
-                            // 	echo "msg";
-
-
-                        }
-                    }
-                    ?>
+                    <?php  ?>
                 </span>
 
             </a>
@@ -142,7 +153,7 @@
                     <div class="rounded-circle object-fit-cover">
                         <?php $phoo = $_SESSION['p_p'] ?>
 
-                        <img src="../client/assets/uploads/<?= $phoo ?>" class="w-30 rounded-circle" height="36" width="40">
+                        <img src="client/assets/uploads/<?= $phoo ?>" class="w-30 rounded-circle" height="36" width="40">
                     </div>
                 </a>
                 <div class="dropdown-menu ">
@@ -232,7 +243,7 @@
 
                     <div class="" style="margin-left:10px">
                         <?php
-                            echo $row['name'] . "&nbsp;&nbsp; Posted On <br>" . ($row['uploaded_on']) . "<br><hr>";
+                            echo "" . $row['name'] . "&nbsp;&nbsp; Posted    On <br> " . $row['uploaded_on'] . "<br> <hr>";
                         ?>
                     </div>
 
@@ -359,4 +370,56 @@
     .hoverable:hover .hover-content {
         display: block;
     }
+
+    a {
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .navbar {
+        background-color: white;
+    }
+    #notification_bell{
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #fdfdfd;
+    margin: 1px;
+    padding: 0px;
+    margin-left: -16px;
+    margin-top: 9px;
+    margin-right: 35px;
+    border: 1px solid white;
+    }
+
+     .badged{
+        color: #fff;
+    background: #f44336;
+    font-size: 11px;
+    border-radius: 20px;
+    position: absolute;
+    min-width: 10px;
+    padding: 4px 6px 0;
+    min-height: 18px;
+    top: 5px;
+    }
 </style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    </html>
+    <!-- Java Script Here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <!-- End Of Javascript Here  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

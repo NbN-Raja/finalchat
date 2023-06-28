@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-sm  fixed-top ">
     <!-- <img src="client/assets/img/icon/logo.png"> -->
-    <form class="relative" style="left:50px">
-        <div class="input-group search-box" style="left: 39px; width: 14pc;">
-            <input type="search" id="searchText" class="form-control" placeholder="Search by Name" autocomplete="off">
+    <form class="relative" style="left:100px">
+        <div class="input-group search-box" style="left: 248px; width: 14pc;">
+        <img src="http://localhost/main/client/assets/img/logo.jpg" class="mr-2 mt-1" height="30px" width="30px">
+            <input type="search" id="searchText" class="form-control" placeholder="Search by Name" autocomplete="off" style="background-color:#eef3f8">
         </div>
     </form>
     <!-- chat lists  -->
@@ -55,10 +56,6 @@
                 <div class="circle--outer"> </div>
                 <div class="circle--inner" id="">
 
-
-             
-
-            
                     <div class="hoverable">
                         <p>online</p>
                         <div class="hover-content">
@@ -112,19 +109,30 @@
 
 
 
-            <div class="" style="position:relative; right:33px; display:flex">
-                <a class="ml-10" href="http://localhost/main/client/home.php">
+            <style>
+  .black-and-white {
+    filter: grayscale(100%); /* Convert image to black and white */
+  }
 
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="36" height="36">
+  .profile-text {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+</style>
 
-                </a>
+<div class="" style="position:relative; right:33px; display:flex">
+  <a class="ml-10" href="http://localhost/main/client/home.php" style="color: black;">
+    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="40" height="36" class="black">
+  </a>
+  
 
+  <a href="Blog/home.php" target="_blank" class="ml-3">
+    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="40" width="36" class="black">
 
-                <a href="Blog/home.php" class="ml-3">
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="36" width="36">
-                    <i class="bi bi-bell-fill"></i>
-                </a>
-            </div>
+  </a>
+</div>
+
 
 
             <a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="notification_bell">
@@ -154,7 +162,7 @@
                         <img src="client/assets/uploads/<?= $phoo ?>" class="w-30 rounded-circle" height="36" width="40">
                     </div>
                 </a>
-                <div class="dropdown-menu ">
+                <div class="dropdown-menu " style="left: -5pc;">
                     <a href="client/home.php" class="dropdown-item"><i class="fa fa-user-o"></i> <?php echo $_SESSION['username']  ?></a>
 
                     <a href="client/settings.php" class="dropdown-item"><i class="fa fa-sliders"></i>
@@ -369,3 +377,8 @@
         display: block;
     }
 </style>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>

@@ -66,7 +66,7 @@ session_start();
     // }
     // $_SESSION['room'] = '$chat_name';
   }
-  $conn->close();
+  
   ?>
 
 
@@ -84,20 +84,63 @@ session_start();
   <?php include 'sidenav.php'; ?>
 
     <div class="groups">
+      
+      
+ 
+
       <div>
-        <h1>  Chat Groups</h1>
+        <h1> Your Total Groups</h1>
       </div>
-      <?php require_once 'insert.php'; ?>
+      <?php
+      $sql = "SELECT * FROM chat_room";
+
+      // $sql="SELECT * FROM groupchat INNER JOIN users ON users.name = '$name' AND groupchat.name ='$name' Where chat_room = $chat;";
+      // $sqll ="SELECT * FROM groupchat INNER JOIN users ON users.name = 'Noblesse' AND groupchat.name ='Noblesse' ";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+          $id = $row['id'];
+          $room_name = $row['room_name'];
+
+          echo "<div class='message'>
+      
+        <div class='box'>
+          <a href='display.php?user_id=$id&room_name=$room_name'>
+            <strong>" . $row["room_name"] . "</strong>: 
+          </a>";
+          echo "<p> ID:" . $row["id"] . "</> <br><a href='#' class='delete-link' data-id='$id'>Delete </a> </p>";
+
+          echo "  </div>";
+
+
+          $iddd = $row['id'];
+          $sqll = "SELECT name, MAX(chats) AS msg FROM `groupchat` WHERE chat_room = '$iddd' AND name = '$name'";
+          $resultt = $conn->query($sqll);
+
+          if ($resultt->num_rows > 0) {
+            // Output data of each row
+            while ($rows = $resultt->fetch_assoc()) {
+              echo "<a class='gm'>" . $rows["msg"] . "</a>";
+              echo "</div>";
+            }
+          }
+        }
+      }
+      ?>
 
 
     </div>
 
+
+
    
 
     <div class="section">
-    <h2>Search Groups</h2>
-<input type="text" id="search-input" placeholder="Enter group name">
-<button class="search-button">Search</button>
+      <h2>Search Groups</h2>
+      <input type="text" placeholder="Enter group name">
+      <button class="search-button">Search</button>
       <hr>
       <h2>Create New Group</h2>
 
@@ -110,31 +153,12 @@ session_start();
       </form>
       
     </div>
-    <div id="search-results"></div>
   </div>
 
 
   </div>
 
-  <script>
-  $(document).ready(function() {
-    $('#search-input').keyup(function() {
-      var searchQuery = $(this).val();
-      if (searchQuery !== '') {
-        $.ajax({
-          url: 'searchh.php',
-          method: 'POST',
-          data: { searchQuery: searchQuery },
-          success: function(response) {
-            $('#search-results').html(response);
-          }
-        });
-      } else {
-        $('#search-results').empty();
-      }
-    });
-  });
-</script>
+
 
 
   <style>
@@ -349,26 +373,84 @@ if ($result->num_rows > 0) {
     .create-button:hover {
       background-color: #0056b3;
     }
-
-    #search-results {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  padding: 10px;
-}
-
-#search-results p {
-  margin: 5px 0;
-}
-
-#search-results p:first-child {
-  font-weight: bold;
-}
-
-#search-results p:last-child {
-  color: #888;
-}
-
   </style>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <style>
+p{
+  background-color: aliceblue;
+    padding: 15px;
+    border-radius: 11px;
+    display: list-item;
+}
+
+strong{
+  font-size:30px;
+}
+
+.box{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+</style>
+
+<style>
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+
+  .message p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .message a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .message a:hover {
+    text-decoration: underline;
+  }
+
+  .message a.delete {
+    color: red;
+    margin-left: 10px;
+  }
+
+  .gm{
+    position: relative;
+    bottom:30px;
+    color: black;
+  }
+</style>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

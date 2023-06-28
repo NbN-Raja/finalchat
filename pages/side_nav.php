@@ -1,7 +1,22 @@
 <link rel="stylesheet" href="client/landing/css/index.css">
 <link rel="stylesheet" href="client/landing/css/landing_page.css">
 <script src="client/landing/js/script.js"> </script>
+<div class="messageusers" id="messageContainer">
 
+    <!-- User Search here  -->
+    <ul id="chatList" style="top:10px">
+
+        <?php if (!empty($conversations)) { ?>
+
+            <?php
+            foreach ($conversations as $conversation) { ?>
+
+            <?php } ?>
+        <?php } else { ?>
+        <?php } ?>
+    </ul>
+
+</div>
 <div class=" firstcolumn ">
 
     <?php $phoo = $_SESSION['p_p'] ?>
@@ -13,29 +28,27 @@
 
     <p class="bio text-center">
         <a style="color:black">
-        <?php
-                $user_idd = $_SESSION['user_id'];
-                $con = new mysqli("localhost", "root", "", "chat_app_db");
-                $sql = "SELECT bio from bios WHERE user_id= $user_idd";
-                $result = mysqli_query($con, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                     $row = mysqli_fetch_assoc($result) ;
-                        $bio= $row['bio'];
-                          if(!$result){
-                            echo 'Please Add Your Bio';
-                           
-                          }else{
-                            echo $bio;
-                          }
-                        
+            <?php
+            $user_idd = $_SESSION['user_id'];
+            $con = new mysqli("localhost", "root", "", "chat_app_db");
+            $sql = "SELECT bio from bios WHERE user_id= $user_idd";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $bio = $row['bio'];
+                if (!$result) {
+                    echo 'Please Add Your Bio';
+                } else {
+                    echo $bio;
                 }
-                ?>
+            }
+            ?>
         </a>
     </p>
     <hr>
-    <div class="info-box">
-        <h5>Total Posts</h5>
-        <p>
+    <!-- <div class="info-box">
+        <h4>Total Posts</h4>
+        <h4>
             <?php
             // Establishing a database connection
             $conn = new PDO("mysql:host=localhost;dbname=chat_app_db", "root", "");
@@ -52,12 +65,12 @@
             echo  $count;
             ?>
 
-        </p>
+        </h4>
     </div>
     <div class="info-box">
-        <h5>Total Blogs</h5>
-        <p>
-        <?php
+        <h4>Total Blogs</h4>
+        <h4>
+            <?php
             // Establishing a database connection
             $conn = new PDO("mysql:host=localhost;dbname=chat_app_db", "root", "");
 
@@ -72,31 +85,56 @@
             // Outputting the result
             echo  $count;
             ?>
-        </p>
-       
-    </div>
-    <a href="http://localhost/main/Analytics/index.php"><b>Analytics </b> </a> 
+        </h4>
 
-    <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      
-      <a href="http://localhost/main/group/group.php"> Groups</a>
-    </div>
-    <div class="col-md-6">
- 
-      <a href="#">GroupChat</a>
+    </div> -->
+    <div class="info-box" style="height:120px">
+        <a href="http://localhost/main/Analytics/index.php"><b>Analytics </b> </a>
+        <hr>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <a href="http://localhost/main/group/group.php"> Groups</a>
+                </div>
+                <div class="col-md-6">
+
+                    <a href="#">chat</a>
+                </div>
+
+                <div class="col-md-6">
+
+                    <a href="http://localhost/main/videocall">Video </a>
+                </div>
+                <div class="col-md-6">
+
+                    <a href="http://localhost/main/groupchat">Gchats </a>
+                </div>
+            </div>
+        </div>
+
     </div>
     
-    <div class="col-md-6">
-   
-      <a href="http://localhost/main/video call">Video Conference</a>
-    </div>
+    <div class="linkedin-about" style="background-color: #f0f2f5;">
+  <a href="#" class="linkedin-link small text-dark">Accessibility</a>
+  <a href="#" class="linkedin-link small text-dark">Help Center</a>
+  <a href="#" class="linkedin-link small text-dark">Privacy &amp; Terms</a>
+  <a href="#" class="linkedin-link small text-dark">Advertising</a>
+  <div class="linkedin-app">
+    <a href="#" class="small text-dark">Get the LinkUp app</a>
+  </div>
+  <div class="linkedin-copyright small text-dark">
+    LinkUp Corporation &copy; 2023
   </div>
 </div>
 
 
+
 </div>
+
+
+
 
 
 
@@ -105,7 +143,7 @@
 <div class="messageusers" id="messageContainer">
 
     <!-- User Search here  -->
-    <ul id="chatList">
+    <ul id="chatList" style="top:10px">
 
         <?php if (!empty($conversations)) { ?>
 
@@ -129,9 +167,8 @@
     .firstcolumn {
         position: sticky;
         top: 50px;
-        /* background-color: white; */
+        background-color: white;
         text-align: center;
-        padding: 10px;
         border-radius: 10px;
     }
 
@@ -166,6 +203,7 @@
         transform: translate(10px);
         height: 100vh;
         width: 100%;
+        top: 10px;
     }
 
     #cancel-btn {
@@ -207,9 +245,13 @@
         margin: 0;
     }
 
-    .container a{
-        color:black;
+    .container a {
+        color: black;
         font-weight: 500
+    }
+
+    .messageContainer{
+
     }
 </style>
 

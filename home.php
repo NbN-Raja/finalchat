@@ -100,7 +100,7 @@ if (isset($_SESSION['username'])) {
     }
 
     body {
-        background-color: #f0f2f5;
+        background-color: #f3f2ef;
     }
     /* body a,b,p,h1{
         color: green;
@@ -138,11 +138,12 @@ if (isset($_SESSION['username'])) {
     top: 5px;
     }
 
-    .main{
-        display:flex;
-        margin-top: 4pc;
-        justify-content: space-around;
-
+    .main {
+    display: flex;
+    margin-top: 4pc;
+    justify-content: space-evenly;
+    justify-content: center;
+    gap: 51px;
     }
 
     .post_image{
@@ -177,3 +178,46 @@ if (isset($_SESSION['username'])) {
     
 </style>
 
+<!-- loader.php -->
+
+<div id="loader">
+  <div id="loader-inner"></div>
+</div>
+
+<style>
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  opacity: 0.7;
+}
+
+#loader-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+window.addEventListener('load', function() {
+  var loader = document.getElementById('loader');
+  loader.style.display = 'none';
+});
+</script>

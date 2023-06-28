@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 07:37 PM
+-- Generation Time: Jun 28, 2023 at 07:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -93,7 +93,8 @@ INSERT INTO `chats` (`chat_id`, `from_id`, `to_id`, `message`, `chat_img`, `open
 (127, 63, 66, 'SGVsbG8=', '', 1, '0', '2023-04-28 16:48:58'),
 (128, 63, 66, 'ZHNhZHNh', '', 1, '0', '2023-06-08 12:11:08'),
 (129, 66, 63, 'WWVz', '', 1, '0', '2023-06-08 16:31:24'),
-(130, 66, 63, 'Zmc=', '', 1, '0', '2023-06-08 16:31:46');
+(130, 66, 63, 'Zmc=', '', 1, '0', '2023-06-08 16:31:46'),
+(131, 66, 63, 'aGVsbG8=', '', 1, '0', '2023-06-27 22:59:47');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,19 @@ INSERT INTO `chat_room` (`id`, `name`, `room_name`) VALUES
 (16, 'Testadmin', 'Hello '),
 (17, 'Admin', 'nbn'),
 (18, 'Nabin', 'nbn'),
-(19, 'Nabin', 'nbn');
+(19, 'Nabin', 'nbn'),
+(20, 'admin', 'Bnc'),
+(21, 'admin', 'Bca 6 Sem Group Chats'),
+(22, 'admin', 'as'),
+(23, 'nabin', 'ty'),
+(24, 'nabin', 'sdf'),
+(25, 'admin', 'yu'),
+(26, 'admin', 'yu'),
+(27, 'admin', ''),
+(28, 'admin', 'nbn'),
+(29, 'admin', 'as'),
+(30, 'admin', 'werdscscxz'),
+(31, 'admin', '');
 
 -- --------------------------------------------------------
 
@@ -160,7 +173,9 @@ INSERT INTO `comment` (`id`, `name`, `comment`, `photo_id`, `profile_pic`, `time
 (151, 'admin', 'dasds', 112, 'nbn.jpg', '2023-06-08 13:29:52'),
 (152, 'admin', 'dasdsa', 112, 'nbn.jpg', '2023-06-08 13:29:56'),
 (153, 'admin', 'yo', 112, 'nbn.jpg', '2023-06-08 13:30:00'),
-(154, 'admin', 'ty', 110, 'nbn.jpg', '2023-06-08 13:43:34');
+(154, 'admin', 'ty', 110, 'nbn.jpg', '2023-06-08 13:43:34'),
+(155, 'admin', 'fsdfsd', 111, 'nbn.jpg', '2023-06-28 23:00:40'),
+(156, 'admin', 'Awesome content!', 111, 'nbn.jpg', '2023-06-28 23:00:45');
 
 -- --------------------------------------------------------
 
@@ -172,6 +187,7 @@ CREATE TABLE `community` (
   `id` int(10) NOT NULL,
   `title` varchar(40) NOT NULL,
   `contents` varchar(500) NOT NULL,
+  `images` varchar(255) NOT NULL,
   `username` varchar(20) NOT NULL,
   `p_p` varchar(100) NOT NULL,
   `tags` varchar(250) NOT NULL,
@@ -182,12 +198,12 @@ CREATE TABLE `community` (
 -- Dumping data for table `community`
 --
 
-INSERT INTO `community` (`id`, `title`, `contents`, `username`, `p_p`, `tags`, `timestamp`) VALUES
-(44, 'Second Posts', '<p>&lt;!doctype html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &lt;meta charset=\"UTF-8\"&gt;</p><p>&nbsp; &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</p><p>&nbsp; &lt;script src=\"https://cdn.tailwindcss.com\"&gt;&lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &lt;h1 class=\"text-3xl font-bold underline\"&gt;</p><p>&nbsp; &nbsp; Hello world!</p><p>&nbsp; &lt;/h1&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:13:11'),
-(45, 'Node Js Is Best ', '<p>yes</p>', 'admin', 'nbn.jpg', 'coding', '2023-04-30 09:12:14'),
-(46, 'Fix My code Hone Bottom is not working', '<p><b>Here in this code fix my Bottom Not Working&nbsp;</b></p><p><b><br></b></p><p><font color=\"#94a3b8\" face=\"Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace\"><span style=\"font-variant-ligatures: none; white-space: pre; background-color: rgb(231, 156, 156);\">&lt;!-- Pin to top left corner --&gt;\r\n&lt;div class=\"relative h-32 w-32 ...\"&gt;\r\n  &lt;div class=\"absolute left-0 top-0 h-16 w-16 ...\"&gt;01&lt;/div&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;!-', 'nabin', 'nabin.jpg', 'coding', '2023-05-03 15:05:14'),
-(47, 'What is Life!!', '<p class=\"contents\" style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><span style=\"font-family: &quot;Comic Sans MS&quot;;\">This world is trapped in the well of suffering. What is this suffering due to?&nbsp; This suffering stems from ignorance of the Self. All suffering in this world is because of ignorance. This ignorance leads to attachment and abhorrence and suffering is experienced as a consequence. Only True Knowledge &amp;&nbsp;Enlightenment Science', 'testadmin', 'yo.jpg', 'life', '2023-05-03 15:07:33'),
-(48, 'Life is not simple as They Says', '<p>assssssssssssssssssssssssssssadsd&nbsp; &nbsp; &nbsp; saddddddddddddddddddd</p>', 'testadmin', 'yo.jpg', 'life', '2023-05-03 15:09:57');
+INSERT INTO `community` (`id`, `title`, `contents`, `images`, `username`, `p_p`, `tags`, `timestamp`) VALUES
+(44, 'Second Posts', '<p>&lt;!doctype html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &lt;meta charset=\"UTF-8\"&gt;</p><p>&nbsp; &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</p><p>&nbsp; &lt;script src=\"https://cdn.tailwindcss.com\"&gt;&lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &lt;h1 class=\"text-3xl font-bold underline\"&gt;</p><p>&nbsp; &nbsp; Hello world!</p><p>&nbsp; &lt;/h1&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>', '', 'admin', 'nbn.jpg', 'coding', '2023-04-23 06:13:11'),
+(45, 'Node Js Is Best ', '<p>yes</p>', '', 'admin', 'nbn.jpg', 'coding', '2023-04-30 09:12:14'),
+(46, 'Fix My code Hone Bottom is not working', '<p><b>Here in this code fix my Bottom Not Working&nbsp;</b></p><p><b><br></b></p><p><font color=\"#94a3b8\" face=\"Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace\"><span style=\"font-variant-ligatures: none; white-space: pre; background-color: rgb(231, 156, 156);\">&lt;!-- Pin to top left corner --&gt;\r\n&lt;div class=\"relative h-32 w-32 ...\"&gt;\r\n  &lt;div class=\"absolute left-0 top-0 h-16 w-16 ...\"&gt;01&lt;/div&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;!-', '', 'nabin', 'nabin.jpg', 'coding', '2023-05-03 15:05:14'),
+(47, 'What is Life!!', '<p class=\"contents\" style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;\"><span style=\"font-family: &quot;Comic Sans MS&quot;;\">This world is trapped in the well of suffering. What is this suffering due to?&nbsp; This suffering stems from ignorance of the Self. All suffering in this world is because of ignorance. This ignorance leads to attachment and abhorrence and suffering is experienced as a consequence. Only True Knowledge &amp;&nbsp;Enlightenment Science', '', 'testadmin', 'yo.jpg', 'life', '2023-05-03 15:07:33'),
+(48, 'Life is not simple as They Says', '<p>assssssssssssssssssssssssssssadsd&nbsp; &nbsp; &nbsp; saddddddddddddddddddd</p>', '', 'testadmin', 'yo.jpg', 'life', '2023-05-03 15:09:57');
 
 -- --------------------------------------------------------
 
@@ -244,21 +260,6 @@ CREATE TABLE `groupchat` (
 --
 
 INSERT INTO `groupchat` (`id`, `name`, `chats`, `chat_room`, `room_name`, `p_p`, `time`) VALUES
-(1, 'Nbn', 'fgfgf', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 11:26:33'),
-(2, '', ' Jkk Joined Chat!!', 1, '', 'jk.png', '2022-03-10 11:47:48'),
-(3, '', ' Jkk Joined Chat!!', 1, '', 'jk.png', '2022-03-10 11:55:24'),
-(4, 'Nbn', 'fjdsfb dsf', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 12:05:09'),
-(5, 'Nbn', 'n dsn dsf', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 12:05:13'),
-(6, 'Nbn', 'nfjdsnfjk s', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 12:05:16'),
-(7, 'Jkk', 'ggdf', 3, ' fghgg', 'jk.png', '2022-03-10 12:29:39'),
-(8, '', ' Nbn Joined Chat!!', 3, '', 'nbn.jpg', '2022-03-10 12:30:05'),
-(9, 'Nbn', 'vhvh', 3, '', 'nbn.jpg', '2022-03-10 12:30:12'),
-(10, 'Jkk', 'hh', 3, ' fghgg', 'jk.png', '2022-03-10 12:30:17'),
-(11, '', ' Nbn Joined Chat!!', 1, '', 'nbn.jpg', '2022-03-10 19:03:15'),
-(12, 'Nbn', 'das', 1, '', 'nbn.jpg', '2022-03-10 21:52:37'),
-(13, 'Nbn', 'asdasd', 1, '', 'nbn.jpg', '2022-03-10 21:52:39'),
-(14, 'Nbn', 'asdasdasd asdas', 1, '', 'nbn.jpg', '2022-03-10 21:52:43'),
-(15, 'Nbn', 'asd asdas', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 21:52:53'),
 (16, 'Nbn', 'asdasd ioioi', 1, ' Hello Group Chat He', 'nbn.jpg', '2022-03-10 21:52:57'),
 (17, 'Nbn', 'Yo ', 2, ' bfhsdb fjds', 'nbn.jpg', '2022-03-10 21:53:10'),
 (18, 'Nbn', 'AnyOne Here ', 2, ' bfhsdb fjds', 'nbn.jpg', '2022-03-11 08:59:02'),
@@ -418,13 +419,9 @@ INSERT INTO `groupchat` (`id`, `name`, `chats`, `chat_room`, `room_name`, `p_p`,
 (172, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:54:11'),
 (173, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:54:44'),
 (174, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:55:05'),
-(175, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:55:51'),
-(176, 'Admin', 'g', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:58:39'),
-(177, 'Admin', 'e', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:58:50'),
 (178, 'Nabin', 'yo', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:58:56'),
 (179, 'Nabin', 'f', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:00'),
 (180, 'Admin', 'h', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:59:06'),
-(181, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:11'),
 (182, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:15'),
 (183, 'Admin', 'erty', 17, ' nbn', 'nbn.jpg', '2023-04-28 23:59:23'),
 (184, 'Nabin', 'qw', 17, ' nbn', 'nabin.jpg', '2023-04-28 23:59:27'),
@@ -447,7 +444,22 @@ INSERT INTO `groupchat` (`id`, `name`, `chats`, `chat_room`, `room_name`, `p_p`,
 (201, 'Admin', 'ty', 17, ' nbn', 'nbn.jpg', '2023-04-29 00:15:55'),
 (202, 'Admin', 'Hello', 17, ' nbn', 'nbn.jpg', '2023-04-30 14:44:11'),
 (203, 'Admin', '', 17, ' nbn', 'nbn.jpg', '2023-04-30 14:44:15'),
-(204, 'Nabin', 'yo', 18, ' nbn', 'nabin.jpg', '2023-04-30 20:42:49');
+(204, 'Nabin', 'yo', 18, ' nbn', 'nabin.jpg', '2023-04-30 20:42:49'),
+(205, 'admin', 'hy', 17, ' nbn', 'nbn.jpg', '2023-06-28 14:54:38'),
+(206, 'admin', 'yuyu', 17, ' nbn', 'nbn.jpg', '2023-06-28 14:54:43'),
+(207, '', ' admin Joined Chat!!', 12, '', 'nbn.jpg', '2023-06-28 15:10:31'),
+(208, 'admin', 'kjhkj', 12, '', 'nbn.jpg', '2023-06-28 15:10:41'),
+(209, 'admin', 'khjkjhk', 12, '', 'nbn.jpg', '2023-06-28 15:10:44'),
+(210, 'admin', 'hello', 12, '', 'nbn.jpg', '2023-06-28 15:10:47'),
+(211, 'admin', 'y0', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 15:54:47'),
+(212, 'admin', 'hello ', 20, ' Bnc', 'nbn.jpg', '2023-06-28 16:31:53'),
+(213, 'admin', 'gh', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 21:11:18'),
+(214, 'nabin', 'ghfg hgfh ', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 21:11:31'),
+(215, 'nabin', 'ghfg hgfh ', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 21:11:37'),
+(216, 'nabin', 'fghfgh fgh ', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 21:11:54'),
+(217, 'nabin', 'fghfgh fgh ', 21, ' Bca 6 Sem Group Cha', 'nbn.jpg', '2023-06-28 21:11:57'),
+(218, 'admin', 'sdfdsf', 29, ' as', 'nbn.jpg', '2023-06-28 22:09:03'),
+(219, 'admin', 'sdfdsf', 29, ' as', 'nbn.jpg', '2023-06-28 22:09:05');
 
 -- --------------------------------------------------------
 
@@ -548,7 +560,8 @@ INSERT INTO `images` (`id`, `name`, `something`, `comment`, `file_name`, `upload
 (110, 'Testadmin', 'Sad Life 😆', '', 'cover.jpg', '2023-05-02 21:40:37', '1'),
 (111, 'Admin', '🤣😂😅😅😅😆😆😄😄😀😊🙂🙃🤪🤬😡🤬😡🤬😡🤬😳🤯☹☹☹☹🧖♂🧖♀🧖♀🧖♀🧖♀🧖♀🙃😡😳😡🤬☹🧖♀😳🙃🤯🧖♂😡☹😳🤯 ', '', '', '2023-05-10 21:18:52', '1'),
 (116, 'Admin', '☹😳🤯 ', '', '', '2023-06-08 21:59:49', '0'),
-(117, 'Admin', 'Ccxzcxzcxc', '', '', '2023-06-08 22:08:22', '0');
+(117, 'Admin', 'Ccxzcxzcxc', '', '', '2023-06-08 22:08:22', '0'),
+(118, 'Admin', 'Xdxdvvcxv', '', 'nbn.jpg', '2023-06-10 17:22:59', '0');
 
 -- --------------------------------------------------------
 
@@ -596,13 +609,14 @@ INSERT INTO `likes` (`id`, `from_user`, `user_id`, `Photo_id`, `likes`, `usernam
 (77, 0, 63, 97, 1, 'testadmin'),
 (78, 0, 67, 109, 5, 'admin'),
 (79, 0, 66, 109, 3, 'nabin'),
-(81, 0, 66, 110, 6, 'nabin'),
-(82, 0, 63, 110, 6, 'admin'),
-(83, 0, 66, 111, 8, 'nabin'),
-(84, 0, 63, 111, 3, 'admin'),
+(81, 0, 66, 110, 7, 'nabin'),
+(82, 0, 63, 110, 7, 'admin'),
+(83, 0, 66, 111, 11, 'nabin'),
+(84, 0, 63, 111, 5, 'admin'),
 (85, 0, 66, 107, 1, 'nabin'),
 (86, 0, 63, 112, 10, 'admin'),
-(87, 0, 66, 112, 4, 'nabin');
+(87, 0, 66, 112, 4, 'nabin'),
+(88, 0, 63, 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -649,7 +663,10 @@ INSERT INTO `live_chat` (`id`, `username`, `message`, `timestamp`) VALUES
 (25, 'nabin', 'Im fine about You', '2023-04-28 17:46:20.716937'),
 (26, 'admin', 'Im also fine', '2023-04-28 17:52:13.271468'),
 (27, 'admin', 'Hello', '2023-04-30 08:59:42.111743'),
-(28, 'admin', 'uio', '2023-06-08 11:01:44.650822');
+(28, 'admin', 'uio', '2023-06-08 11:01:44.650822'),
+(29, 'admin', 'Abj asdasd', '2023-06-10 11:38:28.210378'),
+(30, 'admin', 'dsamdn as das', '2023-06-10 11:38:34.319281'),
+(31, 'admin', 'askd as', '2023-06-10 11:38:35.990114');
 
 -- --------------------------------------------------------
 
@@ -673,7 +690,8 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`id`, `post_noti`, `message_noti`, `created_at`, `user_id`, `image_id`, `report`) VALUES
 (30, 'Your post has been deleted by an admin.', 'yyy', '2023-06-08 17:00:49', 63, 117, 1),
-(31, 'Your post has been deleted by an admin.', 'tyty', '2023-06-08 17:35:45', 63, 110, 1);
+(31, 'Your post has been deleted by an admin.', 'tyty', '2023-06-08 17:35:45', 63, 110, 1),
+(33, 'Your post has been deleted by an admin.', '', '2023-06-10 11:37:59', 63, 118, 1);
 
 -- --------------------------------------------------------
 
@@ -722,7 +740,8 @@ INSERT INTO `report_posts` (`id`, `user_id`, `post_id`, `reason`, `warning`) VAL
 (26, 63, 115, 'er', ''),
 (27, 63, 111, 'Only Emojies', ''),
 (28, 63, 116, 'yo', ''),
-(29, 63, 117, 'zxczc', '');
+(29, 63, 117, 'zxczc', ''),
+(30, 63, 118, 'fdshgf sdjfdsjf ', '');
 
 -- --------------------------------------------------------
 
@@ -754,22 +773,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `username`, `lastname`, `gender`, `email`, `phone`, `password`, `p_p`, `c_p`, `last_seen`, `is_blocked`, `report`, `verification_code`, `verified`, `interests`) VALUES
-(63, 'admin', 'admin', 'Admin', '', 'admin@gmail.com           ', 2147483647, '$2y$10$HVXLWqKhReOuDEdRJ5i2iusm05n9kr8Q8h3QGyDx5zLACy5XZ0X9y', 'nbn.jpg', 'nbn.jpg', '2023-06-08 16:44:47', 0, 0, '', 0, 'music'),
-(66, 'nabin', 'nabin', 'Chhetri', '', 'Nbn@gmail.com    ', 0, '$2y$10$XfguqoT2skjhdtSQQoMYf.1.BXoxGhIeLJi.W5g65Dtgmnx0rQcuy', 'nabin.jpg', 'thumb.png', '2023-06-08 16:31:52', 0, 0, '', 0, 'coding'),
+(63, 'admin', 'admin', 'Admin', '', 'admin@gmail.com                ', 2147483647, '$2y$10$HVXLWqKhReOuDEdRJ5i2iusm05n9kr8Q8h3QGyDx5zLACy5XZ0X9y', 'nbn.jpg', 'nbn.jpg', '2023-06-27 23:00:03', 0, 0, '', 0, 'coding'),
+(66, 'nabin', 'nabin', 'Chhetri', '', 'Nbn@gmail.com         ', 0, '$2y$10$XfguqoT2skjhdtSQQoMYf.1.BXoxGhIeLJi.W5g65Dtgmnx0rQcuy', 'nabin.jpg', 'thumb.png', '2023-06-28 11:40:32', 0, 0, '', 0, 'life'),
 (67, 'testadmin', 'testadmin', 'Testadmin', '', 'Testadmin@gmail.com ', 0, '$2y$10$PosMAZNiBsH/ZrQxl6aUaO05R/DQ7IVlGmBTZSc0dl6hrkJ9FT2W6', 'yo.jpg', 'cover.jpg', '2023-05-02 17:23:23', 0, 0, '', 0, 'life'),
 (68, 'Pawan', 'pawanregmi', 'Regmi', 'Male', 'Pawanregmi@gmail.com', 0, '$2y$10$r5s8L.AerMDYzzKblf38l.gIEGE5UdCSMbIG0k/tvKcILJYlvXfhu', 'user-default.png', '', '2023-05-28 14:26:02', 0, 0, '', 0, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `videos`
---
-
-CREATE TABLE `videos` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -878,12 +885,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -897,25 +898,25 @@ ALTER TABLE `bios`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `chat_room`
 --
 ALTER TABLE `chat_room`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `community`
 --
 ALTER TABLE `community`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -933,7 +934,7 @@ ALTER TABLE `conversations`
 -- AUTO_INCREMENT for table `groupchat`
 --
 ALTER TABLE `groupchat`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -951,43 +952,37 @@ ALTER TABLE `group_posts`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `live_chat`
 --
 ALTER TABLE `live_chat`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `report_posts`
 --
 ALTER TABLE `report_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-
---
--- AUTO_INCREMENT for table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

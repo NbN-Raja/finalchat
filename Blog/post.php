@@ -10,9 +10,71 @@
 
 <h1> Start Writing Your Blogs </h1>
 <div class="container">
+
     <div class="profile">     <?php include 'include/sidenav.php' ?>
 </div>
-    <div class="contents">    <?php include 'pages/post.php' ?>
+    <div class="contents">
+    <nav>
+  <ul>
+    <li><a href="../home.php">Home</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="notifications.php">Notifications</a></li>
+    <li><a href="messages.php">Messages</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropbtn">Profile &#9662;</a>
+      <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+        <a href="settings.php">Settings</a>
+        <a href="logout.php">Logout</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<style>
+    nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav li a:hover {
+  background-color: #ddd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
+    <?php include 'pages/post.php' ?>
 </div>
 </div>
 

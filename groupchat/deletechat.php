@@ -6,9 +6,6 @@
         $data = $_GET["user_id"];
         $room_name = $_GET["room_name"];
         echo $data;
-        
-        $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
-        
-        
+        $conn = new mysqli('localhost', 'root', '', 'chat_app_db'); 
     }
 ?>
