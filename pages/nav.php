@@ -38,7 +38,7 @@
 
     if (mysqli_num_rows($result) > 0) {
         $dataa = mysqli_fetch_assoc($result);
-        $count = "<a href='http://localhost/main/pages/blockposts.php'> Your Post Got reported  </a>";
+        $count = "<a href='http://localhost/main/pages/blockposts.php' style='color:red'> Your Post Got reported  </a>";
         echo '<div class="hover-effect">' . $count . '</div>';
     } else {
         echo "";
@@ -123,12 +123,14 @@
 
 <div class="" style="position:relative; right:33px; display:flex">
   <a class="ml-10" href="http://localhost/main/client/home.php" style="color: black;">
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="40" height="36" class="black">
+    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="40" height="36" class="black" style="    background-color: gainsboro;
+    border-radius: 20px;">
   </a>
   
 
   <a href="Blog/home.php" target="_blank" class="ml-3">
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="40" width="36" class="black">
+    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="40" width="36" class="black" style="    background-color: gainsboro;
+    border-radius: 10px;">
 
   </a>
 </div>

@@ -59,7 +59,7 @@ $name = $_SESSION['name']; // Store the session variable in a variable to avoid 
               $row2 = $result2->fetch_assoc();
 
               // Display the count of comments
-              echo "<p> <a href='http://localhost/main/Analytics/pages/fetchcomment.php?id=$photo_idd' > comments" . $row2['count'] . " </a></p>";
+              echo "<p><a href='http://localhost/main/Analytics/pages/fetchcomment.php?id=$photo_idd' style='color: #65676b; font-weight: bold;'>Total comments " . $row2['count'] . "</a></p>";
               echo "</div>";
             } else {
               echo "No results found.";
@@ -86,14 +86,13 @@ $name = $_SESSION['name']; // Store the session variable in a variable to avoid 
 
 <style>
   .display {
-    border: 1px solid grey;
-    background-color: azure;
-    box-shadow: inset 0px 0px 2px 1px #f3f3f2;
+    border: 1px solid #ffffff;
+    box-shadow: inset 0px 0px 4px 1px #e5e5e5;
     padding: 12px;
     border-right-width: thick;
-    width: 12pc;
+    width: 17pc;
     display: inline-block;
-    padding:10px
+    padding: 17px;
   }
 
   .post_image {
@@ -105,4 +104,12 @@ $name = $_SESSION['name']; // Store the session variable in a variable to avoid 
     display: block;
     margin-bottom: 10px;
   }
+  h5{
+    color: #65676b;
+  }
+  p{
+    color: #65676b;
+  }
+
+
 </style>

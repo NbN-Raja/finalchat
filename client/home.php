@@ -417,6 +417,9 @@ $nav = include 'nav.php';
     body a {
         text-decoration: none;
     }
+    body {
+        background-color: #f3f2ef;
+    }
 
     .form-control:focus {
         box-shadow: none;

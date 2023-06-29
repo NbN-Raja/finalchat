@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="assets/css/landing_page.css">
 <body>
 <nav class="navbar navbar-expand-sm navbar-light fixed-top ">
-	<a href="../home.php" class="navbar-brand mr-3"><i class="fa fa-cube"></i><b>Chat</b></a>
+	<a href="../home.php" class="navbar-brand mr-3"><i class="fa fa-cube"></i><b>Link Up</b></a>
 	
 
 	<form class="navbar-form form-inline mr-4" style="margin-right:30px;">

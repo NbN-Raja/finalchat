@@ -1,7 +1,8 @@
 <?php 
 
 include_once 'model/db.php';
-$sql = "SELECT report_posts.post_id,report_posts.user_id as user_id, report_posts.reason,images.id, images.file_name, images.something,images.name
+$sql = "SELECT report_posts.post_id,report_posts.user_id as user_id,
+report_posts.reason,images.id, images.file_name, images.something,images.name
 FROM report_posts
 INNER JOIN images ON images.id = report_posts.post_id";
 $result = $connect->query($sql);
@@ -15,6 +16,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <table class="table">
+<h5 class="center-align">Reported Posts Appear Here</h5>
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -50,7 +52,7 @@ if ($post_file != '') {
         <form method="post" action="">
           <input type="hidden" name="post_id" value="<?=$row['post_id']?>">
           <input type="hidden" name="user_id" value="<?=$row['user_id']?>">
-          <input type="text" name="message_noti">
+          <input type="text" name="message_noti" placeholder="Reply To Users...">
           <button type="submit" name="submit" class="btn btn-danger">Delete</button>
         </form>
       </td>
@@ -58,7 +60,7 @@ if ($post_file != '') {
   </tbody>
 </table>
 
-
+<br>
 
 <?php 
 
@@ -107,12 +109,58 @@ if (isset($_POST['submit'])) {
 
 <!-- warning  -->
 
+<div class="">
+  <h5 class="center-align"> Deleted  Posts Appears Here</h5>
+  <?php
+  $sql = "SELECT report_posts.post_id,report_posts.user_id as user_id, report_posts.reason,images.id, images.file_name, images.something,images.name
+FROM report_posts
+INNER JOIN images ON images.id = report_posts.post_id WHERE images.status = '0'";
+$result = $connect->query($sql);
 
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
 
+    $imageid= $row['id'];
+    
+?>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><?php echo $row['name'] ?>
+      <?php echo $row['user_id'] ; echo $row['id']  ?></td>
+      <td><a href="http://localhost/main/pages/singlepost.php?user=<?=$row['post_id'] ?>">
+        <?php echo $row['reason'] ?></a></td>
+      <td> <?php
+$post_file = $row['file_name'];
+if ($post_file != '') {
+  $file_extension = pathinfo($post_file, PATHINFO_EXTENSION);
+  if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp'])) {
+    echo '<img class="post_image"   width="300" height="300" src="../client/assets/post/' . $post_file . '"><br>';
+  } elseif (in_array($file_extension, ['mp4', 'webm', 'ogg'])) {
+    echo '<video class="post_video" controls width="300" height="300">
+            <source src="../client/assets/post/' . $post_file . '" type="video/' . $file_extension . '">
+          </video><br>';
+  } else {
+    echo '<p>' . $post_file . '</p><br>';
+  }
+} else {
+  echo '<p>No file available</p><br>';
+}
+  }
+}
+?>
 
-
-
+</div>
 
 <style>
   table {
@@ -137,4 +185,9 @@ if (isset($_POST['submit'])) {
     display: block;
     margin: 0 auto;
   }
+
+  .center-align {
+    text-align: center;
+  }
+</style>
 </style>

@@ -16,6 +16,7 @@ $conn = new mysqli('localhost', 'root', '', 'chat_app_db');
 $query = $conn->query("SELECT * from images where id='$name'");
 while ($data = mysqli_fetch_array($query)) {
   $image_id = $data['id'];
+  $namee = $data['name'];
 
   $uplaoded_on = $data['uploaded_on'];
   $something = $data['something'];
@@ -197,6 +198,10 @@ while ($data = mysqli_fetch_array($query)) {
 
 
     <style>
+
+    body{
+      background-color: #f3f2ef;
+    }
     *:before,
     *:after {
         -webkit-box-sizing: border-box;
@@ -318,8 +323,9 @@ while ($data = mysqli_fetch_array($query)) {
 
 
 
-  <div class="display_post p-2">
+  <div class="display_post p-4">
     <div class="display_profile mb-2 bg-white">
+      <div class="p-2">
       <div class="top_profile" style="display:flex">
         <img src="<?php echo  '../client/assets/uploads/' . $_SESSION['p_p'] ?>" width="10" height="20" style="width:3pc; height:3pc; position:relative; left:0px; border-radius:50%; top: 4px;">
 
@@ -356,7 +362,7 @@ if ($post_file != '') {
 }
 ?>
 
-
+</div>
     </div>
 
     <!-- Like Comment And Share Button here  -->
@@ -462,10 +468,29 @@ if ($post_file != '') {
       <br> <br>
     </div>
     <div class="report">
-  <h1 class="mb-3">Report Post</h1>
+  <h3 class="mb-3">Report Post</h3>
+
+
+<?php
+$query = $conn->query("SELECT * from users where name='$namee'");
+while ($data = mysqli_fetch_array($query)) {
+  $uid = $data['user_id'];
+}
+
+
+?>
+
+
+
+
+
+
+
+
+  
   <form method="post" action="">
   <input type="hidden" name="post_id" value="<?php echo $image_id ?>">
-  <input type="hidden" name="user_id" value="<?php echo $_SESSION["user_id"]; ?>">
+  <input type="hidden" name="user_id" value="<?php echo $uid ?>">
   <div class="form-group">
     <label for="reason">Reason for reporting:</label>
     <input type="text" class="form-control" name="reason" id="reason" required>
@@ -589,10 +614,12 @@ if (isset($_POST['submit'])) {
 
   .display_post{
     display: flex;
-    justify-content:space-around;
   }
 
- 
+ .report{
+  position: relative;
+    left: 60px;
+ }
 
   .post_image{
   width: 500px;
@@ -601,11 +628,13 @@ if (isset($_POST['submit'])) {
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px #ddd;
+  object-fit: cover;
 }
 
 
 .comment{
   box-shadow: 1px 1px 1px 2px #dbdbca;
+  padding:5px
 }
 
 #comment{

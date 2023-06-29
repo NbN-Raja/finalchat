@@ -28,7 +28,10 @@ $idd = $_GET['id'];
                         // Display the username, caption, and image in a styled format
                         echo "<div class='display'>";
                         echo "<h5>" . $row['name'] . "</h5>";
-                        echo "<img src='http://localhost/main/client/assets/post/" . $row['file_name'] . "' alt='" . $row['something'] . "' style='width:60px; height:60px; border-radius:5px'>";
+                        echo "<p>" . $row['uploaded_on'] . "</p>";
+                        echo "<p>" . $row['something'] . "</p>";
+
+                        echo "<img src='http://localhost/main/client/assets/post/" . $row['file_name'] . "' alt='" . $row['something'] . "' style='width:160px; height:160px; border-radius:5px'>";
 
 
                         $photo_idd = "" . $row['id'] . "";
@@ -91,10 +94,7 @@ $idd = $_GET['id'];
 
 <style>
     .display {
-        border: 1px solid grey;
-        background-color: azure;
         padding: 12px;
-        border-right-width: thick;
         width: 12pc;
         display: inline-block;
     }

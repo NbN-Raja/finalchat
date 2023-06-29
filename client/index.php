@@ -64,13 +64,23 @@
                     <p>  <a href="signup.php">Forget  Password </a> </p>
                     </div>
             </form>
-       
+            <div class="linkedin-about" style="">
+  <a href="#" class="linkedin-link small text-dark">Accessibility</a>
+  <a href="#" class="linkedin-link small text-dark">Help Center</a>
+  <a href="#" class="linkedin-link small text-dark">Privacy &amp; Terms</a>
+  <a href="#" class="linkedin-link small text-dark">Advertising</a>
+  <div class="linkedin-app">
+    <a href="#" class="small text-dark">Get the LinkUp app</a>
+  </div>
+  <div class="linkedin-copyright small text-dark">
+    LinkUp Corporation &copy; 2023
+  </div>
+</div>
     </div>
+    
     </div>
 
-    <div class="Footer">
-        <p> Hello </p>
-    </div>
+    
 </body>
 
 </html>

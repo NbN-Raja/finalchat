@@ -15,11 +15,7 @@
     <!-- Content Row -->
     <div class="row">
 
-        All Data Here
-        <form>
-
-            <h1> here Forms here </h1>
-        </form>
+        Pie Chart 
 
     </div>
 

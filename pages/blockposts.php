@@ -327,9 +327,10 @@ session_start()
 
 
 <?php
+$name=$_SESSION['name'];
 $sql = "SELECT notifications.post_noti, notifications.message_noti, notifications.user_id, notifications.image_id, images.file_name, images.name, images.something 
 FROM notifications 
-LEFT JOIN images ON notifications.image_id = images.id";
+LEFT JOIN images ON notifications.image_id = images.id where images.name='$name'";
 $result = mysqli_query($conn, $sql);
 ?>
 

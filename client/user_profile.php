@@ -277,6 +277,9 @@ while ($data = mysqli_fetch_array($query)) {
     body a {
         text-decoration: none;
     }
+    body {
+        background-color: #f3f2ef;
+    }
 
     .form-control:focus {
         box-shadow: none;

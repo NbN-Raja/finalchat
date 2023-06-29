@@ -118,7 +118,7 @@ nav li a:hover {
                         <h5> <?php echo $name ?> </h5>
                         <h5> <?php echo $lastname ?> </h5>
                     </div>
-                    <div class="contents">
+                    <div class="contents" id="shoee">
                         <h1> <?php echo $title ?> </h1>
                         <p><?php echo $contents ?></p>
                         <?php
@@ -144,7 +144,14 @@ nav li a:hover {
 
         <!-- interests  -->
         <div class="">
-            <h1> Suggestions Here </h1>
+            <h3> Suggestions Here </h3>
+            <div>
+                <input type="search" id="search-input">
+            </div>
+            <!-- fetch search here  -->
+            <div id="search-results-dialog" title="Search Results">
+                <div id="search-results"></div>
+            </div>
             <?php
             // Start the session
 
@@ -172,12 +179,11 @@ nav li a:hover {
 
                 echo '
       <div class="border" style="border-radius: 8px; border: 1px solid #ddd; padding: 10px;">
-  <h2 style="font-size: 24px; margin-bottom: 10px;">Suggested Post</h2>
   <div style="display: flex; align-items: center; margin-bottom: 10px;">
     
     <div>
-      <p style="margin: 0; font-size: 18px; font-weight: bold;">Post Title</p>
-      <p style="margin: 0; font-size: 14px; color: #666;">Posted by <a href="#" style="color: #333; text-decoration: none;">' . $username . '</a> on'  . $timestamp . '</p>
+    <p style="margin: 0; font-size: 18px; font-weight: bold;">' . $title . '</p>;
+    <p style="margin: 0; font-size: 14px; color: #666;">Posted by <a href="#" style="color: #333; text-decoration: none;">' . $username . '</a> on'  . $timestamp . '</p>
     </div>
   </div>
   <p style="font-size: 16px; color: #333; line-height: 1.5;">' . substr($contents, 0, 20) . '</p>
@@ -192,15 +198,7 @@ nav li a:hover {
 
 
 
-            <div>
-                <input type="search" id="search-input">
-            </div>
-            <!-- fetch search here  -->
-            <div id="search-results-dialog" title="Search Results">
-                <div id="search-results"></div>
-
-
-            </div>
+           
 
             <script>
                 $(document).ready(function() {
@@ -311,9 +309,16 @@ nav li a:hover {
 
     }
 
+    .shoee h1{
+        font-weight: 800;
+    }
+
+    .shoee p{
+        font-weight: 200;
+    }
     .blogs {
         display: flex;
-        background-color: aliceblue;
+        background-color: #f2f2f2;
         padding: 2px;
         margin-bottom: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -327,6 +332,11 @@ nav li a:hover {
         margin-bottom: 20px;
         padding: 10px;
         border: 1px solid #eee;
+        text-decoration: none;
+
+    }
+    .blogs p{
+        text-decoration: none;
     }
 
     .profile {

@@ -35,15 +35,15 @@ mysqli_close($conn);
         .chart-container {
             width: 100%;
             height: 0;
-            padding-bottom: 70%; /* Adjust the aspect ratio as needed */
+            padding-bottom: 30%; /* Adjust the aspect ratio as needed */
             position: relative;
         }
 
         .chart {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10;
+            width: 50%;
             height: 100%;
         }
     </style>
@@ -60,13 +60,13 @@ mysqli_close($conn);
                 animationEnabled: true,
                 theme: "light2",
                 title: {
-                    text: "User Chart"
+                    text: "User "
                 },
                 axisY: {
-                    title: "Total Likes"
+                    title: " Likes"
                 },
                 axisX: {
-                    title: "User Post Name"
+                    title: "User Pos"
                 },
                 data: [{
                     type: "column",

@@ -10,7 +10,7 @@ include 'db.php';
   </head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-  <body class="bg-aliceblue" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+  <body class="bg-aliceblue" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color:#f3f2ef">
     <!-- Navigation bar -->
     <?php include 'components/nav.php'; ?>
     

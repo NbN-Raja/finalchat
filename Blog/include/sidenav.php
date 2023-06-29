@@ -12,6 +12,9 @@ require_once 'session.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 <div class="sidebar">
@@ -19,13 +22,13 @@ require_once 'session.php';
     <img src="../client/assets/uploads/<?= $_SESSION['p_p']?>" class="w-30 rounded-circle" >
 
     <h2><?php echo $name; '<br>'; echo  $lastname ; ?></h2>
-    <?php echo $username ?>
    
   </div>
   <ul>
     <li><i class="fa fa-envelope"></i> <?php echo $_SESSION['email'];  ?></li>
-    <li><i class="fa fa-envelope"></i> <a href="post.php">Post  Blog</a> </li>
-    <li><i class="fa fa-envelope"></i> <a href="home.php">Home  Blog</a> </li>
+    <li><i class="fas fa-file-alt"></i> <a href="post.php">Post  Blog</a> </li>
+    <li><i class="fa fa-file-alt"></i> <a href="home.php">Home  Blog</a> </li>
+    <li><i class="fa fa-file-alt"></i> <a href="search.php">Search  Blog</a> </li>
     <!-- Button trigger modal -->
 
 
@@ -62,7 +65,7 @@ require_once 'session.php';
 
 .profile h2 {
   margin-top: 10px;
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
 
 .profile h3 {
@@ -82,6 +85,9 @@ li {
   font-size: 0.9em;
   color: #333;
   border-bottom: 1px solid #ddd;
+  font-weight: 500;
+  font-size: medium;
+    color: #605f5f;
 }
 
 li:last-child {
@@ -93,6 +99,8 @@ i {
   font-size: 1.2em;
   color: #666;
 }
+
+
 
 </style>
 
