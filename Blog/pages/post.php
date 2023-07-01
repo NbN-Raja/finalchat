@@ -5,7 +5,7 @@
         <form method="POST" action="">
             <input type="text" name="title" value="" placeholder="Enter Your Title">
             <textarea id="summernote" name="contents"></textarea>
-            <input type="file" name="image">
+            <!-- <input type="file" name="image"> -->
 
             <label> Please Select Your Tags </label>
             <label>Please Select Your Tags</label>
@@ -32,16 +32,16 @@
 
 <?php
 if (isset($_POST['submit'])) {
-    $image = $_FILES['image'];
-    $imageName = $image['name'];
-    $imageTmpName = $image['tmp_name'];
+    // $image = $_FILES['image'];
+    // $imageName = $image['name'];
+    // $imageTmpName = $image['tmp_name'];
     
-    // Specify the directory to store the uploaded image
-    $uploadDir = 'assets/community/';
-    $imagePath = $uploadDir . $imageName;
+    // // Specify the directory to store the uploaded image
+    // $uploadDir = 'assets/community/';
+    // $imagePath = $uploadDir . $imageName;
     
     // Move the uploaded image to the specified directory
-    move_uploaded_file($imageTmpName, $imagePath);
+    // move_uploaded_file($imageTmpName, $imagePath);
     
     $contents = $_POST['contents'];
     $usernamee = $_POST['username'];
@@ -52,7 +52,8 @@ if (isset($_POST['submit'])) {
     $conn = mysqli_connect('localhost', 'root', '', 'chat_app_db');
     
     // Insert the content into the database
-    $sql = "INSERT INTO community (username, p_p, contents, title, tags, images) VALUES ('$usernamee', '$p_p', '$contents', '$title', '$tags', '$imagePath')";
+    $sql = "INSERT INTO community (username, p_p, contents, title, tags) VALUES ('$usernamee', '$p_p', '$contents', '$title', '$tags')";
+    // $sql = "INSERT INTO community (username, p_p, contents, title, tags, images) VALUES ('$usernamee', '$p_p', '$contents', '$title', '$tags', '$imagePath')";
     $result = mysqli_query($conn, $sql);
     
     // Close the database connection
