@@ -33,7 +33,7 @@
     </form>
     <!-- chat lists  -->
 
-    <a style="margin-left: 27pc;" href="home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Link <span> Up </span></b></a>
+    <a style="margin-left: 27pc;" href="../home.php" class="navbar-brand "><i class="fa fa-cube"></i><b>Link <span> Up </span></b></a>
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start ml-5">
         <div class="navbar-nav">

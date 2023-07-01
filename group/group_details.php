@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    exit; 
+    exit;
 }
 
 
@@ -72,109 +72,137 @@ if (mysqli_num_rows($result) > 0) {
     $group_admin_id = $row['admin_id'];
     $group_photo = $row['photo'];
 
-    
+
 ?>
 
 
-<?php include './nav.php' ?>
+    <?php include './nav.php' ?>
 
 
-<div class="container">
+    <div class="container">
 
-    <div class="sidenav">
-       <div class="">
-       <?php include 'sidenav.php' ?>
-       </div>
-        <div class="">
-        <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
-  <input type="hidden" name="uname" id="name" value="<?php echo $_SESSION['name'] ?>"><br>
-  <input type="hidden" name="name" id="name" value="<?php echo $groupp_name ?>"><br>
-  <input type="text" name="topic" id="name" value="" placeholder="Topic" style="margin-bottom: 10px; padding: 5px;"><br>
-  <textarea name="description" id="description" placeholder="Description" style="margin-bottom: 10px; padding: 5px;"></textarea><br>
-  <input type="hidden" name="admin_id" id="admin_id" value="<?php echo $_SESSION["user_id"]; ?>"><br>
-  <input type="file" name="photo" id="photo" style="margin-bottom: 10px;"><br>
-  <input type="submit" name="submit" value="Post in Group" style="padding: 10px 20px; background-color: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-</form>
-
-             </div>
-    </div>
-    <div class="contents">
-
-        <?php
-        $sql = "SELECT * FROM group_posts WHERE name = '$groupp_name'";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                // Output the group details in HTML
-                $group_name = $row['name'];
-                $group_namee = $row['name'];
-                $uname = $row['uname'];
-                $group_description = $row['description'];
-                $group_admin_id = $row['admin_id'];
-                $group_photo = $row['group_posts'];
-                $create = $row['date'];
-        ?>
-        <div class="display_posts">
-
-       
-                <div class="div" style="display:flex">
-                 <p class="font-weight-bold"><?php echo $uname; ?></p> 
-                 <p style="margin-right:10px"> Posted On </p> 
-                <p style="margin-right:10px"><?php echo $create; ?></p>
-                 
+        <div class="sidenav">
+            
+            <div class="container">
+    <div class="row justify-content-center" style="    position: relative;
+    top: 5pc;">
+        <div class="col-lg-6">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="uname" value="<?php echo $_SESSION['name'] ?>"><br>
+                <input type="hidden" name="name" value="<?php echo $groupp_name ?>"><br>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="topic" value="" placeholder="Topic">
                 </div>
-                <p><?php echo $group_description; ?></p>
-                <?php if ($group_photo) { ?>
-                    <img src="uploads/<?php echo $group_photo; ?>" alt="<?php echo $group_name; ?>" width="200px" height="200px" style="    width: -webkit-fill-available;
+                <div class="form-group">
+                    <textarea class="form-control" name="description" placeholder="Description"></textarea>
+                </div>
+                <input type="hidden" name="admin_id" value="<?php echo $_SESSION["user_id"]; ?>"><br>
+                <div class="form-group">
+                    <input type="file" class="form-control-file" name="photo">
+                </div>
+                <button type="submit" class="btn btn-primary" name="submit">Post in Group</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+        <div class="contents">
+
+            <?php
+            $sql = "SELECT * FROM group_posts WHERE name = '$groupp_name'";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    // Output the group details in HTML
+                    $group_name = $row['name'];
+                    $group_namee = $row['name'];
+                    $uname = $row['uname'];
+                    $group_description = $row['description'];
+                    $group_admin_id = $row['admin_id'];
+                    $group_photo = $row['group_posts'];
+                    $create = $row['date'];
+            ?>
+                    <div class="display_posts">
+
+                        <div class="div" style="display:flex">
+                        <div class="">
+                        <img src="http://localhost/main/group/uploads/group_profile/default.png"  height="50px" width="45px">
+
+                        </div>
+                        <div class="">
+                        <p class="font-weight-bold"><?php echo $uname; ?></p>
+                            
+                            <a style="margin-right:10px"><?php echo $create; ?></a>
+                        </div>
+                            
+
+                        </div>
+                        <p><?php echo $group_description; ?></p>
+                        <?php if ($group_photo) { ?>
+                            <img src="uploads/<?php echo $group_photo; ?>" alt="<?php echo $group_name; ?>" width="200px" height="200px" style="    width: -webkit-fill-available;
     height: auto;">
-                <?php } ?>
-                </div>
-                <br>
-        <?php
+                        <?php } ?>
+                    </div>
+                    <br>
+            <?php
+                }
+            } else {
+                die("No groups found");
             }
-        } else {
-            die("No groups found");
-        }
-        ?>
+            ?>
 
 
 
-    </div>
+        </div>
 
-    <div class="create">
+        <div class="create">
 
 
         <form action="updategphoto.php" method="post" enctype="multipart/form-data">
-            <p> Add Group Photo </p>
-            <input type="file" name="group_photo" id="photo"><br>
-            <input type="text" name="name" value="<?php echo $group_namee; ?>" id="photo"><br>
-            <input type="submit" name="gphoto" value="Add">
-
-        </form>
-        <?php if (isset($error)) { ?>
-            <div style="color: red;"><?php echo $error; ?></div>
-        <?php } ?>
-        <?php if (isset($success)) { ?>
-            <div style="color: green;"><?php echo $success; ?></div>
-        <?php } ?>
-        <h1>Create a Post For Group</h1>
-        <form method="post" enctype="multipart/form-data">
-            <label for="name">Group Name:</label>
-            <input type="text" name="name" id="name" value="<?php echo $groupp_name ?>"><br>
-            <input type="text" name="uname" id="name" value="<?php echo $uname ?>"><br>
-            <label for="name">Topic:</label>
-            <input type="text" name="topic" id="name" value=""><br>
-            <label for="description">Description:</label>
-            <textarea name="description" id="description"></textarea><br>
-            <label for="admin_id">Admin ID:</label>
-            <input type="text" name="admin_id" id="admin_id" value="<?php echo $_SESSION["user_id"]; ?> "><br>
-            <label for="photo">Group Photo:</label>
-            <input type="file" name="photo" id="photo"><br>
-            <input type="submit" name="submit" value="Post In Group">
-        </form>
+    <div class="form-group">
+        <label for="group_photo">Add Group Photo</label>
+        <input type="file" class="form-control-file" name="group_photo" id="group_photo">
     </div>
-</div>
+    <div class="form-group">
+        <label for="name">Group Name</label>
+        <input type="text" class="form-control" name="name" value="<?php echo $group_namee; ?>" id="name">
+    </div>
+    <button type="submit" class="btn btn-primary" name="gphoto">Add</button>
+</form>
+
+            <?php if (isset($error)) { ?>
+                <div style="color: red;"><?php echo $error; ?></div>
+            <?php } ?>
+            <?php if (isset($success)) { ?>
+                <div style="color: green;"><?php echo $success; ?></div>
+            <?php } ?>
+            <h1>Create a Post For Group</h1>
+            <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="name" value="<?php echo $groupp_name ?>"><br>
+    <input type="hidden" name="uname" value="<?php echo $uname ?>"><br>
+
+    <div class="form-group">
+        <input type="text" class="form-control" name="topic" id="topic" placeholder="Add Title">
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="description" id="description" placeholder="Add Description"></textarea>
+    </div>
+
+    <input type="hidden" name="admin_id" value="<?php echo $_SESSION["user_id"]; ?>"><br>
+
+    <div class="form-group">
+        <label for="photo">Upload Photo</label>
+        <input type="file" class="form-control-file" name="photo" id="photo">
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="submit">Post In Group</button>
+</form>
+
+        </div>
+    </div>
 
 <?php
 } else {
@@ -191,14 +219,14 @@ if (mysqli_num_rows($result) > 0) {
 
     }
 
-    .display_posts{
+    .display_posts {
         padding-bottom: 5pc;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         padding: 10px;
     }
 
-    .contents{
+    .contents {
         width: 32pc;
-    border: 1px solid white;
+        border: 1px solid white;
     }
 </style>

@@ -44,10 +44,10 @@
                 <img src="client/assets/uploads/<?= $conversation['p_p'] ?>" class="w-10 rounded-circle" style="width: 36px; height: 36px;">
                 <p class="ml-2">
   <?php 
-    $name = strtoupper($conversation['name']); // Capitalize each word
-    $lastname = strtoupper($conversation['lastname']); // Capitalize each word
+    $name = ($conversation['name']); // Capitalize each word
+    $lastname = ($conversation['lastname']); // Capitalize each word
     
-    echo "<strong>{$name}</strong> {$lastname}<br>"; // Bold the name and display the lastname
+    echo "{$name} {$lastname}<br>"; // Bold the name and display the lastname
   ?>
 </p>
 
@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
  <!-- Suggestions HERE  -->
 
  <div class="suggestions">
-  <h4> Suggestion Posts </h4>
+  <h4 class="mb-2"> Suggestion Posts </h4>
 
  <?php
 // Your database connection code here
@@ -156,7 +156,7 @@ if ($result) {
       echo '<li>';
       echo '<a href="Blog/singlepost.php?cid=' . $row['cid'] . '">';
       echo '<div class="result-title">' . substr($row['title'], 0, 20) . '..</div>';
-      echo '<div class="result-tags">' . $row['tags'] . '</div>';
+      // echo '<div class="result-tags">' . $row['tags'] . '</div>';
       echo '</a>';
       echo '</li>';
   }
@@ -223,8 +223,9 @@ if ($result) {
 }
 
 #search-results li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 5px;
+  border-bottom: 1px solid #1a1212;
+  border-left: 1px solid #1a1212;
 }
 
 #search-results li:last-child {
@@ -232,7 +233,7 @@ if ($result) {
 }
 
 .result-title {
-  font-weight: bold;
+
 }
 
 .result-tags {
@@ -246,7 +247,7 @@ if ($result) {
 
 
  <div class="displaygroup">
-        <h4><a href="http://localhost/main/group/group.php">  Your Groups </a> </h4>
+        <h4><a href="http://localhost/main/group/group.php"> Groups </a> </h4>
         <?php
         // Connect to the database
         
@@ -259,24 +260,38 @@ if ($result) {
         // $group_id = $_GET['id'];
         
         // Get the group details from the database
-        $sql = "SELECT  Distinct name,group_photo FROM groups";
+        $sql = "SELECT  Distinct name,group_photo,description FROM groups";
         $result = mysqli_query($conn, $sql);
         
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $group_name = $row['name'];
+                $description = $row['description'];
                 $photo = $row['group_photo'];           
           ?>        
             <h1></h1>
             <?php if ($photo) { ?>
+              <div class="" style="display: flex;">
+                <div class="">
                 <img src="http://localhost/main/group/uploads/group_profile/<?php echo $photo; ?>" alt="<?php echo $group_name; ?>" height="36px" width="36px">
             <?php }else{ ?>
                 <img src="http://localhost/main/group/uploads/group_profile/default.png"  height="36px" width="36px">
                 <?php 
             } ?>
+                
+              </div>
+               
+            
         <?php $group_admin_id = $_SESSION['user_id'] ?>
+        <div class="">
+        <a class="font-bold" href="group_details.php?id=<?php echo $group_admin_id; ?>&amp;name=<?php echo urlencode($group_name); ?>">
+        <strong> <?php echo $group_name; ?> <br> </strong>
+        <?php echo substr($description, 0, 15); ?>..
         
-        <a href="group_details.php?id=<?php echo $group_admin_id; ?>&amp;name=<?php echo urlencode($group_name); ?>"><?php echo $group_name; ?></a>
+      </a>   
+                    </div>
+                    </div>
+       
         <?php
           }
         } else {

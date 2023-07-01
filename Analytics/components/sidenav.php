@@ -23,6 +23,11 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="http://localhost/main/group/group.php">
+        <i class="fas fa-users"></i> Groups
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="fas fa-cog"></i> Settings
       </a>
