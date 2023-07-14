@@ -14,12 +14,13 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $admin_id = $_POST['admin_id'];
+    $adminname = $_POST['adminname'];
     $photo = "default.png";
     
     // Validate input
     
         // Insert the new group into the database
-        $sql = "INSERT INTO groups (name, description, admin_id,group_photo) VALUES ('$name', '$description', '$admin_id','$photo')";
+        $sql = "INSERT INTO groups (name, description, admin_id,adminname,group_photo) VALUES ('$name', '$description', '$admin_id','$adminname','$photo')";
         if (mysqli_query($conn, $sql)) {
             $success = "Group created successfully";
         } else {
@@ -100,6 +101,7 @@ if (mysqli_num_rows($result) > 0) {
     <div class="form-group">
         <label for="name">Group Name:</label> <br>
         <input type="text" name="name" id="name" class="form-control">
+        <input type="text" name="adminname" id="adminname" value="<?php echo $_SESSION['username'] ?>" class="form-control">
     </div>
 
     <div class="form-group">
