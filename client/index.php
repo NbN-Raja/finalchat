@@ -61,7 +61,7 @@
                     LOGIN</button>
                     <div class="register">
                     <p> New To Account ? <a href="signup.php"> Register </a> </p>
-                    <p>  <a href="signup.php">Forget  Password </a> </p>
+                    <p>  <a href="password.php">Forget  Password </a> </p>
                     </div>
             </form>
             <div class="linkedin-about" style="">

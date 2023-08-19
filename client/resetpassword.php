@@ -4,6 +4,7 @@ session_start();
  
 // DB 
 
+
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 define('DB_SERVER', 'localhost');
@@ -30,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate new password
     if(empty(trim($_POST["new_password"]))){
         $new_password_err = "Please enter the new password.";     
-    } elseif(strlen(trim($_POST["new_password"])) < 2){
+    } elseif(strlen(trim($_POST["new_password"])) < 4){
         $new_password_err = "Password must have atleast 6 characters.";
     } else{
         $new_password = trim($_POST["new_password"]);
@@ -57,12 +58,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_password = password_hash($new_password, PASSWORD_DEFAULT);
-            $param_id = $_SESSION["user_id"];
+            $param_id = $_SESSION['user_id'];
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Password updated successfully. Destroy the session, and redirect to login page
-                session_destroy();
                 header("location: index.php");
                 exit();
             } else{
@@ -77,6 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     $mysqli->close();
 }
+
 ?>
  
 <!DOCTYPE html>
@@ -97,11 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
        
         <div class="form-group">
-                <label>Current Password</label>
-                <input type="password" name="current_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
-                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                
             </div>
-
             <div class="form-group">
                 <label>New Password</label>
                 <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
