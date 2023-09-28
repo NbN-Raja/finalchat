@@ -41,7 +41,7 @@ $usernamee = $_SESSION['username']
             <div class="showpost">
 
             <?php
-  $sql = "SELECT * FROM images WHERE name='$usernamee'";
+  $sql = "SELECT * FROM images WHERE name='$usernamee' ORDER BY `uploaded_on` DESC";
   $result = $con->query($sql);
 
   // Check if there is a result
@@ -56,10 +56,21 @@ $usernamee = $_SESSION['username']
       // Display each item in a grid cell
      
       echo '<div class="shadow display card">';
-      echo "<h5 >" . $row['name'] . "</h5>";
+      // echo "<h5 >" . $row['name'] . "</h5>";
+      
       $something = $row['something'];
+      $uploaded_on  = $row['uploaded_on'];
       $cutSomething = substr($something, 0, 10);
-      echo "<p>  " . '<a style="color:black" href="http://localhost/main/pages/singlepost.php?user=' . $pid . '">' . "" . $cutSomething . "</a></p>";
+      $dateObject = new DateTime($uploaded_on);
+      ?>
+      <div class="info-container">
+      <?php
+      $dateObject = new DateTime($uploaded_on);
+      echo '<p class="info-date">' . htmlspecialchars($dateObject->format('Y-m-d')) . '</p>';
+      echo '<p><a class="info-link" href="http://localhost/main/pages/singlepost.php?user=' . $pid . '">' . $cutSomething . '</a></p>';
+      ?>
+  </div>
+  <?php
       $post_file = $row['file_name'];
       if ($post_file != '') {
         $file_extension = pathinfo($post_file, PATHINFO_EXTENSION);
@@ -69,12 +80,14 @@ $usernamee = $_SESSION['username']
           echo '<video class="post_video" controls >
                   <source src="http://localhost/main/client/assets/post/' . $post_file . '" type="video/' . $file_extension . '">
                 </video><br>';
+                
         } else {
           echo '<p>' . $post_file . '</p><br>';
         }
       } else {
         echo '<p style="height: 83px;"></p><br>';
       }
+    
 
       echo "</div>";
     }
@@ -158,7 +171,7 @@ $usernamee = $_SESSION['username']
     background-color: #f3f2ef;
   }
   #posts {
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .display {
@@ -173,26 +186,56 @@ $usernamee = $_SESSION['username']
 <style>
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 21px;
   }
 
   .display {
-    border: 1px solid grey;
     background-color: white;
     padding: 12px;
     border-radius: 5px;
   }
-  .post_image{
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
-  }
-  .post_video{
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
-  }
+  .post_image, .post_video {
+    height: 100px;   /* or any other value you prefer */
+    width: 100px;   /* or any other value you prefer */
+    object-fit: cover;  /* to maintain aspect ratio and cover the entire width/height */
+    display: block;     /* to remove any extra spacing around the image/video */
+}
+
 
   h5{
     color: #65676b;
   }
+
+
+    .info-container {
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        width: max-content;
+        margin: 10px 0;
+    }
+
+    .info-container p {
+        margin: 5px 0;
+    }
+
+    .info-link {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .info-link:hover {
+        text-decoration: underline;
+    }
+
+    .info-date {
+        font-size: 0.9em;
+        color: #555;
+    }
 </style>
+
+
+

@@ -121,17 +121,16 @@
   }
 </style>
 
-<div class="" style="position:relative; right:33px; display:flex">
-  <a class="ml-10" href="http://localhost/main/client/home.php" style="color: black;">
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/-XF4FQcre_i.png" width="40" height="36" class="black" style="    background-color: gainsboro;
-    border-radius: 20px;">
+<div class="" style="position:relative; right:43px; display:flex">
+  <a class="ml-15" href="http://localhost/main/client/home.php" style="color: black;     position: relative;
+    left: -19px;">
+  <i class="fas fa-home" style="font-size: 24px; color: black; width: 24px; height: 24px; margin-top:10px"></i>
+
   </a>
   
 
   <a href="Blog/home.php" target="_blank" class="ml-3">
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png" height="40" width="36" class="black" style="    background-color: gainsboro;
-    border-radius: 10px;">
-
+  <i class="fas fa-calendar-week" style="font-size: 24px; color: black; width: 24px; height: 24px; margin-top:10px"></i>
   </a>
 </div>
 
