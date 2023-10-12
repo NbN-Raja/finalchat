@@ -18,22 +18,71 @@ function validateFormm() {
   if (name == "") {
     document.getElementById("nameErr").innerHTML = "Name field is required";
     return false;
-  }
+} else {
+    var regex = /^[a-zA-Z\s]+$/;                
+    if(regex.test(name) === false) {
+        document.getElementById("nameErr").innerHTML = "Please enter a valid name";
+        return false;
+    } else {
+        document.getElementById("nameErr").innerHTML = "";
+    }
+}
 
-  if (lastname == "") {
+
+if (lastname == "") {
     document.getElementById("lastnameErr").innerHTML = "Last Name field is required";
     return false;
-  }
+} else {
+    var regex = /^[a-zA-Z\s]+$/;                
+    if(regex.test(lastname) === false) {
+        document.getElementById("lastnameErr").innerHTML = "Please enter a valid name";
+        return false;
+    } else {
+        document.getElementById("lastnameErr").innerHTML = "";
+    }
+}
 
-  if (email == "") {
-    document.getElementById("emailErr").innerHTML = "Email field is required";
-    return false;
-  }
 
-  if (username == "") {
-    document.getElementById("usernameErr").innerHTML = "Username field is required";
-    return false;
+
+if (email === "") {
+  document.getElementById("emailErr").innerHTML = "Email field is required";
+  return false; // prevent form submission
+} else {
+  // Regular expression for basic email validation
+  var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]*[a-zA-Z]+[a-zA-Z0-9-]*\.[a-zA-Z]{2,6}$/;
+
+  if (regex.test(email) === false) {
+    document.getElementById("emailErr").innerHTML = "Please enter a valid email";
+    return false; // prevent form submission
+  } else {
+    document.getElementById("emailErr").innerHTML = "";
   }
+}
+
+
+
+
+//   if (email == "") {
+//     document.getElementById("emailErr").innerHTML = "Email field is required";
+//     return false;
+//   }
+if (username == "") {
+    document.getElementById("usernameErr").innerHTML = "Username is required";
+    return false;
+} else {
+    var regex = /^[a-zA-Z\s]+$/;                
+    if(regex.test(username) === false) {
+        document.getElementById("usernameErr").innerHTML = "Please enter a valid name";
+        return false;
+    } else {
+        document.getElementById("usernameErr").innerHTML = "";
+    }
+}
+
+//   if (username == "") {
+//     document.getElementById("usernameErr").innerHTML = "Username field is required";
+//     return false;
+//   }
 
   if (password == "") {
     document.getElementById("passwordErr").innerHTML = "Password field is required";
@@ -288,18 +337,18 @@ function validateForm() {
     }
     
     // Validate email address
-    if(email == "") {
-        printError("emailErr", "Please enter your email address");
-    } else {
-        // Regular expression for basic email validation
-        var regex = /^\S+@\S+\.\S+$/;
-        if(regex.test(email) === false) {
-            printError("emailErr", "Please enter a valid email address");
-        } else{
-            printError("emailErr", "");
-            emailErr = false;
-        }
-    }
+    // if(email == "") {
+    //     printError("emailErr", "Please enter your email address");
+    // } else {
+    //     // Regular expression for basic email validation
+    //     var regex = /^\S+@\S+\.\S+$/;
+    //     if(regex.test(email) === false) {
+    //         printError("emailErr", "Please enter a valid email address");
+    //     } else{
+    //         printError("emailErr", "");
+    //         emailErr = false;
+    //     }
+    // }
     
     // Validate mobile number
     if(password == "") {

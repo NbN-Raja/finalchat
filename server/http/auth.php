@@ -90,11 +90,17 @@ try {
           }
         }else {
           # error message
-          $em = "Incorect Username or password";
+          $ems = "Incorect Username or password";
 
           # redirect to 'index.php' and passing error message
-          header("Location: http://localhost/main/client/index.php?error=$em");
+          header("Location: http://localhost/main/client/index.php?error=$ems");
         }
+      }else {
+        # error message
+        $ems = "Incorect Username or password";
+
+        # redirect to 'index.php' and passing error message
+        header("Location: http://localhost/main/client/index.php?error=$ems");
       }
    }
 }else {

@@ -53,19 +53,22 @@ if(isset($_POST['username']) &&
    	  exit;
    }else {
    	  # checking the database if the username is taken
-   	  $sql = "SELECT username 
-   	          FROM users
-   	          WHERE username=?";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute([$username]);
-      $stmt->execute([$name]);
+   	  $sql = "SELECT username, email FROM users WHERE username=? OR email=?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$username, $email]);
 
-      if($stmt->rowCount() > 0){
-      	$em = "The username ($username) is Already Exists";
-      	$em = "The Name ($name) is Already Exists";
-      	header("Location: ../../client/signup.php?error=$em&$data");
+if($stmt->rowCount() > 0){
+    $existingData = $stmt->fetch();
+    
+    if ($existingData["username"] === $username) {
+        $em = "The username ($username) already exists.";
+    } else {
+        $em = "The email ($email) is already registered.";
+    }
 
-   	    exit;
+    header("Location: ../../client/signup.php?error=$em");
+    exit;
+
       }else {
       	# Profile Picture Uploading
       	if (isset($_FILES['pp'])) {
