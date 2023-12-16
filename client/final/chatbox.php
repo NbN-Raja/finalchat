@@ -18,8 +18,13 @@
     <small class="d-block" style="text-align:center; background-color:#f5f5f5;opacity: 0.5"><?=" " . last_seen_msg($chat['created_at'])?></small>
     <p class="rtext align-self-end border rounded p-2 py-2 px-2 mb-2 mt-2" style="border-radius: 1rem!important;">
     <?php
+
+
+$encryptedMessage= ($chat['message']);
+$key="asdsadfsadasd";
     // Get the message content
-    $message = base64_decode($chat['message']);
+    // $message = ($chat['message']);
+    $message = decryptMessage($encryptedMessage, $key);
 
     // Use regular expression to find links in the message
     $message = preg_replace('/\b(https?:\/\/\S+)\b/', '<a href="$1" target="_blank">$1</a>', $message);
@@ -47,7 +52,7 @@
     <p class="ltext border rounded p-2 p-2 py-2 px-2 mb-2 mt-2 ml-2" style="border-radius: 2.25rem!important;">
     <?php
         // get the message content
-        $message = base64_decode($chat['message']);
+        $message = decryptMessage($chat['message'], $from_id);
         // find all URLs in the message and replace with clickable links
         $message = preg_replace('/\b(https?:\/\/\S+)\b/i', '<a href="$1" target="_blank">$1</a>', $message);
         // display the message with clickable links
@@ -79,33 +84,22 @@
 </div>
 
 <?php 
-// $from_id = $chat['from_id'];
-// $to_id = $chat['to_id'];
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "chat_app_db";
 
-// // Create connection
-// $conn = new mysqli($servername, $username, $password, $dbname);
-// $block = "SELECT is_blocked FROM conversations WHERE user_1= '$from_id' AND user_2=$to_id";
 
-// $result = $conn->query($block);
-// if (mysqli_num_rows($result) > 0) {
-//     // output data of each row
-//     while($row = mysqli_fetch_assoc($result)) {
-//         if($row["is_blocked"] ==1) {
-//             echo "blocked";
-//             echo '<script> 
-//                 $("#block").click(function() {
-//                     $("#message").attr("disabled", !$("#message").attr("disabled"));
-//                 });
-//             </script>';
-//         } else {
-//         }
-//     }
-// }
+
+
+
+
+function decryptMessage($encryptedMessage, $key) {
+    $data = base64_decode($encryptedMessage);
+    $ivSize = openssl_cipher_iv_length('aes-256-cbc');
+    $iv = substr($data, 0, $ivSize);
+    $encryptedMessage = substr($data, $ivSize);
+    return openssl_decrypt($encryptedMessage, 'aes-256-cbc', $key, 0, $iv);
+}
+
 ?>
+
 
 

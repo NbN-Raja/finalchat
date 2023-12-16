@@ -27,7 +27,6 @@ include 'nav.php'
 
     <!-- first Column here  -->
 
-    <?php include 'final/firstcolumn.php' ?>
     
 
 

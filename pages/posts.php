@@ -32,6 +32,7 @@ while ($data = mysqli_fetch_array($query)) {
 
               <?php echo $name ?>
               <?php echo $lastname ?>
+              
               <br>
               <?php echo last_seen($uplaoded_on) ?>
           </b> </a>

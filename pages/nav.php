@@ -2,6 +2,8 @@
     <!-- <img src="client/assets/img/icon/logo.png"> -->
     <form class="relative" style="left:100px">
         <div class="input-group search-box" style="left: 248px; width: 14pc;">
+
+        <!-- Search userName Here  -->
         <img src="http://localhost/main/client/assets/img/logo.jpg" class="mr-2 mt-1" height="30px" width="30px">
             <input type="search" id="searchText" class="form-control" placeholder="Search by Name" autocomplete="off" style="background-color:#eef3f8">
         </div>

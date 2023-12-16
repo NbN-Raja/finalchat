@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -12,17 +12,18 @@ if (isset($_SESSION['username'])) {
 	include '../db.conn.php';
 
 	# get data from XHR request and store them in var
-	$message = base64_encode($_POST['message']);
+	$message = $_POST['message'];
 	$to_id = $_POST['to_id'];
 
 	# get the logged in user's username from the SESSION
 	$from_id = $_SESSION['user_id'];
 
-	$sql = "INSERT INTO 
-	       chats (from_id, to_id, message) 
-	       VALUES (?, ?, ?)";
+	# Encrypt the message
+	$encryptedMessage = encryptMessage($message, $from_id);
+
+	$sql = "INSERT INTO chats (from_id, to_id, message) VALUES (?, ?, ?)";
 	$stmt = $conn->prepare($sql);
-	$res  = $stmt->execute([$from_id, $to_id, $message]);
+	$res = $stmt->execute([$from_id, $to_id, $encryptedMessage]);
 	$_SESSION['to_id'] = $to_id;
     
     # if the message inserted
@@ -46,28 +47,41 @@ if (isset($_SESSION['username'])) {
 
 		if ($stmt2->rowCount() == 0 ) {
 			# insert them into conversations table 
-			$sql3 = "INSERT INTO 
-			         conversations(user_1, user_2)
-			         VALUES (?,?)";
+			$sql3 = "INSERT INTO conversations(user_1, user_2) VALUES (?,?)";
 			$stmt3 = $conn->prepare($sql3); 
 			$stmt3->execute([$from_id, $to_id]);
 		}
 		?>
 
-		<p class="rtext align-self-end
-		          border rounded p-2 mb-1">
-		   
-			<?=
-                     base64_decode ($message)
-                       ?>
-			
-		    <!-- <small class="d-block"><?=$time?></small>      	 -->
+		<p class="rtext align-self-end border rounded p-2 mb-1">
+			<?php echo decryptMessage($encryptedMessage, $from_id); ?>
+			<small class="d-block"><?= $time ?></small>
 		</p>
 
     <?php 
      }
   }
-}else {
+} else {
 	header("Location: ../../index.php");
 	exit;
 }
+
+
+// used to encrypt message
+
+$keyl="asdsadfsadasd";
+function encryptMessage($message, $key) {
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encryptedMessage = openssl_encrypt($message, 'aes-256-cbc', $key, 0, $iv);
+    return base64_encode($iv . $encryptedMessage);
+}
+
+// Used To decryt message
+function decryptMessage($encryptedMessage, $key) {
+    $data = base64_decode($encryptedMessage);
+    $ivSize = openssl_cipher_iv_length('aes-256-cbc');
+    $iv = substr($data, 0, $ivSize);
+    $encryptedMessage = substr($data, $ivSize);
+    return openssl_decrypt($encryptedMessage, 'aes-256-cbc', $key, 0, $iv);
+}
+?>
