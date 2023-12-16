@@ -10,7 +10,7 @@ if (!empty($_SESSION['username'])) {
 
 <link rel="shortcut icon" href="client/assets/img/icon/logo.JPG" type="image/x-icon" />
 <!-- check User Access Or Blocked  -->
-
+<!--  -->
 <?php
 session_start();
 $user_id = $_SESSION['user_id'];
