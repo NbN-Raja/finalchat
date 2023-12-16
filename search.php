@@ -12,7 +12,7 @@
         width: 300px;
         position: relative;
         display: inline-block;
-        font-size: 14px;
+        font-size: 15px;
     }
     .search-box input[type="text"]{
         height: 32px;

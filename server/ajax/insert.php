@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
 	$stmt = $conn->prepare($sql);
 	$res = $stmt->execute([$from_id, $to_id, $encryptedMessage]);
 	$_SESSION['to_id'] = $to_id;
-    
+    // 
     # if the message inserted
     if ($res) {
     	/**

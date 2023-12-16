@@ -382,6 +382,7 @@ $result = mysqli_query($conn, $sql);
                     
                 </td>
                  <td> Message: <?php echo $message_noti; ?><br> </td>
+                 <!--  -->
             </tr>
 
         <?php endwhile; ?>

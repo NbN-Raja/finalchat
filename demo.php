@@ -17,7 +17,7 @@
     <div class="preview_img">
       <div class="main_img">
         <picture>
-               <img src="" id="preview" class="preview" alt="Not Image Selected">
+               <img src="" id="preview" class="preview" alt="Not Image dsfds Selected">
         </picture>
       </div>
     </div>

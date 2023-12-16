@@ -96,7 +96,7 @@ if (isset($_SESSION['username'])) {
 <style>
     * {
         margin: 0px;
-        padding: 0px;
+        padding: 1px;
     }
 
     body {

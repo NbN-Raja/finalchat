@@ -623,7 +623,7 @@ p {
 
         <div class="">
 
-          <input type="text" name="something" required placeholder="Whats on Your Mind  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required> <br>
+          <input type="text" name="something" required placeholder="Whats on Your Mind...  <?php echo htmlspecialchars($_SESSION["name"]); ?> ?" required> <br>
         </div>
       </div>
       <hr>

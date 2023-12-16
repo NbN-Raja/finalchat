@@ -19,7 +19,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
 $app->get('/users', function (Request $request, Response $response, $args) {
     $users = [
         ['name' => 'nbn Doe', 'age' => 35],
-        ['name' => 'Jane Smith', 'age' => 28],
+        ['name' => 'Jane sdfdsf', 'age' => 28],
         ['name' => 'Bob Johnson', 'age' => 42],
     ];
 
